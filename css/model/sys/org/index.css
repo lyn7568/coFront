@@ -1,0 +1,7 @@
+@charset "utf-8";
+.sys_org_index .tpl-btns .row{
+	padding-left: 10px;
+}
+.sys_org_index th.opt-check,.sys_org_index td.opt-check{
+	width: 30px;
+}

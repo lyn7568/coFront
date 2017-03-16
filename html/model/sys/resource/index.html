@@ -1,0 +1,54 @@
+<div class="sys_resource_index">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+
+	<div class="container queryForm">
+		<div class="row">
+			<div class="col-6">
+				<div class="btn opt-new">
+					<i class="icon-plus"></i>
+					新增
+				</div>
+				
+			</div>
+			<div class="col-6">				
+				<div class="form-item text" name="qn"></div><i class="icon icon-search"></i>
+			</div>
+
+		</div>
+	</div>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>名称</th>
+					<th>URI</th>
+					<th>CSS</th>
+					<th>SCRIPT</th>
+					<th>MODAL</th>
+					<th>MAIN</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="code-tpl code-tag-hold" code-func="data-list">
+				<tr>
+					<td>{{any-[]}}</td>
+					<td>{{name}}</td>
+					<td>{{uri}}</td>
+					<td>{{css}}</td>
+					<td>{{script}}</td>
+					<td>{{modal-bool}}</td>
+					<td>{{main-bool}}</td>
+					<td class="table-opt" resourceId="{{id}}"><i class="icon icon-remove-sign"></i><i class="icon icon-edit"></i></td>
+				</tr>
+			</tbody>
+			<tbody class="code-tpl code-tag-hold" code-func="data-emptylist">
+				<tr>
+					<td class="empty-desc" colspan="8">表格暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

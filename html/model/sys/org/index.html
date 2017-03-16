@@ -1,0 +1,81 @@
+<div class="sys_org_index" loadUri="../ajax/sys/org/pq" pageSize="5" pageNo="1">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+	<div class="container dt-form">
+		<div class="row">
+			<div class="col-2 item-caption">机构名称</div>
+			<div class="col-4">
+				<div class="form-item text" defVal="" name="name"></div>
+			</div>
+			<div class="col-2 item-caption ">机构类型</div>
+			<div class="col-4">
+				<div class="form-item select" dictCode="bool" defVal="" name="type"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2 item-caption ">日期</div>
+			<div class="col-4">
+				<div class="form-item date" defVal="" name="bt"></div>
+			</div>
+			<div class="col-2 item-caption center">至</div>
+			<div class="col-4">
+				<div class="form-item date" defVal="" name="et"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-10">
+
+			</div>
+			<div class="col-2">
+				<div class="btn opt-query pull-right">
+					<i class="icon-search"></i> 查询
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container page-split"></div>
+	<div class="container tpl-btns">
+		<div class="row">
+			<div class="btn opt-new">
+				<i class="icon-plus"></i> 增加
+			</div>
+			<div class="btn opt-edit">
+				<i class="icon-edit"></i>编缉
+			</div>
+			<div class="btn opt-del">
+				<i class="icon-remove-sign"></i>删除
+			</div>
+		</div>
+	</div>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+					<th>序号</th>
+					<th>名称</th>
+					<th>登记日期</th>
+					<th>类型</th>
+				</tr>
+			</thead>
+			<tbody class="code-tpl code-tag-hold" code-func="data-list">
+				<tr>
+					<td class="opt-check" ><i class="icon icon-st-check" orgId="{{id}}"></i></td>
+					<td>{{any-[]}}</td>
+					<td>{{name}}</td>
+					<td>{{createTime-showDay}}</td>
+					<td class="do-dict-display" dict="bool" code="{{type}}"></td>
+				</tr>
+			</tbody>
+			<tbody class="code-tpl code-tag-hold" code-func="data-emptylist">
+				<tr>
+					<td class="empty-desc" colspan="5">表格暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<ul class="dt-pager"></ul>
+</div>

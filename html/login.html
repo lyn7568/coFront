@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/base.css" />
+		<title></title>
+
+		<style type="text/css">
+			.login-form {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				max-height: 90%;
+				max-width: 90%;
+				background-color: #fff;
+				overflow: auto;
+				width: 450px;
+				border: 1px solid #66AFE9;
+				padding: 30px;
+				border-radius: 5px;
+			}
+			
+			.row {
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="login-form container">
+			<div class="row">
+				<div class="col-5 item-caption">用户名</div>
+				<div class="col-7">
+					<div class="form-item text" defVal="" name="key"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-5 item-caption">密码</div>
+				<div class="col-7">
+					<div class="form-item text password" defVal="" name="pw"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 "></div>
+				<div class="col-2">
+					<button type="button" class="btn login-btn">Login</button>
+				</div>
+			</div>
+		</div>
+		<div id='g_info'>
+			<div id='g_err'></div>
+			<div id='g_warn'></div>
+			<div id='g_msg'></div>
+		</div>
+		<div id='g_loading' style="display: none;">
+			<div>
+				<i class='icon icon-spin icon-spinner-snake'></i>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="../js/base.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var loginForm = $(".login-form").form();
+				$(".login-btn").on("click", function(){
+					//do check
+
+					loginForm.doPost("../ajax/sys/user/login", function(data) {
+						if(data) {
+							var uri = window.location.hash;
+							if(uri && uri.length>1){
+								window.location.href=decodeURIComponent(uri.substring(1));
+							}else{
+								window.location.href='index.html';
+							}
+						} else {
+							$.util.error("invalid username or password");
+						}
+					}, true);
+
+				});
+
+			});
+		</script>
+	</body>
+
+</html>
