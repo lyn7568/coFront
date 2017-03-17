@@ -121,6 +121,7 @@ function($) {
 		_g_layer_curr = { index: 5000000, remove: noop, css: noop },
 		layer_remove = function() {
 			this.shade.remove();
+			this.ctn.empty();
 			this.ctn.remove();
 			this.prev.css("display", "block");
 			_g_layer_curr = this.prev;
@@ -198,13 +199,51 @@ function($) {
 		/*
 		 * 弹出提示信息，不会自动消失    parent is body z - index 5000000 - 9999997
 		 */
-		alertMsg: function(cnt) {},
+		alertMsg: function(title, content,hand) {
+			if(content){
+				if($.isFunction(content)){
+					hand = content;
+					content = title;
+					title = "提示";
+				}
+			}else{
+				content = title;
+				title = "提示";
+			}
+			hand=hand || noop;
+			var ly = util.createModalLayer('<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title"></h4></div><div class="modal-body"><p></p></div><div class="modal-footer"><button type="button" class="btn">关闭</button></div></div></div>');
+			ly.ctn.find(".modal-title").text(title);
+			$content = ly.ctn.find("p").text(content);
+			ly.ctn.find("button").on("click", function() {
+				util.closeModalLayer();
+				hand();
+			});
+		},
 		/*
 		 *弹出确认信息，不会自动消失    parent is body z - index 1000000 - 4999999 
 		 * btns is Array 
 		 * btns like [{catpion:"button caption",handler:function(){}},...]
 		 */
-		boxMsg: function(cnt, btns) {},
+		boxMsg: function(obj) {
+			var ly = util.createModalLayer('<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title"></h4></div><div class="modal-body"><p></p></div><div class="modal-footer"></div></div></div>');
+			ly.ctn.find(".modal-title").text(obj.title || "确认");
+			ly.ctn.find("p").text(obj.content);
+			var m_footer = ly.ctn.find(".modal-footer"),
+				btnH = function(btn) {
+					var $btn = $('<button type="button" class="btn"></button>').appendTo(m_footer);
+					var caption = btn.caption || "未命名的",
+						handler = btn.hand || noop;
+					$btn.text(caption);
+					$btn.on("click", function() {
+						util.closeModalLayer();
+						handler();
+					});
+				};
+
+			for(var i = 0; i < obj.btns.length; ++i) {
+				btnH(obj.btns[i]);
+			}
+		},
 
 		/*
 		 *弹出确认信息，不会自动消失    parent is body z - index 1000000 - 4999999 
@@ -274,6 +313,7 @@ function($) {
 				type: method,
 				url: pUrl,
 				//cache: false,
+				traditional:true,
 				data: pData,
 				contentType: method == "put" ? "application/json" : "application/x-www-form-urlencoded",
 			}).done(function(rd) {
@@ -311,6 +351,9 @@ function($) {
 			util.ajax("post", url, data, sh, eh);
 		},
 		put: function(url, data, sh, eh) {
+			if(data && ("string"!=$.type(data))){
+				data =JSON.stringify(data);
+			}
 			util.ajax("put", url, data, sh, eh);
 		},
 		del: function(url, sh, eh) {
@@ -369,7 +412,7 @@ function($) {
 			util.showLoading();
 			$.ajax({ url: dict_baseUri + dictCode, type: "get", dataType: "json" }).done(function(data) {
 				util.hideLoading();
-				if(data.success){
+				if(data.success) {
 					data = data.data;
 					dict_dictCache[dictCode] = data;
 					var handlers = dict_dictHandleCache[dictCode];
@@ -379,7 +422,7 @@ function($) {
 						}
 						delete dict_dictHandleCache[dictCode];
 					}
-				}else{
+				} else {
 					var m = "load dict[" + dictCode + "] error";
 					util.error(m);
 				}
@@ -1278,20 +1321,24 @@ function($) {
 			}
 			return qs;
 		},
-		get: function(url, data, eh) {
+		get: function(url, data, check, eh) {
 			if(CK_FALSE === data) return;
 			var self = this;
 			util.get(url, data, function(rd) {
-				self.reset();
-				self.val(rd);
+				if(check(rd)) {
+					self.reset();
+					self.val(rd);
+				}
 			}, eh);
 		},
-		post: function(url, data, eh) {
+		post: function(url, data, check, eh) {
 			if(CK_FALSE === data) return;
 			var self = this;
 			util.post(url, data, function(rd) {
-				self.reset();
-				self.val(rd);
+				if(check(rd)) {
+					self.reset();
+					self.val(rd);
+				}
 			}, eh);
 		},
 		doGet: function(url, sh, eh) {
@@ -1598,6 +1645,14 @@ function($) {
 					this.pagerEle.children("li.active").on("click", function() {
 						self.goPage(parseInt($(this).attr("no")));
 					});
+				} else {
+					this.pagerEle.empty();
+				}
+			},
+			pdt_build_pageIndex = function(data, key, pageSize, pageNo) {
+				var bi = pageSize * (pageNo - 1) + 1;
+				for(var i = 0; i < data.length; ++i) {
+					data[i][key] = bi++;
 				}
 			},
 			PageDataTable = function(ele) {
@@ -1612,6 +1667,7 @@ function($) {
 				this.ph = pdt_pager_builder;
 				this.ele.data(DK_PAGE_DATA_TABLE, this);
 				this.eh = true;
+				this.pageIndex = ele.attr("pageIndex");
 			};
 		$.extend(PageDataTable.prototype, {
 			error: function(eh) { this.eh = eh },
@@ -1632,6 +1688,9 @@ function($) {
 				util.get(self.uri, this.cache, function(data) {
 					self.total = data.total;
 					data.length = data.data.length;
+					if(self.pageIndex) {
+						pdt_build_pageIndex(data.data, self.pageIndex, data.pageSize, data.pageNo);
+					}
 					self.codeRef.val(data);
 					self.ph(data);
 				}, self.eh);

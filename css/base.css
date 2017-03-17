@@ -1761,75 +1761,85 @@ a cite {
     right: 5px;
     cursor: pointer;
 }
+
 .btn {
-	display:inline-block;
-	padding:5px 12px;
-	margin-bottom:4px;
-	margin-top: 4px;
-	font-size:14px;
-	font-weight:400;
-	line-height:1.42846154;
-	text-align:center;
-	white-space:nowrap;
-	vertical-align:middle;
-	cursor:pointer;
-	-webkit-user-select:none;
-	-moz-user-select:none;
-	-ms-user-select:none;
-	user-select:none;
-	border:1px solid transparent;
-	border-radius:4px;
-	-webkit-transition:all .4s cubic-bezier(.175,.885,.32,1);
-	-o-transition:all .4s cubic-bezier(.175,.885,.32,1);
-	transition:all .4s cubic-bezier(.175,.885,.32,1)
+    display: inline-block;
+    padding: 5px 12px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42846154;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-transition: all .4s cubic-bezier(.175, .885, .32, 1);
+    -o-transition: all .4s cubic-bezier(.175, .885, .32, 1);
+    transition: all .4s cubic-bezier(.175, .885, .32, 1)
 }
+
 .btn:focus {
-	outline:thin dotted #333;
-	outline:5px auto -webkit-focus-ring-color;
-	outline-offset:-2px
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px
 }
-.btn:focus,.btn:hover {
-	color:#353535;
-	text-decoration:none
+
+.btn:focus, .btn:hover {
+    color: #353535;
+    text-decoration: none
 }
-.btn.active,.btn:active {
-	background-image:none;
-	outline:0;
-	-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);
-	box-shadow:inset 0 3px 5px rgba(0,0,0,.125)
+
+.btn.active, .btn:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
 }
-.btn.disabled,.btn[disabled],fieldset[disabled] .btn {
-	pointer-events:none;
-	cursor:not-allowed;
-	filter:alpha(opacity=65);
-	-webkit-box-shadow:none;
-	box-shadow:none;
-	opacity:.65
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65
 }
+
 .btn {
-	color:#353535;
-	text-shadow:0 1px 0 #fff;
-	background-color:#f2f2f2;
-	border-color:#bfbfbf
+    color: #353535;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #f2f2f2;
+    border-color: #bfbfbf
 }
-.btn.active,.btn:active,.btn:focus,.btn:hover,.open .dropdown-toggle.btn {
-	color:#353535;
-	background-color:#dedede;
-	border-color:#a1a1a1;
-	-webkit-box-shadow:0 2px 1px rgba(0,0,0,.1);
-	box-shadow:0 2px 1px rgba(0,0,0,.1)
+
+.btn.active, .btn:active, .btn:focus, .btn:hover, .open .dropdown-toggle.btn {
+    color: #353535;
+    background-color: #dedede;
+    border-color: #a1a1a1;
+    -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1)
 }
-.btn.active,.btn:active,.open .dropdown-toggle.btn {
-	background-color:#ccc;
-	background-image:none;
-	border-color:#a6a6a6;
-	-webkit-box-shadow:inset 0 4px 6px rgba(0,0,0,.15);
-	box-shadow:inset 0 4px 6px rgba(0,0,0,.15)
+
+.btn.active, .btn:active, .open .dropdown-toggle.btn {
+    background-color: #ccc;
+    background-image: none;
+    border-color: #a6a6a6;
+    -webkit-box-shadow: inset 0 4px 6px rgba(0, 0, 0, .15);
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, .15)
 }
-.btn.disabled,.btn.disabled.active,.btn.disabled:active,.btn.disabled:focus,.btn.disabled:hover,.btn[disabled],.btn[disabled].active,.btn[disabled]:active,.btn[disabled]:focus,.btn[disabled]:hover,fieldset[disabled] .btn,fieldset[disabled] .btn.active,fieldset[disabled] .btn:active,fieldset[disabled] .btn:focus,fieldset[disabled] .btn:hover {
-	background-color:#f2f2f2;
-	border-color:#bfbfbf
+
+.btn.disabled, .btn.disabled.active, .btn.disabled:active, .btn.disabled:focus, .btn.disabled:hover, .btn[disabled], .btn[disabled].active, .btn[disabled]:active, .btn[disabled]:focus, .btn[disabled]:hover, fieldset[disabled] .btn, fieldset[disabled] .btn.active, fieldset[disabled] .btn:active, fieldset[disabled] .btn:focus, fieldset[disabled] .btn:hover {
+    background-color: #f2f2f2;
+    border-color: #bfbfbf
 }
+
 
 /* layout */
 
@@ -2104,9 +2114,11 @@ a cite {
     padding-top: 10px;
     padding-right: 0px;
 }
+
 .item-caption.center {
     text-align: center;
 }
+
 .item-caption.required:after {
     content: ' *';
     color: red;
@@ -2519,9 +2531,10 @@ table td[class*=col-], table th[class*=col-] {
     min-height: .01%;
     overflow-x: auto
 }
-.table td.empty-desc{
-	text-align: center;
-	font-size: 30px;
+
+.table td.empty-desc {
+    text-align: center;
+    font-size: 30px;
 }
 
 .dt-pager {
@@ -2566,11 +2579,50 @@ table td[class*=col-], table th[class*=col-] {
     border-color: #ddd;
 }
 
-.opt-check .icon-st-check:before{
-	 content: '\e68b';
-	 cursor: pointer;
-}
-.opt-check .icon-st-check.checked:before{
-	 content: '\e642';
+.opt-check .icon-st-check:before {
+    content: '\e68b';
+    cursor: pointer;
 }
 
+.opt-check .icon-st-check.checked:before {
+    content: '\e642';
+}
+
+.modal-dialog {
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+}
+
+.modal-dialog .modal-header {
+    min-height: 16.54px;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-dialog .modal-header .modal-title {
+    margin: 0;
+    line-height: 1.53846154;
+    font-weight: 700;
+}
+
+.modal-dialog .modal-body {
+    padding: 15px;
+}
+
+.modal-dialog .modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.modal-dialog .modal-footer button {
+    margin-left: 10px;
+}
