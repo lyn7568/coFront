@@ -1114,10 +1114,10 @@ function($) {
 		},
 		val: function(val) {
 			if(arguments.length) {
-				select_change(this, this.isBool ? (val ? "1" : "0") : (val ? val : ""));
+				select_change(this, this.isBool ? (true===val ? "1" :(false===val? "0":"")) : (val ? val : ""));
 			} else if(!this.isShowOnly) {
 				var v = this.codeEle.val();
-				return this.isBool ? (v ? CK_TRUE : CK_FALSE) : (v ? v : CK_UNDEF);
+				return this.isBool ? (v ? (v==='1') : CK_UNDEF) : (v ? v : CK_UNDEF);
 			}
 		},
 		reset: function() {

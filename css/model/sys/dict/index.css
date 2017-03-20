@@ -1,0 +1,15 @@
+@charset "utf-8";
+.sys_dict_index .queryForm{
+	position: relative;
+}
+.sys_dict_index .queryForm .icon-search{
+	position: absolute;
+	top:7px;
+	right:15px;
+	font-size:25px;
+}
+.sys_dict_index .table-opt .icon {
+	margin: 10px;
+	font-size: 20px;
+}
+

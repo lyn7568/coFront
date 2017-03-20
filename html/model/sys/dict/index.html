@@ -1,0 +1,53 @@
+<div class="sys_dict_index"  loadUri="../ajax/sys/dict/pq" pageSize="10" pageNo="1" pageIndex="pi">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+
+	<div class="container queryForm">
+		<div class="row">
+			<div class="col-6">
+				<div class="btn opt-new">
+					<i class="icon-plus"></i>
+					新增
+				</div>
+				
+			</div>
+			<div class="col-6 dt-form">				
+				<div class="form-item text" name="key"></div><i class="icon icon-search opt-query"></i>
+			</div>
+
+		</div>
+	</div>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>PageIndex</th>
+					<th>code</th>
+					<th>名称</th>
+					<th>readonly</th>
+					<th>tree</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="code-tpl code-tag-hold" code-func="data-list">
+				<tr>
+					<td>{{any-[]}}</td>
+					<td>{{pi}}</td>
+					<td>{{code}}</td>
+					<td>{{caption}}</td>
+					<td code="{{readonly}}">{{readonly-bool}}</td>
+					<td code="{{tree}}">{{tree-bool}}</td>
+					<td class="table-opt" dictCode="{{code}}"><i class="icon icon-remove-sign"></i><i class="icon icon-edit"></i><i class="icon icon-list-ul"></i><i class="icon icon-tasks"></i></td>
+				</tr>
+			</tbody>
+			<tbody class="code-tpl code-tag-hold" code-func="data-emptylist">
+				<tr>
+					<td class="empty-desc" colspan="7">表格暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<ul class="dt-pager"></ul>
+</div>

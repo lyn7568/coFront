@@ -104,7 +104,7 @@
 		</div>
 		<div class="page-head-right pull-right">
 			<div class="logout pull-right">
-				<i class="icon-signout"></i>
+				<i class="icon-signout opt-logout"></i>
 			</div>
 			<div class="help pull-right">
 				<i class="icon-question-sign"></i>
@@ -141,6 +141,11 @@
 <script>
 		$(function() {
 			$.buildSpa();
+			$(".opt-logout").on("click",function(){
+				$.util.get("../ajax/sys/user/logout",null,function(){
+					window.location.href="login.html";
+				},{});
+			});
 		});
 	</script>
 
