@@ -1191,8 +1191,15 @@ function($) {
 			if(!this.ele.hasClass(CC_DROP_DOWN_CONTAINER)) this.ele.addClass(CC_DROP_DOWN_CONTAINER);
 			if(!this.ele.hasClass(CC_DROP_CLEAN)) this.ele.addClass(CC_DROP_CLEAN);
 			this.valEle = $(TK_HIDDEN_INPUT);
-			this.captionEle = $(TK_SPAN).appendTo($(TK_DD_HAND).append(this.valEle).appendTo(this.ele));
+			this.captionEle = $(TK_SPAN);
+			var closeIcon = $("<i class='close'></i>");
+			$(TK_DD_HAND).append(this.valEle).append(this.captionEle).append(closeIcon).appendTo(this.ele);
 			date_change(this, this.dv);
+			var that = this;
+			closeIcon.on("click",function(){
+				that.valEle.val("");
+				that.captionEle.text("");
+			});
 
 		},
 		val: function(val) {
