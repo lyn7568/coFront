@@ -1,176 +1,152 @@
-!(function($) {
+$.define(["jQuery", "util"], "form", function($, util) {
 
-	$.define(["jQuery", "util"], "form", function($, util) {
+	var impls = [],
 
-		var impls = [],
-
-			/* default impl */
-			di = function(val) {
-				var v = val,
-					dv = null;
+		/* default impl */
+		di = function(val) {
+			var v = val,
+				rules = [],
+				dv = null;
+			return {
+				get: function() {
+					return v;
+				},
+				set: function(vd) {
+					v = vd;
+				},
+				reset: function() {
+					dv = data;
+				},
+				validate: function() {
+					return util.validate(rules, this);
+				},
+				addRules: function(rule) {
+					util.addRules(rules, rule);
+				},
+				valid: function() {},
+				invalid: function(reson) {}
+			};
+		},
+		vd = function(items) {
+			for(key in items) {
+				if(!items[key].validate())
+					return false;
+			}
+			return true;
+		},
+		/* create form instance by jQuery obj */
+		bf = function($e) {
+			if($e.length === 1) {
+				var items = {},
+					rules = [];
+				$e.find(".form-item").each(function() {
+					var $this = $(this);
+					for(var i = 0; i < impls.length; ++i) {
+						var item = impls[i]($this);
+						if(item && item.name) {
+							items[item.name] = item;
+						}
+					}
+				});
 				return {
-					val: function(data) {
-						if(arguments.length) {
-							v = data;
-							return this;
-						}
-						return v;
-					},
-					reset: function(data) {
-						if(arguments.length) {
-							dv = data;
-							return this;
-						}
-						dv = data;
-						validate
-						return this;
+					item: function(name) {
+						return items[name];
 					},
 					validate: function(vds) {
-						if(vds) {
-							// add valid obj
+						if(vd(items)){
+							return util.validate(rules,this);							
+						}
+						return false;
+					},
+					addRules: function(rule) {
+						var te = $.type(rule);
+						if("function" === te) {
+							rules.push(rule);
+						} else if("array" === te) {
+							rules.concat(rule);
+						} else if("object" === te) {
+							for(key in rule) {
+								var im = items[key];
+								if(im) im.addRules(rule[key]);
+							}
+						}
+					},
+					val: function(data) {
+						if(arguments.length) {
+							if(data) {
+								for(key in data) {
+									var ch = items[key];
+									if(!ch) {
+										ch = items[key] = di();
+									}
+									ch.set(data[key]);
+								}
+							}
 							return this;
-						} else {
-							return true;
+						}
+						var ret = {};
+						for(key in items) {
+							ret[key] = items[key].get();
+						}
+						return ret;
+					},
+					reset: function() {
+						for(key in items) {
+							items[key].reset();
+						}
+					},
+					get: function(url, data, eh, config) {
+						util.get(url, data, function(rd) {
+							if(config && config.check) {
+								rd = config.ckeck(rd);
+								if(rd) {
+									this.reset();
+									this.val(rd);
+								}
+							}
+						}, eh, config);
+					},
+					post: function(url, data, eh, config) {
+						util.post(url, data, function(rd) {
+							if(config && config.check) {
+								rd = config.ckeck(rd);
+								if(rd) {
+									this.reset();
+									this.val(rd);
+								}
+							}
+						}, eh, config);
+					},
+					doGet: function(url, sh, eh, config) {
+						if(this.validate()) {
+							util.get(url, this.val(), sh, eh, config);
+						}
+					},
+					doPost: function(url, sh, eh, config) {
+						if(this.validate()) {
+							util.post(url, this.val(), sh, eh, config);
+						}
+					},
+					doPut: function(url, sh, eh, config) {
+						if(this.validate()) {
+							util.put(url, this.val(), sh, eh, config);
+						}
+					},
+					doDel: function(url, sh, eh, config) {
+						if(this.validate()) {
+							util.del(url, this.val(), sh, eh, config);
 						}
 					}
 				};
-			},
-			svd = function(items, vds) {
-				for(key in vds) {
-					var im = items[key],
-						vd = vds[key];
-					if(im && vd)
-						im.validate(vd);
-				}
-				return this;
-			},
-			vd = function(items) {
-				for(key in items) {
-					if(!items[key].validate())
-						return false;
-				}
-				return true;
-			},
-			vda = function(valids, form) {
-				for(var i = 0; i < valids.length; ++i) {
-					if(!valids[i](form))
-						return false;
-				}
-				return true;
-			},
-
-			/* create form instance by jQuery obj */
-			bf = function($e) {
-				if($e.length === 1) {
-					var items = {},
-						valids = [];
-					$e.find(".form-item").each(function() {
-						var $this = $(this);
-						for(var i = 0; i < impls.length; ++i) {
-							var item = impls[i]($this);
-							if(item && item.name) {
-								items[item.name] = item;
-							}
-						}
-					});
-					return {
-						item: function(name) {
-							return items[name];
-						},
-						validate: function(vds) {
-							if(arguments.length) {
-								$.isArray(data) ? valids.concat(data) : svd(items, vds);
-								return this;
-							} else {
-								return vd(items) ? vda(valids, this) : false;
-							}
-						},
-						val: function(data) {
-							if(arguments.length) {
-								if(data) {
-									for(key in data) {
-										var ch = items[key];
-										if(!ch) {
-											ch = items[key] = di();
-										}
-										ch.val(data[key]);
-									}
-								}
-								return this;
-							}
-							var ret = {};
-							for(key in items) {
-								ret[key] = items[key].val();
-							}
-							return ret;
-						},
-						reset: function(data) {
-							if(arguments.leng) {
-								for(key in data) {
-									var item = itmes[key];
-									if(item)
-										item.reset(data[key]);
-								}
-							} else {
-								for(key in items) {
-									items[key].reset();
-								}
-							}
-						},
-						get: function(url, data, eh, config) {
-							util.get(url, data, function(rd) {
-								if(config && config.check) {
-									rd = config.ckeck(rd);
-									if(rd) {
-										this.reset();
-										this.val(rd);
-									}
-								}
-							}, eh, config);
-						},
-						post: function(url, data, eh, config) {
-							util.post(url, data, function(rd) {
-								if(config && config.check) {
-									rd = config.ckeck(rd);
-									if(rd) {
-										this.reset();
-										this.val(rd);
-									}
-								}
-							}, eh, config);
-						},
-						doGet: function(url, sh, eh, config) {
-							if(this.validate()) {
-								util.get(url, this.val(), sh, eh, config);
-							}
-						},
-						doPost: function(url, sh, eh, config) {
-							if(this.validate()) {
-								util.post(url, this.val(), sh, eh, config);
-							}
-						},
-						doPut: function(url, sh, eh, config) {
-							if(this.validate()) {
-								util.put(url, this.val(), sh, eh, config);
-							}
-						},
-						doDel: function(url, sh, eh, config) {
-							if(this.validate()) {
-								util.del(url, this.val(), sh, eh, config);
-							}
-						}
-					};
-				}
-				return null;
 			}
+			return null;
+		}
 
-		return {
-			build: bf,
-			register: function(impl) {
-				impls.push(impl)
-			}
-		};
+	return {
+		build: bf,
+		register: function(impl) {
+			impls.push(impl)
+		}
+	};
 
-	});
-
-})(jQuery);
+});
