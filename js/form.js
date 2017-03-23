@@ -1,6 +1,7 @@
 $.define(["jQuery", "util"], "form", function($, util) {
 
 	var impls = [],
+		data_key = "jfw_base_form",
 
 		/* default impl */
 		di = function(val) {
@@ -53,8 +54,8 @@ $.define(["jQuery", "util"], "form", function($, util) {
 						return items[name];
 					},
 					validate: function(vds) {
-						if(vd(items)){
-							return util.validate(rules,this);							
+						if(vd(items)) {
+							return util.validate(rules, this);
 						}
 						return false;
 					},
@@ -86,7 +87,10 @@ $.define(["jQuery", "util"], "form", function($, util) {
 						}
 						var ret = {};
 						for(key in items) {
-							ret[key] = items[key].get();
+							var tmp = items[key].get();
+							if(undefined !== tmp) {
+								ret[key] = tmp;
+							}
 						}
 						return ret;
 					},
@@ -140,13 +144,17 @@ $.define(["jQuery", "util"], "form", function($, util) {
 				};
 			}
 			return null;
-		}
+		};
 
+	$.fn.form = function(val) {
+		if(this.length && this.length ===1) {
+			return bf(this);
+		}
+	};
 	return {
 		build: bf,
 		register: function(impl) {
 			impls.push(impl)
 		}
 	};
-
 });

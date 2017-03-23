@@ -356,16 +356,16 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				}
 			};
 		},
-		defBh = function(data) { return data; },
 		parseCode(ele) = function(ele) {
 			var hand = parseElement(ele),
 				$ele = $(ele),
-				bh = defBh,
+				bh = util.nochange,
 				lses = [];
 			return $.extend(hand, {
 				"val": function(data) {
-					$ele.empty();
 					data = bh(data);
+					if(false === data) return this;
+					$ele.empty();
 					var docf = doc.createDocumentFragment();
 					this.fill(docf, data);
 					ele.appendChild(docf);
@@ -381,6 +381,11 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				"listen": function(h) {
 					if(h) lses.push(h);
 					return this;
+				},
+				"before": function(h) {
+					if(h) {
+						bh = h;
+					}
 				}
 			});
 		},

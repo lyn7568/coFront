@@ -1,23 +1,25 @@
 $.define(["jQuery", "util"], "dict", function($, util) {
-	var cache = {},
+	var cache = { bool: [{ code: "0", caption: "否", enabled: true }, { code: "1", caption: "是", enabled: true }] },
 		handCache = {},
 		uri = "/ajax/sys/dict/item/",
 		eh = {},
-		config = { mask: false };
-		load: function(code) {
+		config = { mask: false },
+		set = function(code, items) {
+			cache[code] = items;
+			var hs = handCache[code];
+			if(hs && hs.length) {
+				hs.forEach(function(h) {
+					h(items);
+				});
+				delete handCache[code];
+			}
+		},
+		load = function(code) {
 			util.get(uri + code, null, function(data) {
-				cache[code] = data;
-				var hs = handCache[code];
-				if(hs && hs.length) {
-					for(var i = 0; i < hs.length; ++i) {
-						hs[i](data);
-					}
-					delete handCache[code];
-				}
+				set(code, data);
 			}, eh, config);
-		};
-	return {
-		apply: function(code, hand) {
+		},
+		apply = function(code, hand) {
 			var dict = cache[code];
 			if(!dict) {
 				var hs = handCache[dictCode];
@@ -30,7 +32,7 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 				hand(dict);
 			}
 		},
-		refresh: function(code, hand) {
+		refresh = function(code, hand) {
 			if(hand) {
 				var hs = handCache[code];
 				if(!hs) {
@@ -44,43 +46,34 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 				load(code);
 			}
 		},
-		getCap: function(items, code) {
+		getCap = function(items, code) {
 			for(var i = 0; i < items.length; ++i) {
 				var item = items[i];
 				if(code === item.code) {
 					return item.caption;
 				} else if(item.children && item.children.length) {
-					var ret = get(item.children, code);
+					var ret = getCap(item.children, code);
 					if(ret) return ret;
 				}
 			}
 			return false;
 		},
-		get:function(code){
+		get = function(code) {
 			return cache[code];
 		},
-		transfer: function($e, dict, code) {
-			dict = dict || $e.attr("dict");
-			code = code || $e.attr("code");
-			if(dict && code) {
-				this.apply(dict, function(items) {
-					var cp = get(items, code);
-					if(cp) {
-						$e.removeClass("invalid-dict").text(cp);
-					} else {
-						$e.addClass("invalid-dict").text("不可翻译的");
-					}
-				});
-			}
-		},
-		doTransfer: function() {
-			$(".hand_dict").each(function() {
-				var $this = $this;
-				var dict = $this.attr("dictCode") || $this.attr("dict"),
-					code = $this.attr("itemCode") || $this.attr("code");
+
+		ret = {
+			set: set,
+			apply: apply,
+			refresh: refresh,
+			getCap: getCap,
+			get: get,
+			transfer: function($e, dict, code) {
+				dict = dict || $e.attr("dict") || $e.attr("dictCode");
+				code = code || $e.attr("code") || $e.attr("itemCode");
 				if(dict && code) {
-					this.apply(dict, function(items) {
-						var cp = this.getCap(items, code);
+					apply(dict, function(items) {
+						var cp = getCap(items, code);
 						if(cp) {
 							$e.removeClass("invalid-dict").text(cp);
 						} else {
@@ -88,8 +81,25 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 						}
 					});
 				}
-				$this.removeClass("hand_dict");
-			});
-		}
-	};
+			},
+			doTransfer: function() {
+				$(".hand-dict").each(function() {
+					var $this = $this;
+					var dict = $this.attr("dict") || $this.attr("dictCode"),
+						code = $this.attr("code") || $this.attr("itemCode");
+					if(dict && code) {
+						apply(dict, function(items) {
+							var cp = getCap(items, code);
+							if(cp) {
+								$e.removeClass("invalid-dict").text(cp);
+							} else {
+								$e.addClass("invalid-dict").text("不可翻译的");
+							}
+						});
+					}
+					$this.removeClass("hand-dict");
+				});
+			}
+		};
+	return ret;
 });

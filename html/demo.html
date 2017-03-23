@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-6 form-item text readOnly" name="t1" placeholder="dfsafsdfsdfda" defVal="dfsasfds">
+
+				</div>
+				<div class="col-6 form-item text int readOnly" name="t2" defVal="12345">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6 form-item select readOnly"  dictCode="bool" name="t3" placeholder="123456789">
+
+				</div>
+				<div class="col-6 form-item mselect tree " dictCode="tree"   placeholder="123456789" name="t4">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6 form-item date readOnly" defVal="current" name="t5" placeholder="dfsafsdfsdfda">
+
+				</div>
+				<div class="col-6 form-item textarea readOnly"  name="t6" placeholder="dfsafsdfsdfda">
+
+				</div>
+			</div>
+
+		</div>
+		<button type="button" class="opt-btn btn">btn</button>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/util.js"></script>
+		<script type="text/javascript" src="../js/dict.js"></script>
+		<script type="text/javascript" src="../js/dropdown.js"></script>
+		<script type="text/javascript" src="../js/form.js"></script>
+		<script type="text/javascript" src="../js/text.js"></script>
+		<script type="text/javascript" src="../js/select.js"></script>
+		<script type="text/javascript" src="../js/date.js" ></script>
+		<script type="text/javascript" src="../js/textarea.js" ></script>
+		<script>
+			$.use(["form", "dict"], function($f, $dict) {
+				$dict.set("tree", [{ code: "0", caption: "否", enabled: true },
+					{ code: "1", caption: "11否", enabled: true },
+					{ code: "2", caption: "22否", enabled: true }, 
+					{ code: "3", caption: "33否", enabled: true }, 
+					{ code: "4", caption: "44否", enabled: true }, 
+					{ code: "5", caption: "55否", enabled: true ,children:[{ code: "6", caption: "否", enabled: true }, 
+					{ code: "7", caption: "否", enabled: true }, 
+					{ code: "8", caption: "否", enabled: true }, 
+					{ code: "9", caption: "否", enabled: true }, 
+					{ code: "10", caption: "否", enabled: true }, ]}, 
+					
+					{ code: "11", caption: "666否", enabled: true },
+				])
+
+				var form = $f.build($(".container"));
+				$(".opt-btn").on("click", function() {
+					console.log(form.val());
+				});
+
+			})
+		</script>
+	</body>
+
+</html>

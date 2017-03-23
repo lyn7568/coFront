@@ -21,7 +21,7 @@ if(typeof jQuery === 'undefined') {
 		try {
 			var md = factory.apply(win, dm);
 			mds[id] = md;
-		} catch {
+		} catch(err) {
 			throw new Error("build model[" + id + "] error");
 		}
 	};

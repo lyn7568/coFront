@@ -11,13 +11,14 @@ $.define(["jQuery", "util", "doc"], "dropdown", function($, util, doc) {
 		dd_drop = "dd-drop",
 		q_dd_drop = ".dd-drop",
 		dd_hold = "dd-hold",
-		dd_hold_once = "dd-hold-once",readOnly="readOnly",showOnly="showOnly",
+		dd_hold_once = "dd-hold-once",
+		readOnly = "readOnly",
+		showOnly = "showOnly",
 		clearMenus = function(e) {
 			if(e && e.which === 3) return
 			$(q_dd_bg).remove();
 			$(q_dd_ctn).each(function() {
-				var $this = $(this),
-					cls = util.classCheck(this, [open, dd_hold, dd_hold_once, dd_clean]);
+				var $this = $(this),cls = util.classCheck(this, [open, dd_hold, dd_hold_once, dd_clean]);
 				relatedTarget = {
 					relatedTarget: this
 				};
@@ -39,12 +40,12 @@ $.define(["jQuery", "util", "doc"], "dropdown", function($, util, doc) {
 			var $this = $(this),
 				$ddc = $this.parents(q_dd_ctn);
 			if(!$ddc.length) return;
-			var cls=util.classCheck($ddc[0],[open,q_readOnly,q_showOnly,dd_hold,dd_hold_once])
+			var cls = util.classCheck($ddc[0], [open, readOnly, showOnly, dd_hold, dd_hold_once]);
 			clearMenus();
 			if(!cls[open]) {
 				if(cls[readOnly] || cls[showOnly]) return;
-				if(cls(dd_hold)) return false;
-				if[cls[dd_hold_once]) {
+				if(cls[dd_hold]) return false;
+				if(cls[dd_hold_once]) {
 					$ddc.removeClass(dd_hold_once);
 					return false;
 				}

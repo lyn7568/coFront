@@ -1,4 +1,4 @@
-$.define(["jQuery", "body", "win"], "util", function($, $body, win) {
+$.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 	var rclass = /[\t\r\n\f]/g,
 		noop = function() {},
 		infoDiv = $("#g_info"),
@@ -16,7 +16,7 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 			this.ctn.empty();
 			this.ctn.remove();
 			this.prev.css("display", "block");
-			_g_layer_curr = this.prev;
+			layer_curr = this.prev;
 		},
 		fh = function(e) {
 			$(this).parent().hide();
@@ -36,11 +36,11 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 			}
 		},
 		modal = function(ctn) {
-			var inx = _g_layer_curr.index + 2,
+			var inx = layer_curr.index + 2,
 				ly = {
 					index: inx,
 					remove: layer_remove,
-					prev: _g_layer_curr
+					prev: layer_curr
 				};
 			ly.shade = $(
 				"<div class='layer-shade layer-" + inx + "' style='z-index:" +
@@ -196,12 +196,12 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 				} else {
 					rd.code = "" + rd.code;
 					rd.url = pUrl;
-					ajaxErrHand(ep, eh);
+					ajaxErrHand(rd, eh);
 				}
 			};
 			config.error = function(jqXHR, textStatus, errorThrown) {
 				ajaxErrHand({
-					code: textStatus,
+					code: "err_"+(textStatus || ""),
 					msg: textStatus,
 					detailMsg: textStatus,
 					xhr: jqXHR,
@@ -212,6 +212,11 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 			$.ajax(config).always(false !== config.mask ? unLoading : noop);
 		},
 		buildElement = function(pe, obj) {
+			if($.isArray(obj)) {
+				obj.forEach(function(item) {
+					buildElement(pe, item);
+				});
+			}else{
 			var e;
 			if(typeof obj === 'string') {
 				e = doc.createTextNode(obj);
@@ -226,10 +231,10 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 				}
 				if(obj.chs && obj.chs.length) {
 					obj.chs.forEach(function(ch) {
-						buildElement(e,ch);
+						buildElement(e, ch);
 					});
 				}
-			}
+			}}
 		};
 
 	return {
@@ -281,6 +286,7 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 			ajaxAccess("post", url, null, sh, eh, pOjb);
 		},
 		noop: noop,
+		nochange:function(d){return d},
 		returnTrue: function() {
 			return true;
 		},
@@ -316,11 +322,11 @@ $.define(["jQuery", "body", "win"], "util", function($, $body, win) {
 		invalid: function($e) {
 			$e.addClass("invald");
 		},
-		appendChild: function(e,obj) {
+		appendChild: function(e, obj) {
 			var docf = doc.createDocumentFragment();
-			buildElement(docf,obj);
+			buildElement(docf, obj);
 			e.appendChild(docf);
 		},
-		
+
 	};
 });
