@@ -8,7 +8,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 		cssCache = {},
 		htmlCache = { "#": "#" },
 		modelCache = {},
-		scriptCache {}, resUri, menuUri, menuEle,
+		scriptCache = {}, resUri, menuUri, menuEle,
 		main, mainEle,
 		errHand = {
 			"defErrHand": function(err) {
@@ -338,11 +338,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 				id = id.substring(1);
 			} else return;
 			if(main && id == main.id) return;
-			if(main) {
-				cleanMain();
-			}
 			var model = modelCache[id];
-
 			if(model) {
 				showMainInternal(model);
 			} else {

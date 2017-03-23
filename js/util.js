@@ -18,11 +18,11 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 			this.prev.css("display", "block");
 			layer_curr = this.prev;
 		},
-		fh = function(e) {
+		hideMsg = function(e) {
 			$(this).parent().hide();
 		},
-		bh = function($p) {
-			$p.find(".click-hide-parent").on("click", fh);
+		bindHide = function($p) {
+			$p.find(".click-hide-parent").on("click", hideMsg);
 		},
 		fillContent = function($c /* child node [String|Function｜jQObj] */ , $p) {
 			if($c) {
@@ -59,33 +59,33 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 		},
 
 		// function error message
-		fem = function($c, $t) {
+		errMsg = function($c, $t) {
 			var $e = $(
 					"<div class='err-ctn'><i class='icon click-hide-parent'></i></div>")
 				.appendTo(errDiv);
 			$("<span></span>").appendTo($e).html($c);
-			bh($e);
+			bindHide($e);
 			setTimeout(function() {
 				$e.remove()
 			}, $t ? $t : 10000);
 		},
 		// function warn message
-		fwm = function($c, $t) {
+		warnMsg = function($c, $t) {
 			var $w = $(
 					"<div class='warn-ctn'><i class='icon click-hide-parent'></i></div>")
 				.appendTo(warnDiv);
 			$("<span></span>").appendTo($w).html($c);
-			bh($w);
+			bindHide($w);
 			setTimeout(function() {
 				$w.remove()
 			}, $t ? $t : 3000);
 		},
-		fm = function($c, $t) {
+		msg = function($c, $t) {
 			var $m = $(
 					"<div class='warn-ctn'><i class='icon click-hide-parent'></i></div>")
 				.appendTo(warnDiv);
 			$("<span></span>").appendTo($w).html($c);
-			bh($m);
+			bindHide($m);
 			setTimeout(function() {
 				$w.remove()
 			}, $t ? $t : 3000);
@@ -104,7 +104,7 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 				loadingDiv.hide()
 			}
 		},
-		am = function(title, content, hand) {
+		alertMsg = function(title, content, hand) {
 			if(content) {
 				if($.isFunction(content)) {
 					hand = content;
@@ -151,8 +151,46 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 					noop);
 			}
 		},
+		serInArray=function(val,key,ret){
+			var t = $.type(val);
+			if("boolean"===t){
+				ret.push(key+"="+(val?"1":"0"));
+			}else if("string"=== t){
+				if(val){
+					ret.push(key+"="+encodeURIComponent(val));
+				}
+			}else if("number"=== t){
+				ret.push(key+"="+val);
+			}else{
+				ret.push(key+"="+encodeURIComponent(JSON.stringify(val)));
+			}
+		},
+		serialize=function(obj){
+			var ret =[];
+			if(obj){
+			for(key in obj){
+				var val = obj[key];
+				var t = $.type(val);
+				if("boolean"===t){
+					ret.push(key+"="+(val?"1":"0"));
+				}else if("string"=== t){
+					if(val){
+						ret.push(key+"="+encodeURIComponent(val));
+					}
+				}else if("number"=== t){
+					ret.push(key+"="+val);
+				}else if("array"===t){
+					val.forEach(function(item){
+						serInArray(item,key,ret);
+					});
+				}else if("object"=== t){
+					ret.push(key+"="+encodeURIComponent(JSON.stringify(val)));
+				}
+			}}
+			return ret.join("&");
+		},
 		g_def_err_hand = function(ep) {
-			fem("http access error:\r\n" + JSON.stirngify(ep));
+			errMsg("http access error:\r\n" + JSON.stirngify(ep));
 		},
 		g_err = {
 			"defErrHand": function(ep) {
@@ -164,28 +202,29 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 		 * ep={code:"",msg:"",detailMsg:"",url:""} pa=function(code,msg,detailMsg)
 		 * pa=boolean
 		 */
-		ajaxErrHand = function(ep, eh) {
-			if(eh) {
-				var pt = $.type(eh);
+		ajaxErrHand = function(errparam, errHand) {
+			if(errHand) {
+				var pt = $.type(errHand);
 				if(pt == "booean") {
-					g_def_err_hand(ep);
+					g_def_err_hand(errparam);
 				} else if(pt == "function") {
-					eh(ep);
+					errHand(errparam);
 				} else {
-					var ph = eh[ep.code] || g_err[ep.code] || eh["defErrHand"] ||
+					var ph = errHand[errparam.code] || g_err[errparam.code] || errHand["defErrHand"] ||
 						g_err["defErrHand"];
 					if(typeof ph === "string") {
-						fem(ph);
+						errMsg(ph);
 					} else {
-						ph(ep);
+						ph(errparam);
 					}
 				}
 			}
 		},
 		ajaxAccess = function(method, pUrl, pData, sh, eh, config) {
 			config = config || {};
-			if(false !== config.mask)
+			if(false !== config.mask){
 				loading();
+			}
 			config.traditional = true;
 			config.type = method;
 			config.url = pUrl, config.data = pData;
@@ -255,11 +294,11 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 		listModalIndex: function() {
 			return lay_curr.index + 1;
 		},
-		error: fem,
-		warn: fwm,
-		msg: fm,
-		alert: am,
-		boxMsg: bm,
+		error: errMsg,
+		warn: warnMsg,
+		msg: msg,
+		alert: alertMsg,
+		boxMsg: boxMsg,
 		confirm: function(msg, yes, no) {
 			bm({
 				content: msg,
@@ -273,17 +312,17 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 			});
 		},
 		get: function(url, data, sh, eh, config) {
-			ajaxAccess("get", url, data, sh, eh, config);
+			ajaxAccess("GET", url, data, sh, eh, config);
 		},
 		post: function(url, data, sh, eh, config) {
-			ajaxAccess("post", url, data, sh, eh, config);
+			ajaxAccess("POST", url, data, sh, eh, config);
 		},
 		put: function(url, data, sh, eh, config) {
-			ajaxAccess("post", url, data ? JSON.stringify(data) : "", sh, eh,
+			ajaxAccess("PUT", url, data ? JSON.stringify(data) : null, sh, eh,
 				config);
 		},
 		del: function(url, sh, eh, pObj) {
-			ajaxAccess("post", url, null, sh, eh, pOjb);
+			ajaxAccess("DELETE", url, null, sh, eh, pOjb);
 		},
 		noop: noop,
 		nochange:function(d){return d},
@@ -327,6 +366,6 @@ $.define(["jQuery", "body", "win","doc"], "util", function($, $body, win,doc) {
 			buildElement(docf, obj);
 			e.appendChild(docf);
 		},
-
+		serialize:serialize
 	};
 });

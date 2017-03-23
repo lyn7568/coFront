@@ -16,7 +16,7 @@ $.define(["jQuery", "util"], "form", function($, util) {
 					v = vd;
 				},
 				reset: function() {
-					dv = data;
+					v = dv;
 				},
 				validate: function() {
 					return util.validate(rules, this);
@@ -35,6 +35,7 @@ $.define(["jQuery", "util"], "form", function($, util) {
 			}
 			return true;
 		},
+		serialize=util.serialize,
 		/* create form instance by jQuery obj */
 		bf = function($e) {
 			if($e.length === 1) {
@@ -123,22 +124,17 @@ $.define(["jQuery", "util"], "form", function($, util) {
 					},
 					doGet: function(url, sh, eh, config) {
 						if(this.validate()) {
-							util.get(url, this.val(), sh, eh, config);
+							util.get(url, serialize(this.val()), sh, eh, config);
 						}
 					},
 					doPost: function(url, sh, eh, config) {
 						if(this.validate()) {
-							util.post(url, this.val(), sh, eh, config);
+							util.post(url, serialize(this.val()), sh, eh, config);
 						}
 					},
 					doPut: function(url, sh, eh, config) {
 						if(this.validate()) {
-							util.put(url, this.val(), sh, eh, config);
-						}
-					},
-					doDel: function(url, sh, eh, config) {
-						if(this.validate()) {
-							util.del(url, this.val(), sh, eh, config);
+							util.put(url, serialize(this.val()), sh, eh, config);
 						}
 					}
 				};
