@@ -62,17 +62,17 @@
 					<th>类型</th>
 				</tr>
 			</thead>
-			<tbody class="code-tpl code-tag-hold" code-func="data-list">
-				<tr>
+			<tbody>
+				<tr ch-dir="list">
 					<td class="opt-check" ><i class="icon icon-st-check" orgId="{{id}}"></i></td>
-					<td>{{any-[]}}</td>
+					<td>{{-_index}}</td>
 					<td>{{pi}}</td>
 					<td>{{name}}</td>
 					<td>{{createTime-showDay}}</td>
-					<td class="do-dict-display" dict="bool" code="{{type}}"></td>
+					<td class="hand-dict" dict="bool" code="{{type}}"></td>
 				</tr>
 			</tbody>
-			<tbody class="code-tpl code-tag-hold" code-func="data-emptylist">
+			<tbody ch-dir="array.empty">
 				<tr>
 					<td class="empty-desc" colspan="6">表格暂无数据</td>
 				</tr>

@@ -134,7 +134,7 @@ $.define(["jQuery", "util"], "form", function($, util) {
 					},
 					doPut: function(url, sh, eh, config) {
 						if(this.validate()) {
-							util.put(url, serialize(this.val()), sh, eh, config);
+							util.put(url, this.val(), sh, eh, config);
 						}
 					}
 				};

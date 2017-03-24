@@ -1,4 +1,4 @@
-$.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
+$.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util) {
 	/**
 	 * env={ ce:current Element; cd:current Data; ci:current index in
 	 * ListElement array[ci=index] or object[ci=key] es:Element stack; Array
@@ -7,6 +7,10 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 	 * Aarray(function(env){}.call(elementObj={},env) }
 	 */
 	var ch_val_buider = {
+			/*{{111-222-333-444}}=={k:111,h:222,p:[333,444]}   */
+			/*{{111}}=={k:111,h:s}   */
+			/*{{111-222}}=={k:111,h:222,p:undefined}   */
+
 			"c": function( /* env */ ) {
 				return this.k;
 			},
@@ -16,7 +20,9 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				if(v) return v;
 				return "";
 			},
-			"date": function(env) {}
+			"_index": function(env) {
+				return env.ci+1;
+			}
 		},
 		simpleAttrHandler = function(env) {
 			env.ce.setAttribute(this.n, this.v);
@@ -57,10 +63,11 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				shell, /* {{shell}} */
 				tmp, /* last shell */
 				f /* prev is not shell */ ,
-				bi = nv.indexOf("{{"); /* begin shell bi = s.indexOf("{{",si) */
+				bi = s.indexOf("{{"); /* begin shell bi = s.indexOf("{{",si) */
 			if(bi >= 0) {
-				ei = nv.indexOf("}}", bi);
-				while(si < len) {
+				ei = s.indexOf("}}", bi);
+				if(ei>0){
+				while(true) {
 					if(bi > si) {
 						r.push({ k: s.substring(si, bi), h: "c" });
 						f = true;
@@ -79,13 +86,13 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 					if(bi < 0) { strSplit_s(r, s.substring(si), f); return r; }
 					ei = s.indexOf("}}", bi);
 					if(ei < 0) { strSplit_s(r, s.substring(si), f); return r; }
-				}
+				}}
 			}
 			return s;
 		},
 		strCompile = function(s) {
 			var r = strSplit(s);
-			if(typeof s != "string") {
+			if(typeof r != "string") {
 				return r.length > 1 ? r : r[0];
 				/*
 				 * [{k:"",h:"",p:[]},...] :
@@ -98,7 +105,7 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 			env.ce.setAttribute(this.n, this.v);
 		},
 		singleAttrHand = function(env) {
-			env.ce.setAttribute(this.n, env.sh[this.h].call(this.v, env));
+			env.ce.setAttribute(this.n, env.sh[this.v.h].call(this.v, env));
 		},
 		arrayAttrHand = function(env) {
 			var item, ret = [],
@@ -124,28 +131,12 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 			}
 			return ret;
 		},
-		simpleTextHand = function(env) {
-			env.ce.appendChild(doc.createTextNode(this.v));
-		},
-		singleTextHand = function(env) {
-			env.ce.appendChild(doc.createTextNode(env.sh[this.h].call(this.v, env)));
-		},
-		arrayTextHand = function(env) {
-			var item, ret = [],
-				vs = this.v,
-				len = vs.length;
-			for(var i = 0; i < len; ++i) {
-				item = vs[i];
-				ret.push(env.sh[item.h].call(item, env));
-			}
-			env.ce.appendChild(doc.createTextNode(ret.join("")));
-		},
 		/* ret.h(env); textNode compiler */
 		textCompile = function(s /* s = textNode.nodeValue */ ) {
 			var len = s.length,
 				ret = { v: s, h: "_t" };
 			if(len > 4) {
-				s = textCompile(s);
+				s = strCompile(s);
 				if(typeof s != "string") {
 					ret.v = s;
 					// is Array
@@ -158,7 +149,7 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 			/* simpleTextHand= */
 			"_t": function(env) { env.ce.appendChild(doc.createTextNode(this.v)); },
 			/* singleTextHand= */
-			"_st": function(env) { env.ce.appendChild(doc.createTextNode(env.sh[this.h].call(this.v, env))); },
+			"_st": function(env) { env.ce.appendChild(doc.createTextNode(env.sh[this.v.h].call(this.v, env))); },
 			/* arrayTextHand= */
 			"_at": function(env) {
 				var item, ret = [],
@@ -183,7 +174,7 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				}
 				for(var i = 0; i < es.length; ++i) {
 					item = es[i];
-					env.dir(item.h).call(item, env);
+					env.dir[item.h].call(item, env);
 				}
 				env.ce = env.es.pop();
 			},
@@ -206,11 +197,19 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 					env.cd = env.ds.pop();
 				} else if(data && data.length) {
 					env.is.push(env.ci);
+					env.ds.push(data);
 					for(var i = 0; i < data.length; ++i) {
 						env.ci = i;
+						env.cd = data[i];
 						hand.call(this, env);
 					}
+					env.cd=env.ds.pop();
 					env.ci = env.is.pop();
+				}
+			},
+			"array.empty":function(env){
+				if((!env.cd) || (!env.cd.length)){
+					env.dir["_"].call(this,env);
 				}
 			},
 			"each": function(env) {
@@ -231,10 +230,13 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 					env.cd = env.ds.pop();
 				} else if(data) {
 					env.is.push(env.ci);
+					env.ds.push(data);
 					for(var key in data) {
 						env.ci = k;
+						env.cd = data[key];
 						hand.call(this, env);
 					}
+					env.cd = env.ds.pop();
 					env.ci = env.is.pop();
 				}
 			},
@@ -288,46 +290,67 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				}
 			}
 		},
-		childCompile = function(chs, ret) {
-			var lisT = false;
-			for(var i = 0; i < chs.length; ++i) {
-				var ch = chs[i];
-				if(ch.nodeType == 1) {
-					if(lisT) {
-						ret.push(textCompile(s));
+		childCompile = function(chs) {
+			var ret = [],stack = [],ev, as, es, attrs, ch, ele;
+			hObj = { r: ret, i: 0, c: chs, t: false, s: "", l: chs.length };
+			while(hObj) {
+				while(hObj.i < hObj.l) {
+					ele = hObj.c[hObj.i++];
+					if(ele.nodeType == 1) {
+						if(hObj.t) {
+							hObj.r.push(textCompile(hObj.s));
+						}
+						hObj.t = false;
+						attrs = ele.attributes;
+						ch = (ele.getAttribute("ch-dir") || "_").split("-");
+						ev = { n: ele.nodeName, h: ch.shift(), p: ch };
+						as = ev.as = [];
+						es = ev.es = [];
+						hObj.r.push(ev);
+						for(var i = 0; i < attrs.length; ++i) {
+							as.push(attrCompile(attrs[i]));
+						}
+						as = ele.childNodes.length;
+						if(as) {
+							stack.push(hObj);
+							hObj = { r: es, i: 0, c: ele.childNodes, t: false, s: "", l: as };
+							stack.push(hObj);
+							break;
+						}
+						
+					} else if(ele.nodeType == 3) {
+						hObj.s = hObj.t ? (hObj.s + ele.nodeValue) : ele.nodeValue;
+						if(hObj.i>=hObj.l){
+							hObj.r.push(textCompile(hObj.s));							
+						}else{
+							hObj.t = true;
+						}
 					}
-					ret.push(eleCompile(ch));
-					lisT = false;
-				} else if(ch.nodeType == 3) {
-					s = listT ? (s + ch.nodeValue) : ch.nodeValue;
-					listT = true;
 				}
+				hObj = stack.pop();
 			}
-			if(listT) {
-				ret.push(textCompile(s));
-			}
+			return ret;
 		},
-		/* ret.h(env) Element compiler */
-		eleCompile = function(ele) {
-			var attrs = ele.attributes,
-				cdir = ele.getAttribute("ch-dir") || "_",
-				ret = { n: ele.node },
-				as = ret.as = [],
-				es = ret.es = [],
-				lisT, s, ch;
-			ch = cdir.split("-");
-			ret.h = ch.shift();
-			if(ch.length) ret.p = ch;
-			for(var i = 0; i < attrs.length; ++i) {
-				as.push(attrCompile(attrs[i]));
-			}
-			childCompile(ele.children, ret.es);
-			return tet;
-		},
+		//		/* ret.h(env) Element compiler */
+		//		eleCompile = function(ele) {
+		//			var attrs = ele.attributes,
+		//				cdir = ele.getAttribute("ch-dir") || "_",
+		//				ret = { n: ele.nodeName },
+		//				as = ret.as = [],
+		//				es = ret.es = [],
+		//				lisT, s, ch;
+		//			ch = cdir.split("-");
+		//			ret.h = ch.shift();
+		//			if(ch.length) ret.p = ch;
+		//			for(var i = 0; i < attrs.length; ++i) {
+		//				as.push(attrCompile(attrs[i]));
+		//			}
+		//			childCompile(ele.childNodes, ret.es);
+		//			return ret;
+		//		},
 		parseElement = function(ele) {
 			var env = { sh: {}, dir: {} },
-				chs = [];
-			childCompile(ele.children, chs);
+				chs = childCompile(ele.childNodes);
 			$.extend(env.sh, ch_val_buider);
 			$.extend(env.dir, ch_dir_container);
 			return {
@@ -356,7 +379,7 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 				}
 			};
 		},
-		parseCode(ele) = function(ele) {
+		parseCode = function(ele) {
 			var hand = parseElement(ele),
 				$ele = $(ele),
 				bh = util.nochange,
@@ -404,7 +427,7 @@ $.define(["jQuery", "doc", "body"], "code", function($, doc, $body) {
 		};
 	return {
 		"parse": parseElement,
-		"element": parseCode,
+		"parseCode": parseCode,
 		"template": parseHtmlTemplate
 	};
 });

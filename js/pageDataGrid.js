@@ -5,7 +5,7 @@ $.define(["jQuery", "util", "form", "code", "pager"], "pageDataGrid", function($
 		derr = {},
 		dajaxCfg = {},
 		configPageIndex = function(fn, data) {
-			if(fn && data　 && data.data && data.length) {
+			if(fn && data　 && data.data && data.data.length) {
 				var b = (data.pageNo - 1) * data.pageSize;
 				data.data.forEach(function(obj) {
 					++b;
@@ -30,8 +30,8 @@ $.define(["jQuery", "util", "form", "code", "pager"], "pageDataGrid", function($
 					$.extend(config, options);
 				};
 				var ret = {
-					code: config.c;
-					form: config f;
+					code: config.c,
+					form: config.f,
 					load: function() {
 						if(config.f.validate()) {
 							config.cache = config.f.val();
@@ -58,7 +58,7 @@ $.define(["jQuery", "util", "form", "code", "pager"], "pageDataGrid", function($
 					}
 				};
 				config.p.onGo(function(no) {
-					config.pageNo = no;
+					config.cache[config.pnn] = no;
 					ret.reload();
 				});
 				return ret;

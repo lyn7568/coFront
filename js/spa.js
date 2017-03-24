@@ -43,7 +43,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 			}, cfg.error, cfg.ajaxCfg);
 		},
 		build_menu = function(menu) {
-			if(menuEle && emnuEle.length && menu && menu.length) {
+			if(menuEle && menuEle.length && menu && menu.length) {
 				var ul = { tn: "ul", attrs: [{ an: "class", av: "nav nav-root" }], chs: [] };
 				build_menu_item(ul.chs, menu);
 				menuEle.empty();
@@ -80,7 +80,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 				chses.push(lia);
 				var ic = "icon-" + (item.icon || (item.res ? "book" : "branch"));
 				lia.chs.push({ tn: "i", attrs: [{ an: "class", av: ic }] });
-				lia.push(item.caption);
+				lia.chs.push(item.caption);
 				var lac = "";
 				if(item.res) {
 					lia.attrs.push({ an: "res", av: item.res });
@@ -225,7 +225,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 					util.showLoading();
 				}
 				try {
-					scriptCache[model.script] = model.factory = factoryBuilder();
+					scriptCache[model.script] = model.factory = factoryBuilder(spa);
 					model.state = 31;
 					if(cfg.mask) {
 						util.hideLoading();
@@ -383,8 +383,8 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 		},
 		build = function(config) {
 			$.extend(cfg, config);
-			resUri = cfg.resUri || body.attr("resUri");
-			menuUri = cfg.resUri || body.attr("menuUri");
+			resUri = cfg.resUri || body.attr("resource");
+			menuUri = cfg.menuUri || body.attr("menu");
 			mainEle = cfg.mainEle || $(".spa-main");
 			menuEle = cfg.menuEle || $(".spa-menu");
 			resCache = cfg.resCache || resCache;
@@ -392,15 +392,18 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 			htmlCache["#"] = "#";
 			if(cfg.loadEnabled) load_res();
 		},
-		ret = {
+	    spa = {
 			build: build,
 			closeModal: closeModal,
 			getLastModalModel: getLastModalModel,
 			getLastModalCtn: getLastModalCtn,
 			getLastModalIndex: getLastModalIndex,
 			showMain: showMain,
-			showModal: showModal
+			showModal: showModal,
+			mainEle:function(){
+				return mainEle;
+			}
 		};
-		$.spa=ret;
-	return ret;
+		$.spa=spa;
+	return spa;
 });

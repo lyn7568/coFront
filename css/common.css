@@ -2209,7 +2209,7 @@ a cite {
     content: '\e652';
 }
 
-.form-item > a.dd-hand > span:empty ~ i.icon-close:before, {
+.form-item > a.dd-hand > span:empty ~ i.icon-close:before  {
     content: '';
 }
 .form-item.showOnly > a.dd-hand i.icon-close:before {

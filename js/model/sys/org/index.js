@@ -3,16 +3,16 @@ spa_define(function(spa) {
 
 	return {
 		main: function() {
-			var root = spa.mainEle.children(".sys_org_index");
+			var root = spa.mainEle().children(".sys_org_index");
 			var pdg = root.pdg();
-			pdg.codeRef.shell("showDay", function(data, key) {
-				if(data && data[key]) {
-					var day = data[key];
+			pdg.code.shell("showDay", function(env) {
+				if(env.cd && env.cd[this.k]) {
+					var day = env.cd[this.k];
 					return day.substring(0, 4) + "年" + day.substring(4, 6) + "月" + day.substring(6, 8) + "日";
 				}
 				return "";
 			});
-			pdg.codeRef.addValueListener($.util.dictDisplay);
+			pdg.code.listen($.dict.doTransfer);
 			root.find(".opt-query").on("click", function() {
 				//				console.log("dt load")
 				pdg.load();

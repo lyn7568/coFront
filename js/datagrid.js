@@ -23,8 +23,8 @@ $.define(["jQuery", "util", "form", "code"], "dataGrid", function($, util, form,
 					$.extend(config, options);
 				}
 				return {
-					code: config.c;
-					form: config f;
+					code:config.c,
+					form:config.f,
 					load: function() {
 						config.f.doGet(config.uri, function(data) {
 							config.c.val(data);

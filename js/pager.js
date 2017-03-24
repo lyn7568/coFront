@@ -12,8 +12,8 @@ $.define(["jQuery", "util"], "pager", function($, util) {
 			ret = [],
 			clses, dpn, rpn;
 
-		ret.push(li(no > 1 ? "active" ? "disabled", "«", no - 1));
-		ret.push(li(no === 1 ? "curr" ? "active", "1", 1));
+		ret.push(li(no > 1 ? "active":"disabled", "«", no - 1));
+		ret.push(li(no === 1 ? "curr" :"active", "1", 1));
 
 		if(no > 4) {
 			ret.push(sli);
@@ -35,7 +35,7 @@ $.define(["jQuery", "util"], "pager", function($, util) {
 		if(pages != no) {
 			ret.push(li("active", pages, pages));
 		}
-		ret.push(li(no != pages ? "active" ? "disabled", "»", no + 1));
+		ret.push(li(no != pages ? "active" :"disabled", "»", no + 1));
 		return ret;
 
 	}

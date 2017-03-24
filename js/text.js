@@ -35,7 +35,7 @@ $.use(["jQuery", "form", "util"], function($, form, util) {
 				name: n,
 				get: function() {
 					if(!cls[showOnly]) {
-						var vd = ve.val();
+						var vd = cls[trim]?ve.val().trim():ve.val();
 						if(vd) {
 							if(cls[tInt]) {
 								vd = parseInt(vd);
@@ -58,7 +58,7 @@ $.use(["jQuery", "form", "util"], function($, form, util) {
 				},
 				validate: function() {
 					if(cls[required]) {
-						if(!ve.val()) {
+						if(!ve.val().trim()) {
 							return "不可为空或空字符串";
 						}
 					}

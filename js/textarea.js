@@ -32,8 +32,8 @@ $.use(["jQuery", "form", "util"], function($, form, util) {
 				name: n,
 				get: function() {
 					if(!cls[showOnly]) {
-						var vd = ve.val();
-						return vd?(cls[trim]?vd.trim():vd):undefined;
+						var vd = cls[trim]?ve.val().trim():ve.val();
+						return vd?vd:undefined;
 					}
 				},
 				set: function(data) {

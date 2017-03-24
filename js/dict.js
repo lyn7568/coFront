@@ -84,9 +84,9 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 			},
 			doTransfer: function() {
 				$(".hand-dict").each(function() {
-					var $this = $this;
-					var dict = $this.attr("dict") || $this.attr("dictCode"),
-						code = $this.attr("code") || $this.attr("itemCode");
+					var $e = $(this);
+					var dict = $e.attr("dict") || $e.attr("dictCode"),
+						code = $e.attr("code") || $e.attr("itemCode");
 					if(dict && code) {
 						apply(dict, function(items) {
 							var cp = getCap(items, code);
@@ -97,9 +97,10 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 							}
 						});
 					}
-					$this.removeClass("hand-dict");
+					$e.removeClass("hand-dict");
 				});
 			}
 		};
+		$.dict=ret;
 	return ret;
 });
