@@ -237,7 +237,7 @@ if(typeof jQuery === 'undefined') {
 			 * ep={code:"",msg:"",detailMsg:"",url:""} pa=function(code,msg,detailMsg)
 			 * pa=boolean
 			 */
-			ajaxErrHand = function(errparam, errHand) {
+			defErrHand = function(errparam, errHand) {
 				if(errHand) {
 					var pt = $.type(errHand);
 					if(pt == "booean") {
@@ -277,11 +277,11 @@ if(typeof jQuery === 'undefined') {
 					} else {
 						rd.code = "" + rd.code;
 						rd.url = pUrl;
-						ajaxErrHand(rd, eh);
+						defErrHand(rd, eh);
 					}
 				};
 				config.error = function(jqXHR, textStatus, errorThrown) {
-					ajaxErrHand({
+					defErrHand({
 						code: "err_" + (textStatus || ""),
 						msg: textStatus,
 						detailMsg: textStatus,
@@ -365,7 +365,7 @@ if(typeof jQuery === 'undefined') {
 					config);
 			},
 			del: function(url, sh, eh, pObj) {
-				ajaxAccess("DELETE", url, null, sh, eh, pOjb);
+				ajaxAccess("DELETE", url, null, sh, eh,pObj);
 			},
 			noop: noop,
 			nochange: function(d) { return d },
@@ -409,7 +409,8 @@ if(typeof jQuery === 'undefined') {
 				buildElement(docf, obj);
 				e.appendChild(docf);
 			},
-			serialize: serialize
+			serialize: serialize,
+			raise:function(err){defErrHand(err)}
 		};
 		$.util=ret;
 		return ret;

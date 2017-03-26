@@ -1,11 +1,11 @@
-$.define(["jQuery", "util", "form", "code", "pager"], "pageDataGrid", function($, util, form, code, pager) {
+$.define(["jQuery", "util", "form", "code", "pager"], "pagedatagrid", function($, util, form, code, pager) {
 	var qf = ".dt-form",
 		qt = ".dt-tpl",
 		qp = ".dt-pager",
 		derr = {},
 		dajaxCfg = {},
 		configPageIndex = function(fn, data) {
-			if(fn && data　 && data.data && data.data.length) {
+			if(fn && data && data.data && data.data.length) {
 				var b = (data.pageNo - 1) * data.pageSize;
 				data.data.forEach(function(obj) {
 					++b;

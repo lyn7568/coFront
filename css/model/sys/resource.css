@@ -1,0 +1,17 @@
+@charset "utf-8";
+.sys_resource_index .queryForm{
+	position: relative;
+}
+.sys_resource_index .queryForm .icon-search{
+	position: absolute;
+	top:7px;
+	right:15px;
+	font-size:25px;
+}
+.sys_resource_index .table-opt .icon {
+	margin: 10px;
+	font-size: 20px;
+}
+.sys_resource_edit,.sys_resource_new{
+	width:800px;
+}

@@ -32,21 +32,21 @@
 					<th>操作</th>
 				</tr>
 			</thead>
-			<tbody class="code-tpl code-tag-hold" code-func="data-list">
-				<tr>
-					<td>{{any-[]}}</td>
+			<tbody>
+				<tr ch-dir="list">
+					<td>{{-_index}}</td>
 					<td>{{name}}</td>
 					<td>{{uri}}</td>
 					<td>{{css}}</td>
 					<td>{{script}}</td>
 					<td>{{modal-bool}}</td>
 					<td>{{main-bool}}</td>
-					<td class="table-opt" resourceId="{{id}}"><i class="icon icon-remove-sign"></i><i class="icon icon-edit"></i></td>
+					<td class="table-opt" resourceId="{{id}}"><i class="icon icon-remove-sign opt-del"></i><i class="icon icon-edit opt-edit"></i></td>
 				</tr>
 			</tbody>
-			<tbody class="code-tpl code-tag-hold" code-func="data-emptylist">
+			<tbody ch-dir="array.empty">
 				<tr>
-					<td class="empty-desc" colspan="8">表格暂无数据</td>
+					<td colspan="8">表格暂无数据</td>
 				</tr>
 			</tbody>
 		</table>

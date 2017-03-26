@@ -7,16 +7,10 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 		resCache = {},
 		cssCache = {},
 		htmlCache = { "#": "#" },
-		modelCache = {},
+		modelCache = {"_def_error_form":{}},
 		scriptCache = {}, resUri, menuUri, menuEle,
 		main, mainEle,
-		errHand = {
-			"defErrHand": function(err) {
-				showModal("_def_err_form", err);
-			}
-		},
 		cfg = {
-			error: errHand,
 			ajaxCfg: { mask: true },
 			mask: true,
 			loadEnabled: true
@@ -33,14 +27,14 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 						});
 					}
 					menuUri ? load_menu() : showMain();
-				}, cfg.error, cfg.ajaxCfg);
+				},false, cfg.ajaxCfg);
 			}
 		},
 		load_menu = function() {
 			util.get(menuUri, null, function(menu) {
 				build_menu(menu);
 				showMain();
-			}, cfg.error, cfg.ajaxCfg);
+			},false, cfg.ajaxCfg);
 		},
 		build_menu = function(menu) {
 			if(menuEle && menuEle.length && menu && menu.length) {
@@ -180,7 +174,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 				}).fail(function(jqXHR, textStatus, errorThrown) {
 					model.state = 12;
 					if(cfg.mask) { util.hideLoading(); }
-					cfg.error({
+					uril.raise({
 						code: "loadModelHtml_" + (textStatus || ""),
 						msg: textStatus,
 						detailMsg: textStatus,
@@ -235,7 +229,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 					if(cfg.mask) {
 						util.hideLoading();
 					}
-					cfg.error({
+					util.raise({
 						code: "buildModelFactory_" + err.toString(),
 						msg: err.toString() || "",
 						detailMsg: err.toString() || "",
@@ -264,7 +258,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 					}
 					if(model.state < 22) {
 						model.state = 22;
-						cfg.error({
+						util.raise({
 							code: "loadModelScript_" + err.toString(),
 							msg: err.toString() || "",
 							detailMsg: err.toString() || "",
@@ -286,7 +280,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 									if(cfg.mask) {
 										util.hideLoading();
 									}
-									cfg.error({
+									util.raise({
 										code: "loadModelScript_timeout",
 										msg: "",
 										detailMsg: "",
@@ -328,7 +322,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 				if(model) {
 					loadModel(model, afterLoadByModal, data);
 				} else {
-					cfg.error({ code: "invalid_model", msg: "不正确的模块[" + id + "]", detailMsg: "不正确的模块[" + id + "]" });
+					util.raise({ code: "invalid_model", msg: "不正确的模块[" + id + "]", detailMsg: "不正确的模块[" + id + "]" });
 				}
 			}
 		},
@@ -346,7 +340,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 				if(model) {
 					loadModel(model, afterLoadByMain);
 				} else {
-					cfg.error({ code: "invalid_model", msg: "不正确的模块[" + id + "]", detailMsg: "不正确的模块[" + id + "]" });
+					util.raise({ code: "invalid_model", msg: "不正确的模块[" + id + "]", detailMsg: "不正确的模块[" + id + "]" });
 				}
 			}
 		},
@@ -378,7 +372,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 					util.closeModal();
 				}
 			} else {
-				cfg.error({ code: "invalid_dir", msg: "can't close modal:has top layer", detailMsg: "can't close modal:has top layer" });
+				util.raise({ code: "invalid_dir", msg: "can't close modal:has top layer", detailMsg: "can't close modal:has top layer" });
 			}
 		},
 		build = function(config) {
@@ -400,8 +394,17 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 			getLastModalIndex: getLastModalIndex,
 			showMain: showMain,
 			showModal: showModal,
-			mainEle:function(){
-				return mainEle;
+			mainChildren:function(selector){
+				return mainEle.children(selector);
+			},
+			modalChildren:function(selector){
+				return getLastModalCtn.children(selector);
+			},
+			findInMain:function(selector){
+				return mainEle.find(selector);
+			},
+			findInModal:function(selector){
+				return getLastModalCtn().find(selector);
 			}
 		};
 		$.spa=spa;

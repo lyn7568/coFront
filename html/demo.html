@@ -148,11 +148,14 @@
 
 	<script>
 		$(function() {
-			$.spa.build();
-			$(".opt-logout").on("click", function() {
-				$.util.get("../ajax/sys/user/logout", null, function() {
-					window.location.href = "login.html";
-				}, {});
+			$.use(["spa","util"],function(spa,util){
+				spa.build();
+				$(".opt-logout").on("click", function() {
+					util.get("../ajax/sys/user/logout", null, function() {
+						window.location.href = "login.html";
+					}, {});
+				});
+				
 			});
 		});
 	</script>

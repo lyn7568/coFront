@@ -242,8 +242,6 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 			},
 			"val": function(env) {
 				var hand = env.dir["_"],
-					as = this.as,
-					es = this.es,
 					items, item, data = env.cd,
 					p = this.p;
 				if(p && p.length && p[0]) {
@@ -252,39 +250,28 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 					while(items.length && data) {
 						data = data[items.shift()];
 					}
-					if(items.length === 0 && data) {
+					if(items.length === 0) {
 						env.cd = data;
-						hand.call(this, env);
+				t
 					}
 					env.cd = env.ds.pop();
 				}
 			},
 			"valTag": function(env) {
-				var hand = env.dir["_"],
-					as = this.as,
-					es = this.es,
-					items, item, data = env.cd,
-					p = this.p;
+				var items, item, data = env.cd,
+					p = this.p,es = this.es;
 				if(p && p.length && p[0]) {
 					items = p[0].split("\\.");
 					env.ds.push(data);
 					while(items.length && data) {
 						data = data[items.shift()];
 					}
-					if(items.length === 0 && data) {
+					if(items.length === 0) {
 						env.cd = data;
-						var ele = doc.createElement(this.n);
-						env.ce.appendChild(ele);
-						env.es.push(env.ce);
-						env.ce = ele;
-						for(var i = 0; i < as.length; ++i) {
-							as[i].h(env);
-						}
 						for(var i = 0; i < es.length; ++i) {
 							item = es[i];
 							env.dir(item.h).call(item, env);
 						}
-						env.ce = env.es.pop();
 					}
 					env.cd = env.ds.pop();
 				}
@@ -303,7 +290,7 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 						hObj.t = false;
 						attrs = ele.attributes;
 						ch = (ele.getAttribute("ch-dir") || "_").split("-");
-						ev = { n: ele.nodeName, h: ch.shift(), p: ch };
+						ev = { n: ele.nodeName, h: (ch.shift()||"_"), p: ch };
 						as = ev.as = [];
 						es = ev.es = [];
 						hObj.r.push(ev);
@@ -380,7 +367,7 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 			};
 		},
 		parseCode = function(ele) {
-			var hand = parseElement(ele),
+			var ele=ele.jquery?ele[0]:ele, hand = parseElement(ele),
 				$ele = $(ele),
 				bh = util.nochange,
 				lses = [];

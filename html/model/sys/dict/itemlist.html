@@ -1,4 +1,19 @@
 <div class-"sys_dict_itemlist centerModal">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+	<ul>
+		<li class="ld-item">
+			<div class="item-code" ov="{{code}}">{{code}}</div>
+			<div class="item-code" ov="{{caption}}">{{caption}}</div>
+			<div class="item-code" ov="{{shortCode}}">{{shortCode}}</div>
+			<div class="item-code" ov="{{enabled}}">{{enabled-itemE}}</div>
+			<div class="item-code" ov="{{system}}">{{system-itemS}}</div>
+			<div ch-dir="each" class="item-code" ov="{{data-json}}"></div>
+			<div class="item-code" ov="{{code}}">{{code}}</div>
+		</li>
+	</ul>
+	
 	<dvi class="item-list">
 		<div calss="code-tpl" code-func="data-list">
 			<div class="item">
@@ -8,7 +23,6 @@
 				<div class="item-enabled" objVal="{{enabled}}">{{enabled}}</div>
 				<div class="item-system" objVal="{{system}}">{{code}}</div>
 				<div class="item-data" objVal="{{code}}">{{code}}</div>
-				
 			</div>
 		</div>
 		
