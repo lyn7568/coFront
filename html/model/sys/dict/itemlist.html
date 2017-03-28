@@ -1,33 +1,27 @@
-<div class-"sys_dict_itemlist centerModal">
+<div class="sys_dict_itemlist centerModal">
 	<div class="modal-ctrl">
 		<i class="icon icon-times"></i>
 	</div>
-	<ul>
+	<ul class="ld-caption">
 		<li class="ld-item">
-			<div class="item-code" ov="{{code}}">{{code}}</div>
-			<div class="item-code" ov="{{caption}}">{{caption}}</div>
-			<div class="item-code" ov="{{shortCode}}">{{shortCode}}</div>
-			<div class="item-code" ov="{{enabled}}">{{enabled-itemE}}</div>
-			<div class="item-code" ov="{{system}}">{{system-itemS}}</div>
-			<div ch-dir="each" class="item-code" ov="{{data-json}}"></div>
-			<div class="item-code" ov="{{code}}">{{code}}</div>
+			<div class="row">
+				<div class="col-2">编码</div>
+				<div class="col-4">名称</div>
+				<div class="col-2">助记码</div>
+				<div class="col-2">是否有效</div>
+				<div class="col-2">是否系统保留</div>
+			</div>
 		</li>
 	</ul>
-	
-	<dvi class="item-list">
-		<div calss="code-tpl" code-func="data-list">
-			<div class="item">
-				<div class="item-code" objVal="{{code}}">{{code}}</div>
-				<div class="item-caption" objVal="{{caption}}">{{caption}}</div>
-				<div class="item-shortCode" objVal="{{shortCode}}">{{shortCode}}</div>
-				<div class="item-enabled" objVal="{{enabled}}">{{enabled}}</div>
-				<div class="item-system" objVal="{{system}}">{{code}}</div>
-				<div class="item-data" objVal="{{code}}">{{code}}</div>
+	<ul class="ld-items">
+		<li class="ld-item">
+			<div class="row">
+				<div class="col-2">{{code}}</div>
+				<div class="col-4">{{caption}}</div>
+				<div class="col-2">{{shortCode}}</div>
+				<div class="col-2">{{enabled-itemE}}</div>
+				<div class="col-2">{{system-itemS}}</div>
 			</div>
-		</div>
-		
-		
-	</dvi>
-	
-	
+		</li>
+	</ul>
 </div>

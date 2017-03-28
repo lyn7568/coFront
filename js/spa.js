@@ -259,9 +259,9 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 					if(model.state < 22) {
 						model.state = 22;
 						util.raise({
-							code: "loadModelScript_" + err.toString(),
-							msg: err.toString() || "",
-							detailMsg: err.toString() || "",
+							code: "loadModelScript_",
+							msg:"",
+							detailMsg: "",
 							url: model.script
 						});
 					}

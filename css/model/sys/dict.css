@@ -1,18 +1,73 @@
 @charset "utf-8";
-.sys_dict_index .queryForm{
-	position: relative;
+.sys_dict_index .queryForm {
+    position: relative;
 }
-.sys_dict_index .queryForm .icon-search{
-	position: absolute;
-	top:7px;
-	right:15px;
-	font-size:25px;
-}
-.sys_dict_index .table-opt .icon {
-	margin: 10px;
-	font-size: 20px;
-}
-.sys_dict_add,.sys_dict_edit{
-	width:800px;
 
+.sys_dict_index .queryForm .icon-search {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    font-size: 25px;
+}
+
+.sys_dict_index .table-opt .icon {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.sys_dict_add, .sys_dict_edit, .sys_dict_itemlist, .sys_dict_itemedit {
+    width: 800px;
+    padding: 10px;
+}
+.sys_dict_itemedit{
+	height: 500px;
+}
+.sys_dict_itemedit .main {
+    padding: 20px;
+}
+.sys_dict_itemedit .main  {
+    height: 400px;
+}
+.sys_dict_itemedit .main .nav {
+    height: 100%;
+    overflow: auto;
+}
+
+
+
+.sys_dict_itemlist .ld-item {
+    padding: 0 10px;
+}
+
+.sys_dict_itemlist .ld-caption {
+    font-weight: bold;
+}
+
+.sys_dict_itemedit .nav li {
+    padding: 5px 0 5px 15px;
+    position: relative;
+}
+
+.sys_dict_itemedit .nav li a {
+    padding: 0 0 0 10px;
+}
+
+.sys_dict_itemedit .nav .branch-item > ul {
+    display: none;
+}
+
+.sys_dict_itemedit .nav .branch-item.open > ul {
+    display: block;
+}
+
+.sys_dict_itemedit .nav .branch-item > i.icon-dict-toggle:before {
+    content: '\e6f1';
+}
+
+.sys_dict_itemedit .nav .branch-item.open > i.icon-dict-toggle:before {
+    content: '\e6f2';
+}
+
+.sys_dict_itemedit .main > .btns {
+    padding: 20px;
 }

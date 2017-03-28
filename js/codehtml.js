@@ -22,6 +22,13 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 			},
 			"_index": function(env) {
 				return env.ci+1;
+			},
+			"bool":function(env){
+				return env.cd[this.k]?"是":"否";
+			},
+			"date":function(env){
+				var v = env.cd[this.k];
+				return v?(v.substring(0,4)+"年"+v.substring(4,6)+"月"+v.substring(6,8)+"日"):((this.p && this.p[0])||"");
 			}
 		},
 		simpleAttrHandler = function(env) {

@@ -226,7 +226,7 @@ if(typeof jQuery === 'undefined') {
 			},
 			g_err = {
 				"defErrHand": function(ep) {
-
+					errMsg(JSON.stringify(ep));
 				},
 				"0": "未定义的错误",
 				"1": function() {

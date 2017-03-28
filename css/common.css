@@ -2419,7 +2419,10 @@ a cite {
     border-color: transparent;
 }
 
-
+.upload-btn{
+	position: relative;
+	overflow: hidden;
+}
 .upload-form input {
     position: absolute;
     top: 0px;

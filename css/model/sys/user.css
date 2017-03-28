@@ -1,0 +1,43 @@
+@charset "utf-8";
+.sys_user_index .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_user_index th.opt-check, .sys_user_index td.opt-check {
+    width: 35px;
+}
+
+.sys_user_new {
+    width: 800px;
+    padding: 0 20px 10px;
+}
+
+.sys_user_new .newForm {
+    position: relative;
+}
+
+.sys_user_new .newForm .head-ctn {
+    position: absolute;
+    top: 3px;
+    right: 30px;
+    width: 190px;
+    height: 190px;
+}
+
+.sys_user_new .newForm .head-ctn .upload-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    width: 110px;
+    height: 36px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #555555;
+    padding-top: 6px;
+}
+
+.sys_user_new .newForm .head-ctn .upload-btn i {
+    font-size: 16px;
+    color: rgb(95,184,120);
+}

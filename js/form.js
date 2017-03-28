@@ -54,7 +54,7 @@ $.define(["jQuery", "util"], "form", function($, util) {
 					item: function(name) {
 						return items[name];
 					},
-					validate: function(vds) {
+					validate: function() {
 						if(vd(items)) {
 							return util.validate(rules, this);
 						}
