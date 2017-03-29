@@ -41,3 +41,18 @@
     font-size: 16px;
     color: rgb(95,184,120);
 }
+.sys_user_new .newForm .head-ctn img {
+    width: 100%;
+   height: 100%;
+}
+.sys_user_new .upload-item{
+	position: absolute;
+	width: 100%;
+	top:50%;
+	transform: translateY(-50%);
+}
+.sys_user_new .upload-item .progress{
+	width: 1px;
+	height: 30px;
+	background-color: #3280FC;
+}

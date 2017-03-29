@@ -5,29 +5,55 @@ spa_define(function() {
 			modal: function(data) {
 				var root = spa.findInModal(".sys_user_new");
 				var form = fb.build(root.find(".newForm"));
+				var saveBtn = root.find(".opt-save"),
+					headArea = root.find(".head-ctn"),
+					save = function() {
+						form.doPost("../ajax/sys/user", function() {
+							spa.closeModal();
+							if(data) {
+								data();
+							}
+						}, {});
+					};
 				root.find(".modal-ctrl .icon-times").on("click", function() {
 					spa.closeModal();
 				});
 				upload.build({
 					render: root.find(".upload-btn"),
 					accept: "image/gif, image/jpeg",
-					fail: function(errType, errData) { /*this ={id,name,size,type,abort=function}*/ },
+					fail: function(errType, errData) {
+						/*this ={id,name,size,type,abort=function}*/
+						util.errMsg(this.name + "上传文件错误：" + errType);
+						this.ele.remove();
+						saveBtn.on("click", save);
+					},
 					async: false,
 					maxSize: 1024 * 1024 * 10,
-					done: function(data) { /*this ={id,name,size,type,abort=function}*/ },
-					start: function() { /*this ={id,name,size,type,abort=function}*/ },
-					notity: function(total, loaded) { /*this ={id,name,size,type,abort=function}*/ },
+					done: function(data) {
+						/*this ={id,name,size,type,abort=function}*/
+						this.ele.remove();
+						headArea.find("img").remove();
+						$("<img></img>").attr("src", "../data/" + data.uri).appendTo(headArea);
+						form.val({"head":data.uri});
+						saveBtn.on("click", save);
+					},
+					start: function() {
+						/*this ={id,name,size,type,abort=function}*/
+						this.ele = $("<div class='upload-item'><div class='progress'></div><span>" + this.name + "</span><div>");
+						this.ele.appendTo(headArea);
+						this.progress = this.ele.find(".progress");
+						saveBtn.off("click");
+					},
+					notity: function(total, loaded) {
+						/*this ={id,name,size,type,abort=function}*/
+						var vv =  ""+Math.ceil(loaded * 100 / total) + "%;"
+						this.progress.attr("style", "width:" +vv);
+						this.progress.text(vv);
+					},
 					uri: "../ajax/sys/user/head"
 				});
 
-				root.find(".opt-save").on("click", function() {
-					form.doPost("../ajax/sys/user", function() {
-						spa.closeModal();
-						if(data) {
-							data();
-						}
-					}, {});
-				});
+				saveBtn.on("click", save);
 			}
 		}
 	});

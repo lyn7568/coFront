@@ -259,7 +259,7 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 					}
 					if(items.length === 0) {
 						env.cd = data;
-				t
+						hand.call(this,env);
 					}
 					env.cd = env.ds.pop();
 				}

@@ -85,7 +85,7 @@ $.define(["jQuery", "doc", "util"], "upload", function($, doc, util) {
 										raiseError("parse", err);
 									}
 									if(ro.success) {
-										over();
+										over(xhr);
 										state = "done";
 										if(uploader.done) {
 											uploader.done.call(eContext, ro.data);

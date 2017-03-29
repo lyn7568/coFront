@@ -42,6 +42,7 @@ if(typeof jQuery === 'undefined') {
 	$.define(["jQuery", "body", "win", "doc"], "util", function($,body, win, doc) {
 		var rclass = /[\t\r\n\f]/g,
 			noop = function() {},
+			valCache ={},
 			infoDiv = $("#g_info"),
 			errDiv = $("#g_err"),
 			warnDiv = $("#g_warn"),
@@ -410,6 +411,13 @@ if(typeof jQuery === 'undefined') {
 				e.appendChild(docf);
 			},
 			serialize: serialize,
+			data:function(k,v){
+				if(arguments.length>1){
+					valCache[k]=v;
+				}else if(k){
+					return valCache[k];
+				}
+			},
 			raise:function(err){defErrHand(err)}
 		};
 		$.util=ret;

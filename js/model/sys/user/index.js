@@ -47,7 +47,7 @@ spa_define(function() {
 					if($org.length) {
 						var ret = [];
 						$org.each(function() {
-							ret.push($(this).attr("orgId"));
+							ret.push($(this).attr("userId"));
 						});
 						util.boxMsg({
 							title: "确认删除",
