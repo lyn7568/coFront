@@ -1,0 +1,48 @@
+<div class="sys_right_index">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+
+	<div class="container queryForm">
+		<div class="row">
+			<div class="col-6">
+				<div class="btn opt-new">
+					<i class="icon-plus"></i>
+					新增
+				</div>
+				
+			</div>
+			<div class="col-6">				
+				<div class="form-item text" name="qn"></div><i class="icon icon-search"></i>
+			</div>
+
+		</div>
+	</div>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>权限码</th>
+					<th>名称</th>
+					<th>分类</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ch-dir="list">
+					<td>{{-_index}}</td>
+					<td>{{id}}</td>
+					<td>{{name}}</td>
+					<td class="hand-dict" dict="rightType" code="{{type}}" ></td>
+					<td class="table-opt" rightId="{{id}}"><i class="icon icon-remove-sign opt-del"></i><i class="icon icon-th-large opt-display"></i></td>
+				</tr>
+			</tbody>
+			<tbody ch-dir="array.empty">
+				<tr>
+					<td class="empty-desc" colspan="5">表格暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

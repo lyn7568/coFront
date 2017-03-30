@@ -174,7 +174,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 				}).fail(function(jqXHR, textStatus, errorThrown) {
 					model.state = 12;
 					if(cfg.mask) { util.hideLoading(); }
-					uril.raise({
+					util.raise({
 						code: "loadModelHtml_" + (textStatus || ""),
 						msg: textStatus,
 						detailMsg: textStatus,

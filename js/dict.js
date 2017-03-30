@@ -22,10 +22,10 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 		apply = function(code, hand) {
 			var dict = cache[code];
 			if(!dict) {
-				var hs = handCache[dictCode];
+				var hs = handCache[code];
 				if(!hs) {
 					handCache[code] = hs = [];
-					load(dictCode);
+					load(code);
 				}
 				hs.push(hand);
 			} else {
