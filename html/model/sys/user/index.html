@@ -58,13 +58,19 @@
 			<div class="btn opt-del">
 				<i class="icon-remove-sign"></i>删除
 			</div>
+			<div class="btn opt-role">
+				<i class="icon-group"></i>角色
+			</div>
+			<div class="btn opt-right">
+				<i class="icon-key"></i>权限
+			</div>
 		</div>
 	</div>
 	<div class="container dt-tpl">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+					<th class="opt-check"><i class="icon icon-st-check"></i> </th>
 					<th>序号</th>
 					<th>名称</th>
 					<th>手机</th>
@@ -75,11 +81,11 @@
 			</thead>
 			<tbody>
 				<tr ch-dir="list">
-					<td class="opt-check" ><i class="icon icon-st-check" userId="{{id}}"></i></td>
+					<td class="opt-check"><i class="icon icon-st-check" userId="{{id}}"></i></td>
 					<td>{{-_index}}</td>
-					<td>{{name}}</td>
-					<td>{{mobile}}</td>
-					<td>{{email}}</td>
+					<td class="data-name">{{name}}</td>
+					<td class="data-mobile">{{mobile}}</td>
+					<td class="data-email">{{email}}</td>
 					<td>{{actived-bool}}</td>
 					<td>{{createTime-date}}</td>
 				</tr>
