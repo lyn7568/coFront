@@ -7,7 +7,7 @@
     width: 35px;
 }
 
-.sys_user_new {
+.sys_user_new,.sys_user_role,.sys_user_right,.sys_user_menu {
     width: 800px;
     padding: 0 20px 10px;
 }
@@ -56,3 +56,7 @@
 	height: 30px;
 	background-color: #3280FC;
 }
+.sys_user_menu .nav ul{
+	padding-left: 20px;
+}
+

@@ -4,13 +4,15 @@ spa_define(function() {
 		var ahref = { an: "href", av: "javascript:;" };
 		return {
 			modal: function(data) {
-				var root = spa.findInModal(".sys_dict_itemedit");
+				var root = spa.findInModal(".sys_user_menu"),
+					g_max_menu_code = 1;
 				root.find(".modal-ctrl .icon-times").on("click", function() {
 					spa.closeModal();
 				});
 				var treeCnt = root.find(".main .nav"),
-					dictData = data.data,
-					hand = code.parseCode(root.find(".info")),
+					menuData = data.children,
+					reses = data.reses;
+				hand = code.parseCode(root.find(".info")),
 					editForm = {};
 
 				var findByCode = function(c, items) {
@@ -26,6 +28,9 @@ spa_define(function() {
 				};
 				var paint = function(ul, items, pc) {
 					items.forEach(function(item) {
+						if(item.code > g_max_menu_code) {
+							g_max_menu_code = item.code;
+						}
 						var li = { tn: "li" },
 							attrs = li.attrs = [{ an: "class", av: "leaf-item" }];
 						chs = li.chs = [];
@@ -34,22 +39,21 @@ spa_define(function() {
 						attrs.push({ an: "pcode", av: pc || "" });
 						var icon = {
 							tn: "i",
-							attrs: [{ an: "class", av: "icon icon-star" }]
+							attrs: [{ an: "class", av: "icon icon-" + item.icon }]
 						};
 						chs.push(icon);
-						chs.push({ tn: "a", attrs: [ahref], chs: [item.code + ":" + item.caption] });
+						chs.push({ tn: "a", attrs: [ahref], chs: [item.caption] });
 						if(item.children && item.children.length) {
-							icon.attrs[0].av = "icon icon-dict-toggle";
 							li.attrs[0].av = "branch-item";
 							var cul = { tn: "ul", chs: [] };
 							chs.push(cul);
-							paint(cul, item.children,item.code);
+							paint(cul, item.children, item.code);
 						}
 					});
 				};
 				var refreshTree = function() {
 					var ul = { tn: "ul", chs: [] };
-					paint(ul, dictData);
+					paint(ul, menuData);
 					treeCnt.empty();
 					util.appendChild(treeCnt[0], ul);
 					hand.empty();
@@ -59,10 +63,10 @@ spa_define(function() {
 				};
 				var findParentArray = function(pc) {
 					if(pc) {
-						var items = findByCode(pc, dictData);
+						var items = findByCode(pc, menuData);
 						return items ? (items.children ? items.children : null) : null;
 					}
-					return dictData;
+					return menuData;
 				};
 				var movePrev = function() {
 					if(editForm.oc) {
@@ -104,25 +108,28 @@ spa_define(function() {
 				};
 				var deleteItem = function(pc, oc) {
 					if(editForm.oc) {
-					var items = findParentArray(editForm.pc);
-					if(items) {
-						var i = 0;
-						for(; i < items.length; ++i) {
-							if(items[i].code === editForm.oc) {
-								break;
+						var items = findParentArray(editForm.pc);
+						if(items) {
+							var i = 0;
+							for(; i < items.length; ++i) {
+								if(items[i].code === editForm.oc) {
+									break;
+								}
+							}
+							if(i < items.length) {
+								items.splice(i, 1);
+								refreshTree();
 							}
 						}
-						if(i < items.length) {
-							items.splice(i, 1);
-							refreshTree();
-						}
-					}
 					}
 				};
 
 				var fillEdit = function(pc, di) {
+					if(pc && typeof pc === "string") {
+						pc = parseInt(pc);
+					}
 					hand.val();
-					editForm.form = form.build(root.find(".info"));
+					editForm.form = form.build(root.find(".info"), { res: { ready: true, items: reses } });
 					editForm.pc = pc;
 					editForm.oc = di.code;
 					editForm.form.val(di);
@@ -133,7 +140,7 @@ spa_define(function() {
 					if($this.hasClass("branch-item")) {
 						$this.toggleClass("open");
 					}
-					var di = findByCode($this.attr("code"), dictData);
+					var di = findByCode(parseInt($this.attr("code")), menuData);
 					if(di) {
 						fillEdit($this.attr("pcode"), di);
 					}
@@ -149,40 +156,32 @@ spa_define(function() {
 					movePrev();
 				});
 				root.on("click", ".opt-next", function() {
-						moveNext();
+					moveNext();
 				});
 				root.on("click", ".opt-del", function() {
-						deleteItem();
+					deleteItem();
 				});
 				root.on("click", ".opt-ok", function() {
 					if(editForm.form.validate()) {
 						var item = editForm.form.val();
 						if(editForm.oc) {
-							var di = findByCode(item.code, dictData);
-							if(item.code !== editForm.oc) {
-								if(di) {
-									util.alert("存在重复的CODE");
-									return;
-								}
-								di = findByCode(editForm.oc, dictData);
-							}
+							di = findByCode(editForm.oc, menuData);
 							if(di) {
 								di.caption = item.caption;
-								di.shortCode = item.shortCode;
-								di.enabled = item.enabled;
-								di.system = item.system;
-								di.descp = item.descp;
-								di.code = item.code;
+								di.modal = false;
+								if(item.res) {
+									di.res = item.res;
+									di.icon = item.icon || "book";
+								} else {
+									di.res = null;
+									di.icon = item.icon || "branch";
+								}
 								refreshTree();
 							}
 						} else {
-							var items = dictData;
-							if(findByCode(item.code, dictData)) {
-								util.alert("存在重复的CODE");
-								return;
-							}
+							var items = menuData;
 							if(editForm.pc) {
-								items = findByCode(editForm.pc,dictData);
+								items = findByCode(editForm.pc, menuData);
 								if(items) {
 									if(items.children) {
 										items = items.children;
@@ -190,17 +189,43 @@ spa_define(function() {
 										items = items.children = [];
 									}
 								} else {
-									items = dictData;
+									items = menuData;
 								}
 							}
-							var di = { code: item.code, caption: item.caption, shortCode: item.shortCode, enabled: item.enabled, system: item.system, descp: item.descp };
+							++g_max_menu_code;
+							var di = { code: g_max_menu_code, caption: item.caption, modal: false };
+							if(item.res) {
+								di.res = item.res;
+								di.icon = item.icon || "book";
+							} else {
+								di.res = null;
+								di.icon = item.icon || "branch";
+							}
 							items.push(di);
 							refreshTree();
 						}
 					}
 				});
+				var cloneMenu = function(src, dest) {
+					src.forEach(function(item) {
+						var di = {};
+						di.icon = item.icon;
+						if(item.res) {
+							di.res = item.res;
+						}
+						di.modal = false;
+						di.caption = item.caption;
+						dest.push(di);
+						if(item.children && item.children.length) {
+							var chs = di.children = [];
+							cloneMenu(item.children, chs);
+						}
+					});
+				}
 				root.find(".opt-save").on("click", function() {
-					util.put("../ajax/sys/dict/item/" + data.code, dictData, function() {
+					var pd = [];
+					cloneMenu(menuData,pd);
+					util.put("../ajax/user/config/menu", pd, function() {
 						spa.closeModal();
 						if(data.hand) {
 							data.hand();

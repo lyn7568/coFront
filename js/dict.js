@@ -19,6 +19,19 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 				set(code, data);
 			}, eh, config);
 		},
+		dyn_load=function(obj){
+			util.get(obj.uri, null, function(data) {
+			obj.ready=true;
+			obj.items =obj.transfer?obj.transfer(data):data;
+			if(obj.listen){
+				obj.listen.forEach(function(item){
+					item.call(null,obj.items);
+				});
+			}
+			delete obj.listen;
+			}, obj.ajaxEh, obj.ajaxCfg);
+		}
+		
 		apply = function(code, hand) {
 			var dict = cache[code];
 			if(!dict) {
@@ -30,6 +43,19 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 				hs.push(hand);
 			} else {
 				hand(dict);
+			}
+		},
+		
+		dyn_apply=function(obj,hand){
+			if(!obj.ready) {
+				var hs = obj.listen;
+				if(!hs) {
+					obj.listen = hs = [];
+					dyn_load(obj);
+				}
+				hs.push(hand);
+			} else {
+				hand(obj.items);
 			}
 		},
 		refresh = function(code, hand) {
@@ -65,6 +91,7 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 		ret = {
 			set: set,
 			apply: apply,
+			dynApply:dyn_apply,
 			refresh: refresh,
 			getCap: getCap,
 			get: get,
@@ -73,6 +100,19 @@ $.define(["jQuery", "util"], "dict", function($, util) {
 				code = code || $e.attr("code") || $e.attr("itemCode");
 				if(dict && code) {
 					apply(dict, function(items) {
+						var cp = getCap(items, code);
+						if(cp) {
+							$e.removeClass("invalid-dict").text(cp);
+						} else {
+							$e.addClass("invalid-dict").text("不可翻译的");
+						}
+					});
+				}
+			},
+			dynTransfer:function(obj,$e,code){
+				code = code || $e.attr("code") || $e.attr("itemCode");
+				if(code){
+					dyn_apply(obj,function(items){
 						var cp = getCap(items, code);
 						if(cp) {
 							$e.removeClass("invalid-dict").text(cp);

@@ -1,19 +1,17 @@
 $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, doc, util, dd, dict) {
 	var readOnly = "readOnly",
 		showOnly = "showOnly",
-		modelName = 'select',
-		mModelName = "mselect",
+		modelName = 'dyn-select',
+		mModelName = "dyn-mselect",
 		tInt = "int",
-		tBool = "bool",
-		tString = "string",
 		def = "defVal",
 		placeholder = "placeholder",
 		required = "required",
+
 		tree = "tree",
 		queried = "queried",
 		handCode = { an: "code", av: "" },
 		spanCode = { an: "code", av: "" },
-		spanDictCode = { an: "dictCode", av: "" },
 		pa = [""],
 		jhref = { an: "href", av: "javascript:;" },
 		dd_hand = { an: "class", av: "dd-hand" },
@@ -29,7 +27,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 			],
 			chs: [
 				icon_drop,
-				{ tn: "span", attrs: [spanCode, spanDictCode] },
+				{ tn: "span", attrs: [spanCode] },
 				icon_close,
 				a_placeHolder,
 			]
@@ -52,7 +50,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 						};
 						li.attrs.push(sebi);
 						li.chs.push(bhand);
-						var ul={tn:"ul",chs:[]};
+						var ul = { tn: "ul", chs: [] };
 						li.chs.push(ul);
 						buildTreeDrop(isQueried, item.children, ul.chs);
 					} else {
@@ -63,9 +61,9 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				}
 			});
 		},
-		buildShown = function($e, dictCode, clss) {
+		buildShown = function($e, cache, clss) {
 			return clss[tree] ? function(evt) {
-				var items = dict.get(dictCode);
+				var items = cache.ready ? cache.items : null;
 				var drop = { tn: "div", attrs: [{ an: "class", av: "dd-drop" }], chs: [] };
 				if(items) {
 					var ul = { tn: "ul", chs: [] };
@@ -76,7 +74,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				}
 				util.appendChild($e[0], drop);
 			} : function(evt) {
-				var items = dict.get(dictCode);
+				var items = cache.ready ? cache.items : null;
 				var drop = { tn: "div", attrs: [{ an: "class", av: "dd-drop" }], chs: [] };
 				if(items) {
 					var ul = { tn: "ul", chs: [] };
@@ -97,9 +95,9 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 			};
 		};
 
-	form.register(function($e) {
-		var cls = util.classCheck($e[0], [readOnly, showOnly, modelName, tInt, tBool, required, tree, queried]),
-			rv;
+	form.register(function($e, options) {
+		var cls = util.classCheck($e[0], [readOnly, showOnly, modelName, tInt, required, tree, queried]),
+			rv, dynCache = {};
 		if(cls[modelName]) {
 			var n = $e.attr("name") || $e.attr("id"),
 				ve, rules = [];
@@ -107,12 +105,14 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				throw "Attribute[name] is invalid";
 			}
 			var dv = $e.attr(def) || "",
-				dictCode = $e.attr("dictCode") || "";
+				dynUri = $e.attr("uri") || "";
 			rv = dv;
-			if(!dictCode) { throw "Attribute[dictCode] is invalid"; }
+			$.extend(dynCache, options[n] || {});
+			if(dynUri) {
+				dynCache.uri = dynUri;
+			}
 			$e.empty().addClass("dd-ctn").addClass("dd-clean");
 			handCode.av = spanCode.av = dv;
-			spanDictCode.av = dictCode;
 			pa[0] = $e.attr(placeholder) || "请选择......";
 			util.appendChild($e[0], hand);
 			var $h = $e.children("a");
@@ -128,7 +128,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				}
 			};
 			if(!(cls[readOnly] || cls[showOnly])) {
-				$e.on("shown.dropdown", buildShown($e, dictCode, cls));
+				$e.on("shown.dropdown", buildShown($e, dynCache, cls));
 				$e.find(".icon-close").on("click", function(evt) {
 					select_change("", "", evt);
 				});
@@ -143,25 +143,25 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				}
 			}
 			if(rv) {
-				dict.transfer($span, dictCode, rv);
+				dict.dynTransfer(dynCache, $span, rv);
 			} else {
-				dict.apply(dictCode, util.noop);
+				dict.dynApply(dynCache, util.noop);
 			}
 			return {
 				name: n,
 				get: function() {
 					if((!cls[showOnly]) && rv) {
-						return cls[tBool] ? '1' === rv : cls[tInt] ? parseInt(rv) : rv;
+						return cls[tInt] ? parseInt(rv) : rv;
 					}
 				},
 				set: function(data) {
 					if(data) {
 						var cc = data === true ? "1" : ("" + data);
 						select_change(cc, "");
-						dict.transfer($span, dictCode, cc);
+						dict.dynTransfer(dynCache, $span, cc);
 					} else if(data === false || data === 0) {
 						select_change("0", "");
-						dict.transfer($span, dictCode, cc);
+						dict.dynTransfer(dynCache, $span, cc);
 					} else {
 						select_change("", "");
 					}
@@ -189,12 +189,13 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 		}
 
 	});
-	var selCap={an:"class",av:"select-caption"}, mhand = {
-		tn: "a",
-		attrs: [dd_hand],
-		chs: [icon_drop, { tn: "ul" }, a_placeHolder]
-	};
-	form.register(function($e) {
+	var selCap = { an: "class", av: "select-caption" },
+		mhand = {
+			tn: "a",
+			attrs: [dd_hand],
+			chs: [icon_drop, { tn: "ul" }, a_placeHolder]
+		};
+	form.register(function($e, options) {
 		var cls = util.classCheck($e[0], [readOnly, showOnly, mModelName, tInt, required, tree, queried]);
 		if(cls[mModelName]) {
 			var n = $e.attr("name") || $e.attr("id"),
@@ -204,9 +205,13 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 			}
 			var dv = [],
 				rv = [],
+				dynCache = {},
 				tmp = ($e.attr(def) || "").split(","),
-				dictCode = $e.attr("dictCode") || "";
-			if(!dictCode) { throw "Attribute[dictCode] is invalid"; }
+				dynUri = $e.attr("uri") || "";
+			$.extend(dynCache, options[n] || {});
+			if(dynUri) {
+				dynCache.uri = dynUri;
+			}
 			tmp.forEach(function(item) {
 				if(item) {
 					item = item.trim();
@@ -223,7 +228,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				lis.push({
 					tn: "li",
 					attrs: [{ an: "code", av: item }],
-					chs: [icon_close, { tn: "span", attrs: [{ an: "code", av: item},selCap] }]
+					chs: [icon_close, { tn: "span", attrs: [{ an: "code", av: item }, selCap] }]
 				});
 			});
 			util.appendChild($e[0], mhand);
@@ -240,7 +245,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 					chs: [icon_close,
 						{
 							tn: "span",
-							attrs: [{ an: "code", av: nv },selCap],
+							attrs: [{ an: "code", av: nv }, selCap],
 							chs: [cp]
 						}
 					]
@@ -258,23 +263,28 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 					rv.forEach(function(item) {
 						nlis.push({
 							tn: "li",
-							attrs: [{ an: "code", av: nv },selCap],
+							attrs: [{ an: "code", av: nv }, selCap],
 							chs: [icon_close, {
 								tn: "span",
-								attrs: [{ an: "code", av: item.code }, { an: "dict", av: dictCode }, { an: "class", av: "hand-dict" }]
+								attrs: [{ an: "code", av: item.code }, { an: "class", av: "hand-dyn-dict" }]
 							}]
 						});
 					});
 					util.appendChild($ul[0], nlis);
 					dict.doTransfer();
+					$ul.find(".hand-dyn-dict").each(function() {
+						var $this = $(this);
+						dict.dynTransfer(dynCache, $this);
+						$this.removeClass("hand-dyn-dict");
+					});
 				}
 			};
 			if(lis.length) {
 				$ul.find("span").each(function() {
-					dict.transfer($(this), dictCode);
+					dict.dynTransfer(dynCache,$(this));
 				});
 			} else {
-				dict.apply(dictCode, util.noop);
+				dict.dynApply(dynCache, util.noop);
 			}
 
 			if(!(cls[readOnly] || cls[showOnly])) {

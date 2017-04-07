@@ -37,14 +37,14 @@ $.define(["jQuery", "util"], "form", function($, util) {
 		},
 		serialize=util.serialize,
 		/* create form instance by jQuery obj */
-		bf = function($e) {
+		bf = function($e,itemOptions) {
 			if($e.length === 1) {
 				var items = {},
 					rules = [];
 				$e.find(".form-item").each(function() {
 					var $this = $(this);
 					for(var i = 0; i < impls.length; ++i) {
-						var item = impls[i]($this);
+						var item = impls[i]($this,itemOptions);
 						if(item && item.name) {
 							items[item.name] = item;
 						}

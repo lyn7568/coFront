@@ -86,7 +86,7 @@ $.define(["jQuery", "util", "doc", "win", "body"], "spa", function($, util, doc,
 					attrs.push({ an: "class", av: "nav-parent" });
 					var ul = { tn: "ul", attrs: [{ an: "class", av: "nav" }], chs: [] };
 					chses.push(ul);
-					build_menu_item(ul, item.children);
+					build_menu_item(ul.chs, item.children);
 				}
 				lia.attrs.push({ an: "class", av: lac });
 				po.push(li);
