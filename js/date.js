@@ -1,5 +1,6 @@
 $.use(["jQuery", "form", "doc", "util", "dropdown"], function($, form, doc, util, dd) {
-	var readOnly = "readOnly",
+	var m_rd = "必选的",
+		readOnly = "readOnly",
 		dd_ctn = "dd-ctn",
 		dd_clean = "dd-clean",
 		showOnly = "showOnly",
@@ -160,7 +161,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown"], function($, form, doc, util
 					if(rv !== val) {
 						$h.attr("code", val);
 						$span.text(dt);
-						rv=val;
+						rv = val;
 					}
 				} else {
 					rv = "";
@@ -227,15 +228,16 @@ $.use(["jQuery", "form", "doc", "util", "dropdown"], function($, form, doc, util
 			return {
 				name: n,
 				get: function() {
-					return rv?rv:undefined;
+					return rv ? rv : undefined;
 				},
 				set: function(data) {
-					change_date(data?data:"");
+					change_date(data ? data : "");
 				},
 				validate: function() {
 					if(cls[required]) {
 						if(!rv) {
-							return "不可为空";
+							this.invalid(m_rd);
+							return m_rd;
 						}
 					}
 					return util.validate(rules, this);

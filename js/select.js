@@ -1,5 +1,5 @@
 $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, doc, util, dd, dict) {
-	var readOnly = "readOnly",
+	var m_rd="必选的",readOnly = "readOnly",
 		showOnly = "showOnly",
 		modelName = 'select',
 		mModelName = "mselect",
@@ -169,7 +169,8 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				validate: function() {
 					if(cls[required]) {
 						if(!rv) {
-							return "不可为空";
+							this.invalid(m_rd);
+							return m_rd;
 						}
 					}
 					return util.validate(rules, this);
@@ -317,7 +318,8 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 				validate: function() {
 					if(cls[required]) {
 						if(!rv.length) {
-							return "不可为空";
+							this.invalid(m_rd);
+							return m_rd;
 						}
 					}
 					return util.validate(rules, this);

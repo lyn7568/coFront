@@ -381,7 +381,7 @@ if(typeof jQuery === 'undefined') {
 				if("function" === te) {
 					target.push(rule);
 				} else if("array" === te) {
-					target.concat(rule);
+					rule.forEach(function(item){target.push(item)});
 				}
 			},
 			validate: function(rules, obj) {
@@ -400,10 +400,10 @@ if(typeof jQuery === 'undefined') {
 				return true;
 			},
 			valid: function($e) {
-				$e.removeClass("invald");
+				$e.removeClass("invalid");
 			},
 			invalid: function($e) {
-				$e.addClass("invald");
+				$e.addClass("invalid");
 			},
 			appendChild: function(e, obj) {
 				var docf = doc.createDocumentFragment();

@@ -2177,6 +2177,10 @@ a cite {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 }
 
+.form-item.invalid > a.dd-hand, .form-item.text.invalid > input, .form-item.textarea.invalid > textarea {
+	border: 1px solid red;
+}
+
 .form-item.select > a.dd-hand, .form-item.text > input, .form-item.date > a.dd-hand {
     height: 34px;
     white-space: nowrap;

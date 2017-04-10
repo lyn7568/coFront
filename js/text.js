@@ -1,5 +1,5 @@
 $.use(["jQuery", "form", "util"], function($, form, util) {
-	var trim = "trim",
+	var m_rd="不可为空或空字符串",trim = "trim",
 		readOnly = "readOnly",
 		showOnly = "showOnly",
 		modelName = 'text',
@@ -12,7 +12,7 @@ $.use(["jQuery", "form", "util"], function($, form, util) {
 		placeholder = "placeholder",
 		required = "required";
 	form.register(function($e) {
-		var cls = util.classCheck($e[0], [modelName, trim, readOnly, showOnly, tInt, tBool, tFloat, pw, ]);
+		var cls = util.classCheck($e[0], [modelName, trim, readOnly, showOnly, tInt, tBool, tFloat, pw,required ]);
 		if(cls[modelName]) {
 			var n = $e.attr("name") || $e.attr("id"),
 				ve, rules = [];
@@ -59,7 +59,8 @@ $.use(["jQuery", "form", "util"], function($, form, util) {
 				validate: function() {
 					if(cls[required]) {
 						if(!ve.val().trim()) {
-							return "不可为空或空字符串";
+							this.invalid(m_rd)
+							return m_rd;
 						}
 					}
 					return util.validate(rules, this);

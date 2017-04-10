@@ -30,7 +30,7 @@ $.define(["jQuery", "util"], "form", function($, util) {
 		},
 		vd = function(items) {
 			for(key in items) {
-				if(!items[key].validate())
+				if(true!==items[key].validate())
 					return false;
 			}
 			return true;
@@ -65,7 +65,9 @@ $.define(["jQuery", "util"], "form", function($, util) {
 						if("function" === te) {
 							rules.push(rule);
 						} else if("array" === te) {
-							rules.concat(rule);
+							rule.forEach(function(item){
+								rules.push(item);
+							});
 						} else if("object" === te) {
 							for(key in rule) {
 								var im = items[key];
