@@ -1,10 +1,11 @@
 ;
 spa_define(function() {
-	return $.use(["spa", "pagedatagrid", "util"], function(spa, pdgf, util) {
+	return $.use(["spa", "pagedatagrid", "util", "validate"], function(spa, pdgf, util, validate) {
 		return {
 			main: function() {
 				var root = spa.findInMain(".sys_user_index");
 				var pdg = pdgf.build(root);
+//				validate.form(pdg.form, { name: { required: "not null", len: { val: 5, msg: "我的中国心" } } });
 				root.find(".opt-query").on("click", function() {
 					pdg.load();
 				});

@@ -2152,7 +2152,7 @@ a cite {
 
 .form-item.select {}
 
-.form-item > a.dd-hand, .form-item.text > input, .form-item.textarea > textarea {
+.form-item > a.dd-hand, .form-item.typeahead>input,.form-item.text > input, .form-item.textarea > textarea {
     display: block;
     width: 100%;
     padding: 6px 6px;
@@ -2177,11 +2177,11 @@ a cite {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 }
 
-.form-item.invalid > a.dd-hand, .form-item.text.invalid > input, .form-item.textarea.invalid > textarea {
+.form-item.invalid > a.dd-hand,.form-item.typeahead.invalid > input, .form-item.text.invalid > input, .form-item.textarea.invalid > textarea {
 	border: 1px solid red;
 }
 
-.form-item.select > a.dd-hand, .form-item.text > input, .form-item.date > a.dd-hand {
+.form-item.select > a.dd-hand, .form-item.typeahead > input, .form-item.text > input, .form-item.date > a.dd-hand {
     height: 34px;
     white-space: nowrap;
 }
@@ -2273,7 +2273,7 @@ a cite {
     content: '\e64e';
 }
 
-.form-item .dd-drop .select-item {
+.form-item .dd-drop .select-item{
     display: list-item;
     cursor: pointer;
     padding: 5px 10px;
@@ -2286,7 +2286,7 @@ a cite {
     -webkit-touch-callout: none;
 }
 
-.form-item .dd-drop .select-item:hover {
+.form-item .dd-drop .select-item:hover,.form-item .dd-drop .select-item.active {
     color: #fff;
     background-color: #3280fc;
 }

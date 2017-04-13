@@ -18,7 +18,12 @@ $.define(["jQuery", "doc", "body", "util"], "code", function($, doc, $body, util
 				var v = env.cd;
 				if(v) v = this.k ? v[this.k] : v;
 				if(v) return v;
-				return "";
+				return 0===v?"0":"";
+			},
+			"cp":function(env){
+				var v = env.cd;
+				if(v) return v;
+				return 0===v?"0":"";
 			},
 			"_index": function(env) {
 				return env.ci+1;

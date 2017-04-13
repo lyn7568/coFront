@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<link href="../css/common.css" rel="stylesheet" type="text/css" />
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<div class="container dt-form">
+			<div class="row">
+				<div class="col-2 item-caption">名称</div>
+				<div class="col-4">
+					<div class="form-item text trim " defVal="" name="name"></div>
+				</div>
+				<div class="col-2 item-caption">是否有效</div>
+				<div class="col-4">
+					<div class="form-item typeahead" uri="../ajax/test/typeahead?s=15&q=" name="qq"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id='g_info'>
+			<div id='g_err'></div>
+			<div id='g_warn'></div>
+			<div id='g_msg'></div>
+		</div>
+		<div id='g_loading' style="display: none;">
+			<div>
+				<i class='icon icon-spin icon-spinner-snake'></i>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/form.js"></script>
+	<script type="text/javascript" src="../js/dict.js"></script>
+	<script type="text/javascript" src="../js/text.js"></script>
+	<script type="text/javascript" src="../js/textarea.js"></script>
+	<script type="text/javascript" src="../js/dropdown.js"></script>
+	<script type="text/javascript" src="../js/select.js"></script>
+	<script type="text/javascript" src="../js/date.js"></script>
+	<script type="text/javascript" src="../js/pager.js"></script>
+	<script type="text/javascript" src="../js/codehtml.js"></script>
+	<script type="text/javascript" src="../js/datagrid.js"></script>
+	<script type="text/javascript" src="../js/pageDataGrid.js"></script>
+	<script type="text/javascript" src="../js/spa.js"></script>
+	<script type="text/javascript" src="../js/upload.js"></script>
+	<script type="text/javascript" src="../js/dyn-select.js"></script>
+	<script type="text/javascript" src="../js/validate.js"></script>
+	<script type="text/javascript" src="../js/typeahead.js"></script>
+
+	<script>
+		$(function() {
+			$.use(["spa", "util", "form"], function(spa, util, fb) {
+				fb.build($(".dt-form"));
+
+			});
+		});
+	</script>
+
+</html>
