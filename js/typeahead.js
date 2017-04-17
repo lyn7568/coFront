@@ -10,6 +10,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "code"], function($, form, d
 			this.keyPressInterval = 500;
 			this.caption = "";
 			this.autoselect = true;
+			this.ajaxCfg={mask:false};
 		};
 	typeahead.prototype = defCfg = {};
 
@@ -146,9 +147,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "code"], function($, form, d
 	};
 	defCfg.lookup = function(event) {
 		var self = this;
-		console.log("lookup")
 		self.query = self.ve.val();
-
 		if(!self.query || self.query.length < self.minLength) {
 			return self.shown ? self.hide() : self
 		}
