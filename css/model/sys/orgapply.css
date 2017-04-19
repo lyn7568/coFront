@@ -1,0 +1,17 @@
+@charset "utf-8";
+.sys_orgapply_edit{
+    width:80%;
+}
+.sys_orgapply_index .queryForm{
+    position: relative;
+}
+.sys_orgapply_index .queryForm .icon-search{
+    position: absolute;
+    top:7px;
+    right:15px;
+    font-size:25px;
+}
+.sys_orgapply_index .table-opt .icon {
+    margin: 10px;
+    font-size: 20px;
+}

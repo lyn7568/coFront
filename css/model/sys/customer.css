@@ -1,0 +1,19 @@
+@charset "utf-8";
+.sys_customer_new{
+    width:800px;
+}
+.sys_customer_myindex .tpl-btns .row{
+    padding-left: 10px;
+}
+.sys_customer_myindex th.opt-check,.sys_customer_myindex td.opt-check{
+    width: 30px;
+}
+.sys_customer_myedit{
+    width:800px;
+}
+.sys_customer_index .tpl-btns .row{
+    padding-left: 10px;
+}
+.sys_customer_index th.opt-check,.sys_customer_index td.opt-check{
+    width: 30px;
+}

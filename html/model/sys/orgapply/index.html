@@ -1,0 +1,48 @@
+<div class="sys_orgapply_index">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+
+	<div class="container queryForm">
+		<div class="row">
+			<div class="col-6" style="display: none">
+				<div class="form-item text" name="qn"></div><i class="icon icon-search"></i>
+			</div>
+
+		</div>
+	</div>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>申请时间</th>
+				<th>申请人ID</th>
+				<th>申请账户</th>
+				<th>企业名称</th>
+				<th>受理状态</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr ch-dir="list">
+					<td>{{-_index}}</td>
+					<td>{{createTime-showDay}}</td>
+					<td>{{professorId}}</td>
+					<td>{{email}}</td>
+					<td>{{name}}</td>
+					<td class="hand-dict" dict="solveStatus" code="{{solveStatus}}" ></td>
+					<td class="table-opt" authApplyId="{{authApplyId}}"><div class="btn opt-auth">
+						<i class="icon-plus"></i>
+						审核
+					</div></td>
+				</tr>
+			</tbody>
+			<tbody ch-dir="array.empty">
+			<tr>
+				<td class="empty-desc" colspan="5">表格暂无数据</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

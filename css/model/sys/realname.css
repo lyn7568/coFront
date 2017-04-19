@@ -1,0 +1,17 @@
+@charset "utf-8";
+.sys_realname_edit{
+    width:80%;
+}
+.sys_realname_index .queryForm{
+    position: relative;
+}
+.sys_realname_index .queryForm .icon-search{
+    position: absolute;
+    top:7px;
+    right:15px;
+    font-size:25px;
+}
+.sys_realname_index .table-opt .icon {
+    margin: 10px;
+    font-size: 20px;
+}

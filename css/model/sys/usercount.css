@@ -1,0 +1,73 @@
+@charset "utf-8";
+.sys_usercount_index .queryForm {
+    position: relative;
+}
+
+.sys_usercount_index .queryForm .icon-search {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    font-size: 25px;
+}
+
+.sys_usercount_index .table-opt .icon {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.sys_usercount_add, .sys_usercount_edit, .sys_usercount_itemlist, .sys_usercount_itemedit {
+    width: 800px;
+    padding: 10px;
+}
+.sys_usercount_itemedit{
+    height: 500px;
+}
+.sys_usercount_itemedit .main {
+    padding: 20px;
+}
+.sys_usercount_itemedit .main  {
+    height: 400px;
+}
+.sys_usercount_itemedit .main .nav {
+    height: 100%;
+    overflow: auto;
+}
+
+
+
+.sys_usercount_itemlist .ld-item {
+    padding: 0 10px;
+}
+
+.sys_usercount_itemlist .ld-caption {
+    font-weight: bold;
+}
+
+.sys_usercount_itemedit .nav li {
+    padding: 5px 0 5px 15px;
+    position: relative;
+}
+
+.sys_usercount_itemedit .nav li a {
+    padding: 0 0 0 10px;
+}
+
+.sys_usercount_itemedit .nav .branch-item > ul {
+    display: none;
+}
+
+.sys_usercount_itemedit .nav .branch-item.open > ul {
+    display: block;
+}
+
+.sys_usercount_itemedit .nav .branch-item > i.icon-usercount-toggle:before {
+    content: '\e6f1';
+}
+
+.sys_usercount_itemedit .nav .branch-item.open > i.icon-usercount-toggle:before {
+    content: '\e6f2';
+}
+
+.sys_usercount_itemedit .main > .btns {
+    padding: 20px;
+}

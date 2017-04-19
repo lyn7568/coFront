@@ -1,0 +1,61 @@
+﻿<div class="sys_chart_index">
+    <div class="container newForm">
+        <div class="row">
+            <div class="col-2 item-caption">用户总数</div>
+            <div class="col-10">
+                <div class="form-item text showOnly" defVal="" name="all"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">激活用户数</div>
+            <div class="col-10">
+                <div class="form-item text showOnly" defVal="" name="actived"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <div>按用户类型</div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>用户类型</th>
+                <th>数量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td>{{code-userType}}</td>
+                <td>{{num}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td colspan="7">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container dt-tpl-2">
+        <div>按用户角色</div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>用户角色</th>
+                <th>数量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td>{{code-userRole}}</td>
+                <td>{{num}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td colspan="7">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="type" style="height:400px"></div>
+</div>

@@ -1,0 +1,31 @@
+﻿<div class="sys_usercount_index">
+    <div id="type" style="height:400px"></div>
+    <div class="container dt-tpl">
+        <div>用户流量</div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>新增用户数</th>
+                <th>新增激活用户数</th>
+                <th>累计激活用户数</th>
+                <th>累计注册用户数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td>{{createTime}}</td>
+                <td>{{znum-count}}</td>
+                <td>{{jnum-count}}</td>
+                <td>{{ljnum}}</td>
+                <td>{{lznum}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td colspan="7">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
