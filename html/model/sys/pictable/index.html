@@ -1,0 +1,58 @@
+﻿﻿<div class="sys_chart_index">
+    <div class="container queryForm">
+        <div class="row">
+            <div class="col-6">
+                <div class="btn opt-new">
+                    <i class="icon-plus"></i>
+                    统计
+                </div>
+
+            </div>
+            <div class="col-6" style="display: none">
+                <div class="form-item text " name="qn"></div>
+            </div>
+            <div class="col-6 " style="display: none">
+                <div class="form-item text " name="qn2"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>申请时间</th>
+                <th>申请人ID</th>
+                <th>姓名</th>
+                <th>职称</th>
+                <th>机构</th>
+                <th>受理状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td>{{-_index}}</td>
+                <td>{{createTime-showDay}}</td>
+                <td>{{professorId}}</td>
+                <td>{{name}}</td>
+                <td>{{title}}</td>
+                <td>{{orgName}}</td>
+                <td class="hand-dict" dict="solveStatus" code="{{solveStatus}}" ></td>
+                <td class="table-opt" authApplyId="{{authApplyId}}"><div class="btn opt-auth">
+                    <i class="icon-plus"></i>
+                    审核
+                </div></td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="5">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="type" style="height:400px"></div>
+    <div id="test" style="height: 400px"></div>
+</div>
