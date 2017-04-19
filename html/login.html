@@ -70,12 +70,13 @@
 
 					loginForm.doPost("../ajax/sys/user/login", function(data) {
 						if(data) {
-							var uri = window.location.hash;
-							if(uri && uri.length>1){
-								window.location.href=decodeURIComponent(uri.substring(1));
-							}else{
-								window.location.href='index.html';
-							}
+							window.location.href='index.html#sys_usercount_index';
+//							var uri = window.location.hash;
+//							if(uri && uri.length>1){
+//								window.location.href=decodeURIComponent(uri.substring(1));
+//							}else{
+//								window.location.href='index.html#sys_usercount_index';
+//							}
 						} else {
 							$.util.error("invalid username or password");
 						}
