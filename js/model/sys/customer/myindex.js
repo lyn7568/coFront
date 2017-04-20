@@ -29,7 +29,7 @@ spa_define(function() {
 								}
 							})
 						} else {
-							util.alert("机构已不存在", function() {
+							util.alert("客户选择有误", function() {
 								pdg.load();
 							});
 						}

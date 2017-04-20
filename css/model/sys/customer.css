@@ -17,3 +17,13 @@
 .sys_customer_index th.opt-check,.sys_customer_index td.opt-check{
     width: 30px;
 }
+.sys_customer_salesindex .tpl-btns .row{
+    padding-left: 10px;
+}
+.sys_customer_salesindex th.opt-check,.sys_customer_salesindex td.opt-check{
+    width: 30px;
+}
+.sys_customer_salesedit{
+    width:800px;
+}
+.temtextarea{width: 100%;height: 80px;margin-top: 8px;border: none;border: 1px solid #ccc; border-radius: 4px;}
