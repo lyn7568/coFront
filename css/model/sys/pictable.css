@@ -1,0 +1,10 @@
+@charset "utf-8";
+.sys_pictable_index{
+    width:800px;
+}
+.sys_pictable_index .tpl-btns .row{
+    padding-left: 10px;
+}
+.sys_pictable_index th.opt-check,.sys_pictable_index td.opt-check{
+    width: 30px;
+}
