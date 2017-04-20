@@ -1,0 +1,49 @@
+﻿<div class="sys_pictable_index">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+
+
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-2 item-caption">名称</div>
+            <div class="col-4">
+                <div class="form-item dyn-select queried"  name="name"></div>
+            </div>
+            <!--<div class="col-2 item-caption">查看</div>-->
+            <div class="col-6">
+                <div class="btn opt-query">查看</div>
+            </div>
+        </div>
+
+    </div>
+    <div id="type" style="height:400px"></div>
+    <div class="container dt-tpl-2">
+        <div>用户流量</div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>新认领客户</th>
+                <th>新认领成功客户</th>
+                <th>累计认领成功客户</th>
+                <th>累计认领客户</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td>{{createTime}}</td>
+                <td>{{znum-count}}</td>
+                <td>{{jnum-count}}</td>
+                <td>{{ljnum}}</td>
+                <td>{{lznum}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td colspan="7">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
