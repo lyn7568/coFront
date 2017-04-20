@@ -6,7 +6,7 @@
 	<div class="container queryForm">
 		<div class="row">
 			<div class="col-6">
-				<div class="btn opt-new">
+				<div class="btn opt-new auth-15">
 					<i class="icon-plus"></i>
 					新增
 				</div>
@@ -23,6 +23,7 @@
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>权限</th>
 					<th>名称</th>
 					<th>URI</th>
 					<th>CSS</th>
@@ -35,6 +36,7 @@
 			<tbody>
 				<tr ch-dir="list">
 					<td>{{-_index}}</td>
+					<td>{{authRight}}</td>
 					<td>{{name}}</td>
 					<td>{{uri}}</td>
 					<td>{{css}}</td>
@@ -46,7 +48,7 @@
 			</tbody>
 			<tbody ch-dir="array.empty">
 				<tr>
-					<td class="empty-desc" colspan="8">表格暂无数据</td>
+					<td class="empty-desc" colspan="9">表格暂无数据</td>
 				</tr>
 			</tbody>
 		</table>
