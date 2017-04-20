@@ -57,7 +57,7 @@ spa_define(function () {
                                 },
                                 boundaryGap: false,
                                 type: "value",
-                                interval: 1,
+                                // interval: 1,
                                 min: 0
                             },
                             toolbox: {
@@ -66,7 +66,7 @@ spa_define(function () {
                                     dataZoom: {
                                         yAxisIndex: 'none'
                                     },
-                                    dataView: {readOnly: true},
+                                    dataView: {readOnly: false},
                                     magicType: {type: ['line', 'bar']},
                                     restore: {},
                                     saveAsImage: {}
