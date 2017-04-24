@@ -29,13 +29,13 @@ spa_define(function() {
 					var $org = root.find("td.opt-check>i.checked");
 					if($org.length) {
 						if($org.length > 1) {
-							util.alertMsg("只能选择一个用户");
+							util.alert("只能选择一个用户");
 						} else {
 							util.get("../ajax/sys/user/id/" + $org.attr("userId"), null, function(rd) {
 								if(rd) {
 									spa.showModal("sys_user_edit", { data: rd, hand: function() { pdg.load() } })
 								} else {
-									util.alertMsg("机构已不存在", function() { pdg.load(); });
+									util.alert("用户不存在了", function() { pdg.load(); });
 								}
 							}, {});
 						}
@@ -138,6 +138,29 @@ spa_define(function() {
 						util.alert("请选择一个用户");
 					}
 				});
+                root.find(".opt-reset").on("click", function() {
+                    var $org = root.find("td.opt-check>i.checked");
+                    if($org.length) {
+                        var ret = [];
+                        $org.each(function() {
+                            ret.push($(this).attr("userId"));
+                        });
+                        util.boxMsg({
+                            title: "重置密码",
+                            content: "您是否要重置选中用户的密码！！！！！！！！！！！！！！！！！！",
+                            btns: [{
+                                caption: "确认",
+                                hand: function() {
+                                    util.post("../ajax/sys/user/resetpw", { ids: ret }, function() { pdg.load() }, {});
+                                }
+                            },
+                                { caption: "取消" }
+                            ]
+                        });
+                    } else {
+                        util.alert("请选择一个用户");
+                    }
+                });
 				pdg.load();
 
 			},

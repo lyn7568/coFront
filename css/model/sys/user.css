@@ -7,16 +7,16 @@
     width: 35px;
 }
 
-.sys_user_new,.sys_user_role,.sys_user_right,.sys_user_menu {
+.sys_user_new,.sys_user_role,.sys_user_right,.sys_user_menu,.sys_user_edit,.sys_user_cp {
     width: 800px;
     padding: 0 20px 10px;
 }
 
-.sys_user_new .newForm {
+.sys_user_new .newForm,.sys_user_edit .newForm,.sys_user_cp .newForm{
     position: relative;
 }
 
-.sys_user_new .newForm .head-ctn {
+.sys_user_new .newForm .head-ctn,.sys_user_edit .newForm .head-ctn {
     position: absolute;
     top: 3px;
     right: 30px;
@@ -24,7 +24,7 @@
     height: 190px;
 }
 
-.sys_user_new .newForm .head-ctn .upload-btn {
+.sys_user_new .newForm .head-ctn .upload-btn,.sys_user_edit .newForm .head-ctn .upload-btn {
     position: absolute;
     bottom: 10px;
     left: 40px;
@@ -37,21 +37,21 @@
     padding-top: 6px;
 }
 
-.sys_user_new .newForm .head-ctn .upload-btn i {
+.sys_user_new .newForm .head-ctn .upload-btn i,.sys_user_edit .newForm .head-ctn .upload-btn i {
     font-size: 16px;
     color: rgb(95,184,120);
 }
-.sys_user_new .newForm .head-ctn img {
+.sys_user_new .newForm .head-ctn img,.sys_user_edit .newForm .head-ctn img {
     width: 100%;
    height: 100%;
 }
-.sys_user_new .upload-item{
+.sys_user_new .upload-item,.sys_user_edit .upload-item{
 	position: absolute;
 	width: 100%;
 	top:50%;
 	transform: translateY(-50%);
 }
-.sys_user_new .upload-item .progress{
+.sys_user_new .upload-item .progress,.sys_user_edit .upload-item .progress{
 	width: 1px;
 	height: 30px;
 	background-color: #3280FC;
@@ -59,4 +59,5 @@
 .sys_user_menu .nav ul{
 	padding-left: 20px;
 }
+
 
