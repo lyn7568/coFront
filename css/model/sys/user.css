@@ -7,12 +7,12 @@
     width: 35px;
 }
 
-.sys_user_new,.sys_user_role,.sys_user_right,.sys_user_menu,.sys_user_edit {
+.sys_user_new,.sys_user_role,.sys_user_right,.sys_user_menu,.sys_user_edit,.sys_user_cp {
     width: 800px;
     padding: 0 20px 10px;
 }
 
-.sys_user_new .newForm,.sys_user_edit .newForm {
+.sys_user_new .newForm,.sys_user_edit .newForm,.sys_user_cp .newForm{
     position: relative;
 }
 

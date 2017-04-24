@@ -127,6 +127,7 @@
 					<ul class="dd-drop">
 						<li class="opt-user-info-cfg">个人信息设置</li>
 						<li class="opt-user-menu-cfg">个人菜单设置</li>
+						<li class="opt-user-cp-cfg">修改密码</li>
 					</ul>
 				</a>
 			</div>
@@ -231,8 +232,12 @@
 
 				});
 				$(".opt-user-info-cfg").on("click", function() {
-
-					util.alert("修改个人信息");
+                    util.get("../ajax/sys/user/id/" + util.data("loginUser").id, null, function(data) {
+                        spa.showModal("sys_user_edit", { data: data})
+                    },{});
+				});
+				$(".opt-user-cp-cfg").on("click", function() {
+                    spa.showModal("sys_user_cp");
 				});
 
 			});
