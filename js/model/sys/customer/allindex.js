@@ -18,7 +18,7 @@ spa_define(function () {
                 });
                 pdg.load();
                 var event = function () {
-                    root.find(".table-opt i.name").on("click", function () {
+                    root.find(".table-opt a.name").on("click", function () {
                         var professorId = $(this).parent().attr("professorId");
                         window.open('http://www.ekexiu.com/information-brow.html?professorId=' + professorId);
                     });
