@@ -26,7 +26,7 @@
 .sys_customer_salesedit{
     width:800px;
 }
-.sys_customer_allindex .table-opt .name{
+.sys_customer_allindex .table-opt .name,.sys_customer_myindex .table-opt .name, .sys_customer_salesindex .table-opt .name,.sys_customer_index .table-opt .name{
     cursor:pointer;
 }
 .temtextarea{width: 100%;height: 80px;margin-top: 8px;border: none;border: 1px solid #ccc; border-radius: 4px;}

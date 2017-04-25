@@ -35,6 +35,10 @@ spa_define(function() {
 						}
 					}, {});
 				});
+                root.on("click",".table-opt a.name", function () {
+                    var professorId = $(this).parent().attr("professorId");
+                    window.open('http://www.ekexiu.com/information-brow.html?professorId=' + professorId);
+                });
 			}
 		};
 	});
