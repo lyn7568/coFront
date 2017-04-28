@@ -4,7 +4,8 @@ spa_define(function(){
 		return{
 			main: function() {				
 				var root = spa.findInMain(".sys_customer_index");
-				var pdg = pdgf.build(root);
+                root.find((".org"), {orgname: {keyPressInterval: 1}});
+                var pdg = pdgf.build(root);
 				pdg.code.shell("showDay", function(env) {
 					if(env.cd && env.cd[this.k]) {
 						var day = env.cd[this.k];
