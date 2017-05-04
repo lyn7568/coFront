@@ -1,0 +1,13 @@
+@charset "utf-8";
+.sys_consult_index .tpl-btns .row{
+    padding-left: 10px;
+}
+.sys_consult_index th.opt-check,.sys_consult_index td.opt-check{
+    width: 30px;
+}
+.sys_consult_index .table-opt .name{
+    cursor:pointer;
+}
+.sys_consult_edit{
+    width:800px;
+}

@@ -1,0 +1,83 @@
+<div class="sys_consult_index" loadUri="../ajax/consult/qa" pageSize="10" pageNo="1" pageIndex="pi">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+	<div class="container dt-form">
+		<div class="row">
+			<div class="col-2 item-caption">咨询者</div>
+			<div class="col-4">
+				<div class="form-item text" defVal="" name="consultantName"></div>
+			</div>
+			<div class="col-2 item-caption ">专家</div>
+			<div class="col-4">
+				<div class="form-item text" defVal="" name="professorName"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2 item-caption org">咨询主题</div>
+			<div class="col-4">
+				<div class="form-item text" defVal="" name="consultTitle"></div>
+			</div>
+			<div class="col-2 item-caption ">咨询状态</div>
+			<div class="col-4">
+				<div class="form-item select" dictCode="consultStatus" defVal="" name="consultStatus"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-10">
+
+			</div>
+			<div class="col-2">
+				<div class="btn opt-query pull-right">
+					<i class="icon-search"></i> 查询
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container page-split"></div>
+	<style type="text/css">
+		.table.table-bordered tr th{text-align: center;}
+	</style>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>查看</th>
+					<th>序号</th>
+					<th>咨询时间</th>
+					<th>咨询主题</th>
+					<th>咨询者</th>
+					<th>咨询者机构</th>
+					<th>专家姓名</th>
+					<th>专家机构</th>
+					<th>资讯状态</th>
+					<th>评价状态</th>
+					<th>评价留言</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ch-dir="list">
+					<td class="table-opt" consultId="{{consultId}}"><i class="icon icon-edit"></i></td>
+					<td>{{pi}}</td>
+					<td>{{createTime-showDay}}</td>
+					<td>{{consultTitle}}</td>
+					<td>{{consultantName}}</td>
+					<td>{{consultantOrg}}</td>
+					<td>{{professorName}}</td>
+					<td>{{professorOrg}}</td>
+					<td class="hand-dict" dict="consultStatus" code="{{consultStatus}}"></td>
+					<td class="hand-dict" dict="assessStatus" code="{{assessStatus}}"></td>
+					<td>{{assessContant}}</td>
+				</tr>
+			</tbody>
+			<tbody ch-dir="array.empty">
+				<tr>
+					<td class="empty-desc" colspan="11">表格暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<ul class="dt-pager"></ul>
+</div>
