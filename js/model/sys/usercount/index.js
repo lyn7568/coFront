@@ -23,7 +23,7 @@ spa_define(function () {
                 var query = function () {
                     if(allData != null) {
                         var td = tableData.data = [];
-                        for(var i = 24; i < allData.length; ++i) {
+                        for(var i = allData.length-7; i < allData.length; ++i) {
                             var item = allData[i];
                             if(item) {
                                 td.push(item);
@@ -81,7 +81,7 @@ spa_define(function () {
                                 }
                             },
                             dataZoom: [{
-                                start: "80"
+                                startValue: allData[allData.length-7].createTime
                             }, {
                                 type: 'inside'
                             }],
