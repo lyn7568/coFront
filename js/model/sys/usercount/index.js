@@ -21,7 +21,15 @@ spa_define(function () {
                 });
 
                 var query = function () {
-                    if (allData != null) {
+                    if(allData != null) {
+                        var td = tableData.data = [];
+                        for(var i = 24; i < allData.length; ++i) {
+                            var item = allData[i];
+                            if(item) {
+                                td.push(item);
+                            }
+                        }
+                    } else {
                         tableData.data = allData;
                     }
                     cr.val(tableData.data);
@@ -73,7 +81,7 @@ spa_define(function () {
                                 }
                             },
                             dataZoom: [{
-                                startValue: ""
+                                start: "80"
                             }, {
                                 type: 'inside'
                             }],
