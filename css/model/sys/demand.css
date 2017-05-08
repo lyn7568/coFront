@@ -1,0 +1,13 @@
+@charset "utf-8";
+.sys_demand_index .tpl-btns .row{
+    padding-left: 10px;
+}
+.sys_demand_index th.opt-check,.sys_demand_index td.opt-check{
+    width: 30px;
+}
+.sys_demand_index .table-opt .name{
+    cursor:pointer;
+}
+.sys_demand_edit{
+    width:800px;
+}

@@ -1,0 +1,80 @@
+<div class="sys_demand_index" loadUri="../ajax/demand/pq" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1 item-caption">主题</div>
+            <div class="col-5">
+                <div class="form-item text" defVal="" name="demandTitle"></div>
+            </div>
+            <div class="col-1 item-caption ">发布者</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="professorName"></div>
+            </div>
+            <div class="col-1 item-caption">需求目的</div>
+            <div class="col-2">
+                <div class="form-item select" dictCode="demandAim" defVal="" name="demandAim"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-5">
+                <div class="form-item date" defVal="" name="bt"></div>
+            </div>
+            <div class="col-1 item-caption center">至</div>
+            <div class="col-5">
+                <div class="form-item date" defVal="" name="et"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <style type="text/css">
+        .table.table-bordered tr th{text-align: center;}
+    </style>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>操作</th>
+                <th>序号</th>
+                <th>主题</th>
+                <th>需求目的</th>
+                <th>发布者</th>
+                <th>发布时间</th>
+                <th>需求类型</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="table-opt" demandId="{{demandId}}"><i class="icon icon-edit"></i></td>
+                <td>{{pi}}</td>
+                <td>{{demandTitle}}</td>
+                <td class="hand-dict" dict="demandAim" code="{{demandAim}}"></td>
+                <td>{{professorName}}</td>
+                <td>{{createTime-showDay}}</td>
+                <td class="hand-dict" dict="demandType" code="{{demandType}}"></td>
+
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="7">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>
