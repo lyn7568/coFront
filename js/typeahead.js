@@ -138,7 +138,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "code"], function($, form, d
 				chs: [pt]
 			});
 		});
-		if(this.autoselect) {
+		if(this.autoselect && lis.length) {
 			lis[0].attrs[2].av = " active select-item";
 		}
 		this.menu.empty();
@@ -205,6 +205,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "code"], function($, form, d
 			rc.empty();
 			this.render = function(items) {
 				rc.val(items);
+				self.menu=self.ctn.find(".dd-drop>ul");
 			}
 		} else {
 			$("<div class='dd-drop'><ul></ul></div>").appendTo($e);
