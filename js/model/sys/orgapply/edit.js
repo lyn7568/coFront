@@ -24,7 +24,7 @@ spa_define(function () {
                     pics.empty();
                     if (src && src.length) {
                         for (var i = 0; i < src.length; ++i) {
-                            pics.append($("<img src='../data/" + src[i].authSrc + "'/>"));
+                            pics.append($("<img src='http://www.ekexiu.com/data/authImg/" + src[i].authSrc + "'/>"));
                         }
                     }
                 });
