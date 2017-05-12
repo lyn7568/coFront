@@ -48,6 +48,9 @@ if(typeof jQuery === 'undefined') {
 			warnDiv = $("#g_warn"),
 			msgDiv = $("#g_msg"),
 			err_msg = {},
+			layer_css=function(){
+				this.shade.css("display", "block");
+			},
 			layer_curr = {
 				index: 5000000,
 				remove: noop,
@@ -82,7 +85,8 @@ if(typeof jQuery === 'undefined') {
 					ly = {
 						index: inx,
 						remove: layer_remove,
-						prev: layer_curr
+						prev: layer_curr,
+						css:layer_css
 					};
 				ly.shade = $(
 					"<div class='layer-shade layer-" + inx + "' style='z-index:" +

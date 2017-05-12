@@ -41,10 +41,18 @@
 	<style type="text/css">
 		.table.table-bordered tr th{text-align: center;}
 	</style>
+	<div class="container tpl-btns">
+		<div class="row">
+			<div class="btn opt-mail">
+				<i class="icon-envelope"></i> 发送邀请邮件
+			</div>
+		</div>
+	</div>
 	<div class="container dt-tpl">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
+					<th class="opt-check"><i class="icon icon-st-check"></i> </th>
 					<th>操作</th>
 					<th>序号</th>
 					<th>客户</th>
@@ -60,6 +68,7 @@
 			</thead>
 			<tbody>
 				<tr ch-dir="list">
+					<td class="opt-check"><i class="icon icon-st-check" name="{{name}}" email="{{email}}" phone="{{phone}}" inviteCode="{{inviteCode}}"></i></td>
 					<td class="table-opt" powerId="{{powerId}}" style="cursor: hand;"><i class="icon icon-edit"></i></td>
 					<td>{{pi}}</td>
 					<td class="table-opt" professorId="{{id}}"><a class="name">{{name}}</a></td>

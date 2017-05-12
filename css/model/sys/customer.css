@@ -8,7 +8,7 @@
 .sys_customer_myindex th.opt-check,.sys_customer_myindex td.opt-check{
     width: 30px;
 }
-.sys_customer_myedit{
+.sys_customer_myedit,.sys_customer_myindex_mail{
     width:800px;
 }
 .sys_customer_index .tpl-btns .row{
