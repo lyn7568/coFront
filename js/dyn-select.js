@@ -265,10 +265,10 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 					rv.forEach(function(item) {
 						nlis.push({
 							tn: "li",
-							attrs: [{ an: "code", av: nv }, selCap],
+							attrs: [{ an: "code", av: item }, selCap],
 							chs: [icon_close, {
 								tn: "span",
-								attrs: [{ an: "code", av: item.code }, { an: "class", av: "hand-dyn-dict" }]
+								attrs: [{ an: "code", av: item }, { an: "class", av: "hand-dyn-dict" }]
 							}]
 						});
 					});
@@ -290,7 +290,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 			}
 
 			if(!(cls[readOnly] || cls[showOnly])) {
-				$e.on("shown.dropdown", buildShown($e, dictCode, cls));
+				$e.on("shown.dropdown", buildShown($e, dynCache, cls));
 				$ul.on("click", "li>i", function(e) {
 					$e.addClass("dd-hold-one");
 					var idx = rv.indexOf(this.parentNode.getAttribute("code"));
