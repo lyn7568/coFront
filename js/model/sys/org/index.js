@@ -2,7 +2,7 @@
 spa_define(function(){
 	return $.use(["spa","pagedatagrid","util"],function(spa,pdgf,util){
 		return{
-			main: function() {				
+			main: function() {
 				var root = spa.findInMain(".sys_org_index");
 				var pdg = pdgf.build(root);
 				pdg.code.shell("showDay", function(env) {
@@ -41,11 +41,12 @@ spa_define(function(){
 						} else {
 							$.util.get("../ajax/sys/org/id/"+$org.attr("orgId"),null,function(rd){
 								if(rd){
-									spa.showModal("sys_org_edit", { data:rd, hand: function() { pdg.load() } })								
+									spa.showModal("sys_org_edit", { data:rd, hand: function() { pdg.load() } })
 								}else{
 									util.alertMsg("机构已不存在", function(){pdg.load();});
 								}
 							},{});
+                            // window.open('http://localhost/cmp-portal/cmp-updateinfo-demo.html?orgId=' + $org.attr("orgId"));
 						}
 					} else {
 						util.alert("请选择一个机构");
@@ -56,13 +57,13 @@ spa_define(function(){
 					if($org.length) {
 						var ret =[];
 						$org.each(function(){
-							ret.push($(this).attr("orgId"));						
+							ret.push($(this).attr("orgId"));
 						});
 						util.boxMsg({
 							title: "确认删除",
 							content: "您是否要删除选中的机构信息,机构信息删除后不可恢复！！！！！！！！！！！！！！！！！！",
 							btns: [{ caption: "删除", hand: function() {
-								util.post("../ajax/sys/org/del",{ids:ret},function(){pdg.load()},{});							
+								util.post("../ajax/sys/org/del",{ids:ret},function(){pdg.load()},{});
 							} },
 								{ caption: "取消" }
 							]

@@ -8,19 +8,19 @@
 			<div class="col-4">
 				<div class="form-item text" defVal="" name="name"></div>
 			</div>
-			<div class="col-2 item-caption ">机构类型</div>
+			<div class="col-2 item-caption ">城市</div>
 			<div class="col-4">
-				<div class="form-item select" dictCode="bool" defVal="" name="type"></div>
+				<div class="form-item text" defVal="" name="city"></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 item-caption ">日期</div>
+			<div class="col-2 item-caption">所属行业</div>
 			<div class="col-4">
-				<div class="form-item date" defVal="" name="bt"></div>
+				<div class="form-item text" defVal="" name="industry"></div>
 			</div>
-			<div class="col-2 item-caption center">至</div>
+			<div class="col-2 item-caption ">专注领域</div>
 			<div class="col-4">
-				<div class="form-item date" defVal="" name="et"></div>
+				<div class="form-item text" defVal="" name="subject"></div>
 			</div>
 		</div>
 		<div class="row">
@@ -55,21 +55,28 @@
 			<thead>
 				<tr>
 					<th class="opt-check" ><i class="icon icon-st-check"></i> </th>
-					<th>序号</th>
 					<th>PageIndex</th>
 					<th>名称</th>
-					<th>登记日期</th>
-					<th>类型</th>
+					<th>城市</th>
+					<th>所属行业</th>
+					<th>专注领域</th>
+					<th>网址</th>
+					<th>负责人</th>
+					<th>创建日期</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ch-dir="list">
 					<td class="opt-check" ><i class="icon icon-st-check" orgId="{{id}}"></i></td>
-					<td>{{-_index}}</td>
 					<td>{{pi}}</td>
 					<td>{{name}}</td>
+					<td>{{city}}</td>
+					<td>{{industry}}</td>
+					<td>{{subject}}</td>
+					<td>{{orgUri}}</td>
+					<td>{{principal}}</td>
 					<td>{{createTime-showDay}}</td>
-					<td class="hand-dict" dict="bool" code="{{type}}"></td>
+					<!--<td class="hand-dict" dict="bool" code="{{type}}"></td>-->
 				</tr>
 			</tbody>
 			<tbody ch-dir="array.empty">

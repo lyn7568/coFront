@@ -1,36 +1,149 @@
 <div class="sys_org_new centerModal">
-	<div class="modal-ctrl">
-		<i class="icon icon-times"></i>
-	</div>
-	<div class="container newForm">
-		<div class="row">
-			<div class="col-2 item-caption">机构NAME</div>
-			<div class="col-10">
-				<div class="form-item text" defVal="" name="name"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-2 item-caption">机构类型</div>
-			<div class="col-10">
-				<div class="form-item select" defVal="" dictCode="bool" name="type"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-2 item-caption">备注</div>
-			<div class="col-10">
-				<div class="form-item textarea" defVal="" name="descp"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-10"></div>
-			<div class="col-2">
-				<div class="btn pull-right opt-save">
-					<i class="icon-check"></i> SAVE
-				</div>
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container newForm">
+        <div class="row">
+            <div class="col-2 item-caption">企业名称</div>
+            <div class="col-6">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">邮箱账户</div>
+            <div class="col-6">
+                <div class="form-item text" defVal="" name="email"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业简称</div>
+            <div class="col-6">
+                <div class="form-item text" defVal="" name="forShort"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业网址</div>
+            <div class="col-6">
+                <div class="form-item text" defVal="" name="orgUrl"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">创建时间</div>
+            <div class="col-4">
+                <div class="form-item date" defVal="" name="foundTime"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">地址</div>
+            <div class="col-8">
+                <form action="" name="form1">
+                    <div class=" col-6 citybox">
+														<span class="frmtype frmtypeW" id="Province">
+				                                        	<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="oprovince">请选择企业总部所在省或直辖市</i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择企业总部所在省或直辖市">请选择企业总部所在省或直辖市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_Province"
+                                                                   value="请选择企业总部所在省或直辖市">
+				                                        </span>
+                    </div>
+                    <div class="col-6 citybox">
+														<span class="frmtype frmtypeW" id="City">
+				                                       		<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="ocity"></i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择企业总部所在城市">请选择企业总部所在城市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_City" value="请选择企业总部所在城市 ">
+				                                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">简介</div>
+            <div class="col-4">
+                <div class="form-item textarea" defVal="" name="descp"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">标签</div>
+            <div class="col-4">
+                <div class="form-item select" defVal="" dictCode="typeOrg" name="orgType"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">所属行业</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="newIndustry"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-industry">
+                    <i class="icon-check"></i> SAVE
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="industryList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">专注领域</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="newSubject"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-subject">
+                    <i class="icon-check"></i> SAVE
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="subjectList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业规模</div>
+            <div class="col-4">
+                <div class="form-item select" defVal="" dictCode="orgSize" name="orgSize"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业资质</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="newQualification"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-qf">
+                    <i class="icon-check"></i> SAVE
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="qualificationList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <div class="btn pull-right opt-save">
+                    <i class="icon-check"></i> SAVE
+                </div>
+            </div>
+        </div>
+        <div class="head-ctn">
+            <div id="uploader-demo">
+                <div id="fileList" class="uploader-list"></div>
+                <div id="filePicker">选择图片</div>
+            </div>
+        </div>
 
-			</div>
-
-		</div>
-	</div>
-
+    </div>
 </div>

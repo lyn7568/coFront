@@ -231,7 +231,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown"], function($, form, doc, util
 					return rv ? rv : undefined;
 				},
 				set: function(data) {
-					change_date(data ? data : "");
+					date_change(data ? data : "");
 				},
 				validate: function() {
 					if(cls[required]) {
