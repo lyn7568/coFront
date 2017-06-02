@@ -1,9 +1,9 @@
 {
   "handleFiles": [],
   "ignoreFiles": [
-    "/build_cfg/*",
-    ".git/**/*",
-    ".gitignore",
+    "/build_cfg/**/*",
+    "/**/.git/**/*",
+    "/**/.gitignore",
     "/212efr/fsdijf/dfsd"
   ]
 }
