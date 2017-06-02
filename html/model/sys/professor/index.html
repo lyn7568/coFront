@@ -1,0 +1,99 @@
+<div class="sys_professor_index" loadUri="../ajax/sys/professor/pqperson" pageSize="10" pageNo="1" pageIndex="pi">
+	<div class="modal-ctrl">
+		<i class="icon icon-times"></i>
+	</div>
+	<div class="container dt-form">
+		<div class="row">
+			<div class="col-1 item-caption">机构</div>
+			<div class="col-5">
+				<div class="form-item text" defVal="" name="orgName"></div>
+			</div>
+			<div class="col-1 item-caption ">专家</div>
+			<div class="col-2">
+				<div class="form-item text" defVal="" name="name"></div>
+			</div>
+			<div class="col-1 item-caption">审核状态</div>
+			<div class="col-2">
+				<div class="form-item select" dictCode="professorState" defVal="" name="professorState"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1 item-caption ">创建日期</div>
+			<div class="col-5">
+				<div class="form-item date" defVal="" name="bt"></div>
+			</div>
+			<div class="col-1 item-caption center">至</div>
+			<div class="col-5">
+				<div class="form-item date" defVal="" name="et"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-10">
+
+			</div>
+			<div class="col-2">
+				<div class="btn opt-query pull-right">
+					<i class="icon-search"></i> 查询
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container page-split"></div>
+	<div class="container tpl-btns">
+		<div class="row">
+			<div class="btn opt-new">
+				<i class="icon-plus"></i> 增加
+			</div>
+			<!--<div class="btn opt-edit">-->
+				<!--<i class="icon-edit"></i>编缉-->
+			<!--</div>-->
+		</div>
+	</div>
+	<div class="container dt-tpl">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<!--<th class="opt-check" ><i class="icon icon-st-check"></i> </th>-->
+					<th>序号</th>
+					<th>编辑</th>
+					<th>专家</th>
+					<th>职称</th>
+					<th>城市</th>
+					<th>机构</th>
+					<th>手机</th>
+					<th>邮箱</th>
+					<th>时间</th>
+					<th>录入员</th>
+					<th>审核状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ch-dir="list">
+					<!--<td class="opt-check" ><i class="icon icon-st-check" id="{{id}}"></i></td>-->
+					<td>{{pi}}</td>
+					<td class="table-opt edit" pId="{{id}}"><div class="btn opt-auth state{{professorState}}">
+						<i class="icon-edit"></i>
+						编辑
+					</div></td>
+					<td class="table-opt" professorId="{{id}}"><a class="name">{{name}}</a></td>
+					<td>{{title}}</td>
+					<td>{{province}}</td>
+					<td>{{orgName}}</td>
+					<td>{{phone}}</td>
+					<td>{{email}}</td>
+					<td>{{createTime-showDay}}</td>
+					<td>{{enter}}</td>
+					<td class="hand-dict" dict="professorState" code="{{professorState}}"></td>
+				</tr>
+			</tbody>
+			<tbody ch-dir="array.empty">
+				<tr>
+					<td class="empty-desc" colspan="11">表格暂无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<ul class="dt-pager"></ul>
+</div>

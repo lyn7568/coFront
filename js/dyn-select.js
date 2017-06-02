@@ -108,7 +108,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "dict"], function($, form, d
 			var dv = $e.attr(def) || "",
 				dynUri = $e.attr("uri") || "";
 			rv = dv;
-			$.extend(dynCache, options[n] || {});
+            $.extend(dynCache, options ? options[n] || {} : {});
 			if(dynUri) {
 				dynCache.uri = dynUri;
 			}

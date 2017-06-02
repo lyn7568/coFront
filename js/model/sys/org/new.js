@@ -35,7 +35,7 @@ spa_define(function () {
                             util.alert("请输入邮箱账户")
                         } else if (form.val().forShort == null) {
                             util.alert("请输入企业简称")
-                        } else if (form.val().city == null || form.val().city === "请选择企业总部所在城市") {
+                        } else if (form.val().city == null || form.val().city === "请选择城市") {
                             util.alert("请选择企业所在城市")
                         }
                         else form.doPost("../ajax/sys/org/create", function () {
@@ -43,7 +43,9 @@ spa_define(function () {
                                 if (data) {
                                     data();
                                 }
-                            }, {});
+                            },function (data) {
+                                util.alert(data.msg);
+                            });
                     };
                 root.find(".modal-ctrl .icon-times").on("click", function () {
                     spa.closeModal();
@@ -193,7 +195,7 @@ spa_define(function () {
                     var aVal = $(this).text();
                     $(this).parent().parent().parent().find('.mr_show').text(aVal);
                     $(this).parent().parent().parent().find('input[name=cho_City]').val(aVal);
-                    if ($("#ocity").text() == "请选择企业总部所在城市") {
+                    if ($("#ocity").text() == "请选择城市") {
                         $("#ocity").removeClass("mr_select");
                     } else {
                         $("#ocity").addClass("mr_select");

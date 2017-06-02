@@ -8,6 +8,9 @@
 .sys_demand_index .table-opt .name{
     cursor:pointer;
 }
+.sys_demand_index td.table-opt.col-1.random {
+    padding: 1px;
+}
 .sys_demand_edit{
     width:800px;
 }

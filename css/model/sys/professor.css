@@ -1,0 +1,104 @@
+@charset "utf-8";
+.sys_professor_index .tpl-btns .row,.sys_professor_check .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_professor_index th.opt-check,.sys_professor_check th.opt-check {
+    width: 35px;
+}
+
+.sys_professor_index td.table-opt.edit,.sys_professor_check td.table-opt.edit {
+    padding: 1px;
+    text-align: center;
+}
+
+.sys_professor_index .table-opt .name,.sys_professor_check .table-opt .name{
+    cursor:pointer;
+}
+
+.sys_professor_index .state0{
+    display: none;
+}
+
+.sys_professor_new{
+    width: 800px;
+    height: 600px;
+    padding: 0 20px 10px;
+}
+
+.sys_professor_new .citybox .frmtype, .sys_professor_edit .citybox .frmtype {
+    border: 1px solid #B5B5B5;
+}
+
+.sys_professor_new .citybox span, .sys_professor_edit .citybox span {
+    position: relative;
+    width: 96%;
+    display: inline-block;
+    padding: 0 0 0 6px;
+    cursor: pointer;
+    margin: 0;
+    background: #fff;
+}
+
+.sys_professor_new .citybox span .mr_show.mr_select，.sys_professor_edit .citybox span .mr_show.mr_select {
+    color: #333;
+}
+
+.sys_professor_new .citybox span .mr_show, .sys_professor_edit .citybox span .mr_show {
+    font-style: normal;
+    color: #AAAAAA;
+    width: 100%;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    position: relative;
+}
+
+.sys_professor_new .citybox span .mr_show .mr_select, .sys_professor_edit .citybox span .mr_show .mr_select {
+    color: #333;
+}
+
+.sys_professor_new .citybox span .mr_sj, .sys_professor_edit .citybox span .mr_sj {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border: 6px solid #fff;
+    border-color: #28b8fa transparent transparent;
+}
+
+.sys_professor_new .citybox span ul, .sys_professor_edit .citybox span ul {
+    width: 98%;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    border: 1px solid #E8E8E8;
+    background: #fff;
+    left: -1px;
+    top: 38px;
+    margin-bottom: 10px;
+    display: none;
+    z-index: 10;
+    max-height: 280px;
+    overflow: auto;
+}
+
+.sys_professor_new .citybox span ul li, .sys_professor_edit .citybox span ul li {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    border-top: 1px solid #E8E8E8;
+}
+
+.sys_professor_new .citybox span ul li:first-child, .sys_professor_edit .citybox span ul li:first-child {
+    border-top: 0;
+}
+
+.sys_professor_new .citybox span ul li a, .sys_professor_edit .citybox span ul li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+    color: #494949;
+}
