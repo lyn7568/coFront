@@ -13,6 +13,14 @@
     padding: 0 20px 10px;
 }
 
+.sys_org_new .requiredSpan{
+    color: #ff0000;
+    position:relative;
+    top:6px;
+    left: -4px;
+
+}
+
 .sys_org_new .newForm, .sys_org_edit .newForm, .sys_org_cp .newForm {
     position: relative;
 }
