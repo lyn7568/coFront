@@ -50,7 +50,7 @@ spa_define(function () {
                         form.val({province: $("#oprovince").text()});
                     }
                     if ($("#ocity").text() != "请选择城市") {
-                        from.val({address: $("#ocity").text()});
+                        form.val({address: $("#ocity").text()});
                     }
 
                 });
