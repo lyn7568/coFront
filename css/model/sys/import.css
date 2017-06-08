@@ -1,0 +1,16 @@
+@charset "utf-8";
+.sys_import_index .queryForm {
+    position: relative;
+}
+
+.sys_import_index .queryForm .icon-search {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    font-size: 25px;
+}
+
+.sys_import_index .table-opt .icon {
+    margin: 10px;
+    font-size: 20px;
+}
