@@ -57,6 +57,9 @@
             <div class="btn opt-check">
             <i class="icon-check"></i>审核
             </div>
+            <div class="btn opt-weight">
+            <i class="icon-pushpin"></i>权重
+            </div>
         </div>
     </div>
     <div class="container dt-tpl">
@@ -75,6 +78,7 @@
                 <th>时间</th>
                 <th>录入员</th>
                 <th>审核状态</th>
+                <th>权重</th>
             </tr>
             </thead>
             <tbody>
@@ -95,6 +99,7 @@
                 <td>{{createTime-showDay}}</td>
                 <td>{{enter}}</td>
                 <td class="hand-dict" dict="professorState" code="{{professorState}}"></td>
+                <td>{{sortFirst}}</td>
             </tr>
             </tbody>
             <tbody ch-dir="array.empty">

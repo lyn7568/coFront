@@ -20,6 +20,10 @@
     display: none;
 }
 
+.sys_professor_weight{
+    width: 600px;
+}
+
 .sys_professor_new{
     width: 800px;
     height: 600px;

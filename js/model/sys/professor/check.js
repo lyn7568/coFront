@@ -49,15 +49,33 @@ spa_define(function(){
                             title: "审核确认",
                             content: "请确认审核结果！！！！",
                             btns: [{ caption: "审核通过", hand: function() {
-                                util.post("../ajax/sys/professor/check",{ids:ret,professorState:0},function(){pdg.load()},{});
+                                util.post("../ajax/sys/professor/check",{ids:ret,professorState:0,authType:1,authStatusExpert:3},function(){pdg.load()},{});
                             } },{ caption: "审核失败", hand: function() {
-                                util.post("../ajax/sys/professor/check",{ids:ret,professorState:1},function(){pdg.load()},{});
+                                util.post("../ajax/sys/professor/check",{ids:ret,professorState:1,authType:0,authStatusExpert:0},function(){pdg.load()},{});
                             } },
                                 { caption: "取消" }
                             ]
                         });
                     } else {
                         util.alert("请选择一名专家");
+                    }
+                });
+                root.find(".opt-weight").on("click", function() {
+                    var $professor = root.find("td.opt-check>i.checked");
+                    if($professor.length) {
+                        if($professor.length > 1) {
+                            util.alert("只能选择一个用户");
+                        } else {
+                            $.util.get("../ajax/sys/professor/id/"+$professor.attr("id"),null,function(rd){
+                                if(rd){
+                                    spa.showModal("sys_professor_weight", { data:rd, hand: function() { pdg.load() } })
+                                }else{
+                                    util.alertMsg("专家不存在", function(){pdg.load();});
+                                }
+                            },{});
+                        }
+                    } else {
+                        util.alert("请选择一个用户");
                     }
                 });
                 root.on("click", ".opt-auth", function () {
