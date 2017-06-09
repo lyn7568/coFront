@@ -12,7 +12,7 @@ spa_define(function () {
                 var saveBtn = root.find(".opt-save"),
                     gotoBtn = root.find(".opt-goto"),
                     save = function (boolean) {
-                        form.val({cuserId: id, professorState: 2, authentication: 1,authType:1});
+                        form.val({cuserId: id, professorState: 2, authentication: 1});
                         if (form.val().orgType == null) {
                             form.val({orgType: 1});
                         }
