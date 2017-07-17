@@ -17,7 +17,12 @@ spa_define(function() {
 							btns: [{
 									caption: "删除",
 									hand: function() {
-										util.del("../ajax/sys/role/" + resId, load, {});
+										util.post("../ajax/sys/role/" + resId, null,function (data) {
+                                            if (data==0) {
+                                                util.alert("该角色使用中，不可删除");
+                                            }
+                                            load();
+                                        });
 									}
 								},
 								{ caption: "取消" }
