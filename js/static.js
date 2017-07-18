@@ -47,6 +47,33 @@
             code: "0", caption: "未认证", enabled: true
         }, {
             code: "3", caption: "已认证", enabled: true}]);
+
+        var y = new Date().getFullYear();
+        var eduYear = [];
+        eduYear.push({code: "至今", caption: "至今", enabled: true});
+        for(var i = y; i > y - 60; i--) {
+            eduYear.push({code: String(i), caption: String(i), enabled: true});
+        }
+        dict.set("edu_year", eduYear);
+
+        var honorYear = [];
+        for(var i = y; i > y - 60; i--) {
+            honorYear.push({code: String(i), caption: String(i), enabled: true});
+        }
+        dict.set("honor_year", honorYear);
+
+        var dateStart = [];
+        for(var i = y; i > y - 60; i--) {
+            dateStart.push({code: String(i), caption: String(i), enabled: true,children:[{code:String(i)+"01",caption:String(i)+"年1月","enabled":true},{code:String(i)+"02",caption:String(i)+"年2月","enabled":true},{code:String(i)+"03",caption:String(i)+"年3月","enabled":true},{code:String(i)+"04",caption:String(i)+"年4月","enabled":true},{code:String(i)+"05",caption:String(i)+"年5月","enabled":true},{code:String(i)+"06",caption:String(i)+"年6月","enabled":true},{code:String(i)+"07",caption:String(i)+"年7月","enabled":true},{code:String(i)+"08",caption:String(i)+"年8月","enabled":true},{code:String(i)+"09",caption:String(i)+"年9月","enabled":true},{code:String(i)+"10",caption:String(i)+"年10月","enabled":true},{code:String(i)+"11",caption:String(i)+"年11月","enabled":true},{code:String(i)+"12",caption:String(i)+"年12月","enabled":true}]});
+        }
+        dict.set("date_start", dateStart);
+
+        var dateStop = [];
+        dateStop.push({code: "至今", caption: "至今", enabled: true});
+        for(var i = y; i > y - 60; i--) {
+            dateStop.push({code: String(i), caption: String(i), enabled: true,children:[{code:String(i)+"01",caption:String(i)+"年1月","enabled":true},{code:String(i)+"02",caption:String(i)+"年2月","enabled":true},{code:String(i)+"03",caption:String(i)+"年3月","enabled":true},{code:String(i)+"04",caption:String(i)+"年4月","enabled":true},{code:String(i)+"05",caption:String(i)+"年5月","enabled":true},{code:String(i)+"06",caption:String(i)+"年6月","enabled":true},{code:String(i)+"07",caption:String(i)+"年7月","enabled":true},{code:String(i)+"08",caption:String(i)+"年8月","enabled":true},{code:String(i)+"09",caption:String(i)+"年9月","enabled":true},{code:String(i)+"10",caption:String(i)+"年10月","enabled":true},{code:String(i)+"11",caption:String(i)+"年11月","enabled":true},{code:String(i)+"12",caption:String(i)+"年12月","enabled":true}]});
+        }
+        dict.set("date_stop", dateStop);
     });
 
 })();

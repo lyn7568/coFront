@@ -37,11 +37,12 @@ spa_define(function () {
                                 email: form.val().email
                             }, function (success) {
                                 if (success) {
-                                    form.doPost("../ajax/userinfo/import", closeThis, function (code) {
+                                    form.doPost("../ajax/userinfo/import", function (code) {
                                         if (code==1) {
-                                            util.alert("审核成功，并已导入正式数据库");
+                                            closeThis();
+                                            alert("审核成功，并已导入正式数据库");
                                         } else if (code == 2){
-                                            util.alert("导入失败，只有这次审核通过的可以导入");
+                                            util.alert("导入失败，只有本次审核通过的可以导入");
                                         }else if(code == 3){
                                             util.alert("导入失败，信息不存在");
                                         }

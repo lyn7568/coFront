@@ -21,6 +21,7 @@ spa_define(function () {
                     '</div>');
                 $(".sys_userinfo_details .form-item").addClass("readOnly");
                 $(".sys_userinfo_details .btn").hide();
+                $(".sys_userinfo_details .form-item").attr("placeholder", "");
                 var id = util.data("loginUser").id;
                 var ca = {ready: true, items: []};
                 var dp = code.parseCode(root.find(".dt-project"));

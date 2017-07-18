@@ -6,19 +6,20 @@
         <div class="row">
             <div class="col-2 item-caption">学校名称</div>
             <div class="col-6">
-                <div class="form-item text" defVal="" name="eduSchool"></div>
+                <div class="form-item text" placeholder="学校名称不得超过50个字" name="eduSchool"></div>
             </div>
+            <span class="requiredSpan">*</span>
         </div>
         <div class="row">
             <div class="col-2 item-caption">院系名称</div>
             <div class="col-6">
-                <div class="form-item text" defVal="" name="eduCollege"></div>
+                <div class="form-item text" placeholder="院系名称不得超过20个字" name="eduCollege"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-2 item-caption">专业名称</div>
             <div class="col-6">
-                <div class="form-item text" defVal="" name="eduMajor"></div>
+                <div class="form-item text" placeholder="专业名称不得超过20个字" name="eduMajor"></div>
             </div>
         </div>
         <div class="row">
@@ -30,12 +31,7 @@
         <div class="row">
             <div class="col-2 item-caption ">毕业时间</div>
             <div class="col-4">
-                <div class="form-item date" defVal="" name="eduYear"></div>
-            </div>
-            <div class="col-6">
-                <div class="btn pull-right opt-on">
-                    <i class="icon-check"></i> 至今在读
-                </div>
+                <div class="form-item select tree" dictCode="edu_year" name="eduYear"></div>
             </div>
         </div>
         <div class="row">

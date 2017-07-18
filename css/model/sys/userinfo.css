@@ -38,7 +38,9 @@
     padding: 0 20px 10px;
 }
 
-.sys_userinfo_details .requiredSpan{
+.sys_userinfo_details .requiredSpan, .sys_userinfo_honor .requiredSpan,
+.sys_userinfo_project .requiredSpan, .sys_userinfo_job .requiredSpan,
+.sys_userinfo_edu .requiredSpan{
     color: #ff0000;
     position:relative;
     top:6px;

@@ -35,6 +35,24 @@ spa_define(function () {
                     cr.val(tableData.data);
                 };
 
+                /*
+                用户流量统计表格 时间倒序
+                 */
+                // var query = function () {
+                //     if(allData != null) {
+                //         var td = tableData.data = [];
+                //         for(var i = allData.length; i >= allData.length-7; --i) {
+                //             var item = allData[i];
+                //             if(item) {
+                //                 td.push(item);
+                //             }
+                //         }
+                //     } else {
+                //         tableData.data = allData;
+                //     }
+                //     cr.val(tableData.data);
+                // };
+
                 var load = function () {
                     util.get("../ajax/operation/statist/userCount", null, function (data) {
                         allData = data || [];
