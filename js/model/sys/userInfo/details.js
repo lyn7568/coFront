@@ -198,6 +198,53 @@ spa_define(function () {
                     }
                 };
 
+                var part3 = function (one, list) {
+                    oValue = one;
+                    oJudge = list || [];
+                    var repeat,
+                        b;
+                    if (!oValue) {
+                        util.alert('提示', '请先填写内容');
+                        return;
+                    }
+                    if (oValue.length > 15) {
+                        util.alert('提示', '添加内容不能超过15个字');
+                        return;
+                    } else {
+                        var oValueList = oValue.split(","),
+                            length = oValueList.length;
+                        for (var j = 0; j < length; j++) {
+                            for (var n = j + 1; n < oValueList.length + 1;) {
+                                if (oValueList[j] == oValueList[n]) {
+                                    oValueList.remove(n);
+                                    repeat = false;
+                                } else {
+                                    n++;
+                                }
+                            }
+                        }
+                        for (var j = 0; j < oValueList.length;) {
+                            for (var i = 0; i < oJudge.length; i++) {
+                                if (oValueList[j] == oJudge[i]) {
+                                    oValueList.remove(j);
+                                    repeat = false;
+                                    b = true;
+                                }
+                            }
+                            if (b) {
+                                b = false
+                            } else j++;
+                        }
+                        if (repeat == false) {
+                            util.alert('提示', '添加内容不能重复');
+                        }
+                        for (var m = 0; m < oValueList.length; m++) {
+                            ca.items.push({code: oValueList[m], caption: oValueList[m]});
+                            oJudge.push(oValueList[m]);
+                        }
+                    }
+                };
+
                 var split = function (data) {
                     var index = data.split(",");
                     var arr = [];
@@ -257,7 +304,7 @@ spa_define(function () {
                     form.val({newIndustry: "", industryList: oJudge});
                 });
                 root.find(".opt-subject").on("click", function () {
-                    part(form.val().newSubject, form.val().subjectList);
+                    part3(form.val().newSubject, form.val().subjectList);
                     form.val({newSubject: "", subjectList: oJudge});
                 });
                 root.find(".opt-ra").on("click", function () {
