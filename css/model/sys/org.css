@@ -7,6 +7,10 @@
     width: 35px;
 }
 
+.sys_org_index .orderBy .icon-close{
+    display: none;
+}
+
 .sys_org_new, .sys_org_role, .sys_org_right, .sys_org_menu, .sys_org_edit, .sys_org_cp {
     width: 800px;
     height: 1200px;

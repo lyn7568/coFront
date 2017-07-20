@@ -17,7 +17,7 @@ spa_define(function () {
                             var mobile = trim(form.val().mobile);
                             var hunPhone = /^1[3|4|5|7|8]\d{9}$/;
                             if (!hunPhone.test(mobile)) {
-                                util.alert("联系电话格式有误，请检查后重新填写");
+                                util.alert("注册电话格式有误，请检查后重新填写");
                                 return;
                             }
                         }
