@@ -1,4 +1,4 @@
-<div class="sys_org_edit centerModal">
+<div class="sys_org_details centerModal">
     <div class="modal-ctrl">
         <i class="icon icon-times"></i>
     </div>
@@ -14,6 +14,7 @@
             <div class="col-6">
                 <div class="form-item text" defVal="" name="forShort"></div>
             </div>
+            <span class="requiredSpan">*</span>
         </div>
         <div class="row">
             <div class="col-2 item-caption">企业网址</div>
@@ -30,7 +31,8 @@
         <div class="row">
             <div class="col-2 item-caption">地址</div>
             <div class="col-8">
-                    <div class=" col-6 citybox province">
+                <form action="" name="form1">
+                    <div class=" col-6 citybox">
 														<span class="frmtype frmtypeW" id="Province">
 				                                        	<em class="mr_sj"></em>
 				                                            <i class="mr_show" id="oprovince">请选择省份</i>
@@ -41,7 +43,7 @@
                                                                    value="请选择省份">
 				                                        </span>
                     </div>
-                    <div class="col-6 citybox city">
+                    <div class="col-6 citybox">
 														<span class="frmtype frmtypeW" id="City">
 				                                       		<em class="mr_sj"></em>
 				                                            <i class="mr_show" id="ocity"></i>
@@ -51,6 +53,7 @@
 				                                            <input type="hidden" name="cho_City" value="请选择城市 ">
 				                                        </span>
                     </div>
+                </form>
             </div>
         </div>
         <div class="row">
