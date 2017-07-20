@@ -59,7 +59,7 @@ spa_define(function () {
                                     if (data.state == "2") {
                                         spa.showModal("sys_userinfo_review", {
                                             data: data, hand: function () {
-                                                pdg.load()
+                                                pdg.reload();
                                             }
                                         })
                                     } else {
