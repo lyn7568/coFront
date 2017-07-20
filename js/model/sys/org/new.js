@@ -6,7 +6,7 @@ spa_define(function () {
     return $.use(["spa", "util", "form"], function (spa, util, fb) {
         return {
             modal: function (data) {
-                var root = spa.findInModal(".sys_userinfo_new");
+                var root = spa.findInModal(".sys_org_new");
                 var form = fb.build(root.find(".newForm"));
                 var trim = function (str) { //删除左右两端的空格			　　
                     return str.replace(/(^\s*)|(\s*$)/g, "");
@@ -21,7 +21,7 @@ spa_define(function () {
                                 return;
                             }
                         }else{
-                            util.alert("请输入邮箱")
+                            util.alert("请输入邮箱");
                             return;
                         }
                         if (form.val().name) {

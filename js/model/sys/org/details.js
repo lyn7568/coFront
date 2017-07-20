@@ -1,12 +1,12 @@
 /**
- * Created by TT on 2017/7/19.
+ * Created by TT on 2017/5/23.
  */
 ;
 spa_define(function () {
     return $.use(["spa", "util", "form", "upload"], function (spa, util, fb, upload) {
         return {
             modal: function (data) {
-                var root = spa.findInModal(".sys_org_new");
+                var root = spa.findInModal(".sys_org_details");
                 var ca = {ready: true, items: []};
                 var form = fb.build(root.find(".newForm"), {
                     industryList: ca,
@@ -20,26 +20,54 @@ spa_define(function () {
                 var saveBtn = root.find(".opt-save"),
                     headArea = root.find(".head-ctn"),
                     save = function () {
+                        console.log(form.val().fn);
                         form.val({inviterId: id});
                         form.val({
                             industry: oString(form.val().industryList),
                             subject: oString(form.val().subjectList),
-                            qualification: oString(form.val().qualificationList)
+                            qualification: oString(form.val().qualificationList),
                         });
                         if (form.val().orgType == null) {
                             form.val({orgType: 1});
                         }
-                        if (form.val().forShort == null) {
-                            util.alert("请输入企业简称");
-                        } else form.doPost("../ajax/sys/org/create", function () {
-                            spa.closeModal();
-                            if (data) {
-                                data();
-                            }
-                        },function (data) {
-                            util.alert(data.msg);
-                        });
+                        if (form.val().name == null) {
+                            util.alert("请输入企业名称");
+                        } else if (form.val().forShort == null) {
+                            util.alert("请输入企业简称")
+                        } else if (form.val().city == null || form.val().city === "请选择城市") {
+                            util.alert("请选择企业所在城市")
+                        }
+                        else form.doPost("../ajax/sys/org/update", function () {
+                                spa.closeModal();
+                                if (data.hand) {
+                                    data.hand();
+                                }
+                                location.reload();
+                            }, {});
                     };
+
+                var split = function (data) {
+                    var index = data.split(",");
+                    var arr = [];
+                    for (var m = 0; m < index.length; m++) {
+                        ca.items.push({code: index[m], caption: index[m]});
+                        arr.push(index[m]);
+                    }
+                    return arr;
+                };
+                if (data.data.industry) {
+                    form.val({industryList: split(data.data.industry)});
+                }
+                if (data.data.subject) {
+                    form.val({subjectList: split(data.data.subject)});
+                }
+                if (data.data.qualification) {
+                    form.val({qualificationList: split(data.data.qualification)});
+                }
+
+
+                form.val(data.data);
+
                 root.find(".modal-ctrl .icon-times").on("click", function () {
                     spa.closeModal();
                 });
@@ -183,6 +211,7 @@ spa_define(function () {
                 uploader.on('beforeFileQueued', function (file) {
                     uploader.reset();
                 });
+
                 $.fn.citySelect();
                 $(document).on("click", "#City li a", function () {
                     var aVal = $(this).text();
@@ -196,6 +225,23 @@ spa_define(function () {
                     // console.log($("#ocity").text(),$("#oprovince").text())
                     form.val({province: $("#oprovince").text(), city: $("#ocity").text()});
                 });
+                if (data.data.province) {
+                    $("#oprovince").text(data.data.province);
+                }
+                if (data.data.city) {
+                    $("#ocity").text(data.data.city);
+                }
+                if (data.data.hasOrgLogo) {
+                    // $("#oimg").attr("src", "../data/images/org/" + data.data.id + ".jpg");
+                    var $li = $(
+                            '<div class="file-item thumbnail">' +
+                            '<img  src="../data/images/org/" id="oimg" />' +
+                            '</div>'
+                        ),
+                        $img = $li.find('img');
+                    $list.html($li);
+                    $img.attr('src',  "../data/images/org/" + data.data.id + ".jpg");
+                }
                 saveBtn.on("click", save);
             }
         }

@@ -60,6 +60,34 @@ spa_define(function () {
                         util.alert("请选择一个用户");
                     }
                 });
+                root.find(".opt-details").on("click", function () {
+                    var $org = root.find("td.opt-check>i.checked");
+                    if ($org.length) {
+                        if ($org.length > 1) {
+                            util.alert("只能选择一个用户");
+                        } else {
+                            util.get("../ajax/userinfo/id/" + $org.attr("userId"), null, function (data) {
+                                if (data) {
+                                    if (data.state == "1" || data.state == "4") {
+                                        spa.showModal("sys_userinfo_details", {
+                                            data: data, hand: function () {
+                                                pdg.load()
+                                            }
+                                        })
+                                    } else {
+                                        util.alert("待审核和审核通过的不可修改。");
+                                    }
+                                } else {
+                                    util.alert("用户不存在了", function () {
+                                        pdg.load();
+                                    });
+                                }
+                            }, {});
+                        }
+                    } else {
+                        util.alert("请选择一个用户");
+                    }
+                });
                 // root.find(".opt-del").on("click", function() {
                 // 	var $org = root.find("td.opt-check>i.checked");
                 // 	if($org.length) {

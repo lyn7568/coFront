@@ -6,9 +6,9 @@ spa_define(function () {
     return $.use(["spa", "util", "form"], function (spa, util, fb) {
         return {
             modal: function (data) {
-                var root = spa.findInModal(".sys_org_edit");
+                var root = spa.findInModal(".sys_org_new");
                 var form = fb.build(root.find(".newForm"));
-                var trim = function (str) { //删除左右两端的空格			　　
+                var trim = function (str) {
                     return str.replace(/(^\s*)|(\s*$)/g, "");
                 };
                 var saveBtn = root.find(".opt-save"),
@@ -66,9 +66,9 @@ spa_define(function () {
                         handler();
                     }
                 };
-                form.val({name:"li",email:"www"});
+                form.val(data.data);
                 saveBtn.on("click", save);
             }
-        }
-    });
+        };
+    })
 });
