@@ -35,15 +35,15 @@ spa_define(function () {
                             return;
                         }
                         if (form.val().name && form.val().email) {
-                            if (form.val().mobile != data.data.mobile || form.val().email != data.data.email) {
+                            if (form.val().name != data.data.name || form.val().email != data.data.email) {
                                 util.get("../ajax/sys/org/entryCheck", {
                                     name: form.val().name,
                                     email: form.val().email
                                 }, function (success) {
                                     if (success) {
-                                        form.val({pMobile: form.val().mobile});
-                                        form.val({pEmail: form.val().email});
-                                        form.doPost("../ajax/sys/org/updateAccount",closeThis(), {});
+                                        form.doPost("../ajax/sys/org/updateAccount",closeThis(), function (data) {
+                                            util.alert(data);
+                                        });
                                     } else {
                                         util.alert("该账号已存在");
                                     }
