@@ -4,24 +4,41 @@
 	</div>
 	<div class="container dt-form">
 		<div class="row">
-			<div class="col-2 item-caption">机构名称</div>
-			<div class="col-4">
+			<div class="col-1 item-caption">机构名称</div>
+			<div class="col-2">
 				<div class="form-item text" defVal="" name="name"></div>
 			</div>
-			<div class="col-2 item-caption ">城市</div>
-			<div class="col-4">
+			<div class="col-1 item-caption ">城市</div>
+			<div class="col-2">
 				<div class="form-item text" defVal="" name="city"></div>
+			</div>
+			<div class="col-1 item-caption">所属行业</div>
+			<div class="col-2">
+				<div class="form-item text" defVal="" name="industry"></div>
+			</div>
+			<div class="col-1 item-caption ">专注领域</div>
+			<div class="col-2">
+				<div class="form-item text" defVal="" name="subject"></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 item-caption">所属行业</div>
-			<div class="col-4">
-				<div class="form-item text" defVal="" name="industry"></div>
+			<div class="col-1 item-caption ">创建日期</div>
+			<div class="col-2">
+				<div class="form-item date" defVal="" name="bt"></div>
 			</div>
-			<div class="col-2 item-caption ">专注领域</div>
-			<div class="col-4">
-				<div class="form-item text" defVal="" name="subject"></div>
+			<div class="col-1 item-caption center">至</div>
+			<div class="col-2">
+				<div class="form-item date" defVal="" name="et"></div>
 			</div>
+			<div class="col-1 item-caption ">认证状态</div>
+			<div class="col-2">
+				<div class="form-item select" dictCode="org_auth_status" name="authStatus"></div>
+			</div>
+			<div class="col-1 item-caption ">排序方式</div>
+			<div class="col-2">
+				<div class="form-item select orderBy" dictCode="sort_rule" defVal="1" name="orderBy"></div>
+			</div>
+
 		</div>
 		<div class="row">
 			<div class="col-10">
@@ -40,13 +57,19 @@
 	<div class="container tpl-btns">
 		<div class="row">
 			<div class="btn opt-new">
-				<i class="icon-plus"></i> 增加
+				新增账户
 			</div>
 			<div class="btn opt-edit">
-				<i class="icon-edit"></i>编缉
+				修改账户信息
 			</div>
-			<div class="btn opt-del">
-				<i class="icon-remove-sign"></i>删除
+			<div class="btn opt-details">
+				编辑企业资料
+			</div>
+			<div class="btn opt-view">
+				查看企业信息
+			</div>
+			<div class="btn opt-data">
+				设置业务数据
 			</div>
 		</div>
 	</div>
@@ -56,13 +79,15 @@
 				<tr>
 					<th class="opt-check" ><i class="icon icon-st-check"></i> </th>
 					<th>序号</th>
-					<th>名称</th>
-					<th>城市</th>
+					<th>企业名称</th>
 					<th>所属行业</th>
-					<th>专注领域</th>
-					<th>网址</th>
-					<th>负责人</th>
+					<th>城市</th>
+					<th>邮箱</th>
 					<th>创建日期</th>
+					<th>企业认证</th>
+					<th>权重</th>
+					<th>浏览量</th>
+					<th>粉丝量</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -70,18 +95,19 @@
 					<td class="opt-check" ><i class="icon icon-st-check" orgId="{{id}}"></i></td>
 					<td>{{pi}}</td>
 					<td>{{name}}</td>
-					<td>{{city}}</td>
 					<td>{{industry}}</td>
-					<td>{{subject}}</td>
-					<td>{{orgUri}}</td>
-					<td>{{principal}}</td>
+					<td>{{city}}</td>
+					<td>{{registerEmail}}</td>
 					<td>{{createTime-showDay}}</td>
-					<!--<td class="hand-dict" dict="bool" code="{{type}}"></td>-->
+					<td class="hand-dict" dict="org_auth_status" code="{{authStatus}}"></td>
+					<td>{{sortNum}}</td>
+					<td>{{pageViews}}</td>
+					<td>{{fans}}</td>
 				</tr>
 			</tbody>
 			<tbody ch-dir="array.empty">
 				<tr>
-					<td class="empty-desc" colspan="9">表格暂无数据</td>
+					<td class="empty-desc" colspan="11">表格暂无数据</td>
 				</tr>
 			</tbody>
 		</table>

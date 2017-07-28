@@ -1,0 +1,32 @@
+@charset "utf-8";
+.sys_feedback_index .tpl-btns .row {
+    padding-left: 10px;
+}
+.sys_feedback_index th.opt-check {
+    width: 35px;
+}
+
+.sys_feedback_index .content{
+    width: 50px;
+}
+.sys_feedback_index .table {
+    table-layout: fixed;
+}
+
+.sys_feedback_operate{
+    width: 800px;
+    height: 600px;
+    padding: 0 20px 10px;
+}
+.sys_feedback_operate .content{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sys_feedback_operate .icon-close{
+    display: none;
+}
+
+.sys_feedback_operate .schema .icon-drop{
+    display: none !important;
+}

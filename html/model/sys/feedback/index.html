@@ -1,0 +1,80 @@
+<div class="sys_feedback_index" loadUri="../ajax/feedback/pq" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="bt"></div>
+            </div>
+            <div class="col-1 item-caption center">至</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="et"></div>
+            </div>
+            <div class="col-1 item-caption ">处理状态</div>
+            <div class="col-2">
+                <div class="form-item select" dictCode="feedback_state" name="state"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-edit">
+                处理反馈信息
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th>序号</th>
+                <th>反馈信息</th>
+                <th>数据类型</th>
+                <th>反馈人</th>
+                <th>反馈时间</th>
+                <th>处理状态</th>
+                <th>处理人</th>
+                <th>处理时间</th>
+                <th>处理备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" feedbackId="{{id}}"></i></td>
+                <td>{{pi}}</td>
+                <td class="elip">{{content}}</td>
+                <td class="hand-dict" dict="feedback_schema" code="{{schema}}"></td>
+                <td>{{userName}}</td>
+                <td>{{createTime-showDay}}</td>
+                <td class="hand-dict" dict="feedback_state" code="{{state}}"></td>
+                <td>{{operatorName}}</td>
+                <td>{{operateTime-showDay}}</td>
+                <td class="elip">{{operateDescp}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="10">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

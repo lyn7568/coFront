@@ -1,0 +1,195 @@
+<div class="sys_org_details centerModal">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container newForm">
+        <div class="row">
+            <div class="col-2 item-caption">企业名称</div>
+            <div class="col-6">
+                <div class="form-item text readOnly" defVal="" name="name"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption"><span class="requiredSpan">*</span>企业简称</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="企业简称不超过10个字" name="forShort"></div>
+            </div>
+            <div class="col-2 item-caption">企业类型</div>
+            <div class="col-4">
+                <div class="form-item select" defVal="" dictCode="typeOrg" name="orgType"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">创建时间</div>
+            <div class="col-4">
+                <div class="form-item date" defVal="" name="foundTime"></div>
+            </div>
+            <div class="col-2 item-caption">企业规模</div>
+            <div class="col-4">
+                <div class="form-item select" defVal="" dictCode="orgSize" name="orgSize"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业官网</div>
+            <div class="col-6">
+                <div class="form-item text" placeholder="字数限制20个字" name="orgUrl"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">所在城市</div>
+            <div class="col-8">
+                <form action="" name="form1">
+                    <div class=" col-6 citybox">
+														<span class="frmtype frmtypeW" id="Province">
+				                                        	<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="oprovince">请选择省份</i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_Province"
+                                                                   value="请选择省份">
+				                                        </span>
+                    </div>
+                    <div class="col-6 citybox">
+														<span class="frmtype frmtypeW" id="City">
+				                                       		<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="ocity"></i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_City" value="请选择城市 ">
+				                                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业地址</div>
+            <div class="col-6">
+                <div class="form-item text" placeholder="字数限制20个字" name="addr"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">注册邮箱</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" defVal="" name="registerEmail"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">联系电话</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="联系电话不得超过50个字" name="contactNum"></div>
+            </div>
+            <div class="col-2 item-caption">联系邮箱</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="email"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">简介</div>
+            <div class="col-6">
+                <div class="form-item textarea" defVal="" name="descp"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">所属行业</div>
+            <div class="col-4">
+                <div class="form-item text keydrop" placeholder="字数限制15个字，最多3个" name="newIndustry"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-industry">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="industryList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">专注领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="字数限制15个字，最多20个" name="newSubject"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-subject">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="subjectList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">企业资质</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="字数限制20个字，最多10个" name="newQualification"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-qf">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="qualificationList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">供应商领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="字数限制10个字，最多5个" name="newFieldOfSupplier"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-fos">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="fieldOfSupplierList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">客户领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="字数限制10个字，最多5个" name="newFieldOfCustomer"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-foc">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="fieldOfCustomerList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <div class="btn pull-right opt-save">
+                    <i class="icon-check"></i> 保存
+                </div>
+            </div>
+        </div>
+        <div class="head-ctn">
+            <div id="uploader-demo">
+                <div id="fileList" class="uploader-list"></div>
+                <div id="filePicker">选择图片</div>
+            </div>
+        </div>
+
+    </div>
+</div>

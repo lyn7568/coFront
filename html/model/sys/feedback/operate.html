@@ -1,0 +1,67 @@
+<div class="sys_feedback_operate centerModal">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container newForm">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-4 item-caption content ">反馈信息</div>
+
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">数据名称</div>
+            <div class="col-6">
+                <div class="form-item text readOnly" name="dataName"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">数据类型</div>
+            <div class="col-4">
+                <div class="form-item select readOnly" dictCode="feedback_schema" name="schema"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">反馈内容</div>
+            <div class="col-6">
+                <div class="form-item textarea readOnly" defVal="" name="content"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">反馈人</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" name="userName"></div>
+            </div>
+            <div class="col-2 item-caption">反馈时间</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" name="time"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">反馈人ID</div>
+            <div class="col-5">
+                <div class="form-item text readOnly" name="userId"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">处理状态</div>
+            <div class="col-4">
+                <div class="form-item select" dictCode="feedback_state" name="state"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">处理备注</div>
+            <div class="col-6">
+                <div class="form-item textarea" placeholder="处理备注不得超过500个字" name="operateDescp"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <div class="btn pull-right opt-save">
+                    <i class="icon-check"></i> 保存
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

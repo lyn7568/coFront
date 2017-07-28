@@ -103,7 +103,6 @@ spa_define(function () {
                             util.alert("手机或邮箱至少输入一项");
                         }
                     };
-
                 var part = function (one, list) {
                     oValue = one;
                     oJudge = list || [];
