@@ -41,9 +41,10 @@ spa_define(function () {
                         }
                         if (form.val().mobile || form.val().email) {
                             if (form.val().mobile != data.data.mobile || form.val().email != data.data.email) {
-                                util.get("../ajax/userinfo/entryCheck", {
+                                util.get("../ajax/userinfo/editCheck", {
                                     mobile: form.val().mobile,
-                                    email: form.val().email
+                                    email: form.val().email,
+                                    id:form.val().id
                                 }, function (success) {
                                     if (success) {
                                         form.doPut("../ajax/userinfo/update", function () {

@@ -156,6 +156,37 @@
         },{
             code:"2",caption:"按浏览量由高到低排序",enabled:true
         }]);
+
+        dict.set("feedback_schema",[{
+            code:"1",caption:"论文",enabled:true
+        },{
+            code:"2",caption:"专利",enabled:true
+        },{
+            code:"3",caption:"专家",enabled:true
+        },{
+            code:"4",caption:"机构",enabled:true
+        },{
+            code:"5",caption:"资源",enabled:true
+        },{
+            code:"6",caption:"文章",enabled:true
+        }]);
+
+        dict.set("feedback_state",[{
+            code:"0",caption:"待处理",enabled:true
+        },{
+            code:"1",caption:"已处理",enabled:true
+        }]);
+
+        dict.set("content_type",[{
+            code:"3",caption:"文章",enabled:true
+        },{
+            code:"2",caption:"资源",enabled:true
+        },{
+            code:"4",caption:"专利",enabled:true
+        },{
+            code:"5",caption:"论文",enabled:true
+        }]);
+
     });
 
 })();

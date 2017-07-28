@@ -36,16 +36,17 @@ spa_define(function () {
                         }
                         if (form.val().name && form.val().email) {
                             if (form.val().name != data.data.name || form.val().email != data.data.email) {
-                                util.get("../ajax/sys/org/entryCheck", {
+                                util.get("../ajax/sys/org/editCheck", {
                                     name: form.val().name,
-                                    email: form.val().email
-                                }, function (success) {
-                                    if (success) {
-                                        form.doPost("../ajax/sys/org/updateAccount",closeThis(), function (data) {
-                                            util.alert(data);
-                                        });
-                                    } else {
-                                        util.alert("该账号已存在");
+                                    email: form.val().email,
+                                    id:data.data.id
+                                }, function (code) {
+                                    if (code == 1) {
+                                        form.doPost("../ajax/sys/org/updateAccount",closeThis,{"2001":"该邮箱已被注册","2002":"该企业已注册科袖账号"});
+                                    } else if (code == 2){
+                                        util.alert("该邮箱已被注册");
+                                    }else if (code == 3){
+                                        util.alert("该企业名称已经注册");
                                     }
                                 });
                             } else {

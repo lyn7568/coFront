@@ -20,7 +20,7 @@ spa_define(function () {
                                 util.alert("注册邮箱格式有误，请检查后重新填写");
                                 return;
                             }
-                        }else{
+                        } else {
                             util.alert("请输入邮箱");
                             return;
                         }
@@ -30,7 +30,7 @@ spa_define(function () {
                                 util.alert("企业名称最长为50个字");
                                 return;
                             }
-                        }else {
+                        } else {
                             util.alert("请填写企业名称");
                             return;
                         }
@@ -38,18 +38,18 @@ spa_define(function () {
                             util.get("../ajax/sys/org/entryCheck", {
                                 name: form.val().name,
                                 email: form.val().email
-                            },function (success) {
-                                if (success){
-                                    form.val({pMobile: form.val().mobile});
-                                    form.val({pEmail: form.val().email});
+                            }, function (code) {
+                                if (code == 3) {
                                     form.doPost("../ajax/sys/org/createAccount", function () {
                                         spa.closeModal();
                                         if (data) {
                                             data();
                                         }
-                                    }, {});
-                                }else {
-                                    util.alert("该账号已存在");
+                                    }, {"3002":"该企业已注册科袖账号","3003":"该邮箱已被注册"});
+                                } else if (code == 1) {
+                                    util.alert("该邮箱已被注册");
+                                } else if (code == 2) {
+                                    util.alert("该企业已注册科袖账号");
                                 }
                             });
                         } else {

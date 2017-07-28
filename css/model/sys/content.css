@@ -1,0 +1,22 @@
+@charset "utf-8";
+.sys_content_index .tpl-btns .row {
+    padding-left: 10px;
+}
+.sys_content_index th.opt-check {
+    width: 35px;
+}
+
+.sys_content_index .content{
+    width: 50px;
+}
+.sys_content_index .table {
+    table-layout: fixed;
+}
+
+.sys_content_index .orderBy .icon-close{
+    display: none;
+}
+
+.sys_content_index .number {
+    width: 6%;
+}

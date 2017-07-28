@@ -10,16 +10,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2 item-caption">企业简称</div>
-            <div class="col-6">
-                <div class="form-item text" defVal="" name="forShort"></div>
+            <div class="col-2 item-caption"><span class="requiredSpan">*</span>企业简称</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="企业简称不超过10个字" name="forShort"></div>
             </div>
-            <span class="requiredSpan">*</span>
-        </div>
-        <div class="row">
-            <div class="col-2 item-caption">企业网址</div>
-            <div class="col-6">
-                <div class="form-item text" defVal="" name="orgUrl"></div>
+            <div class="col-2 item-caption">企业类型</div>
+            <div class="col-4">
+                <div class="form-item select" defVal="" dictCode="typeOrg" name="orgType"></div>
             </div>
         </div>
         <div class="row">
@@ -27,9 +24,19 @@
             <div class="col-4">
                 <div class="form-item date" defVal="" name="foundTime"></div>
             </div>
+            <div class="col-2 item-caption">企业规模</div>
+            <div class="col-4">
+                <div class="form-item select" defVal="" dictCode="orgSize" name="orgSize"></div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-2 item-caption">地址</div>
+            <div class="col-2 item-caption">企业官网</div>
+            <div class="col-6">
+                <div class="form-item text" placeholder="字数限制20个字" name="orgUrl"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">所在城市</div>
             <div class="col-8">
                 <form action="" name="form1">
                     <div class=" col-6 citybox">
@@ -57,25 +64,41 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2 item-caption">简介</div>
+            <div class="col-2 item-caption">企业地址</div>
+            <div class="col-6">
+                <div class="form-item text" placeholder="字数限制20个字" name="addr"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">注册邮箱</div>
             <div class="col-4">
-                <div class="form-item textarea" defVal="" name="descp"></div>
+                <div class="form-item text readOnly" defVal="" name="registerEmail"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">联系电话</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="联系电话不得超过50个字" name="contactNum"></div>
+            </div>
+            <div class="col-2 item-caption">联系邮箱</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="email"></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-2 item-caption">标签</div>
-            <div class="col-4">
-                <div class="form-item select" defVal="" dictCode="typeOrg" name="orgType"></div>
+            <div class="col-2 item-caption">简介</div>
+            <div class="col-6">
+                <div class="form-item textarea" defVal="" name="descp"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-2 item-caption">所属行业</div>
             <div class="col-4">
-                <div class="form-item text" defVal="" name="newIndustry"></div>
+                <div class="form-item text keydrop" placeholder="字数限制15个字，最多3个" name="newIndustry"></div>
             </div>
             <div class="col-2">
                 <div class="btn pull-right opt-industry">
-                    <i class="icon-check"></i> SAVE
+                    <i class="icon-check"></i> 添加
                 </div>
             </div>
         </div>
@@ -88,11 +111,11 @@
         <div class="row">
             <div class="col-2 item-caption">专注领域</div>
             <div class="col-4">
-                <div class="form-item text" defVal="" name="newSubject"></div>
+                <div class="form-item text" placeholder="字数限制15个字，最多20个" name="newSubject"></div>
             </div>
             <div class="col-2">
                 <div class="btn pull-right opt-subject">
-                    <i class="icon-check"></i> SAVE
+                    <i class="icon-check"></i> 添加
                 </div>
             </div>
         </div>
@@ -103,19 +126,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2 item-caption">企业规模</div>
-            <div class="col-4">
-                <div class="form-item select" defVal="" dictCode="orgSize" name="orgSize"></div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-2 item-caption">企业资质</div>
             <div class="col-4">
-                <div class="form-item text" defVal="" name="newQualification"></div>
+                <div class="form-item text" placeholder="字数限制20个字，最多10个" name="newQualification"></div>
             </div>
             <div class="col-2">
                 <div class="btn pull-right opt-qf">
-                    <i class="icon-check"></i> SAVE
+                    <i class="icon-check"></i> 添加
                 </div>
             </div>
         </div>
@@ -126,10 +143,44 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-2 item-caption">供应商领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="字数限制10个字，最多5个" name="newFieldOfSupplier"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-fos">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="fieldOfSupplierList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">客户领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="字数限制10个字，最多5个" name="newFieldOfCustomer"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-foc">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="fieldOfCustomerList"></div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-10"></div>
             <div class="col-2">
                 <div class="btn pull-right opt-save">
-                    <i class="icon-check"></i> SAVE
+                    <i class="icon-check"></i> 保存
                 </div>
             </div>
         </div>

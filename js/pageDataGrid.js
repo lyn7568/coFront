@@ -32,6 +32,9 @@ $.define(["jQuery", "util", "form", "code", "pager"], "pagedatagrid", function($
 				var ret = {
 					code: config.c,
 					form: config.f,
+					queryParam:function(){
+						return config.cache;
+					},
 					load: function() {
 						if(config.f.validate()) {
 							config.cache = config.f.val();

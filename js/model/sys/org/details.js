@@ -11,12 +11,17 @@ spa_define(function () {
                 var form = fb.build(root.find(".newForm"), {
                     industryList: ca,
                     subjectList: ca,
-                    qualificationList: ca
+                    qualificationList: ca,
+                    fieldOfCustomerList:ca,
+                    fieldOfSupplierList:ca
                 });
                 var id = util.data("loginUser").id;
                 var cacheImageKey = null;
                 var oValue;
                 var oJudge;
+                var trim = function (str) { //删除左右两端的空格			　　
+                    return str.replace(/(^\s*)|(\s*$)/g, "");
+                };
                 var saveBtn = root.find(".opt-save"),
                     headArea = root.find(".head-ctn"),
                     save = function () {
@@ -26,23 +31,57 @@ spa_define(function () {
                             industry: oString(form.val().industryList),
                             subject: oString(form.val().subjectList),
                             qualification: oString(form.val().qualificationList),
+                            fieldOfCustomer:oString(form.val().fieldOfCustomerList),
+                            fieldOfSupplier:oString(form.val().fieldOfSupplierList)
                         });
+                        if (form.val().forShort) {
+                            var forShort = trim(form.val().forShort);
+                            if (forShort.length > 10) {
+                                util.alert("简介不得超过10个字");
+                                return;
+                            }
+                        }
+                        if (form.val().orgUrl) {
+                            var orgUrl = trim(form.val().orgUrl);
+                            if (orgUrl.length > 20) {
+                                util.alert("官网长度不得超过20个字");
+                                return;
+                            }
+                        }
+                        if (form.val().addr) {
+                            var addr = trim(form.val().addr);
+                            if (addr.length > 20) {
+                                util.alert("地址字数不得超过20个字");
+                                return;
+                            }
+                        }
+                        if (form.val().contactNum) {
+                            var contactNum = trim(form.val().contactNum);
+                            if (contactNum.length > 50) {
+                                util.alert("联系电话不得超过50个字");
+                                return;
+                            }
+                        }
+                        if (form.val().email) {
+                            var email = trim(form.val().email);
+                            if (email.length > 50) {
+                                util.alert("联系邮箱不得超过50个字");
+                                return;
+                            }
+                        }
                         if (form.val().orgType == null) {
                             form.val({orgType: 1});
                         }
-                        if (form.val().name == null) {
-                            util.alert("请输入企业名称");
-                        } else if (form.val().forShort == null) {
-                            util.alert("请输入企业简称")
-                        } else if (form.val().city == null || form.val().city === "请选择城市") {
-                            util.alert("请选择企业所在城市")
+                        if (form.val().forShort == null) {
+                            util.alert("请输入企业简称");
+                            return;
                         }
                         else form.doPost("../ajax/sys/org/update", function () {
                                 spa.closeModal();
                                 if (data.hand) {
                                     data.hand();
                                 }
-                                location.reload();
+                                // location.reload();
                             }, {});
                     };
 
@@ -64,6 +103,12 @@ spa_define(function () {
                 if (data.data.qualification) {
                     form.val({qualificationList: split(data.data.qualification)});
                 }
+                if (data.data.fieldOfSupplier) {
+                    form.val({fieldOfSupplierList: split(data.data.fieldOfSupplier)});
+                }
+                if (data.data.fieldOfCustomer) {
+                    form.val({fieldOfCustomerList: split(data.data.fieldOfCustomer)});
+                }
 
 
                 form.val(data.data);
@@ -72,9 +117,115 @@ spa_define(function () {
                     spa.closeModal();
                 });
 
-                var part = function (one, list) {
+                var part = function (one, list,num) {
                     oValue = one;
                     oJudge = list || [];
+                    if (oJudge.length>=num) {
+                        util.alert("最多"+num+"个");
+                        return;
+                    }
+                    var repeat,
+                        b;
+                    if (!oValue) {
+                        util.alert('提示', '请先填写内容');
+                        return;
+                    }
+                    if (oValue.length > 15) {
+                        util.alert('提示', '添加内容不能超过15个字');
+                        return;
+                    } else {
+                        var oValueList = oValue.split(","),
+                            length = oValueList.length;
+                        for (var j = 0; j < length; j++) {
+                            for (var n = j + 1; n < oValueList.length + 1;) {
+                                if (oValueList[j] == oValueList[n]) {
+                                    oValueList.remove(n);
+                                    repeat = false;
+                                } else {
+                                    n++;
+                                }
+                            }
+                        }
+                        for (var j = 0; j < oValueList.length;) {
+                            for (var i = 0; i < oJudge.length; i++) {
+                                if (oValueList[j] == oJudge[i]) {
+                                    oValueList.remove(j);
+                                    repeat = false;
+                                    b = true;
+                                }
+                            }
+                            if (b) {
+                                b = false
+                            } else j++;
+                        }
+                        if (repeat == false) {
+                            util.alert('提示', '添加内容不能重复');
+                        }
+                        for (var m = 0; m < oValueList.length; m++) {
+                            ca.items.push({code: oValueList[m], caption: oValueList[m]});
+                            oJudge.push(oValueList[m]);
+                        }
+                    }
+                };
+
+                var part2 = function (one, list,num) {
+                    oValue = one;
+                    oJudge = list || [];
+                    if (oJudge.length>=num) {
+                        util.alert("最多"+num+"个");
+                        return;
+                    }
+                    var repeat,
+                        b;
+                    if (!oValue) {
+                        util.alert('提示', '请先填写内容');
+                        return;
+                    }
+                    if (oValue.length > 20) {
+                        util.alert('提示', '添加内容不能超过20个字');
+                        return;
+                    } else {
+                        var oValueList = oValue.split(","),
+                            length = oValueList.length;
+                        for (var j = 0; j < length; j++) {
+                            for (var n = j + 1; n < oValueList.length + 1;) {
+                                if (oValueList[j] == oValueList[n]) {
+                                    oValueList.remove(n);
+                                    repeat = false;
+                                } else {
+                                    n++;
+                                }
+                            }
+                        }
+                        for (var j = 0; j < oValueList.length;) {
+                            for (var i = 0; i < oJudge.length; i++) {
+                                if (oValueList[j] == oJudge[i]) {
+                                    oValueList.remove(j);
+                                    repeat = false;
+                                    b = true;
+                                }
+                            }
+                            if (b) {
+                                b = false
+                            } else j++;
+                        }
+                        if (repeat == false) {
+                            util.alert('提示', '添加内容不能重复');
+                        }
+                        for (var m = 0; m < oValueList.length; m++) {
+                            ca.items.push({code: oValueList[m], caption: oValueList[m]});
+                            oJudge.push(oValueList[m]);
+                        }
+                    }
+                };
+
+                var part3 = function (one, list,num) {
+                    oValue = one;
+                    oJudge = list || [];
+                    if (oJudge.length>=num) {
+                        util.alert("最多"+num+"个");
+                        return;
+                    }
                     var repeat,
                         b;
                     if (!oValue) {
@@ -119,6 +270,8 @@ spa_define(function () {
                     }
                 };
 
+
+
                 Array.prototype.remove = function (obj) {
                     for (var i = 0; i < this.length; i++) {
                         var temp = this[i];
@@ -145,16 +298,24 @@ spa_define(function () {
                 }
 
                 root.find(".opt-industry").on("click", function () {
-                    part(form.val().newIndustry, form.val().industryList);
+                    part(form.val().newIndustry, form.val().industryList,3);
                     form.val({newIndustry: "", industryList: oJudge});
                 });
                 root.find(".opt-subject").on("click", function () {
-                    part(form.val().newSubject, form.val().subjectList);
+                    part(form.val().newSubject, form.val().subjectList,20);
                     form.val({newSubject: "", subjectList: oJudge});
                 });
                 root.find(".opt-qf").on("click", function () {
-                    part(form.val().newQualification, form.val().qualificationList);
+                    part2(form.val().newQualification, form.val().qualificationList,10);
                     form.val({newQualification: "", qualificationList: oJudge});
+                });
+                root.find(".opt-fos").on("click", function () {
+                    part3(form.val().newFieldOfSupplier, form.val().fieldOfSupplierList,5);
+                    form.val({newFieldOfSupplier: "", fieldOfSupplierList: oJudge});
+                });
+                root.find(".opt-foc").on("click", function () {
+                    part3(form.val().newFieldOfCustomer, form.val().fieldOfCustomerList,5);
+                    form.val({newFieldOfCustomer: "", fieldOfCustomerList: oJudge});
                 });
 
                 var $list = $('#fileList'),

@@ -1,0 +1,97 @@
+<div class="sys_content_index" loadUri="../ajax/content/pq" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption">内容类型</div>
+            <div class="col-2">
+                <div class="form-item select orderBy" dictCode="content_type" defVal="3" name="contentType"></div>
+            </div>
+            <div class="col-1 item-caption ">名称</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="title"></div>
+            </div>
+            <div class="col-1 item-caption">发布者</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="bt"></div>
+            </div>
+            <div class="col-1 item-caption center">至</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="et"></div>
+            </div>
+            <div class="col-1 item-caption ">排序方式</div>
+            <div class="col-2">
+                <div class="form-item select orderBy" dictCode="sort_rule" defVal="1" name="orderBy"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-view">
+                查看信息
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th class="number">序号</th>
+                <th>名称</th>
+                <th>发布者</th>
+                <th>关键词</th>
+                <th>创建时间</th>
+                <th class="number">权重</th>
+                <th class="number">浏览量</th>
+                <th class="number">点赞量</th>
+                <th class="number">留言量</th>
+                <th class="number">收藏量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" contentId="{{articleId}}{{resourceId}}{{id}}"></i></td>
+                <td>{{pi}}</td>
+                <td>{{name}}{{articleTitle}}{{resourceName}}</td>
+                <td>{{professorName}}{{authors}}{{reqPerson}}</td>
+                <td>{{subject}}{{keywords}}</td>
+                <td>{{createTime-showDay}}</td>
+                <td>{{sortNum}}</td>
+                <td>{{pageViews}}</td>
+                <td>{{articleAgree}}</td>
+                <td class="hand-articleid" articleid="{{articleId}}"></td>
+                <td class="hand-collectionid" collectionid="{{articleId}}{{resourceId}}{{id}}"></td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="11">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

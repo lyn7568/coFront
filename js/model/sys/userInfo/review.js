@@ -68,7 +68,7 @@ spa_define(function () {
                 };
                 saveBtn.on("click", save);
                 form.val(data.data);
-                form.val({state: 3, authentication: 0, authStatus: 3, authStatusExpert: 3});
+                form.val({state: 3, authentication: 1, authStatus: 3, authStatusExpert: 3});
             }
         }
     });
