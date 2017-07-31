@@ -396,12 +396,14 @@ spa_define(function () {
                     // $("#oimg").attr("src", "../data/images/org/" + data.data.id + ".jpg");
                     var $li = $(
                             '<div class="file-item thumbnail">' +
-                            '<img  src="../data/images/org/" id="oimg" />' +
+                            // '<img  src="../data/images/org/" id="oimg" />' +
+                            '<img  src="http://www.ekexiu.com/images/org/" id="oimg" />' +
                             '</div>'
                         ),
                         $img = $li.find('img');
                     $list.html($li);
-                    $img.attr('src',  "../data/images/org/" + data.data.id + ".jpg");
+                    // $img.attr('src',  "../data/images/org/" + data.data.id + ".jpg");
+                    $img.attr('src',  "http://www.ekexiu.com/images/org/" + data.data.id + ".jpg");
                 }
                 saveBtn.on("click", save);
             }
