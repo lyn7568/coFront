@@ -7,6 +7,7 @@ spa_define(function () {
         return {
             modal: function (data) {
                 var root = spa.findInModal(".sys_org_new");
+                $(".sys_org_new .oname").addClass("readOnly");
                 var form = fb.build(root.find(".newForm"));
                 var trim = function (str) {
                     return str.replace(/(^\s*)|(\s*$)/g, "");

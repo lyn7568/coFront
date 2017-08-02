@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col-1"></div>
-            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-1 item-caption ">发布时间</div>
             <div class="col-2">
                 <div class="form-item date" defVal="" name="bt"></div>
             </div>
@@ -63,7 +63,8 @@
                 <th>名称</th>
                 <th>发布者</th>
                 <th>关键词</th>
-                <th>创建时间</th>
+                <th class="create">发布时间</th>
+                <th class="publish">发布时间</th>
                 <th class="number">权重</th>
                 <th class="number">浏览量</th>
                 <th class="number">点赞量</th>
@@ -78,7 +79,8 @@
                 <td>{{name}}{{articleTitle}}{{resourceName}}</td>
                 <td>{{professorName}}{{authors}}{{organizationName}}</td>
                 <td>{{subject}}{{keywords}}</td>
-                <td>{{createTime-showDay}}</td>
+                <td class="create">{{createTime-showDay}}</td>
+                <td class="publish">{{publishTime-showDay}}</td>
                 <td>{{sortNum}}</td>
                 <td>{{pageViews}}</td>
                 <td>{{articleAgree}}</td>

@@ -36,6 +36,11 @@ spa_define(function () {
                         },{});
                         $e.removeClass("hand-collectionid");
                     });
+                    if (type == 3 || type==2 ) {
+                        $(".create").hide();
+                    } else {
+                        $(".publish").hide();
+                    }
                 });
 
                 root.find(".opt-query").on("click", function () {

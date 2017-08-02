@@ -152,7 +152,7 @@
         }]);
 
         dict.set("sort_rule",[{
-            code:"1",caption:"按创建时间由新到久排序",enabled:true
+            code:"1",caption:"按创建时间由新到旧排序",enabled:true
         },{
             code:"2",caption:"按浏览量由高到低排序",enabled:true
         }]);
