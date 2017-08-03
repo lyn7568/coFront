@@ -1,0 +1,27 @@
+@charset "utf-8";
+.sys_professornew_index .tpl-btns .row{
+    padding-left: 10px;
+}
+
+.sys_professornew_index th.opt-check{
+    width: 35px;
+}
+
+.sys_professornew_index td.table-opt.edit{
+    padding: 1px;
+    text-align: center;
+}
+
+.sys_professornew_index .table-opt .name{
+    cursor:pointer;
+}
+
+.sys_professornew_data{
+    width: 500px;
+    height: 330px;
+    padding: 0 20px 10px;
+}
+
+.sys_professornew_data .icon-close {
+    display: none;
+}

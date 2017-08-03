@@ -1,0 +1,100 @@
+<div class="sys_professornew_index" loadUri="../ajax/sys/professor/pqUserDetail" pageSize="10" pageNo="1">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-2 item-caption">用户名</div>
+            <div class="col-3">
+                <div class="form-item text trim" defVal="" name="name"></div>
+            </div>
+            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="bt"></div>
+            </div>
+            <div class="col-1 item-caption center">至</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="et"></div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <!--<div class="btn opt-new">-->
+                <!--新增账户-->
+            <!--</div>-->
+            <!--<div class="btn opt-edit">-->
+                <!--修改账户信息-->
+            <!--</div>-->
+            <!--<div class="btn opt-details">-->
+                <!--编辑用户资料-->
+            <!--</div>-->
+            <div class="btn opt-data">
+                修改业务数据
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check"><i class="icon icon-st-check"></i> </th>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>职称</th>
+                <th>所在机构</th>
+                <th>手机</th>
+                <th>邮箱</th>
+                <th>创建时间</th>
+                <th>身份类型</th>
+                <th>实名认证</th>
+                <th>专家认证</th>
+                <th>权重</th>
+                <th>激活状态</th>
+                <th>浏览量</th>
+                <th>粉丝量</th>
+                <th>邀请状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check"><i class="icon icon-st-check" professorid="{{id}}"></i></td>
+                <td>{{-_index}}</td>
+                <td>{{name}}</td>
+                <td>{{title}}</td>
+                <td>{{orgName}}</td>
+                <td>{{mobile}}</td>
+                <td>{{email}}</td>
+                <td>{{createTime-date}}</td>
+                <td class="hand-dict" dict="authentication" code="{{authentication}}"></td>
+                <td class="hand-dict" dict="solveStatus" code="{{authStatus}}"></td>
+                <td class="hand-dict" dict="solveStatus" code="{{authStatusExpert}}"></td>
+                <td>{{sortFirst}}</td>
+                <td>{{activeStatus}}</td>
+                <td>{{pageViews}}</td>
+                <td class="hand-fans" id="{{id}}"></td>
+                <td>{{sendMailStatus}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="11">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>
