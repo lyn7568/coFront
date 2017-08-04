@@ -6,9 +6,6 @@
     width: 35px;
 }
 
-.sys_article_index .content{
-    width: 50px;
-}
 .sys_article_index .table {
     table-layout: fixed;
 }
@@ -18,5 +15,15 @@
 }
 
 .sys_article_index .number {
-    width: 6%;
+    width: 4%;
+}
+
+.sys_article_sort {
+    width: 600px;
+    height: 200px;
+}
+
+.sys_article_sort .content{
+    font-size: 25px;
+    font-weight: bold;
 }

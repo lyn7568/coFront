@@ -62,7 +62,7 @@ spa_define(function () {
                         }else {
                             util.boxMsg({
                                 title: "确认删除",
-                                content: "您是否要删除选中的文章？",
+                                content: "您是否要删除选中的文章",
                                 btns: [{
                                     caption: "删除",
                                     hand: function() {
@@ -75,6 +75,24 @@ spa_define(function () {
                         }
                     } else {
                         util.alert("请选择一个用户");
+                    }
+                });
+                root.find(".opt-sort-num").on("click", function() {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if($article.length) {
+                        if($article.length > 1) {
+                            util.alert("只能选择一篇文章");
+                        } else {
+                            $.util.get("../ajax/article/id/"+$article.attr("articleId"),null,function(rd){
+                                if(rd){
+                                    spa.showModal("sys_article_sort", { data:rd, hand: function() { pdg.load() } })
+                                }else{
+                                    util.alertMsg("文章", function(){pdg.load();});
+                                }
+                            },{});
+                        }
+                    } else {
+                        util.alert("请选择一篇文章");
                     }
                 });
                 root.find(".opt-view").on("click", function () {
