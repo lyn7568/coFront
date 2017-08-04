@@ -121,18 +121,18 @@ spa_define(function () {
                         util.alert("请选择一个用户");
                     }
                 });
-                // root.find(".opt-view").on("click", function () {
-                //     var $org = root.find("td.opt-check>i.checked");
-                //     if ($org.length) {
-                //         if ($org.length > 1) {
-                //             util.alert("只能选择一个用户");
-                //         } else {
-                //             window.open('http://www.ekexiu.com/cmpInforShow.html?orgId=' + $org.attr("orgId"));
-                //         }
-                //     } else {
-                //         util.alert("请选择一个用户");
-                //     }
-                // });
+                root.find(".opt-view").on("click", function () {
+                    var $org = root.find("td.opt-check>i.checked");
+                    if ($org.length) {
+                        if ($org.length > 1) {
+                            util.alert("只能选择一个用户");
+                        } else {
+                            window.open('http://www.ekexiu.com/userInforShow.html?professorId=' + $org.attr("professorid"));
+                        }
+                    } else {
+                        util.alert("请选择一个用户");
+                    }
+                });
 
             }, mainDestory: function () {
 
