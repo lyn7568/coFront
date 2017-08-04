@@ -57,22 +57,24 @@ spa_define(function () {
                 root.find(".opt-del").on("click", function() {
                     var $org = root.find("td.opt-check>i.checked");
                     if($org.length) {
-                        if ($org.length > 1) {
-                            util.alert("只能选择一个用户");
-                        }else {
-                            util.boxMsg({
-                                title: "确认删除",
-                                content: "您是否要删除选中的文章？",
-                                btns: [{
-                                    caption: "删除",
-                                    hand: function() {
-                                        util.post("../ajax/article/deleteArticle",{articleId:$org.attr("articleId")}, function() { pdg.load() }, {});
-                                    }
-                                },
-                                    { caption: "取消" }
-                                ]
-                            });
-                        }
+                        var ret = [];
+                        $org.each(function() {
+                            ret.push($(this).attr("articleId"));
+                        });
+                        util.boxMsg({
+                            title: "确认删除",
+                            content: "您是否要删除选中的文章？",
+                            btns: [{
+                                caption: "删除",
+                                hand: function () {
+                                    util.post("../ajax/article/deleteArticle", {articleIds: ret}, function () {
+                                        pdg.reload()
+                                    }, {});
+                                }
+                            },
+                                {caption: "取消"}
+                            ]
+                        });
                     } else {
                         util.alert("请选择一个用户");
                     }
