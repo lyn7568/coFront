@@ -25,3 +25,9 @@
 .sys_professornew_data .icon-close {
     display: none;
 }
+
+.sys_professornew_new {
+    width: 500px;
+    height: 250px;
+    padding: 0 20px 10px;
+}

@@ -36,7 +36,6 @@ spa_define(function () {
                 };
                 saveBtn.on("click", save);
                 form.val(data.data);
-                form.val({authStatus: 3});
             }
         }
     });

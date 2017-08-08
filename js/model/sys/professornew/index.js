@@ -48,31 +48,30 @@ spa_define(function () {
                         pdg.load()
                     });
                 });
-                // root.find(".opt-edit").on("click", function () {
-                //     var $org = root.find("td.opt-check>i.checked");
-                //     if ($org.length) {
-                //         if ($org.length > 1) {
-                //             util.alert("只能选择一个用户");
-                //         } else {
-                //             util.get("../ajax/sys/org/queryAccount/" + $org.attr("orgId"), null, function (data) {
-                //                 if (data) {
-                //                     spa.showModal("sys_org_edit", {
-                //                         data: data,
-                //                         hand: function () {
-                //                             pdg.load()
-                //                         }
-                //                     })
-                //                 } else {
-                //                     util.alert("用户不存在了", function () {
-                //                         pdg.load();
-                //                     });
-                //                 }
-                //             }, {});
-                //         }
-                //     } else {
-                //         util.alert("请选择一个用户");
-                //     }
-                // });
+                root.find(".opt-edit").on("click", function () {
+                    var $org = root.find("td.opt-check>i.checked");
+                    if ($org.length) {
+                        if ($org.length > 1) {
+                            util.alert("只能选择一个用户");
+                        } else {
+                            util.get("../ajax/sys/professor/luserId/" + $org.attr("professorId"), null, function (data) {
+                                if (data) {
+                                        spa.showModal("sys_professornew_edit", {
+                                            data: data,name:$org.attr("na"), hand: function () {
+                                                pdg.load()
+                                            }
+                                        })
+                                } else {
+                                    util.alert("用户不存在了", function () {
+                                        pdg.load();
+                                    });
+                                }
+                            }, {});
+                        }
+                    } else {
+                        util.alert("请选择一个用户");
+                    }
+                });
                 // root.find(".opt-details").on("click", function () {
                 //     var $org = root.find("td.opt-check>i.checked");
                 //     if ($org.length) {

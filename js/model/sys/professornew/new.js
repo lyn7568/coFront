@@ -40,7 +40,7 @@ spa_define(function () {
                             return;
                         }
                         if (form.val().mobile || form.val().email) {
-                            util.get("../ajax/userinfo/reviewCheck", {
+                            util.get("../ajax/sys/professor/createCheck", {
                                 mobile: form.val().mobile,
                                 email: form.val().email
                             },function (success) {
