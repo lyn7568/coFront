@@ -45,9 +45,7 @@ spa_define(function () {
                                 email: form.val().email
                             },function (success) {
                                 if (success){
-                                    form.val({pMobile: form.val().mobile});
-                                    form.val({pEmail: form.val().email});
-                                    form.doPut("../ajax/sys/professor/insert", function () {
+                                    form.doPost("../ajax/sys/professor/createAccount", function () {
                                         spa.closeModal();
                                         if (data) {
                                             data();

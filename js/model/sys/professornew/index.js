@@ -43,11 +43,11 @@ spa_define(function () {
                     var $this = $(this);
                     $this.toggleClass("checked");
                 });
-                // root.find(".opt-new").on("click", function () {
-                //     spa.showModal("sys_org_new", function () {
-                //         pdg.load()
-                //     });
-                // });
+                root.find(".opt-new").on("click", function () {
+                    spa.showModal("sys_professornew_new", function () {
+                        pdg.load()
+                    });
+                });
                 // root.find(".opt-edit").on("click", function () {
                 //     var $org = root.find("td.opt-check>i.checked");
                 //     if ($org.length) {
