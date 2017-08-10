@@ -44,12 +44,12 @@ spa_define(function () {
                                     spa.showModal("sys_feedback_operate", {
                                         data: data,
                                         hand: function () {
-                                            pdg.load()
+                                            pdg.reload()
                                         }
                                     })
                                 } else {
                                     util.alert("用户不存在了", function () {
-                                        pdg.load();
+                                        pdg.reload();
                                     });
                                 }
                             }, {});

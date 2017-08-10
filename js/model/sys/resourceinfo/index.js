@@ -1,12 +1,12 @@
 /**
- * Created by TT on 2017/8/3.
+ * Created by TT on 2017/8/9.
  */
 ;
 spa_define(function () {
     return $.use(["spa", "pagedatagrid", "util"], function (spa, pdgf, util) {
         return {
             main: function () {
-                var root = spa.findInMain(".sys_article_index");
+                var root = spa.findInMain(".sys_resourceinfo_index");
                 var pdg = pdgf.build(root);
                 pdg.code.shell("showDay", function (env) {
                     if (env.cd && env.cd[this.k]) {
@@ -17,20 +17,10 @@ spa_define(function () {
                 });
                 pdg.code.listen($.dict.doTransfer);
                 pdg.code.listen(function(){
-                    root.find(".hand-articleid").each(function() {
-                        var $e = $(this);
-                        var articleid = $e.attr("articleid");
-                        if (articleid) {
-                            util.get("/ajax/content/lwCount", {articleId: articleid}, function (data) {
-                                $e.text(data);
-                            }, {});
-                            $e.removeClass("hand-articleid");
-                        }
-                    });
                     root.find(".hand-collectionid").each(function() {
                         var $e = $(this);
                         var collectionid = $e.attr("collectionid");
-                        util.get("/ajax/content/countProfessor",{id:collectionid,type:3},function(data){
+                        util.get("/ajax/content/countProfessor",{id:collectionid,type:2},function(data){
                             $e.text(data);
                         },{});
                         $e.removeClass("hand-collectionid");
@@ -55,58 +45,58 @@ spa_define(function () {
                     $this.toggleClass("checked");
                 });
                 root.find(".opt-del").on("click", function() {
-                    var $org = root.find("td.opt-check>i.checked");
-                    if($org.length) {
-                        var ret = [];
-                        $org.each(function() {
-                            ret.push($(this).attr("articleId"));
-                        });
-                        util.boxMsg({
-                            title: "确认删除",
-                            content: "您是否要删除选中的文章？",
-                            btns: [{
-                                caption: "删除",
-                                hand: function () {
-                                    util.post("../ajax/article/deleteArticle", {articleIds: ret}, function () {
-                                        pdg.reload()
-                                    }, {});
-                                }
-                            },
-                                {caption: "取消"}
-                            ]
-                        });
+                    var $resource = root.find("td.opt-check>i.checked");
+                    if($resource.length) {
+                        if($resource.length > 1) {
+                            util.alert("只能选择一个资源");
+                        } else {
+                            util.boxMsg({
+                                title: "确认删除",
+                                content: "您是否要删除选中的资源？",
+                                btns: [{
+                                    caption: "删除",
+                                    hand: function () {
+                                        util.post("../ajax/resource/deleteResource", {resourceId: $resource.attr("resourceId")}, function () {
+                                            pdg.reload()
+                                        }, {});
+                                    }
+                                },
+                                    {caption: "取消"}
+                                ]
+                            });
+                        }
                     } else {
                         util.alert("请选择一个用户");
                     }
                 });
                 root.find(".opt-sort-num").on("click", function() {
-                    var $article = root.find("td.opt-check>i.checked");
-                    if($article.length) {
-                        if($article.length > 1) {
-                            util.alert("只能选择一篇文章");
+                    var $resource = root.find("td.opt-check>i.checked");
+                    if($resource.length) {
+                        if($resource.length > 1) {
+                            util.alert("只能选择一个资源");
                         } else {
-                            $.util.get("../ajax/article/id/"+$article.attr("articleId"),null,function(rd){
+                            $.util.get("../ajax/resource/id/"+$resource.attr("resourceId"),null,function(rd){
                                 if(rd){
-                                    spa.showModal("sys_article_sort", { data:rd, hand: function() { pdg.reload() } })
+                                    spa.showModal("sys_resourceinfo_sort", { data:rd, hand: function() { pdg.reload() } })
                                 }else{
-                                    util.alertMsg("文章不存在", function(){pdg.load();});
+                                    util.alertMsg("资源不存在", function(){pdg.reload();});
                                 }
                             },{});
                         }
                     } else {
-                        util.alert("请选择一篇文章");
+                        util.alert("请选择一个资源");
                     }
                 });
                 root.find(".opt-view").on("click", function () {
-                    var $org = root.find("td.opt-check>i.checked");
-                    if ($org.length) {
-                        if ($org.length > 1) {
-                            util.alert("只能选择一篇文章");
+                    var $resource = root.find("td.opt-check>i.checked");
+                    if ($resource.length) {
+                        if ($resource.length > 1) {
+                            util.alert("只能选择一个资源");
                         } else {
-                            window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $org.attr("articleId"));
+                            window.open('http://www.ekexiu.com/resourceShow.html?resourceId=' + $resource.attr("resourceId"));
                         }
                     } else {
-                        util.alert("请选择一篇文章");
+                        util.alert("请选择一个资源");
                     }
                 });
 
