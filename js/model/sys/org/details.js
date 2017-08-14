@@ -50,8 +50,8 @@ spa_define(function () {
                         }
                         if (form.val().addr) {
                             var addr = trim(form.val().addr);
-                            if (addr.length > 20) {
-                                util.alert("地址字数不得超过20个字");
+                            if (addr.length > 50) {
+                                util.alert("地址字数不得超过50个字");
                                 return;
                             }
                         }
@@ -181,8 +181,8 @@ spa_define(function () {
                         util.alert('提示', '请先填写内容');
                         return;
                     }
-                    if (oValue.length > 20) {
-                        util.alert('提示', '添加内容不能超过20个字');
+                    if (oValue.length > 50) {
+                        util.alert('提示', '添加内容不能超过50个字');
                         return;
                     } else {
                         var oValueList = oValue.split(","),
@@ -219,56 +219,56 @@ spa_define(function () {
                     }
                 };
 
-                var part3 = function (one, list,num) {
-                    oValue = one;
-                    oJudge = list || [];
-                    if (oJudge.length>=num) {
-                        util.alert("最多"+num+"个");
-                        return;
-                    }
-                    var repeat,
-                        b;
-                    if (!oValue) {
-                        util.alert('提示', '请先填写内容');
-                        return;
-                    }
-                    if (oValue.length > 10) {
-                        util.alert('提示', '添加内容不能超过10个字');
-                        return;
-                    } else {
-                        var oValueList = oValue.split(","),
-                            length = oValueList.length;
-                        for (var j = 0; j < length; j++) {
-                            for (var n = j + 1; n < oValueList.length + 1;) {
-                                if (oValueList[j] == oValueList[n]) {
-                                    oValueList.remove(n);
-                                    repeat = false;
-                                } else {
-                                    n++;
-                                }
-                            }
-                        }
-                        for (var j = 0; j < oValueList.length;) {
-                            for (var i = 0; i < oJudge.length; i++) {
-                                if (oValueList[j] == oJudge[i]) {
-                                    oValueList.remove(j);
-                                    repeat = false;
-                                    b = true;
-                                }
-                            }
-                            if (b) {
-                                b = false
-                            } else j++;
-                        }
-                        if (repeat == false) {
-                            util.alert('提示', '添加内容不能重复');
-                        }
-                        for (var m = 0; m < oValueList.length; m++) {
-                            ca.items.push({code: oValueList[m], caption: oValueList[m]});
-                            oJudge.push(oValueList[m]);
-                        }
-                    }
-                };
+                // var part3 = function (one, list,num) {
+                //     oValue = one;
+                //     oJudge = list || [];
+                //     if (oJudge.length>=num) {
+                //         util.alert("最多"+num+"个");
+                //         return;
+                //     }
+                //     var repeat,
+                //         b;
+                //     if (!oValue) {
+                //         util.alert('提示', '请先填写内容');
+                //         return;
+                //     }
+                //     if (oValue.length > 10) {
+                //         util.alert('提示', '添加内容不能超过10个字');
+                //         return;
+                //     } else {
+                //         var oValueList = oValue.split(","),
+                //             length = oValueList.length;
+                //         for (var j = 0; j < length; j++) {
+                //             for (var n = j + 1; n < oValueList.length + 1;) {
+                //                 if (oValueList[j] == oValueList[n]) {
+                //                     oValueList.remove(n);
+                //                     repeat = false;
+                //                 } else {
+                //                     n++;
+                //                 }
+                //             }
+                //         }
+                //         for (var j = 0; j < oValueList.length;) {
+                //             for (var i = 0; i < oJudge.length; i++) {
+                //                 if (oValueList[j] == oJudge[i]) {
+                //                     oValueList.remove(j);
+                //                     repeat = false;
+                //                     b = true;
+                //                 }
+                //             }
+                //             if (b) {
+                //                 b = false
+                //             } else j++;
+                //         }
+                //         if (repeat == false) {
+                //             util.alert('提示', '添加内容不能重复');
+                //         }
+                //         for (var m = 0; m < oValueList.length; m++) {
+                //             ca.items.push({code: oValueList[m], caption: oValueList[m]});
+                //             oJudge.push(oValueList[m]);
+                //         }
+                //     }
+                // };
 
 
 
@@ -310,11 +310,11 @@ spa_define(function () {
                     form.val({newQualification: "", qualificationList: oJudge});
                 });
                 root.find(".opt-fos").on("click", function () {
-                    part3(form.val().newFieldOfSupplier, form.val().fieldOfSupplierList,5);
+                    part(form.val().newFieldOfSupplier, form.val().fieldOfSupplierList,5);
                     form.val({newFieldOfSupplier: "", fieldOfSupplierList: oJudge});
                 });
                 root.find(".opt-foc").on("click", function () {
-                    part3(form.val().newFieldOfCustomer, form.val().fieldOfCustomerList,5);
+                    part(form.val().newFieldOfCustomer, form.val().fieldOfCustomerList,5);
                     form.val({newFieldOfCustomer: "", fieldOfCustomerList: oJudge});
                 });
 

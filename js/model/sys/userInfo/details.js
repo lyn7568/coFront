@@ -159,8 +159,8 @@ spa_define(function () {
                         util.alert('提示', '请先填写内容');
                         return;
                     }
-                    if (oValue.length > 20) {
-                        util.alert('提示', '添加内容不能超过20个字');
+                    if (oValue.length > 30) {
+                        util.alert('提示', '添加内容不能超过30个字');
                         return;
                     } else {
                         var oValueList = oValue.split(","),
