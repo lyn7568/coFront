@@ -69,9 +69,6 @@ spa_define(function () {
                                 return;
                             }
                         }
-                        if (form.val().orgType == null) {
-                            form.val({orgType: 1});
-                        }
                         if (form.val().forShort == null) {
                             util.alert("请输入企业简称");
                             return;
