@@ -136,3 +136,14 @@
 .sys_professornew_details .orgSize.dyn-mselect .placeholder {
     display: none !important;
 }
+
+.sys_professornew_project ,.sys_professornew_honor,.sys_professornew_job,.sys_professornew_edu{
+    width: 600px;
+    padding: 0 20px 10px;
+}
+.sys_professornew_project ,.sys_professornew_honor{
+    height: 350px;
+}
+.sys_professornew_job,.sys_professornew_edu{
+    height: 470px;
+}

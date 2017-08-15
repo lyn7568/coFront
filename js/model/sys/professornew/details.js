@@ -269,164 +269,180 @@ spa_define(function () {
                 });
 
                 root.find(".opt-project-new").on("click", function () {
-                    spa.showModal("sys_userinfo_project_new", {
-                        data: data.data.projects, hand: function () {
-                            dp.val(data.data.projects);
+                    spa.showModal("sys_professornew_project_new", {
+                        data: data.data.id, hand: function () {
+                            loadPorject();
                         }
                     });
                 });
                 root.on("click", ".opt-project-edit", function () {
-                    var pNo = $(this).parent().attr("pNo");
-                    spa.showModal("sys_userinfo_project_edit", {
-                        data: data.data.projects[pNo], hand: function () {
-                            dp.val(data.data.projects);
+                    var pid = $(this).parent().attr("pid");
+                    util.get("../ajax/project/" + pid, null, function (project) {
+                        if (project) {
+                            spa.showModal("sys_professornew_project_edit", {
+                                data: project, hand: function () {
+                                    loadPorject();
+                                }
+                            });
+                        } else {
+                            util.alert("该项目经历不存在");
                         }
-                    })
+                    });
                 });
                 root.on("click", ".opt-project-del", function () {
-                    var pNo = $(this).parent().attr("pNo");
-                    if (pNo) {
-                        util.boxMsg({
-                            title: "确认删除",
-                            content: "确认删除该项目经历？",
-                            btns: [{
-                                caption: "删除",
-                                hand: function () {
-                                    data.data.projects.remove(pNo);
-                                    data.data.projects = data.data.projects || [];
-                                    for (var i = 0; i < data.data.projects.length; ++i) {
-                                        data.data.projects[i].no = i;
+                    var pid = $(this).parent().attr("pid");
+                    util.get("../ajax/project/" + pid, null, function (project) {
+                        if (project) {
+                            util.boxMsg({
+                                title: "确认删除",
+                                content: "确认删除该项目经历？",
+                                btns: [{
+                                    caption: "删除",
+                                    hand: function () {
+                                        util.del("../ajax/project/" + pid, function () {
+                                            loadPorject();
+                                        }, {});
                                     }
-                                    dp.val(data.data.projects);
-                                    console.log(data.data.projects);
-                                }
-                            },
-                                {caption: "取消"}
-                            ]
-                        });
-                    } else {
-                        util.alert("该项目经历不存在");
-                    }
+                                },
+                                    {caption: "取消"}
+                                ]
+                            });
+                        } else {
+                            util.alert("该项目经历不存在");
+                        }
+                    });
                 });
                 root.find(".opt-honor-new").on("click", function () {
-                    spa.showModal("sys_userinfo_honor_new", {
-                        data: data.data.honors, hand: function () {
-                            dh.val(data.data.honors);
+                    spa.showModal("sys_professornew_honor_new", {
+                        data: data.data.id, hand: function () {
+                            loadHonor();
                         }
-                    })
+                    });
                 });
                 root.on("click", ".opt-honor-edit", function () {
-                    var hNo = $(this).parent().attr("hNo");
-                    spa.showModal("sys_userinfo_honor_edit", {
-                        data: data.data.honors[hNo], hand: function () {
-                            dh.val(data.data.honors);
+                    var hid = $(this).parent().attr("hid");
+                    util.get("../ajax/honor/" + hid, null, function (honor) {
+                        if (honor) {
+                            spa.showModal("sys_professornew_honor_edit", {
+                                data: honor, hand: function () {
+                                    loadHonor();
+                                }
+                            });
+                        } else {
+                            util.alert("该荣誉奖项不存在");
                         }
-                    })
+                    });
                 });
                 root.on("click", ".opt-honor-del", function () {
-                    var hNo = $(this).parent().attr("hNo");
-                    if (hNo) {
-                        util.boxMsg({
-                            title: "确认删除",
-                            content: "确认删除该荣誉奖项？",
-                            btns: [{
-                                caption: "删除",
-                                hand: function () {
-                                    data.data.honors.remove(hNo);
-                                    data.data.honors = data.data.honors || [];
-                                    for (var i = 0; i < data.data.honors.length; ++i) {
-                                        data.data.honors[i].no = i;
+                    var hid = $(this).parent().attr("hid");
+                    util.get("../ajax/honor/" + hid, null, function (honor) {
+                        if (honor) {
+                            util.boxMsg({
+                                title: "确认删除",
+                                content: "确认删除该荣誉奖项？",
+                                btns: [{
+                                    caption: "删除",
+                                    hand: function () {
+                                        util.del("../ajax/honor/" + hid, function () {
+                                            loadHonor();
+                                        }, {});
                                     }
-                                    dh.val(data.data.honors);
-                                    console.log(data.data.honors);
-                                }
-                            },
-                                {caption: "取消"}
-                            ]
-                        });
-                    } else {
-                        util.alert("该荣誉奖项不存在");
-                    }
+                                },
+                                    {caption: "取消"}
+                                ]
+                            });
+                        } else {
+                            util.alert("该荣誉奖项不存在");
+                        }
+                    });
                 });
                 root.find(".opt-job-new").on("click", function () {
-                    spa.showModal("sys_userinfo_job_new", {
-                        data: data.data.jobs, hand: function () {
-                            dj.val(data.data.jobs);
+                    spa.showModal("sys_professornew_job_new", {
+                        data: data.data.id, hand: function () {
+                            loadJob();
                         }
                     });
                 });
                 root.on("click", ".opt-job-edit", function () {
-                    var jNo = $(this).parent().attr("jNo");
-                    spa.showModal("sys_userinfo_job_edit", {
-                        data: data.data.jobs[jNo], hand: function () {
-                            dj.val(data.data.jobs);
+                    var jid = $(this).parent().attr("jid");
+                    util.get("../ajax/job/" + jid, null, function (job) {
+                        if (job) {
+                            spa.showModal("sys_professornew_job_edit", {
+                                data: job, hand: function () {
+                                    loadJob();
+                                }
+                            });
+                        } else {
+                            util.alert("该工作经历不存在");
                         }
-                    })
+                    });
                 });
                 root.on("click", ".opt-job-del", function () {
-                    var jNo = $(this).parent().attr("jNo");
-                    if (jNo) {
-                        util.boxMsg({
-                            title: "确认删除",
-                            content: "确认删除该工作经历？",
-                            btns: [{
-                                caption: "删除",
-                                hand: function () {
-                                    data.data.jobs.remove(jNo);
-                                    data.data.jobs = data.data.jobs || [];
-                                    for (var i = 0; i < data.data.jobs.length; ++i) {
-                                        data.data.jobs[i].no = i;
+                    var jid = $(this).parent().attr("jid");
+                    util.get("../ajax/job/" + jid, null, function (job) {
+                        if (job) {
+                            util.boxMsg({
+                                title: "确认删除",
+                                content: "确认删除该工作经历？",
+                                btns: [{
+                                    caption: "删除",
+                                    hand: function () {
+                                        util.del("../ajax/job/" + jid, function () {
+                                            loadJob();
+                                        }, {});
                                     }
-                                    dj.val(data.data.jobs);
-                                    console.log(data.data.jobs);
-                                }
-                            },
-                                {caption: "取消"}
-                            ]
-                        });
-                    } else {
-                        util.alert("该工作经历不存在");
-                    }
+                                },
+                                    {caption: "取消"}
+                                ]
+                            });
+                        } else {
+                            util.alert("该工作经历不存在");
+                        }
+                    });
                 });
                 root.find(".opt-edu-new").on("click", function () {
-                    spa.showModal("sys_userinfo_edu_new", {
-                        data: data.data.edus, hand: function () {
-                            de.val(data.data.edus);
+                    spa.showModal("sys_professornew_edu_new", {
+                        data: data.data.id, hand: function () {
+                            loadEdu();
                         }
                     });
                 });
                 root.on("click", ".opt-edu-edit", function () {
-                    var eNo = $(this).parent().attr("eNo");
-                    spa.showModal("sys_userinfo_edu_edit", {
-                        data: data.data.edus[eNo], hand: function () {
-                            de.val(data.data.edus);
+                    var eid = $(this).parent().attr("eid");
+                    util.get("../ajax/edu/" + eid, null, function (edu) {
+                        if (edu) {
+                            spa.showModal("sys_professornew_edu_edit", {
+                                data: edu, hand: function () {
+                                    loadEdu();
+                                }
+                            });
+                        } else {
+                            util.alert("该教育经历不存在");
                         }
-                    })
+                    });
                 });
                 root.on("click", ".opt-edu-del", function () {
-                    var eNo = $(this).parent().attr("eNo");
-                    if (eNo) {
-                        util.boxMsg({
-                            title: "确认删除",
-                            content: "确认删除该工作经历？",
-                            btns: [{
-                                caption: "删除",
-                                hand: function () {
-                                    data.data.edus.remove(eNo);
-                                    data.data.edus = data.data.edus || [];
-                                    for (var i = 0; i < data.data.edus.length; ++i) {
-                                        data.data.edus[i].no = i;
+                    var eid = $(this).parent().attr("eid");
+                    util.get("../ajax/edu/" + eid, null, function (edu) {
+                        if (edu) {
+                            util.boxMsg({
+                                title: "确认删除",
+                                content: "确认删除该教育经历？",
+                                btns: [{
+                                    caption: "删除",
+                                    hand: function () {
+                                        util.del("../ajax/edu/" + eid, function () {
+                                            loadEdu();
+                                        }, {});
                                     }
-                                    de.val(data.data.edus);
-                                    console.log(data.data.edus);
-                                }
-                            },
-                                {caption: "取消"}
-                            ]
-                        });
-                    } else {
-                        util.alert("该工作经历不存在");
-                    }
+                                },
+                                    {caption: "取消"}
+                                ]
+                            });
+                        } else {
+                            util.alert("该教育经历不存在");
+                        }
+                    });
                 });
                 $.fn.citySelect();
                 $(document).on("click", "#City li a", function () {
@@ -482,22 +498,33 @@ spa_define(function () {
                 // de.val(data.data.edus);
 
                 /*
-                加载项目经历、荣誉奖项、工作经历、教育背景
+                 加载项目经历、荣誉奖项、工作经历、教育背景
                  */
-                util.get("../ajax/project/professor", {professorId: data.data.id}, function (projects) {
-                    dp.val(projects);
-                });
-                util.get("../ajax/honor/professor", {professorId: data.data.id}, function (honors) {
-                    dh.val(honors);
-                });
-                util.get("../ajax/job/professor", {professorId: data.data.id}, function (jobs) {
-                    dj.val(jobs);
-                });
-                util.get("../ajax/edu/professor", {professorId: data.data.id}, function (edus) {
-                    de.val(edus);
-                });
-
+                var loadPorject = function () {
+                    util.get("../ajax/project/professor", {professorId: data.data.id}, function (projects) {
+                        dp.val(projects);
+                    });
+                };
+                var loadHonor = function () {
+                    util.get("../ajax/honor/professor", {professorId: data.data.id}, function (honors) {
+                        dh.val(honors);
+                    });
+                };
+                var loadJob = function () {
+                    util.get("../ajax/job/professor", {professorId: data.data.id}, function (jobs) {
+                        dj.val(jobs);
+                    });
+                };
+                var loadEdu = function () {
+                    util.get("../ajax/edu/professor", {professorId: data.data.id}, function (edus) {
+                        de.val(edus);
+                    });
+                };
                 form.val(data.data);
+                loadPorject();
+                loadHonor();
+                loadJob();
+                loadEdu();
             }
         }
     });

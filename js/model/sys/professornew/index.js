@@ -62,7 +62,7 @@ spa_define(function () {
                                 if (data) {
                                     spa.showModal("sys_professornew_edit", {
                                         data: data, name: $org.attr("na"), hand: function () {
-                                            pdg.load()
+                                            pdg.reload()
                                         }
                                     })
                                 } else {
