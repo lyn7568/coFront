@@ -15,14 +15,18 @@ spa_define(function () {
                     }
                     return "";
                 });
+                pdg.code.shell("bool", function (env) {
+                    var v = env.cd[this.k];
+                    return v === 1 ? "是" : (v === 0 ? "否" : "");
+                });
                 pdg.code.listen($.dict.doTransfer);
-                pdg.code.listen(function(){
-                    root.find(".hand-fans").each(function() {
+                pdg.code.listen(function () {
+                    root.find(".hand-fans").each(function () {
                         var $e = $(this);
                         var collectionid = $e.attr("id");
-                        util.get("/ajax/content/countProfessor",{id:collectionid,type:1},function(data){
+                        util.get("/ajax/content/countProfessor", {id: collectionid, type: 1}, function (data) {
                             $e.text(data);
-                        },{});
+                        }, {});
                         $e.removeClass("hand-fans");
                     });
                 });
@@ -56,11 +60,11 @@ spa_define(function () {
                         } else {
                             util.get("../ajax/sys/professor/luserId/" + $org.attr("professorId"), null, function (data) {
                                 if (data) {
-                                        spa.showModal("sys_professornew_edit", {
-                                            data: data,name:$org.attr("na"), hand: function () {
-                                                pdg.load()
-                                            }
-                                        })
+                                    spa.showModal("sys_professornew_edit", {
+                                        data: data, name: $org.attr("na"), hand: function () {
+                                            pdg.reload()
+                                        }
+                                    })
                                 } else {
                                     util.alert("用户不存在了", function () {
                                         pdg.load();
@@ -72,30 +76,34 @@ spa_define(function () {
                         util.alert("请选择一个用户");
                     }
                 });
-                // root.find(".opt-details").on("click", function () {
-                //     var $org = root.find("td.opt-check>i.checked");
-                //     if ($org.length) {
-                //         if ($org.length > 1) {
-                //             util.alert("只能选择一个用户");
-                //         } else {
-                //             util.get("../ajax/sys/org/id/" + $org.attr("orgId"), null, function (data) {
-                //                 if (data) {
-                //                     spa.showModal("sys_org_details", {
-                //                         data: data, hand: function () {
-                //                             pdg.load()
-                //                         }
-                //                     })
-                //                 } else {
-                //                     util.alert("用户不存在了", function () {
-                //                         pdg.load();
-                //                     });
-                //                 }
-                //             }, {});
-                //         }
-                //     } else {
-                //         util.alert("请选择一个用户");
-                //     }
-                // });
+                root.find(".opt-details").on("click", function () {
+                    var $professor = root.find("td.opt-check>i.checked");
+                    if ($professor.length) {
+                        if ($professor.length > 1) {
+                            util.alert("只能选择一个用户");
+                        } else {
+                            util.get("../ajax/sys/professor/detail/" + $professor.attr("professorId"), null, function (data) {
+                                if (data) {
+                                    if (data.activeStatus != "1") {
+                                        spa.showModal("sys_professornew_details", {
+                                            data: data, hand: function () {
+                                                pdg.reload()
+                                            }
+                                        })
+                                    }else {
+                                        util.alert("只能修改未激活的用户");
+                                    }
+                                } else {
+                                    util.alert("用户不存在了", function () {
+                                        pdg.load();
+                                    });
+                                }
+                            }, {});
+                        }
+                    } else {
+                        util.alert("请选择一个用户");
+                    }
+                });
                 root.find(".opt-data").on("click", function () {
                     var $professor = root.find("td.opt-check>i.checked");
                     if ($professor.length) {
@@ -121,12 +129,12 @@ spa_define(function () {
                     }
                 });
                 root.find(".opt-view").on("click", function () {
-                    var $org = root.find("td.opt-check>i.checked");
-                    if ($org.length) {
-                        if ($org.length > 1) {
+                    var $professor = root.find("td.opt-check>i.checked");
+                    if ($professor.length) {
+                        if ($professor.length > 1) {
                             util.alert("只能选择一个用户");
                         } else {
-                            window.open('http://www.ekexiu.com/userInforShow.html?professorId=' + $org.attr("professorid"));
+                            window.open('http://www.ekexiu.com/userInforShow.html?professorId=' + $professor.attr("professorid"));
                         }
                     } else {
                         util.alert("请选择一个用户");

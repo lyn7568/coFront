@@ -1,29 +1,25 @@
-<div class="sys_userinfo_project centerModal">
+<div class="sys_professornew_honor centerModal">
     <div class="modal-ctrl">
         <i class="icon icon-times"></i>
     </div>
     <div class="container newForm">
         <div class="row">
-            <div class="col-2 item-caption">项目名称</div>
+            <div class="col-2 item-caption">奖项名称</div>
             <div class="col-6">
-                <div class="form-item text" placeholder="项目名称不得超过50个字" name="projectName"></div>
+                <div class="form-item text trim" placeholder="奖项名称不得超过50个字" name="name"></div>
             </div>
             <span class="requiredSpan">*</span>
         </div>
         <div class="row">
-            <div class="col-2 item-caption ">项目时间</div>
+            <div class="col-2 item-caption ">获奖时间</div>
             <div class="col-4">
-                <div class="form-item select tree" dictCode="date_start" name="projectStart"></div>
-            </div>
-            <div class="col-1 item-caption center">至</div>
-            <div class="col-4">
-                <div class="form-item select tree" dictCode="date_stop" name="projectStop"></div>
+                <div class="form-item select" dictCode="honor_year" name="year"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-2 item-caption">备注</div>
             <div class="col-6">
-                <div class="form-item textarea" placeholder="项目描述不得超过200个字" name="projectDescp"></div>
+                <div class="form-item textarea" placeholder="项目描述不得超过200个字" name="descp"></div>
             </div>
         </div>
         <div class="row">
@@ -32,7 +28,9 @@
                 <div class="btn pull-right opt-save">
                     <i class="icon-check"></i> 保存
                 </div>
+
             </div>
+
         </div>
     </div>
 

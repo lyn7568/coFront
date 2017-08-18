@@ -1,0 +1,264 @@
+<div class="sys_professornew_details centerModal">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container newForm">
+        <div class="row">
+            <div class="col-2 item-caption">专家姓名</div>
+            <div class="col-4">
+                <div class="form-item text required readOnly" placeholder="姓名最长为10个字" name="name"></div>
+            </div>
+            <span class="requiredSpan">*</span>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">职称</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="职称不得超过20个字" name="title"></div>
+            </div>
+            <div class="col-2 item-caption">职位</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="职位不得超过20个字" name="office"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">所在机构</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="所在机构不得超过50个字" name="orgName"></div>
+            </div>
+            <div class="col-2 item-caption">所属部门</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="所在部门不得超过20个字" name="department"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">联系电话</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="联系电话不得超过50个字" name="phone"></div>
+            </div>
+            <div class="col-2 item-caption">联系邮箱</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="email"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">注册电话</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" placeholder="联系电话不得超过50个字" name="loginPhone"></div>
+            </div>
+            <div class="col-2 item-caption">注册邮箱</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" defVal="" name="loginEmail"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption cityText">所在城市</div>
+            <div class="col-8 city">
+                <form action="" name="form1">
+                    <div class=" col-6 citybox">
+														<span class="frmtype frmtypeW" id="Province">
+				                                        	<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="oprovince">请选择省份</i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)"
+                                                                       alt="请选择省份">请选择省份</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_Province"
+                                                                   value="请选择省份">
+				                                        </span>
+                    </div>
+                    <div class="col-6 citybox">
+														<span class="frmtype frmtypeW" id="City">
+				                                       		<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="ocity"></i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)"
+                                                                       alt="请选择城市">请选择城市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_City" value="请选择城市 ">
+				                                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">个人简介</div>
+            <div class="col-6">
+                <div class="form-item textarea" placeholder="个人简介不得超过500个字" name="descp"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">学术领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="添加内容不能超过15个字" name="newSubject"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-subject">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize" name="subjectList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">研究方向</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="添加内容不能超过20个字" name="newResearchArea"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-ra">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize" name="researchAreaList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">行业领域</div>
+            <div class="col-4">
+                <div class="form-item text" placeholder="添加内容不能超过15个字" name="newIndustry"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-industry">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize" name="industryList"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>项目经历</th>
+                <th class="col-3">
+                    <div class="btn pull-right opt-project-new">
+                        <i class="icon-check"></i> 添加
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody class="dt-project">
+            <tr ch-dir="list">
+                <td >{{name}}&nbsp;&nbsp;{{startMonth}}-{{stopMonth}}<br>{{descp}}</td>
+                <td class="table-opt edit" pid="{{id}}">
+                    <div class="btn opt-project-edit">
+                        <i class="icon-edit"></i>
+                        编辑
+                    </div>
+                    <div class="btn pull-right opt-project-del">
+                        <i class="icon-edit"></i>
+                        删除
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>荣誉奖项</th>
+                <th class="col-3">
+                    <div class="btn pull-right opt-honor-new">
+                        <i class="icon-check"></i> 添加
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody class="dt-honor">
+            <tr ch-dir="list">
+                <td>{{name}}&nbsp;&nbsp;{{year}}<br>{{descp}}</td>
+                <td class="table-opt edit" hid="{{id}}">
+                    <div class="btn opt-honor-edit">
+                        <i class="icon-edit"></i>
+                        编辑
+                    </div>
+                    <div class="btn pull-right opt-honor-del">
+                        <i class="icon-edit"></i>
+                        删除
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>工作经历</th>
+                <th class="col-3">
+                    <div class="btn pull-right opt-job-new">
+                        <i class="icon-check"></i> 添加
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody class="dt-job">
+            <tr ch-dir="list">
+                <td>{{company}}-{{title}}-{{department}}&nbsp;&nbsp;{{startMonth}}-{{stopMonth}}</td>
+                <td class="table-opt edit" jid="{{id}}">
+                    <div class="btn opt-job-edit">
+                        <i class="icon-edit"></i>
+                        编辑
+                    </div>
+                    <div class="btn pull-right opt-job-del">
+                        <i class="icon-edit"></i>
+                        删除
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>教育背景</th>
+                <th class="col-3">
+                    <div class="btn pull-right opt-edu-new">
+                        <i class="icon-check"></i> 添加
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody class="dt-edu">
+            <tr ch-dir="list">
+                <td>{{school}}-{{college}}-{{major}}-{{degree}}&nbsp;&nbsp;{{year}}<br>{{descp}}</td>
+                <td class="table-opt edit" eid="{{id}}">
+                    <div class="btn opt-edu-edit">
+                        <i class="icon-edit"></i>
+                        编辑
+                    </div>
+                    <div class="btn pull-right opt-edu-del">
+                        <i class="icon-edit"></i>
+                        删除
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-4 pull-right">
+            <div class="btn pull-right opt-save">
+                <i class="icon-check"></i> 保存
+            </div>
+        </div>
+    </div>
+</div>

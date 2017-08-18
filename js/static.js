@@ -187,6 +187,11 @@
             code:"5",caption:"论文",enabled:true
         }]);
 
+        dict.set("active_status", [{
+            code: "0", caption: "未激活", enabled: true
+        }, {
+            code: "1", caption: "已激活", enabled: true
+        }]);
     });
 
 })();

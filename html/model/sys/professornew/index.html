@@ -4,11 +4,23 @@
     </div>
     <div class="container dt-form">
         <div class="row">
-            <div class="col-2 item-caption">用户名</div>
-            <div class="col-3">
-                <div class="form-item text trim" defVal="" name="name"></div>
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">用户名</div>
+            <div class="col-2">
+                <div class="form-item text" name="name"></div>
             </div>
-            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-1 item-caption">激活状态</div>
+            <div class="col-2">
+                <div class="form-item select" dictCode="active_status" name="activeStatus"></div>
+            </div>
+            <div class="col-1 item-caption">邀请状态</div>
+            <div class="col-2">
+                <div class="form-item select" dictCode="bool" name="sendMailStatus"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">发布时间</div>
             <div class="col-2">
                 <div class="form-item date" defVal="" name="bt"></div>
             </div>
@@ -16,7 +28,6 @@
             <div class="col-2">
                 <div class="form-item date" defVal="" name="et"></div>
             </div>
-            <div class="col-1"></div>
         </div>
         <div class="row">
             <div class="col-9">
@@ -39,9 +50,9 @@
             <div class="btn opt-edit">
                 修改账户信息
             </div>
-            <!--<div class="btn opt-details">-->
-                <!--编辑用户资料-->
-            <!--</div>-->
+            <div class="btn opt-details">
+                编辑用户资料
+            </div>
             <div class="btn opt-view">
                 查看用户信息
             </div>
@@ -86,15 +97,15 @@
                 <td class="hand-dict" dict="solveStatus" code="{{authStatus}}"></td>
                 <td class="hand-dict" dict="solveStatus" code="{{authStatusExpert}}"></td>
                 <td>{{sortFirst}}</td>
-                <td>{{activeStatus}}</td>
+                <td class="hand-dict" dict="active_status" code="{{activeStatus}}"></td>
                 <td>{{pageViews}}</td>
                 <td class="hand-fans" id="{{id}}"></td>
-                <td>{{sendMailStatus}}</td>
+                <td>{{sendMailStatus-bool}}</td>
             </tr>
             </tbody>
             <tbody ch-dir="array.empty">
             <tr>
-                <td class="empty-desc" colspan="11">表格暂无数据</td>
+                <td class="empty-desc" colspan="16">表格暂无数据</td>
             </tr>
             </tbody>
         </table>
