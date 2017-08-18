@@ -6,13 +6,13 @@ spa_define(function () {
     return $.use(["spa", "util", "form"], function (spa, util, fb) {
         return {
             modal: function (data) {
-                var root = spa.findInModal(".sys_userinfo_edu");
+                var root = spa.findInModal(".sys_professornew_edu");
                 var form = fb.build(root.find(".newForm"));
                 var saveBtn = root.find(".opt-save"),
                     save = function () {
-                        if (form.val().eduSchool) {
-                            var eduSchool = trim(form.val().eduSchool);
-                            if (eduSchool.length > 50) {
+                        if (form.val().school) {
+                            var school = trim(form.val().school);
+                            if (school.length > 50) {
                                 util.alert("学校名称不得超过50个字");
                                 return;
                             }
@@ -20,28 +20,30 @@ spa_define(function () {
                             util.alert("请填写学校名称");
                             return;
                         }
-                        if (form.val().eduCollege) {
-                            var eduCollege = trim(form.val().eduCollege);
-                            if (eduCollege.length > 20) {
+                        if (form.val().college) {
+                            var college = trim(form.val().college);
+                            if (college.length > 20) {
                                 util.alert("院系名称不得超过20个字");
                                 return;
                             }
                         }
-                        if (form.val().eduMajor) {
-                            var eduMajor = trim(form.val().eduMajor);
-                            if (eduMajor.length > 20) {
+                        if (form.val().major) {
+                            var major = trim(form.val().major);
+                            if (major.length > 20) {
                                 util.alert("专业名称不得超过20个字");
                                 return;
                             }
                         }
-                        if (form.val().eduYear) {
-                            form.val({eduYear: form.val().eduYear.substring(0, 4)});
+                        if (form.val().year) {
+                            form.val({year: form.val().year.substring(0, 4)});
                         }
-                        var item = form.val();
-                        item.no = data.data.length;
-                        data.data.push(item);
-                        data.hand();
-                        spa.closeModal();
+                        form.val({professorId: data.data});
+                        form.doPost("../ajax/edu", function () {
+                            spa.closeModal();
+                            if (data.hand) {
+                                data.hand();
+                            }
+                        });
                     };
                 root.find(".modal-ctrl .icon-times").on("click", function () {
                     spa.closeModal();

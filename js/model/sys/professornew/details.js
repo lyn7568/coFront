@@ -24,10 +24,28 @@ spa_define(function () {
                 };
                 var saveBtn = root.find(".opt-save"),
                     save = function () {
+                        var researchAreas = [];
+                        var researchList = form.val().researchAreaList || [];
+                        for (var i = 0; i < researchList.length; ++i) {
+                            var item = {caption: researchList[i], professorId: data.data.id};
+                            researchAreas.push(item);
+                        }
+                        form.val({researchAreas: researchAreas});
+                        if(form.val().industryList) {
+                            form.val({
+                                industry: oString(form.val().industryList)
+                            });
+                        }else {
+                            form.val({industry: null});
+                        }
+                        if(form.val().subjectList) {
+                            form.val({
+                                subject: oString(form.val().subjectList)
+                            });
+                        }else {
+                            form.val({subject: null});
+                        }
                         form.val({
-                            industry: oString(form.val().industryList),
-                            subject: oString(form.val().subjectList),
-                            researchArea: form.val().researchAreaList,
                             subjectList: "", industryList: "", researchAreaList: ""
                         });
                         if (form.val().title) {
@@ -96,9 +114,7 @@ spa_define(function () {
                                 if (data.hand) {
                                     data.hand();
                                 }
-                            }, function (data) {
-                                util.alert(data.msg);
-                            });
+                            }, {"50000":"只能修改未激活用户信息"});
                         } else {
                             util.alert("手机或邮箱至少输入一项");
                         }
@@ -211,8 +227,8 @@ spa_define(function () {
                 var split2 = function (data) {
                     var arr = [];
                     for (var m = 0; m < data.length; m++) {
-                        ca.items.push({code: data[m], caption: data[m]});
-                        arr.push(data[m]);
+                        ca.items.push({code: data[m].caption, caption: data[m].caption});
+                        arr.push(data[m].caption);
                     }
                     return arr;
                 };
@@ -223,8 +239,8 @@ spa_define(function () {
                 if (data.data.subject) {
                     form.val({subjectList: split(data.data.subject)});
                 }
-                if (data.data.researchArea) {
-                    form.val({researchAreaList: split2(data.data.researchArea)});
+                if (data.data.researchAreas) {
+                    form.val({researchAreaList: split2(data.data.researchAreas)});
                 }
 
 
@@ -295,7 +311,7 @@ spa_define(function () {
                         if (project) {
                             util.boxMsg({
                                 title: "确认删除",
-                                content: "确认删除该项目经历？",
+                                content: "确认删除该项目经历？删除后无法恢复。",
                                 btns: [{
                                     caption: "删除",
                                     hand: function () {
@@ -339,7 +355,7 @@ spa_define(function () {
                         if (honor) {
                             util.boxMsg({
                                 title: "确认删除",
-                                content: "确认删除该荣誉奖项？",
+                                content: "确认删除该荣誉奖项？删除后无法恢复。",
                                 btns: [{
                                     caption: "删除",
                                     hand: function () {
@@ -383,7 +399,7 @@ spa_define(function () {
                         if (job) {
                             util.boxMsg({
                                 title: "确认删除",
-                                content: "确认删除该工作经历？",
+                                content: "确认删除该工作经历？删除后无法恢复。",
                                 btns: [{
                                     caption: "删除",
                                     hand: function () {
@@ -427,7 +443,7 @@ spa_define(function () {
                         if (edu) {
                             util.boxMsg({
                                 title: "确认删除",
-                                content: "确认删除该教育经历？",
+                                content: "确认删除该教育经历？删除后无法恢复。",
                                 btns: [{
                                     caption: "删除",
                                     hand: function () {
