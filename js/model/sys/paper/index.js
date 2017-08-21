@@ -17,6 +17,16 @@ spa_define(function () {
                 });
                 pdg.code.listen($.dict.doTransfer);
                 pdg.code.listen(function(){
+                    root.find(".hand-paperid").each(function() {
+                        var $e = $(this);
+                        var paperid = $e.attr("paperid");
+                        if (paperid) {
+                            util.get("/ajax/content/lwCount/paper", {paperId: paperid}, function (data) {
+                                $e.text(data);
+                            }, {});
+                            $e.removeClass("hand-paperid");
+                        }
+                    });
                     root.find(".hand-collectionid").each(function() {
                         var $e = $(this);
                         var collectionid = $e.attr("collectionid");
@@ -24,6 +34,14 @@ spa_define(function () {
                             $e.text(data);
                         },{});
                         $e.removeClass("hand-collectionid");
+                    });
+                    root.find(".hand-agreeid").each(function() {
+                        var $e = $(this);
+                        var agreeid = $e.attr("agreeid");
+                        util.get("/ajax/paper/agreeCount",{id:agreeid},function(data){
+                            $e.text(data);
+                        },{});
+                        $e.removeClass("hand-agreeid");
                     });
                 });
 

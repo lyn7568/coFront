@@ -17,6 +17,16 @@ spa_define(function () {
                 });
                 pdg.code.listen($.dict.doTransfer);
                 pdg.code.listen(function(){
+                    root.find(".hand-patentid").each(function() {
+                        var $e = $(this);
+                        var patentid = $e.attr("patentid");
+                        if (patentid) {
+                            util.get("/ajax/content/lwCount/patent", {patentId: patentid}, function (data) {
+                                $e.text(data);
+                            }, {});
+                            $e.removeClass("hand-patentid");
+                        }
+                    });
                     root.find(".hand-collectionid").each(function() {
                         var $e = $(this);
                         var collectionid = $e.attr("collectionid");
@@ -24,6 +34,14 @@ spa_define(function () {
                             $e.text(data);
                         },{});
                         $e.removeClass("hand-collectionid");
+                    });
+                    root.find(".hand-agreeid").each(function() {
+                        var $e = $(this);
+                        var agreeid = $e.attr("agreeid");
+                        util.get("/ajax/patent/agreeCount",{id:agreeid},function(data){
+                            $e.text(data);
+                        },{});
+                        $e.removeClass("hand-agreeid");
                     });
                 });
 

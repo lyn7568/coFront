@@ -18,14 +18,28 @@ spa_define(function () {
                 pdg.code.listen($.dict.doTransfer);
                 pdg.code.listen(function(){
                     var type = pdg.queryParam().contentType;
-                    root.find(".hand-articleid").each(function() {
+                    root.find(".hand-objid").each(function() {
                         var $e = $(this);
-                        var articleid = $e.attr("articleid");
-                        if (articleid) {
-                            util.get("/ajax/content/lwCount", {articleId: articleid}, function (data) {
+                        var objid = $e.attr("objid");
+                        if (objid) {
+                            if(type == 3) {
+                                util.get("/ajax/content/lwCount", {articleId: objid}, function (data) {
                                     $e.text(data);
-                            }, {});
-                            $e.removeClass("hand-articleid");
+                                }, {});
+                                $e.removeClass("hand-objid");
+                            }
+                            if (type == 4 ) {
+                                util.get("/ajax/content/lwCount/patent", {patentId: objid}, function (data) {
+                                    $e.text(data);
+                                }, {});
+                                $e.removeClass("hand-objid");
+                            }
+                            if (type == 5 ) {
+                                util.get("/ajax/content/lwCount/paper", {paperId: objid}, function (data) {
+                                    $e.text(data);
+                                }, {});
+                                $e.removeClass("hand-objid");
+                            }
                         }
                     });
                     root.find(".hand-collectionid").each(function() {
@@ -35,6 +49,22 @@ spa_define(function () {
                                 $e.text(data);
                         },{});
                         $e.removeClass("hand-collectionid");
+                    });
+                    root.find(".hand-agreeid").each(function() {
+                        var $e = $(this);
+                        var agreeid = $e.attr("agreeid");
+                        if (type == 4) {
+                            util.get("/ajax/patent/agreeCount",{id:agreeid},function(data){
+                                $e.text(data);
+                            },{});
+                            $e.removeClass("hand-agreeid");
+                        }
+                        if (type == 5) {
+                            util.get("/ajax/paper/agreeCount",{id:agreeid},function(data){
+                                $e.text(data);
+                            },{});
+                            $e.removeClass("hand-agreeid");
+                        }
                     });
                     if (type == 3 || type==2 ) {
                         $(".create").hide();

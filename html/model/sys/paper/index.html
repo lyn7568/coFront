@@ -68,6 +68,8 @@
                 <th>发布时间</th>
                 <th class="number">权重</th>
                 <th class="number">浏览量</th>
+                <th class="number">点赞量</th>
+                <th class="number">留言量</th>
                 <th class="number">收藏量</th>
             </tr>
             </thead>
@@ -81,12 +83,14 @@
                 <td>{{createTime-showDay}}</td>
                 <td>{{sortNum}}</td>
                 <td>{{pageViews}}</td>
+                <td class="hand-agreeid" agreeid="{{id}}"></td>
+                <td class="hand-paperid" paperid="{{id}}"></td>
                 <td class="hand-collectionid" collectionid="{{id}}"></td>
             </tr>
             </tbody>
             <tbody ch-dir="array.empty">
             <tr>
-                <td class="empty-desc" colspan="9">表格暂无数据</td>
+                <td class="empty-desc" colspan="10">表格暂无数据</td>
             </tr>
             </tbody>
         </table>
