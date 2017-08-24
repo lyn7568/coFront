@@ -192,6 +192,28 @@
         }, {
             code: "1", caption: "已激活", enabled: true
         }]);
+
+        dict.set("banner", [{
+            code: "0", caption: "未设置", enabled: true
+        }, {
+            code: "1", caption: "个人原创", enabled: true
+        }, {
+            code: "2", caption: "企业原创", enabled: true
+        }, {
+            code: "3", caption: "前沿动态", enabled: true
+        }, {
+            code: "4", caption: "学术经验", enabled: true
+        }, {
+            code: "5", caption: "分析检测", enabled: true
+        }, {
+            code: "6", caption: "会议培训", enabled: true
+        }, {
+            code: "7", caption: "科袖访谈", enabled: true
+        }, {
+            code: "8", caption: "招聘招生", enabled: true
+        }, {
+            code: "9", caption: "重大新闻", enabled: true
+        }]);
     });
 
 })();

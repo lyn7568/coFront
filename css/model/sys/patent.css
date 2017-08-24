@@ -2,6 +2,7 @@
 .sys_patent_index .tpl-btns .row {
     padding-left: 10px;
 }
+
 .sys_patent_index th.opt-check {
     width: 35px;
 }
@@ -10,7 +11,7 @@
     table-layout: fixed;
 }
 
-.sys_patent_index .orderBy .icon-close{
+.sys_patent_index .orderBy .icon-close {
     display: none;
 }
 
@@ -18,12 +19,29 @@
     width: 4%;
 }
 
-.sys_patent_sort {
+.sys_patent_sort{
     width: 600px;
     height: 200px;
 }
 
-.sys_patent_sort .content{
+.sys_patent_sort .content,.sys_patent_keyword .content {
     font-size: 25px;
     font-weight: bold;
+}
+
+.sys_patent_keyword {
+    width: 600px;
+    height: 300px;;
+}
+
+.sys_patent_keyword .orgSize.dyn-mselect .icon-drop {
+    display: none !important;
+}
+
+.sys_patent_keyword .orgSize.dyn-mselect .dd-drop {
+    display: none !important;
+}
+
+.sys_patent_keyword .orgSize.dyn-mselect .placeholder {
+    display: none !important;
 }

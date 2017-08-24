@@ -87,6 +87,24 @@ spa_define(function () {
                         util.alert("请选择一个资源");
                     }
                 });
+                root.find(".opt-subject").on("click", function() {
+                    var $resource = root.find("td.opt-check>i.checked");
+                    if($resource.length) {
+                        if($resource.length > 1) {
+                            util.alert("只能选择一个资源");
+                        } else {
+                            $.util.get("../ajax/resource/id/"+$resource.attr("resourceId"),null,function(rd){
+                                if(rd){
+                                    spa.showModal("sys_resourceinfo_subject", { data:rd, hand: function() { pdg.reload() } })
+                                }else{
+                                    util.alertMsg("资源不存在", function(){pdg.reload();});
+                                }
+                            },{});
+                        }
+                    } else {
+                        util.alert("请选择一个资源");
+                    }
+                });
                 root.find(".opt-view").on("click", function () {
                     var $resource = root.find("td.opt-check>i.checked");
                     if ($resource.length) {

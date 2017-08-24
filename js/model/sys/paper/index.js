@@ -105,6 +105,24 @@ spa_define(function () {
                         util.alert("请选择一篇资源");
                     }
                 });
+                root.find(".opt-keyword").on("click", function() {
+                    var $paper = root.find("td.opt-check>i.checked");
+                    if($paper.length) {
+                        if($paper.length > 1) {
+                            util.alert("只能选择一篇资源");
+                        } else {
+                            $.util.get("../ajax/paper/id/"+$paper.attr("paperId"),null,function(rd){
+                                if(rd){
+                                    spa.showModal("sys_paper_keyword", { data:rd, hand: function() { pdg.reload() } })
+                                }else{
+                                    util.alertMsg("资源不存在", function(){pdg.reload();});
+                                }
+                            },{});
+                        }
+                    } else {
+                        util.alert("请选择一篇资源");
+                    }
+                });
                 root.find(".opt-view").on("click", function () {
                     var $org = root.find("td.opt-check>i.checked");
                     if ($org.length) {

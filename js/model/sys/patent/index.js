@@ -105,6 +105,30 @@ spa_define(function () {
                         util.alert("请选择一篇资源");
                     }
                 });
+                root.find(".opt-keyword").on("click", function () {
+                    var $patent = root.find("td.opt-check>i.checked");
+                    if ($patent.length) {
+                        if ($patent.length > 1) {
+                            util.alert("只能选择一篇资源");
+                        } else {
+                            $.util.get("../ajax/patent/id/" + $patent.attr("patentId"), null, function (rd) {
+                                if (rd) {
+                                    spa.showModal("sys_patent_keyword", {
+                                        data: rd, hand: function () {
+                                            pdg.reload()
+                                        }
+                                    })
+                                } else {
+                                    util.alertMsg("资源不存在", function () {
+                                        pdg.reload();
+                                    });
+                                }
+                            }, {});
+                        }
+                    } else {
+                        util.alert("请选择一篇资源");
+                    }
+                });
                 root.find(".opt-view").on("click", function () {
                     var $org = root.find("td.opt-check>i.checked");
                     if ($org.length) {
