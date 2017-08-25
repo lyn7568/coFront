@@ -11,7 +11,7 @@
     table-layout: fixed;
 }
 
-.sys_article_index .orderBy .icon-close, .sys_article_colnum .banner .icon-close {
+.sys_article_index .orderBy .icon-close {
     display: none;
 }
 

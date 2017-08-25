@@ -8,11 +8,10 @@ spa_define(function () {
             modal: function (data) {
                 var root = spa.findInModal(".sys_article_colnum");
                 var form = fb.build(root.find(".newForm"));
-                form.val({colNum: data.data.colNum, id: data.data.id});
                 var saveBtn = root.find(".opt-save"),
                     save = function () {
                         util.post("../ajax/article/colNum", {
-                            articleId: data.data.articleId,
+                            articleIds: data.data,
                             colNum: form.val().colNum
                         }, function () {
                             spa.closeModal();
