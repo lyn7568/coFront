@@ -84,15 +84,15 @@ spa_define(function () {
                         } else {
                             util.get("../ajax/sys/professor/detail/" + $professor.attr("professorId"), null, function (data) {
                                 if (data) {
-                                    if (data.activeStatus != "1") {
-                                        spa.showModal("sys_professornew_details", {
-                                            data: data, hand: function () {
-                                                pdg.reload()
-                                            }
-                                        })
-                                    }else {
-                                        util.alert("只能修改未激活的用户");
-                                    }
+                                    // if (data.activeStatus != "1") {
+                                    spa.showModal("sys_professornew_details", {
+                                        data: data, hand: function () {
+                                            pdg.reload()
+                                        }
+                                    });
+                                    // }else {
+                                    //     util.alert("只能修改未激活的用户");
+                                    // }
                                 } else {
                                     util.alert("用户不存在了", function () {
                                         pdg.load();
