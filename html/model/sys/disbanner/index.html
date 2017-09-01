@@ -1,0 +1,78 @@
+<div class="sys_disbanner_index" loadUri="../ajax/disBanner/pq" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">名称</div>
+            <div class="col-5">
+                <div class="form-item text" defVal="" name="title"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+            <div class="col-2"></div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-insert">
+                添加
+            </div>
+            <div class="btn opt-putup">
+                上架
+            </div>
+            <div class="btn opt-putup2">
+                上架2
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <!--<th class="opt-check" ><i class="icon icon-st-check"></i> </th>-->
+                <th class="number">序号</th>
+                <th>编号</th>
+                <th>外显标题</th>
+                <th>栏目</th>
+                <th>显示位置</th>
+                <th>上架时间</th>
+                <th>下架时间</th>
+                <th class="number">点击量</th>
+                <th class="number">备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <!--<td class="opt-check" ><i class="icon icon-st-check" articleId="{{articleId}}"></i></td>-->
+                <td>{{pi}}</td>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td class="hand-dict" dict="banner" code="{{banner}}"></td>
+                <td>{{location}}</td>
+                <td>{{beginTime-showDay}}</td>
+                <td>{{endTime-showDay}}</td>
+                <td>{{clicks}}</td>
+                <td>{{descp}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="10">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

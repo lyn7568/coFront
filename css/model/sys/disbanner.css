@@ -1,0 +1,39 @@
+@charset "utf-8";
+.sys_disbanner_index .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_disbanner_index th.opt-check {
+    width: 35px;
+}
+
+.sys_disbanner_index td.table-opt.edit {
+    padding: 1px;
+    text-align: center;
+}
+
+.sys_disbanner_index .table-opt .name {
+    cursor: pointer;
+}
+
+.sys_disbanner_insert .pics {
+    position: absolute;
+    top: 140px;
+    right: 110px;
+}
+
+.sys_disbanner_putup, .sys_disbanner_insert {
+    width: 800px;
+    height: 450px;
+    padding: 0 20px 10px;
+}
+
+.sys_disbanner_putup .item-caption {
+    text-align: center;
+}
+
+.sys_disbanner_insert .content, .sys_disbanner_putup .content {
+    font-size: 25px;
+    font-weight: bold;
+}
+
