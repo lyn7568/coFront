@@ -44,11 +44,11 @@ spa_define(function () {
                         pdg.reload()
                     });
                 });
-                root.find(".opt-putup2").on("click", function () {
-                    spa.showModal("sys_disbanner_putup2", function () {
-                        pdg.load()
-                    });
-                });
+                // root.find(".opt-putup2").on("click", function () {
+                //     spa.showModal("sys_disbanner_putup2", function () {
+                //         pdg.load()
+                //     });
+                // });
 
 
             }, mainDestory: function () {
