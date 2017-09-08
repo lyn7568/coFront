@@ -5,31 +5,28 @@
     <div class="container dt-form">
         <div class="row">
             <div class="col-1 item-caption">主题</div>
-            <div class="col-5">
-                <div class="form-item text" defVal="" name="demandTitle"></div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="title"></div>
             </div>
             <div class="col-1 item-caption ">发布者</div>
             <div class="col-2">
                 <div class="form-item text" defVal="" name="professorName"></div>
             </div>
-            <div class="col-1 item-caption">需求目的</div>
+            <div class="col-1 item-caption ">发布时间</div>
             <div class="col-2">
-                <div class="form-item select" dictCode="demandAim" defVal="" name="demandAim"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 item-caption ">创建日期</div>
-            <div class="col-5">
                 <div class="form-item date" defVal="" name="bt"></div>
             </div>
             <div class="col-1 item-caption center">至</div>
-            <div class="col-5">
+            <div class="col-2">
                 <div class="form-item date" defVal="" name="et"></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-10">
-
+            <div class="col-1 item-caption">需求状态</div>
+            <div class="col-2">
+                <div class="form-item select" dictCode="demandState" name="state"></div>
+            </div>
+            <div class="col-7">
             </div>
             <div class="col-2">
                 <div class="btn opt-query pull-right">
@@ -48,36 +45,46 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>查看</th>
                 <th>序号</th>
                 <th>主题</th>
-                <th>需求目的</th>
                 <th>发布者</th>
+                <th>联系电话</th>
+                <th>地址</th>
+                <th>费用预算</th>
+                <th>预计时长</th>
+                <th>有效期</th>
                 <th>发布时间</th>
-                <th>需求类型</th>
                 <th>需求状态</th>
+                <th>浏览量</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
             <tr ch-dir="list">
-                <td class="table-opt" demandId="{{demandId}}"><i class="icon icon-eye-open"></i></td>
                 <td>{{pi}}</td>
-                <td>{{demandTitle}}</td>
-                <td class="hand-dict" dict="demandAim" code="{{demandAim}}"></td>
+                <td class="table-opt" demandId="{{id}}"><a class="title">{{title}}</a></td>
                 <td>{{professorName}}</td>
+                <td>{{contactNum}}</td>
+                <td>{{province}}-{{city}}</td>
+                <td class="hand-dict" dict="cost" code="{{cost}}"></td>
+                <td class="hand-dict" dict="duration" code="{{duration}}"></td>
+                <td>{{invalidDay-showDay}}</td>
                 <td>{{createTime-showDay}}</td>
-                <td class="hand-dict" dict="demandType" code="{{demandType}}"></td>
-                <td>{{demandStatus-status2}}</td>
-                <td class="table-opt col-1 random" demandId="{{demandId}}" demandStatus="{{demandStatus}}"><div class="btn opt-auth">
-                    <i class="icon-random"></i>
-                    {{demandStatus-status}}
+                <td class="hand-dict" dict="demandState" code="{{state}}"></td>
+                <td>{{pageViews}}</td>
+                <td class="table-opt edit" demandId="{{id}}"><div class="btn opt-auth state{{state}}">
+                    <i class="icon-times"></i>
+                    关闭
                 </div></td>
+                <!--<td class="table-opt col-1 random" demandId="{{demandId}}" demandStatus="{{demandStatus}}"><div class="btn opt-auth">-->
+                    <!--<i class="icon-random"></i>-->
+                    <!--{{demandStatus-status}}-->
+                <!--</div></td>-->
             </tr>
             </tbody>
             <tbody ch-dir="array.empty">
             <tr>
-                <td class="empty-desc" colspan="9">表格暂无数据</td>
+                <td class="empty-desc" colspan="12">表格暂无数据</td>
             </tr>
             </tbody>
         </table>

@@ -5,7 +5,7 @@
 .sys_demand_index th.opt-check,.sys_demand_index td.opt-check{
     width: 30px;
 }
-.sys_demand_index .table-opt .name{
+.sys_demand_index .table-opt .title{
     cursor:pointer;
 }
 .sys_demand_index td.table-opt.col-1.random {
@@ -13,4 +13,13 @@
 }
 .sys_demand_edit{
     width:800px;
+}
+
+.sys_demand_index td.table-opt.edit {
+    padding: 1px;
+    text-align: center;
+}
+
+.sys_demand_index .state2,.sys_demand_index .state3{
+    display: none;
 }

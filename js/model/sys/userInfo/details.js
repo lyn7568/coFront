@@ -31,28 +31,28 @@ spa_define(function () {
                             subjectList: "", industryList: "", researchAreaList: ""
                         });
                         if (form.val().title) {
-                            var title = trim(form.val().title);
+                            var title = form.val().title;
                             if (title.length > 20) {
                                 util.alert("职称不得超过20个字");
                                 return;
                             }
                         }
                         if (form.val().office) {
-                            var office = trim(form.val().office);
+                            var office = form.val().office;
                             if (office.length > 20) {
                                 util.alert("职位不得超过20个字");
                                 return;
                             }
                         }
                         if (form.val().orgName) {
-                            var orgName = trim(form.val().orgName);
+                            var orgName = form.val().orgName;
                             if (orgName.length > 50) {
                                 util.alert("所在机构不得超过50个字");
                                 return;
                             }
                         }
                         if (form.val().department) {
-                            var department = trim(form.val().department);
+                            var department = form.val().department;
                             if (department.length > 20) {
                                 util.alert("所在部门不得超过20个字");
                                 return;
@@ -65,8 +65,8 @@ spa_define(function () {
                             }
                         }
                         if (form.val().mobile) {
-                            var mobile = trim(form.val().mobile);
-                            if (trim(mobile)) {
+                            var mobile = form.val().mobile;
+                            if (mobile) {
                                 if (mobile.length > 50) {
                                     util.alert('提示', '联系电话不得超过50个字');
                                     return;
@@ -74,7 +74,7 @@ spa_define(function () {
                             }
                         }
                         if (form.val().email) {
-                            var email = trim(form.val().email);
+                            var email = form.val().email;
                             var gunf = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
                             if (!gunf.test(email)) {
                                 util.alert("联系邮箱格式有误，请检查后重新填写");
@@ -82,7 +82,7 @@ spa_define(function () {
                             }
                         }
                         if (form.val().name) {
-                            var name = trim(form.val().name);
+                            var name = form.val().name;
                             if (name.length > 10) {
                                 util.alert("姓名最长为10个字");
                                 return;

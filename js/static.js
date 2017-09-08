@@ -214,6 +214,47 @@
         }, {
             code: "9", caption: "重大新闻", enabled: true
         }]);
+
+        dict.set("cost", [{
+            code: "0", caption: "未选择", enabled: true
+        },{
+            code: "1", caption: "1万元以内", enabled: true
+        }, {
+            code: "2", caption: "1-5万元", enabled: true
+        }, {
+            code: "3", caption: "5-10万元", enabled: true
+        }, {
+            code: "4", caption: "10-20万元", enabled: true
+        }, {
+            code: "5", caption: "20-50万元", enabled: true
+        }, {
+            code: "6", caption: "50万元以上", enabled: true
+        }]);
+
+        dict.set("duration", [{
+            code: "0", caption: "未选择", enabled: true
+        },{
+            code: "1", caption: "1个月内", enabled: true
+        }, {
+            code: "2", caption: "1-3个月", enabled: true
+        }, {
+            code: "3", caption: "3-6个月", enabled: true
+        }, {
+            code: "4", caption: "6-12个月", enabled: true
+        }, {
+            code: "5", caption: "1年以上", enabled: true
+        }]);
+
+        dict.set("demandState", [{
+            code: "0", caption: "已过期", enabled: true
+        },{
+            code: "1", caption: "发布中", enabled: true
+        }, {
+            code: "2", caption: "已完成", enabled: true
+        }, {
+            code: "3", caption: "已关闭", enabled: true
+        }]);
+
     });
 
 })();

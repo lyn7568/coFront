@@ -130,7 +130,7 @@ spa_define(function () {
                     }
                     if (oValue.length > 15) {
                         util.alert('提示', '添加内容不能超过15个字');
-                        return;
+
                     } else {
                         var oValueList = oValue.split(","),
                             length = oValueList.length;
@@ -177,7 +177,7 @@ spa_define(function () {
                     }
                     if (oValue.length > 20) {
                         util.alert('提示', '添加内容不能超过20个字');
-                        return;
+
                     } else {
                         var oValueList = oValue.split(","),
                             length = oValueList.length;
@@ -259,7 +259,7 @@ spa_define(function () {
                     }
                 };
                 function oString(data) {
-                    var arry = new Array();
+                    var arry = [];
                     if (data) {
                         for (var i = 0; i < data.length; i++) {
                             arry.push(data[i]);
@@ -267,6 +267,77 @@ spa_define(function () {
                     }
                     return arry.join(",");
                 }
+
+                root.find(".name").on("focusout", function () {
+                    if (form.val().name != data.data.name) {
+                        if (form.val().name) {
+                            var name = trim(form.val().name);
+                            if (name.length > 10) {
+                                util.alert("姓名最长为10个字，请重新修改");
+                                form.val({name: data.data.name});
+                                return;
+                            }
+                        }
+                        if (form.val().name == null) {
+                            util.alert("专家姓名不可为空，请重新修改");
+                            form.val({name: data.data.name});
+                            return;
+                        }
+                        util.boxMsg({
+                            title: "确认修改",
+                            content: "您修改了姓名，该专家的专利和论文将取消关联，确定修改？",
+                            btns: [{
+                                caption: "确认",
+                                hand: function () {
+                                    util.post("../ajax/sys/professor/updateName", {
+                                        name: form.val().name,
+                                        id: data.data.id
+                                    }, function () {
+                                        data.data.name = form.val().name;
+                                    }, {});
+                                }
+                            },
+                                {
+                                    caption: "取消",hand:function () {
+                                    form.val({name: data.data.name});
+                                }}
+                            ]
+                        });
+                    }
+                });
+
+                root.find(".org").on("focusout", function () {
+                    if (form.val().orgName != data.data.orgName) {
+                        if (form.val().orgName) {
+                            var orgName = trim(form.val().orgName);
+                            if (orgName.length > 50) {
+                                util.alert("机构名最长为50个字，请重新修改");
+                                form.val({orgName: data.data.orgName});
+                                return;
+                            }
+                        }
+                        util.boxMsg({
+                            title: "确认修改",
+                            content: "修改了所在机构，该专家认证员工身份将失效，为企业发布的需求也将关闭，确定修改？",
+                            btns: [{
+                                caption: "确认",
+                                hand: function () {
+                                    util.post("../ajax/sys/professor/updateOrgName", {
+                                        orgName: form.val().orgName,
+                                        orgId:data.data.orgId,
+                                        id: data.data.id
+                                    }, function () {
+                                        data.data.orgName = form.val().orgName;
+                                    }, {});
+                                }
+                            },
+                                {caption: "取消",hand:function () {
+                                    form.val({orgName: data.data.orgName});
+                                }}
+                            ]
+                        });
+                    }
+                });
 
                 root.find(".opt-industry").on("click", function () {
                     part(form.val().newIndustry, form.val().industryList);
