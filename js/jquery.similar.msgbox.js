@@ -44,12 +44,12 @@
             textAlign:'center', fontSize: '16px',overflow:'hidden',fontFamily: fontfamily
         });
         $("#mb_msgicon").css({display:'inline-block',width:'40px',height: '40px',marginRight: '6px',
-    		background: 'url(images/sign_icon_gantan_nor.png)', backgroundSize: 'contain',overflow:'hidden'
+    		background: 'url(/images/sign_icon_gantan_nor.png)', backgroundSize: 'contain',overflow:'hidden'
         });
          $("#mb_msgcontent").css({margin:'10px'});
         
         $("#mb_ico").css({ display: 'block', position: 'absolute', right: '20px', top: '18px',
-        	background:'url(images/sign_icon_guanbi_nor.png) center center no-repeat', width: '20px', height: '20px',cursor: 'pointer'
+        	background:'url(/images/sign_icon_guanbi_nor.png) center center no-repeat', width: '20px', height: '20px',cursor: 'pointer'
         });
         $("#mb_btnbox").css({ margin: '0 auto 30px', textAlign: 'center', position:'relative' });
         $("#mb_btn_ok,#mb_btn_no").css({ width: '100px', fontSize: '14px', height: '32px', color: 'white', border: 'none' });
