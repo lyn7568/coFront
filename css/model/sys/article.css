@@ -29,6 +29,12 @@
 }
 
 .sys_article_relate {
-    width: 800px;
-    height: 800px;
+    width: 900px;
+    height: 900px;
+}
+
+.sys_article_relate .content {
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
 }
