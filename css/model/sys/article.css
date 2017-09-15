@@ -47,3 +47,14 @@
 .sys_article_subject .orgSize.dyn-mselect .placeholder {
     display: none !important;
 }
+
+.sys_article_relate {
+    width: 900px;
+    height: 900px;
+}
+
+.sys_article_relate .content {
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+}
