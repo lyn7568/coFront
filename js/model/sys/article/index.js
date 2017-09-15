@@ -145,7 +145,7 @@ spa_define(function () {
                         } else {
                             // $.util.get("../ajax/article/id/"+$article.attr("articleId"),null,function(rd){
                             //     if(rd){
-                                    window.open('http://localhost:81/html/model/sys/article/articleModify.html?articleId=' + $article.attr("articleId"));
+                                    window.open('http://www.ekexiu.com:81/html/model/sys/article/articleModify.html?articleId=' + $article.attr("articleId"));
                             //     }else{
                             //         util.alertMsg("文章不存在", function(){pdg.reload();});
                             //     }
