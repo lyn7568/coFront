@@ -43,7 +43,7 @@ spa_define(function () {
                 var bindDataEvent = function() {
                     root.find(".table-opt a.title").on("click", function () {
                         var demandId = $(this).parent().attr("demandId");
-                        window.open('http://www.ekexiu.com/information-brow.html?demandId=' + demandId);
+                        window.open('http://www.ekexiu.com/demandShow.html?demandId=' + demandId);
                     });
                 };
                 pdg.code.listen(bindDataEvent);
