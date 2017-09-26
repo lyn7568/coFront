@@ -1,0 +1,13 @@
+@charset "utf-8";
+.sys_searchword_index .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_searchword_index th.opt-check {
+    width: 35px;
+}
+
+.sys_searchword_index .table {
+    table-layout: fixed;
+}
+

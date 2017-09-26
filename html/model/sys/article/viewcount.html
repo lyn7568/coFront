@@ -1,0 +1,69 @@
+<div class="sys_article_viewcount">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+
+    <div class="container queryForm">
+        <div class="col-2"></div>
+        <div class="col-1 item-caption ">发布时间</div>
+        <div class="col-2">
+            <div class="form-item date" defVal="" name="bt"></div>
+        </div>
+        <div class="col-1 item-caption center">至</div>
+        <div class="col-2">
+            <div class="form-item date" defVal="" name="et"></div>
+        </div>
+        <div class="col-2">
+            <div class="btn opt-query pull-right">
+                <i class="icon-search"></i> 查询
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-count">
+                统计图表
+            </div>
+        </div>
+    </div>
+
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th>#</th>
+                <th>文章标题</th>
+                <th>作者</th>
+                <th>关键词</th>
+                <th>栏目</th>
+                <th>发布时间</th>
+                <th>权重</th>
+                <th>浏览量</th>
+                <th>点赞量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" articleId="{{id}}"></i></td>
+                <td class="hand-id" articleId="{{id}}">{{-_index}}</td>
+                <td class="articleTitle">{{articleTitle}}</td>
+                <td class="professorName">{{professorName}}</td>
+                <td class="subject">{{subject}}</td>
+                <td class="colNum">{{colNum}}</td>
+                <td class="publishTime">{{publishTime}}</td>
+                <td class="sortNum">{{sortNum}}</td>
+                <td class="pageViews">{{pageViews}}</td>
+                <td class="articleAgree">{{articleAgree}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="9">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

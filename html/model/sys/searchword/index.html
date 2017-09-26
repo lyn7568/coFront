@@ -1,0 +1,46 @@
+<div class="sys_searchword_index">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container queryForm">
+        <div class="col-2"></div>
+        <div class="col-1 item-caption ">发布时间</div>
+        <div class="col-2">
+            <div class="form-item date" defVal="" name="bt"></div>
+        </div>
+        <div class="col-1 item-caption center">至</div>
+        <div class="col-2">
+            <div class="form-item date" defVal="" name="et"></div>
+        </div>
+        <div class="col-2">
+            <div class="btn opt-query pull-right">
+                <i class="icon-search"></i> 查询
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="col-2">#</th>
+                <th>搜索词</th>
+                <th class="col-2">总数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="hand-id" swId="{{id}}">{{-_index}}</td>
+                <td>{{id}}</td>
+                <td>{{pv}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="3">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

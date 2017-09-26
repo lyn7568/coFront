@@ -47,3 +47,24 @@
 .sys_article_subject .orgSize.dyn-mselect .placeholder {
     display: none !important;
 }
+
+.sys_article_count{
+    width:900px;
+    height:600px;
+}
+
+.sys_article_count #type{
+    left:20px;
+}
+
+.sys_article_viewcount .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_article_viewcount th.opt-check {
+    width: 35px;
+}
+
+.sys_article_viewcount .table {
+    table-layout: fixed;
+}

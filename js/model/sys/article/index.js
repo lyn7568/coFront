@@ -149,6 +149,23 @@ spa_define(function () {
                         util.alert("请选择一篇文章");
                     }
                 });
+                root.find(".opt-count").on("click", function () {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if ($article.length) {
+                        if ($article.length>1) {
+                            util.alert("只能选择一篇文章");
+                        }else {
+                            spa.showModal("sys_article_count", {
+                                id: $article.attr("articleId"),
+                                hand: function () {
+                                    pdg.reload();
+                                }
+                            });
+                        }
+                    }else {
+                        util.alert("请选择一篇文章");
+                    }
+                });
 
 
             }, mainDestory: function () {
