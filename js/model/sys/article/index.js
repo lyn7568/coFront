@@ -137,6 +137,49 @@ spa_define(function () {
                         util.alert("请选择一篇文章");
                     }
                 });
+                root.find(".opt-edit").on("click", function() {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if($article.length) {
+                        if($article.length > 1) {
+                            util.alert("只能选择一篇文章");
+                        } else {
+                            // $.util.get("../ajax/article/id/"+$article.attr("articleId"),null,function(rd){
+                            //     if(rd){
+                                    window.open('http://www.ekexiu.com:81/html/model/sys/article/articleModify.html?articleId=' + $article.attr("articleId"));
+                            //     }else{
+                            //         util.alertMsg("文章不存在", function(){pdg.reload();});
+                            //     }
+                            // },{});
+                        }
+                    } else {
+                        util.alert("请选择一篇文章");
+                    }
+                });
+
+                root.find(".opt-relate").on("click", function() {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if($article.length) {
+                        if($article.length > 1) {
+                            util.alert("只能选择一篇文章");
+                        } else {
+                            $.util.get("../ajax/article/id/" + $article.attr("articleId"), null, function (rd) {
+                                if (rd) {
+                                    spa.showModal("sys_article_relate", {
+                                        data: rd, hand: function () {
+                                            pdg.reload()
+                                        }
+                                    })
+                                } else {
+                                    util.alertMsg("文章不存在", function () {
+                                        pdg.reload();
+                                    });
+                                }
+                            }, {});
+                        }
+                    } else {
+                        util.alert("请选择一篇文章");
+                    }
+                });
                 root.find(".opt-view").on("click", function () {
                     var $org = root.find("td.opt-check>i.checked");
                     if ($org.length) {
