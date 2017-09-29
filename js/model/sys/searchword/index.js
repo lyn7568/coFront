@@ -53,13 +53,13 @@ spa_define(function () {
                         });
                     },
                     query = function () {
-                        if (qf.val().bt && qf.val().et) {
-                            $data.bt = qf.val().bt;
-                            $data.et = qf.val().et;
-                        }else {
-                            $data.bt = "";
-                            $data.et = "";
-                        }
+                        // if (qf.val().bt && qf.val().et) {
+                        $data.bt = qf.val().bt;
+                        $data.et = qf.val().et;
+                        // }else {
+                        //     $data.bt = "";
+                        //     $data.et = "";
+                        // }
                         load();
                     };
 

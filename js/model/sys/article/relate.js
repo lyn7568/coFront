@@ -37,33 +37,42 @@ spa_define(function () {
                             },{"6001":"关联专家不可重复","6002":"关联资源不可重复","6003":"关联企业不可重复"});
                     };
 
-                util.post("../ajax/article/relatePro", {articleId: data.data.articleId},function (professors) {
-                    for (var i = 1; i<=professors.length;i++) {
+                util.post("../ajax/article/relatePro", {articleId: data.data.articleId}, function (professors) {
+                    for (var i = 1, j = 1; i <= professors.length; i++) {
                         var obj = {};
-                        obj["id" + i.toString()] = professors[i - 1].id;
-                        obj["name"+i.toString()] = professors[i-1].name;
-                        obj["orgName"+i.toString()] = professors[i-1].orgName;
-                        obj["title"+i.toString()] = professors[i-1].title;
-                        form.val(obj);
+                        if (professors[i - 1] != null) {
+                            obj["id" + j.toString()] = professors[i - 1].id;
+                            obj["name" + j.toString()] = professors[i - 1].name;
+                            obj["orgName" + j.toString()] = professors[i - 1].orgName;
+                            obj["title" + j.toString()] = professors[i - 1].title;
+                            form.val(obj);
+                            j++;
+                        }
                     }
                 });
 
-                util.post("../ajax/article/relateRes", {articleId: data.data.articleId},function (resources) {
-                    for (var i = 1; i<=resources.length;i++) {
+                util.post("../ajax/article/relateRes", {articleId: data.data.articleId}, function (resources) {
+                    for (var i = 1, j = 1; i <= resources.length; i++) {
                         var obj = {};
-                        obj["resourceId" + i.toString()] = resources[i - 1].resourceId;
-                        obj["resourceName"+i.toString()] = resources[i-1].resourceName;
-                        obj["publish"+i.toString()] = resources[i-1].organizationName || resources[i-1].professorName;
-                        form.val(obj);
+                        if (resources[i - 1] != null) {
+                            obj["resourceId" + j.toString()] = resources[i - 1].resourceId;
+                            obj["resourceName" + j.toString()] = resources[i - 1].resourceName;
+                            obj["publish" + j.toString()] = resources[i - 1].organizationName || resources[i - 1].professorName;
+                            form.val(obj);
+                            j++;
+                        }
                     }
                 });
 
                 util.post("../ajax/article/relateOrg", {articleId: data.data.articleId}, function (orgs) {
-                    for (var i = 1; i <= orgs.length; i++) {
+                    for (var i = 1, j = 1; i <= orgs.length; i++) {
                         var obj = {};
-                        obj["orgId" + i.toString()] = orgs[i - 1].id;
-                        obj["organization" + i.toString()] = orgs[i - 1].name;
-                        form.val(obj);
+                        if (orgs[i - 1] != null) {
+                            obj["orgId" + j.toString()] = orgs[i - 1].id;
+                            obj["organization" + j.toString()] = orgs[i - 1].name;
+                            form.val(obj);
+                            j++;
+                        }
                     }
                 });
 
