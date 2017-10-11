@@ -1,0 +1,45 @@
+<div class="sys_consult_msgcnt centerModal">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container opt-form">
+        <div class="row">
+            <div class="col-2 item-caption ">所有者</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" defVal="" name="ownerName"></div>
+            </div>
+            <div class="col-2 item-caption ">机构</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" defVal="" name="ownerOrg"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption ">参与者</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" defVal="" name="actorName"></div>
+            </div>
+            <div class="col-2 item-caption ">机构</div>
+            <div class="col-4">
+                <div class="form-item text readOnly" defVal="" name="actorOrg"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>对话内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="right{{right}}">{{senderName}}&nbsp;&nbsp;{{sendTime-showDay}}<br>{{cnt}}</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

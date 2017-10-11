@@ -1,0 +1,53 @@
+<div class="sys_consult_msgidx" loadUri="../ajax/Msg/qa" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-2 item-caption">对话参与人</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <style type="text/css">
+        .table.table-bordered tr th{text-align: center;}
+    </style>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>查看</th>
+                <th>序号</th>
+                <th>所有者</th>
+                <th>参与者</th>
+                <th>最后发送时间</th>
+                <th>最后信息内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="table-opt" owner="{{owner}}" ownerName="{{ownerName}}" actor="{{actor}}" actorName="{{actorName}}"><i class="icon icon-edit"></i></td>
+                <td>{{pi}}</td>
+                <td>{{ownerName}}</td>
+                <td>{{actorName}}</td>
+                <td>{{lastTime-showDay}}</td>
+                <td>{{lastCnt}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="4">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

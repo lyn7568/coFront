@@ -11,3 +11,13 @@
 .sys_consult_edit{
     width:800px;
 }
+
+.sys_consult_msgcnt{
+    width: 800px;
+    height: 600px;
+    padding: 0 20px 10px;
+}
+
+.sys_consult_msgcnt .right2{
+    text-align: right;
+}
