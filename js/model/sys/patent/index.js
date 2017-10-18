@@ -43,6 +43,10 @@ spa_define(function () {
                         },{});
                         $e.removeClass("hand-agreeid");
                     });
+                    root.find(".table-opt a.name").on("click",function () {
+                        var patentId = $(this).parent().attr("patentid");
+                        window.open('http://www.ekexiu.com/patentShow.html?patentId=' + patentId);
+                    })
                 });
 
                 root.find(".opt-query").on("click", function () {

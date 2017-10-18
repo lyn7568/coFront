@@ -43,6 +43,10 @@ spa_define(function () {
                         },{});
                         $e.removeClass("hand-agreeid");
                     });
+                    root.find(".table-opt a.name").on("click",function () {
+                        var paperId = $(this).parent().attr("paperId");
+                        window.open('http://www.ekexiu.com/paperShow.html?paperId=' + paperId);
+                    })
                 });
 
                 root.find(".opt-query").on("click", function () {

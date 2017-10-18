@@ -19,6 +19,10 @@
     width: 4%;
 }
 
+.sys_article_index .table-opt .name {
+    cursor:pointer;
+}
+
 .sys_article_sort, .sys_article_subject,.sys_article_colnum {
     width: 600px;
     height: 200px;
@@ -74,8 +78,20 @@
     height: 900px;
 }
 
-.sys_article_relate .content {
+.sys_article_relate .content, .sys_disbanner_insert .content {
     font-size: 21px;
     font-weight: bold;
     text-align: center;
+}
+
+.sys_disbanner_insert .pics {
+    position: absolute;
+    top: 140px;
+    right: 110px;
+}
+
+.sys_disbanner_insert {
+    width: 800px;
+    height: 450px;
+    padding: 0 20px 10px;
 }

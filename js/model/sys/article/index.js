@@ -35,6 +35,10 @@ spa_define(function () {
                         },{});
                         $e.removeClass("hand-collectionid");
                     });
+                    root.find(".table-opt a.name").on("click",function () {
+                        var articleId = $(this).parent().attr("articleId");
+                        window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
+                    })
                 });
 
                 root.find(".opt-query").on("click", function () {
@@ -209,6 +213,23 @@ spa_define(function () {
                         util.alert("请选择一篇文章");
                     }
                 });
+                root.find(".opt-banner").on("click",function () {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if ($article.length) {
+                        if ($article.length>1) {
+                            util.alert("只能选择一篇文章");
+                        }else {
+                            spa.showModal("sys_article_banner", {
+                                id: $article.attr("articleId"),
+                                hand: function () {
+                                    pdg.reload();
+                                }
+                            });
+                        }
+                    }else {
+                        util.alert("请选择一篇文章");
+                    }
+                })
 
 
             }, mainDestory: function () {

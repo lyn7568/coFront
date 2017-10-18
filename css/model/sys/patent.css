@@ -19,6 +19,10 @@
     width: 4%;
 }
 
+.sys_patent_index .table-opt .name {
+    cursor: pointer;
+}
+
 .sys_patent_sort{
     width: 600px;
     height: 200px;

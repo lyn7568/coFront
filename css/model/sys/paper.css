@@ -19,6 +19,10 @@
     width: 4%;
 }
 
+.sys_paper_index .table-opt .name {
+    cursor: pointer;
+}
+
 .sys_paper_sort {
     width: 600px;
     height: 200px;

@@ -18,6 +18,10 @@
     width: 4%;
 }
 
+.sys_resourceinfo_index .table-opt .name {
+    cursor: pointer;
+}
+
 .sys_resourceinfo_sort {
     width: 600px;
     height: 200px;

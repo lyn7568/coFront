@@ -76,14 +76,14 @@ spa_define(function () {
                         });
                     },
                     load = function () {
-                        console.log($data);
+                        // console.log($data);
                         $.ajax({
                             type: "GET",
                             url: "http://www.ekexiu.com:8082/log/jsonp/qs",
                             data: $data,
                             dataType: "jsonp",
                             success: function (data) {
-                                console.log(data);
+                                // console.log(data);
                                 allData = data.data || [];
                                 // allData = [{
                                 //     id: "8F08D2EB366140BC85A6A4CE344A15A4"

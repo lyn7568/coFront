@@ -66,6 +66,9 @@
             <div class="btn opt-count">
                 流量统计
             </div>
+            <div class="btn opt-banner">
+                添加到栏目备选列表
+            </div>
             <div class="btn opt-del">
                 删除
             </div>
@@ -93,7 +96,7 @@
             <tr ch-dir="list">
                 <td class="opt-check" ><i class="icon icon-st-check" articleId="{{articleId}}"></i></td>
                 <td>{{pi}}</td>
-                <td>{{articleTitle}}</td>
+                <td class="table-opt" articleId="{{articleId}}"><a class="name">{{articleTitle}}</a></td>
                 <td>{{professorName}}{{organizationName}}</td>
                 <td>{{subject}}</td>
                 <td class="hand-dict" dict="banner" code="{{colNum}}"></td>

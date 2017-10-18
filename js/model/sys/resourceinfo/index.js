@@ -25,6 +25,10 @@ spa_define(function () {
                         },{});
                         $e.removeClass("hand-collectionid");
                     });
+                    root.find(".table-opt a.name").on("click",function () {
+                        var resourceId = $(this).parent().attr("resourceId");
+                        window.open('http://www.ekexiu.com/resourceShow.html?resourceId=' + resourceId);
+                    })
                 });
 
                 root.find(".opt-query").on("click", function () {
