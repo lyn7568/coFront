@@ -1,0 +1,107 @@
+<div class="sys_result_index" loadUri="../ajax/resResult/pq" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1 item-caption ">成果名称</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+            <div class="col-1 item-caption">研究者</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="key"></div>
+            </div>
+            <div class="col-1 item-caption ">录入时间</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="bt"></div>
+            </div>
+            <div class="col-1 item-caption center">至</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="et"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 item-caption">所属机构</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="orgName"></div>
+            </div>
+            <div class="col-1 item-caption">所属部门</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="department"></div>
+            </div>
+            <div class="col-1 item-caption">行业领域</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="subject"></div>
+            </div>
+            <div class="col-1 item-caption">应用领域</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="industry"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+            <div class="col-2"></div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-new">
+                录入
+            </div>
+            <div class="btn opt-edit">
+                编辑
+            </div>
+            <div class="btn opt-del">
+                删除
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th class="number">序号</th>
+                <th>成果名称</th>
+                <th>研发者</th>
+                <th>所属机构</th>
+                <th>所属部门</th>
+                <th>行业领域</th>
+                <th>应用领域</th>
+                <th>成果简介</th>
+                <th>创建时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" resultId="{{id}}"></i></td>
+                <td>{{pi}}</td>
+                <td>{{name}}</td>
+                <td class="hand-resultId" resultId="{{id}}"></td>
+                <td>{{orgName}}</td>
+                <td>{{department}}</td>
+                <td>{{subject}}</td>
+                <td>{{industry}}</td>
+                <td class="elip">{{descp}}</td>
+                <td>{{createTime-showDay}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="10">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

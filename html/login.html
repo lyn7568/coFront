@@ -84,6 +84,11 @@
 
 				});
 
+				$("body").keydown(function () {
+					if (event.keyCode == 13) {
+                        $(".login-btn").click();
+                    }
+                })
 			});
 		</script>
 	</body>

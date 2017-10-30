@@ -127,7 +127,7 @@ $.use(["jQuery", "form", "doc", "util", "dropdown", "code"], function($, form, d
 				tn: "li",
 				attrs: [{
 					an: "code",
-					av: pt
+					av: pc
 				}, {
 					an: "caption",
 					av: pt

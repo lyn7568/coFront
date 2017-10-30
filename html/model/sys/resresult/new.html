@@ -1,0 +1,167 @@
+<div class="sys_result_new centerModal">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container newForm">
+        <div class="row">
+            <div class="col-2 item-caption"><span class="requiredSpan">*</span>成果名称</div>
+            <div class="col-6">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption researcher">研究者</div>
+            <div class="col-4">
+                <div class="form-item typeahead res" uri="../ajax/sys/professor/name?s=10&q=" name="researcher"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-res">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="researcherList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">技术水平</div>
+            <div class="col-4">
+                <div class="form-item text" name="level"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">所属机构</div>
+            <div class="col-4">
+                <div class="form-item typeahead org" uri="../ajax/sys/org/orgName?s=10&q=" name="orgName"></div>
+            </div>
+            <div class="col-2 item-caption">所属部门</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="department"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">行业领域</div>
+            <div class="col-4">
+                <div class="form-item typeahead sub" uri="../ajax/article/typeHotKey?s=10&q="  name="newSubject"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-subject">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="subjectList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">应用领域</div>
+            <div class="col-4">
+                <div class="form-item typeahead ind" uri="../ajax/article/typeHotKey?s=10&q=" name="newIndustry"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn pull-right opt-industry">
+                    <i class="icon-check"></i> 添加
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="form-item dyn-mselect orgSize"  name="industryList"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">成果简介</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="descp"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">应用介绍</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="applyDescp"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">产业化前景</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="prospect"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">技术指标</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="indicator"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">技术优势</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="advantage"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">经济和社会效益</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="benefit"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">合作备注</div>
+            <div class="col-6">
+                <div class="form-item textarea" name="cooperation"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">联系人</div>
+            <div class="col-4">
+                <div class="form-item text" name="linkman"></div>
+            </div>
+            <div class="col-2 item-caption">地址</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="addr"></div>
+            </div>
+        </div>
+        <div class="row me">
+            <div class="col-2 item-caption">邮编</div>
+            <div class="col-4">
+                <div class="form-item text" name="zipCode"></div>
+            </div>
+            <div class="col-2 item-caption">办公电话</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="tel"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 item-caption">手机</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="mobile"></div>
+            </div>
+            <div class="col-2 item-caption">邮箱</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="email"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+        <div class="head-ctn">
+            <div id="fileList" class="uploader-list"></div>
+            <div id="filePicker">选择图片</div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <div class="btn pull-right opt-save">
+                    <i class="icon-check"></i> 保存
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

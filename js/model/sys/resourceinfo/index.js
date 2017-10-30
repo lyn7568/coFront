@@ -70,7 +70,7 @@ spa_define(function () {
                             });
                         }
                     } else {
-                        util.alert("请选择一个用户");
+                        util.alert("请选择一个资源");
                     }
                 });
                 root.find(".opt-sort-num").on("click", function() {

@@ -12,10 +12,14 @@ spa_define(function () {
                 });
                 var ef = form.build(root.find(".opt-form"));
                 util.get("../ajax/sys/professor/id/" + data.data.owner, null, function (owner) {
-                    ef.val({ownerOrg: owner.orgName});
+                    if (owner) {
+                        ef.val({ownerOrg: owner.orgName});
+                    }
                 });
                 util.get("../ajax/sys/professor/id/" + data.data.actor, null, function (actor) {
-                    ef.val({actorOrg: actor.orgName});
+                    if (actor) {
+                        ef.val({actorOrg: actor.orgName});
+                    }
                 });
                 ef.val(data.data);
                 var cr = code.parseCode(root.find(".dt-tpl"));
@@ -31,7 +35,7 @@ spa_define(function () {
                     cnt.forEach(function (item) {
                         if (item.sender == data.data.owner) {
                             item.senderName = data.data.ownerName;
-                            item.reciverName = data.data.actorname;
+                            item.reciverName = data.data.actorName;
                             item.right = 1;
                         } else {
                             item.senderName = data.data.actorName;
