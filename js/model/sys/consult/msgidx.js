@@ -10,7 +10,8 @@ spa_define(function () {
                 var pdg = pdgf.build(root);
                 pdg.code.shell("showDay", function (env) {
                     if (env.cd && env.cd[this.k]) {
-                        var day = env.cd[this.k].toString();
+                        var date = new Date(env.cd[this.k]);
+                        var day = date.format("yyyyMMdd");
                         return day.substring(0, 4) + "-" + day.substring(4, 6) + "-" + day.substring(6, 8);
                     }
                     return "";

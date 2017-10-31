@@ -57,22 +57,6 @@ spa_define(function () {
                     spa.closeModal();
                 });
 
-                Date.prototype.format = function (fmt) {
-                    var o = {
-                        "M+": this.getMonth() + 1, //月份
-                        "d+": this.getDate(), //日
-                        "h+": this.getHours(), //小时
-                        "m+": this.getMinutes(), //分
-                        "s+": this.getSeconds(), //秒
-                        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-                        "S": this.getMilliseconds() //毫秒
-                    };
-                    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-                    for (var k in o)
-                        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-                    return fmt;
-                };
-
                 var dayList = function () {
                     var dayList = [];
                     var now = new Date();
@@ -120,7 +104,7 @@ spa_define(function () {
                                     day.num = day.pc + day.app + day.h5;
                                 })
                             });
-                            var colors = ['#003366', "#660099", '#c23531', "#91C7AE"];
+                            var colors = ["#660099", '#c23531', "#91C7AE",'#003366'];
                             var option = {
 
                                 color: colors,
@@ -132,7 +116,7 @@ spa_define(function () {
                                     trigger: 'axis'
                                 },
                                 legend: {
-                                    data: ['合计', 'PC端', '移动端APP', '移动端H5']
+                                    data: ['PC端', '移动端APP', '移动端H5','合计']
                                 },
                                 xAxis: {
                                     data: allData.map(function (item) {
@@ -171,19 +155,6 @@ spa_define(function () {
                                     right: 10
                                 },
                                 series: [
-                                        {
-                                        name: '合计',
-                                        type: 'line',
-                                        label: {
-                                            normal: {
-                                                show: true,
-                                                position: 'top'
-                                            }
-                                        },
-                                        data: allData.map(function (item) {
-                                            return item.num;
-                                        })
-                                    },
                                     {
                                         name: 'PC端',
                                         type: 'line',
@@ -201,6 +172,18 @@ spa_define(function () {
                                         type: 'line',
                                         data: allData.map(function (item) {
                                             return item.h5;
+                                        })
+                                    }, {
+                                        name: '合计',
+                                        type: 'line',
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'top'
+                                            }
+                                        },
+                                        data: allData.map(function (item) {
+                                            return item.num;
                                         })
                                     }
                                 ]
