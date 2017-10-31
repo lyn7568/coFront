@@ -15,7 +15,7 @@
     display: none;
 }
 
-.sys_article_index .number {
+.sys_article_index .number,.sys_article_viewcount .number{
     width: 4%;
 }
 
