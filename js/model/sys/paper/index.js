@@ -44,8 +44,11 @@ spa_define(function () {
                         $e.removeClass("hand-agreeid");
                     });
                     root.find(".table-opt a.name").on("click",function () {
-                        var paperId = $(this).parent().attr("paperId");
-                        window.open('http://www.ekexiu.com/paperShow.html?paperId=' + paperId);
+                        // var paperId = $(this).parent().attr("paperId");
+                        var time = $(this).parent().attr("createTime").substring(0,8);
+                        var shareId = $(this).parent().attr("shareId");
+                        // window.open('http://www.ekexiu.com/paperShow.html?paperId=' + paperId);
+                        window.open('http://192.168.3.233:81/shtml/pp/'+time+'/' + shareId+'.html');
                     })
                 });
 
@@ -128,12 +131,15 @@ spa_define(function () {
                     }
                 });
                 root.find(".opt-view").on("click", function () {
-                    var $org = root.find("td.opt-check>i.checked");
-                    if ($org.length) {
-                        if ($org.length > 1) {
+                    var $paper = root.find("td.opt-check>i.checked");
+                    if ($paper.length) {
+                        if ($paper.length > 1) {
                             util.alert("只能选择一篇资源");
                         } else {
-                            window.open('http://www.ekexiu.com/paperShow.html?paperId=' + $org.attr("paperId"));
+                            var time = $paper.attr("createTime").substring(0,8);
+                            var shareId = $paper.attr("shareId");
+                            // window.open('http://www.ekexiu.com/paperShow.html?paperId=' + $paper.attr("paperId"));
+                            window.open('http://192.168.3.233:81/shtml/pp/'+time+'/' + shareId+'.html');
                         }
                     } else {
                         util.alert("请选择一篇资源");

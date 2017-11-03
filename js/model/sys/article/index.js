@@ -37,7 +37,10 @@ spa_define(function () {
                     });
                     root.find(".table-opt a.name").on("click",function () {
                         var articleId = $(this).parent().attr("articleId");
-                        window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
+                        var time = $(this).parent().attr("createTime").substring(0,8);
+                        var shareId = $(this).parent().attr("shareId");
+                        // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
+                        window.open('http://192.168.3.233:81/shtml/a/'+time+'/' + shareId+'.html');
                     })
                 });
 
@@ -59,10 +62,10 @@ spa_define(function () {
                     $this.toggleClass("checked");
                 });
                 root.find(".opt-del").on("click", function() {
-                    var $org = root.find("td.opt-check>i.checked");
-                    if($org.length) {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if($article.length) {
                         var ret = [];
-                        $org.each(function() {
+                        $article.each(function() {
                             ret.push($(this).attr("articleId"));
                         });
                         util.boxMsg({
@@ -149,7 +152,8 @@ spa_define(function () {
                         } else {
                             // $.util.get("../ajax/article/id/"+$article.attr("articleId"),null,function(rd){
                             //     if(rd){
-                                    window.open('http://www.ekexiu.com:81/html/model/sys/article/articleModify.html?articleId=' + $article.attr("articleId"));
+                            //         window.open('http://www.ekexiu.com:81/html/model/sys/article/articleModify.html?articleId=' + $article.attr("articleId"));
+                                    window.open('http://'+window.location.host+'/html/model/sys/article/articleModify.html?articleId=' + $article.attr("articleId"));
                             //     }else{
                             //         util.alertMsg("文章不存在", function(){pdg.reload();});
                             //     }
@@ -185,12 +189,15 @@ spa_define(function () {
                     }
                 });
                 root.find(".opt-view").on("click", function () {
-                    var $org = root.find("td.opt-check>i.checked");
-                    if ($org.length) {
-                        if ($org.length > 1) {
+                    var $article = root.find("td.opt-check>i.checked");
+                    if ($article.length) {
+                        if ($article.length > 1) {
                             util.alert("只能选择一篇文章");
                         } else {
-                            window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $org.attr("articleId"));
+                            var time = $article.attr("createTime").substring(0,8);
+                            var shareId = $article.attr("shareId");
+                            // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $article.attr("articleId"));
+                            window.open('http://192.168.3.233:81/shtml/a/'+time+'/' + shareId+'.html');
                         }
                     } else {
                         util.alert("请选择一篇文章");

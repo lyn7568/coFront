@@ -28,10 +28,10 @@ $(function() {
                 if(data.success == true) {
                     var userid = data.data.id;
                     if (userid == undefined || userid.length == 0 || userid == "null") {
-                        location.href = "http://localhost:81/html/index.html";
+                        location.href = "http://www.ekexiu.com:81/html/index.html";
                     }
                 }else {
-                    location.href = "http://localhost:81/html/index.html";
+                    location.href = "http://www.ekexiu.com:81/html/index.html";
                 }
             }
         });

@@ -93,19 +93,24 @@ spa_define(function () {
 
                 root.find(".opt-view").on("click", function () {
                     var $org = root.find("td.opt-check>i.checked");
+                    var time = $org.attr("createTime").substring(0,8);
+                    var shareId = $org.attr("shareId");
                     var contentType = pdg.queryParam().contentType;
                     if ($org.length) {
                         if ($org.length > 1) {
                             util.alert("只能选择一个用户");
                         } else {
                             if ( contentType==3){//文章
-                                window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $org.attr("contentId"));
+                                // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $org.attr("contentId"));
+                                window.open('http://192.168.3.233:81/shtml/a/'+time+'/' + shareId+'.html');
                             }else if ( contentType== 2){//资源
                                 window.open('http://www.ekexiu.com/resourceShow.html?resourceId=' + $org.attr("contentId"));
                             }else if ( contentType==4){//专利
-                                window.open('http://www.ekexiu.com/patentShow.html?patentId=' + $org.attr("contentId"));
+                                // window.open('http://www.ekexiu.com/patentShow.html?patentId=' + $org.attr("contentId"));
+                                window.open('http://192.168.3.233:81/shtml/pt/'+time+'/' + shareId+'.html');
                             }else if ( contentType==5){//论文
-                                window.open('http://www.ekexiu.com/paperShow.html?paperId=' + $org.attr("contentId"));
+                                // window.open('http://www.ekexiu.com/paperShow.html?paperId=' + $org.attr("contentId"));
+                                window.open('http://192.168.3.233:81/shtml/pp/'+time+'/' + shareId+'.html');
                             }
                         }
                     } else {
