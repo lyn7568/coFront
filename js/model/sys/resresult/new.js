@@ -36,9 +36,17 @@ spa_define(function () {
                             }
                         }
                     },
-                    orgName:{keyPressInterval:1},
-                    newSubject:{
-                        keyPressInterval:1,
+                    orgName: {
+                        keyPressInterval: 1,
+                        hide: function () {
+                            this.shown = false;
+                            this.ctn.removeClass("open");
+                            this.lastQuerying = null;
+                            this.lastQueryed = null;
+                        }
+                    },
+                    newSubject: {
+                        keyPressInterval: 1,
                         hide: function () {
                             this.shown = false;
                             this.ctn.removeClass("open");
@@ -95,7 +103,8 @@ spa_define(function () {
                         form.val({pic: oString(pic), researchers: form.val().researcherList});
                         form.val({
                             industry: oString(form.val().industryList),
-                            subject: oString(form.val().subjectList)
+                            subject: oString(form.val().subjectList),
+                            orgName: $(".org").find("input").val()
                         });
 
                         if (form.val().name == null) {
