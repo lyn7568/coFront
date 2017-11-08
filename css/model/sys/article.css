@@ -19,7 +19,7 @@
     width: 4%;
 }
 
-.sys_article_index .table-opt .name {
+.sys_article_index .table-opt .name,.sys_article_viewcount .table-opt .icon-line-chart{
     cursor:pointer;
 }
 

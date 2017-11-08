@@ -107,23 +107,33 @@ spa_define(function () {
                     var $this = $(this);
                     $this.toggleClass("checked");
                 });
-                root.find(".opt-count").on("click", function () {
-                    var $article = root.find("td.opt-check>i.checked");
-                    if ($article.length) {
-                        if ($article.length>1) {
-                            util.alert("只能选择一篇文章");
-                        }else {
-                            spa.showModal("sys_article_count", {
-                                id: $article.attr("articleId"),
-                                hand: function () {
-                                    pdg.reload();
-                                }
-                            });
+                // root.find(".opt-count").on("click", function () {
+                //     var $article = root.find("td.opt-check>i.checked");
+                //     if ($article.length) {
+                //         if ($article.length>1) {
+                //             util.alert("只能选择一篇文章");
+                //         }else {
+                //             spa.showModal("sys_article_count", {
+                //                 id: $article.attr("articleId"),
+                //                 hand: function () {
+                //                     pdg.reload();
+                //                 }
+                //             });
+                //         }
+                //     }else {
+                //         util.alert("请选择一篇文章");
+                //     }
+                // });
+                root.on("click",".icon-line-chart",function () {
+                    var $this = $(this);
+                    var articleId = $this.parent().attr("articleId");
+                    spa.showModal("sys_article_count",{
+                        id:articleId,
+                        hand:function () {
+                            pdg.reload();
                         }
-                    }else {
-                        util.alert("请选择一篇文章");
-                    }
-                });
+                    })
+                })
             },
             mainDestory: function () {
             }
