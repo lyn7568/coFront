@@ -50,7 +50,7 @@ $(document).ready(function() {
 					"url": "/ajax/resource/queryOne",
 					"type": "GET",
 					"success": function(data) {
-						console.log(data);
+						// console.log(data);
 						if(data.success) {
 							$("#uploadDd").siblings().remove();
 							$("#fileList").append("<dd></dd><dd></dd>");
@@ -205,7 +205,7 @@ $(document).ready(function() {
 
 	});
 	uploader.onError = function(code) {
-		console.log(code)
+		// console.log(code)
 		$.MsgBox.Alert('提示', '请上传jpg、jpeg、png格式的图片，大小不超过2M')
 	};
 	uploader.on('uploadSuccess', function(file, data) {
@@ -259,7 +259,7 @@ $(document).ready(function() {
 			var ti=$(this).val();
 			hbur=ti;
 			var lNum=$.trim($(this).val()).length;
-			console.log(lNum);
+			// console.log(lNum);
 			if(lNum > 15) {
 				$(this).val($(this).val().substr(0, 15));
 			} else if(0 < lNum&& lNum < 15) {
@@ -272,7 +272,7 @@ $(document).ready(function() {
 						"url": "/ajax/article/qaHotKey",
 						"type": "GET",
 						"success": function(data) {
-							console.log(data);
+							// console.log(data);
 							if(data.success) {
 								if(hburEnd == tt){
 									if(data.data.length==0) {
@@ -381,10 +381,10 @@ $(document).ready(function() {
 				$(this).val($(this).val().substr(0, 50));
 			} else if(0 < $(this).val().length < 50) {
 					$.ajax({
-					"url": "/ajax/org/querylimit",
+					"url": "/ajax/sys/org/querylimit",
 					"type": "GET",
 					"success": function(data) {
-						console.log(data);
+						// console.log(data);
 						if(data.success) {
 							if(data.data==null) {
 								$("#department ul").html("");
@@ -411,11 +411,11 @@ $(document).ready(function() {
 		var oSum="";
 		for( i in $html) {
 			var oImg="";
-			console.log($html[i].hasOrgLogo)
+			// console.log($html[i].hasOrgLogo)
 			if($html[i].hasOrgLogo) {
-				oImg="/images/org/" + $html[i].id + ".jpg"
+				oImg="http://www.ekexiu.com/images/org/" + $html[i].id + ".jpg"
 			}else{
-				oImg="../images/default-icon.jpg"
+				oImg="http://www.ekexiu.com/images/default-icon.jpg"
 			}
 			oSum+='<li class="orgList"><img src="'+oImg+'" class="floatL" /><p class="h2Font floatL">'+$html[i].name+'</p></li>'
 		}
@@ -488,7 +488,7 @@ $(document).ready(function() {
 					"url": "/ajax/resource/delete",
 					"type": "POST",
 					"success": function(data) {
-						console.log(data)
+						// console.log(data)
 						if(data.success) {							
 								location.href="resourceList.html"						
 						}
@@ -532,7 +532,7 @@ $(document).ready(function() {
 			$data.resourceName = $("#resourceName").val();//资源名字
 			$data.cooperationNotes = $("#remarkContent").val();//合作备注
 			$data.subject = captiureSubInd("keywordList p");
-			console.log($data.subject);
+			// console.log($data.subject);
 			$data.supportedServices=$("#application").val();
 			$data.orgName=$("#organizationName").val();
 			$data.spec=$("#modelNumber").val();
@@ -541,7 +541,7 @@ $(document).ready(function() {
 			$data.fns=temp;
 			$data.imageIds=array;
 			//$data.imageIds:资源图片ID NULL 字符串数组
-			console.log(temp);
+			// console.log(temp);
 			$.ajax({
 					"url": oUrl,
 					"type": "POST",
@@ -549,7 +549,7 @@ $(document).ready(function() {
 						$(".operateBlock").find("li").removeClass("disableLi");
 					},
 					"success": function(data) {
-						console.log(data)
+						// console.log(data)
 						if(data.success) {
 							if(pa2==1) {
 								resourceId=data.data;

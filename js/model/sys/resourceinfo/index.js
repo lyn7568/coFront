@@ -122,6 +122,26 @@ spa_define(function () {
                     }
                 });
 
+                root.find(".opt-edit").on("click", function() {
+                    var $resource = root.find("td.opt-check>i.checked");
+                    if($resource.length) {
+                        if($resource.length > 1) {
+                            util.alert("只能选择一个资源");
+                        } else {
+                            // $.util.get("../ajax/article/id/"+$resource.attr("articleId"),null,function(rd){
+                            //     if(rd){
+                            //         window.open('http://www.ekexiu.com:81/html/model/resourceinfo/resourceIssue.html?resourceId=' + $resource.attr("resourceId"));
+                            window.open('http://'+window.location.host+'/html/model/sys/resourceinfo/resourceIssue.html?resourceId=' + $resource.attr("resourceId"));
+                            //     }else{
+                            //         util.alertMsg("文章不存在", function(){pdg.reload();});
+                            //     }
+                            // },{});
+                        }
+                    } else {
+                        util.alert("请选择一个资源");
+                    }
+                });
+
 
             }, mainDestory: function () {
 

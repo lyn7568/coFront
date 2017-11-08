@@ -1441,7 +1441,7 @@ ul.artAbout .frmadd {
     right: -12px;
     width: 28px;
     height: 28px;
-    background: url("../images/g_article_button_guanbi_hig.png") 0% 0% / cover;
+    background: url("/images/g_article_button_guanbi_hig.png") 0% 0% / cover;
     cursor: pointer;
 }
 
