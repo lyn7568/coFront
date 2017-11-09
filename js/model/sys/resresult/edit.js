@@ -36,7 +36,15 @@ spa_define(function () {
                             }
                         }
                     },
-                    orgName: {keyPressInterval: 1},
+                    orgName: {
+                        keyPressInterval: 1,
+                        hide: function () {
+                            this.shown = false;
+                            this.ctn.removeClass("open");
+                            this.lastQuerying = null;
+                            this.lastQueryed = null;
+                        }
+                    },
                     newSubject: {
                         keyPressInterval: 1,
                         hide: function () {
@@ -88,7 +96,7 @@ spa_define(function () {
                 var saveBtn = root.find(".opt-save"),
                     headArea = root.find(".head-ctn"),
                     save = function () {
-                        // console.log(form.val().researcherList);
+                        // console.log($(".org").find("input").val());
                         var pic = [];
                         $('#fileList').find('img').each(function () {
                             pic.push($(this).attr("name"));
@@ -96,7 +104,8 @@ spa_define(function () {
                         form.val({pic: oString(pic), researchers: form.val().researcherList});
                         form.val({
                             industry: oString(form.val().industryList),
-                            subject: oString(form.val().subjectList)
+                            subject: oString(form.val().subjectList),
+                            orgName: $(".org").find("input").val()
                         });
 
                         if (form.val().name == null) {
@@ -125,6 +134,7 @@ spa_define(function () {
                     }
                 });
                 form.val(data.data);
+                $(".org").find("input").val(data.data.orgName);
                 if (data.data.industry) {
                     form.val({industryList: split1(data.data.industry)});
                 }
