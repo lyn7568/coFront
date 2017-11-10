@@ -35,6 +35,10 @@ spa_define(function () {
                         }, {});
                     };
 
+                var trim = function (str) { //删除左右两端的空格			　　
+                    return str.replace(/(^\s*)|(\s*$)/g, "");
+                };
+
                 var part = function (one, list, num) {
                     oValue = one;
                     oJudge = list || [];
@@ -54,6 +58,9 @@ spa_define(function () {
                     } else {
                         var oValueList = oValue.split(","),
                             length = oValueList.length;
+                        for (var m = 0;m<oValueList.length;m++) {
+                            oValueList[m] = trim(oValueList[m]);
+                        }
                         for (var j = 0; j < length; j++) {
                             for (var n = j + 1; n < oValueList.length + 1;) {
                                 if (oValueList[j] == oValueList[n]) {
