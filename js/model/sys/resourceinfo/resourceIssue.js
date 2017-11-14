@@ -108,7 +108,7 @@ $(document).ready(function() {
 			for(var i=0;i<$da.images.length;i++) {
 				var oString='<dd>' +
 					'<div class="imgItem">'+
-						'<img src="'+"/data/resource/"+$da.images[i].imageSrc+'"/>' +
+						'<img src="'+"http://www.ekexiu.com/data/resource/"+$da.images[i].imageSrc+'"/>' +
 					'</div>'+
 					'<div class="file-panel">' +
 						'<span class="cancel" flag=1></span>' +
