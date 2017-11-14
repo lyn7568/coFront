@@ -102,15 +102,15 @@ spa_define(function () {
                         } else {
                             if ( contentType==3){//文章
                                 // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $org.attr("contentId"));
-                                window.open('http://192.168.3.233:81/shtml/a/'+time+'/' + shareId+'.html');
+                                window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
                             }else if ( contentType== 2){//资源
                                 window.open('http://www.ekexiu.com/resourceShow.html?resourceId=' + $org.attr("contentId"));
                             }else if ( contentType==4){//专利
                                 // window.open('http://www.ekexiu.com/patentShow.html?patentId=' + $org.attr("contentId"));
-                                window.open('http://192.168.3.233:81/shtml/pt/'+time+'/' + shareId+'.html');
+                                window.open('http://www.ekexiu.com/shtml/pt/'+time+'/' + shareId+'.html');
                             }else if ( contentType==5){//论文
                                 // window.open('http://www.ekexiu.com/paperShow.html?paperId=' + $org.attr("contentId"));
-                                window.open('http://192.168.3.233:81/shtml/pp/'+time+'/' + shareId+'.html');
+                                window.open('http://www.ekexiu.com/shtml/pp/'+time+'/' + shareId+'.html');
                             }
                         }
                     } else {

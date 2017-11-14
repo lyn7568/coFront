@@ -48,7 +48,7 @@ spa_define(function () {
                         var time = $(this).parent().attr("createTime").substring(0,8);
                         var shareId = $(this).parent().attr("shareId");
                         // window.open('http://www.ekexiu.com/patentShow.html?patentId=' + patentId);
-                        window.open('http://192.168.3.233:81/shtml/pt/'+time+'/' + shareId+'.html');
+                        window.open('http://www.ekexiu.com/shtml/pt/'+time+'/' + shareId+'.html');
                     })
                 });
 
@@ -145,7 +145,7 @@ spa_define(function () {
                             var time = $patent.attr("createTime").substring(0,8);
                             var shareId = $patent.attr("shareId");
                             // window.open('http://www.ekexiu.com/patentShow.html?patentId=' + $patent.attr("patentId"));
-                            window.open('http://192.168.3.233:81/shtml/pt/'+time+'/' + shareId+'.html');
+                            window.open('http://www.ekexiu.com/shtml/pt/'+time+'/' + shareId+'.html');
                         }
                     } else {
                         util.alert("请选择一篇资源");

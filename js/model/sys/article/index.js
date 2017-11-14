@@ -40,7 +40,7 @@ spa_define(function () {
                         var time = $(this).parent().attr("createTime").substring(0,8);
                         var shareId = $(this).parent().attr("shareId");
                         // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
-                        window.open('http://192.168.3.233:81/shtml/a/'+time+'/' + shareId+'.html');
+                        window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
                     })
                 });
 
@@ -197,7 +197,7 @@ spa_define(function () {
                             var time = $article.attr("createTime").substring(0,8);
                             var shareId = $article.attr("shareId");
                             // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + $article.attr("articleId"));
-                            window.open('http://192.168.3.233:81/shtml/a/'+time+'/' + shareId+'.html');
+                            window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
                         }
                     } else {
                         util.alert("请选择一篇文章");
