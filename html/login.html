@@ -70,7 +70,11 @@
 
 					loginForm.doPost("../ajax/sys/user/login", function(data) {
 						if(data) {
-							window.location.href='index.html';
+						    if(data.id==='2A8FF53DF2314C219FE50731D5B795C8'||data.id==='DKDHSKDLSIELSKJDL234567890111111') {
+                                window.location.href = 'index.html#sys_usercount_index';
+                            }else{
+                                window.location.href = 'index.html'
+							}
 //							var uri = window.location.hash;
 //							if(uri && uri.length>1){
 //								window.location.href=decodeURIComponent(uri.substring(1));
