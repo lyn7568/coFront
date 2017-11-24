@@ -20,3 +20,7 @@
     margin: 10px;
     font-size: 20px;
 }
+
+.sys_expert_index .state3{
+    display:none;
+}
