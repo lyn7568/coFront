@@ -52,12 +52,12 @@
     display: none !important;
 }
 
-.sys_article_count{
+.sys_article_count,.sys_article_total{
     width:900px;
     height:600px;
 }
 
-.sys_article_count #type{
+.sys_article_count #type,.sys_article_total #type{
     left:20px;
 }
 
