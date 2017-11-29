@@ -58,7 +58,6 @@ spa_define(function () {
                         url: "/ajax/operation/statist/total",
                         success: function (data) {
                             allData = dayList();
-                            console.log(allData)
                             allData.forEach(function (day) {
                                 var time = (JSON.stringify(day.time)).replace(/\-|^\"|\"$/g, "");
                                 day.pc = 0;
