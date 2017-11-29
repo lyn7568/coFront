@@ -64,7 +64,7 @@ spa_define(function () {
                     day1.setMonth(now.getMonth() - 1);
                     day1.setDate(1);
                     var day2 = new Date();
-                    day2.setDate(day2.getDate() - 1);
+                    day2.setDate(day2.getDate());
 //                    var s1 = day1.format("yyyy-MM-dd");
 //                    var s2 = day2.format("yyyy-MM-dd");
 //                    console.log(s1, s2);
