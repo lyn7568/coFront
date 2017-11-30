@@ -73,6 +73,10 @@
     table-layout: fixed;
 }
 
+.sys_article_viewcount #total{
+    left:18%;
+}
+
 .sys_article_relate {
     width: 900px;
     height: 900px;

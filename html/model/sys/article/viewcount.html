@@ -2,6 +2,7 @@
     <div class="modal-ctrl">
         <i class="icon icon-times"></i>
     </div>
+    <div id="total" style="height: 400px;width: 850px"></div>
 
     <div class="container queryForm">
         <div class="col-2"></div>
@@ -20,14 +21,14 @@
         </div>
         <div class="col-3"></div>
     </div>
-    <div class="row"></div>
-    <div class="container tpl-btns">
-        <div class="row">
-            <div class="btn opt-total">
-                文章总浏览量
-            </div>
-        </div>
-    </div>
+    <!--<div class="row"></div>-->
+    <!--<div class="container tpl-btns">-->
+        <!--<div class="row">-->
+            <!--<div class="btn opt-total">-->
+                <!--文章总浏览量-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <div class="container dt-tpl">
         <table class="table table-bordered">
@@ -41,10 +42,12 @@
                 <th>关键词</th>
                 <th>栏目</th>
                 <th>发布时间</th>
-                <th class="number">权重</th>
-                <th class="number">点赞量</th>
-                <th>总浏览量</th>
-                <th class="number">pv</th>
+                <th class="number">当前范围阅读量</th>
+                <th class="number">总阅读量</th>
+                <!--<th class="number">权重</th>-->
+                <th class="number">总点赞量</th>
+                <th class="number">总留言量</th>
+                <th class="number">总收藏量</th>
             </tr>
             </thead>
             <tbody>
@@ -57,10 +60,12 @@
                 <td class="subject">{{subject}}</td>
                 <td class="colNum">{{colNum}}</td>
                 <td class="publishTime">{{publishTime}}</td>
-                <td class="sortNum">{{sortNum}}</td>
-                <td class="articleAgree">{{articleAgree}}</td>
-                <td class="pageViews">{{pageViews}}</td>
                 <td>{{pv}}</td>
+                <td class="pageViews">{{pageViews}}</td>
+                <!--<td class="sortNum">{{sortNum}}</td>-->
+                <td class="articleAgree">{{articleAgree}}</td>
+                <td class="lw"></td>
+                <td class="collection"></td>
             </tr>
             </tbody>
             <tbody ch-dir="array.empty">
