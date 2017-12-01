@@ -45,7 +45,7 @@ spa_define(function () {
                             if (articleId) {
                                 util.get("../ajax/article/base", {id: articleId}, function (data) {
                                     if (data) {
-                                        $e.parent().find(".articleTitle").text(data.articleTitle);
+                                        $e.parent().find(".articleTitle .name").text(data.articleTitle).attr('shareId',data.shareId).attr('createTime',data.createTime);
                                         $e.parent().find(".professorName").text(data.professorName || data.organizationName);
                                         $e.parent().find(".subject").text(data.subject);
                                         $e.parent().find(".colNum").text(caption("banner", data.colNum));
@@ -143,6 +143,14 @@ spa_define(function () {
                             pdg.reload();
                         }
                     })
+                });
+                root.on("click",".articleTitle a.name",function () {
+                    console.log("xmtt");
+                    var articleId = $(this).attr("articleId");
+                    var time = $(this).attr("createTime").substring(0,8);
+                    var shareId = $(this).attr("shareId");
+                    // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
+                    window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
                 });
                 var myChart = echarts.init(document.getElementById('total'));
                 var tableData = {data: []},
