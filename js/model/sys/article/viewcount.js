@@ -145,7 +145,6 @@ spa_define(function () {
                     })
                 });
                 root.on("click",".articleTitle a.name",function () {
-                    console.log("xmtt");
                     var articleId = $(this).attr("articleId");
                     var time = $(this).attr("createTime").substring(0,8);
                     var shareId = $(this).attr("shareId");
