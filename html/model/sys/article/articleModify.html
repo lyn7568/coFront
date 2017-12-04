@@ -57,19 +57,18 @@
                     </li>
                     <li class="form-item">
                         <div class="aboutTit">关键词<span class="frmconmsg" id="keyPrompt"></span></div>
-                        <div style="position: relative;">
-                            <input type="text" class="frmtype frmcontype" value="" placeholder="请输入关键词" id="KeyWord"/>
-                            <!--输入框中键入内容时按钮显示，添加内容出现在结果标签中时按钮隐藏-->
-                            <button class="frmcontype frmadd displayNone" id="addkeyWord">添加</button>
-                        </div>
-                        <div class="form-drop keydrop displayNone">
-                            <ul id="keydropList">
+                        <div class="col-w-12" style="position: relative;">
+                            <input type="text" class="frmcontype oinput" placeholder="请输入关键词" data-pro="关键词不得超过15个字"  data-num="5" data-fontSizeN="15" id="KeyWord" />
+                            <button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+                            <div class="form-drop keydrop">
+                                <ul>
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="form-result keyResult">
-                            <ul class="clearfix" id="keyWordlist">
-
+                        <div class="form-result keyResult" style="margin-top: -10px;">
+                            <ul class="ulspace editUlist clearfix" id="keyWordlist">
+                                <!--<li>dd<div class="closeThis"></div></li>-->
                             </ul>
                         </div>
                     </li>

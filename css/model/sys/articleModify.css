@@ -180,8 +180,9 @@ body, html { background: rgb(244, 246, 248); }
 .uploadInp .webuploader-pick { background: none; height: 85px; width: 100%; margin: 0px; line-height: 85px; }
 .uploadInp .webuploader-element-invisible { height: 90px; }
 .cmpFrmList > li .frmadd { width: auto; position: absolute; right: 0px; top: 0px; background: rgb(40, 184, 250); color: rgb(255, 255, 255); border: none; padding: 6px 25px; }
+.ulspace>li{margin-top:16px;margin-right:30px; padding: 6px 12px;border-width:1px;border-style:solid;border-color:#D6D6D6;}
 .keyResult > ul.editUlist, .keyResult > ul.editUlistC { width: 98%; margin-right: -30px; margin-bottom: 0px; }
-.keyResult > ul.editUlistC > li, .keyResult > ul.editUlist > li { position: relative; padding: 6px 12px; background: rgb(255, 255, 255); border-radius: 0px; margin-bottom: 0px; }
+.keyResult>ul.editUlistC>li,.keyResult>ul.editUlist>li{position:relative;padding:6px 12px;background: #fff;margin-bottom:0;}
 .keyResult > ul.editUlist > li { float: left; }
 .keyResult > ul.editUlistC > li { width: 100%; margin-top: 12px; }
 .saveBtn .frmcontype { width: 120px; margin-right: 30px; margin-top: 20px; }

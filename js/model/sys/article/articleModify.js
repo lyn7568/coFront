@@ -49,6 +49,190 @@ $(function() {
         return context == null || context == "" || context == "undefined" ? "" : decodeURI(context);
     }
 
+    function hotKey(sel, num) {
+
+        $(sel).bind({
+            paste: function(e) {
+                var pastedText;
+                if (window.clipboardData  &&  window.clipboardData.getData)  {  // IE
+                    pastedText  = $(this).val() +  window.clipboardData.getData('Text');
+                }
+                else  {
+                    pastedText  = $(this).val() +  e.originalEvent.clipboardData.getData('Text'); //e.clipboardData.getData('text/plain');
+                }
+                $(this).val(pastedText);
+
+                var $this = $(this);
+                setTimeout(function() {
+                    if($this.val().trim()) {
+                        $this.siblings("button").show();
+                    } else {
+                        $this.siblings("button").hide();
+                    }
+                }, 1);
+                e.preventDefault();
+            },
+            cut: function(e) {
+                var $this = $(this);
+                setTimeout(function() {
+                    if($this.val().trim()) {
+                        $this.siblings("button").show();
+                    } else {
+                        $this.siblings("button").hide();
+                    }
+                }, 1);
+            },
+            blur: function() {
+                var $this = $(this);
+                setTimeout(function() {
+                    $this.siblings(".keydrop").hide();
+                }, 500)
+            },
+            focus: function() {
+                $(this).siblings(".keydrop").show();
+            },
+            keyup: function(e) {
+                var ti=$(this).val();
+                var $t=this;
+                $t.comr=ti;
+                var $this=$(this);
+                if($(this).val().trim()) {
+                    $(this).siblings("button").show();
+                    var lNum = $.trim($(this).val()).length;
+                    if(0 < lNum) {
+                        setTimeout(function(){
+                            if( ti===$t.comr && ti!== $t.comrEnd) {
+                                var tt=ti;
+                                $t.comrEnd=tt;
+                                $("#addKeyword").show();
+                                $.ajax({
+                                    "url": "/ajax/article/qaHotKey",
+                                    "type": "GET",
+                                    "success": function(data) {
+                                        console.log(data);
+                                        if(data.success) {
+                                            if($t.comrEnd==tt) {
+                                                if(data.data.length == 0) {
+                                                    $this.siblings(".keydrop").addClass("displayNone");
+                                                    $this.siblings(".keydrop").find("ul").html("");
+                                                } else {
+                                                    $this.siblings(".keydrop").removeClass("displayNone");
+                                                    var oSr = "";
+                                                    for(var i = 0; i < Math.min(data.data.length,5); i++) {
+                                                        oSr += '<li>' + data.data[i].caption + '<div class="closeThis"></div></li>';
+                                                    }
+                                                    $this.siblings(".keydrop").find("ul").html(oSr);
+                                                }
+                                            }
+                                        } else {
+                                            $this.siblings(".keydrop").addClass("displayNone");
+                                            $this.siblings(".keydrop").find("ul").html("");
+                                        }
+                                    },
+                                    "data": {
+                                        "key": $this.val()
+                                    },
+                                    dataType: "json",
+                                    'error': function() {
+                                        $.MsgBox.Alert('提示', '服务器连接超时！');
+                                    }
+                                });
+                            }
+                        },500);
+                    }
+                } else {
+                    $(this).siblings("button").hide();
+                    $(this).siblings(".keydrop").addClass("displayNone");
+                    $(this).siblings(".keydrop").find("ul").html("");
+                }
+            }
+        })
+        $(".keydrop").on("click", "li", function() {
+            var oValue = $(this).text();
+            var oJudge = $(this).parents(".col-w-12").siblings().find("ul.ulspace li");
+            var addNum = $(this).parents(".keydrop").siblings("input").attr("data-num");
+
+            for(var i = 0; i < oJudge.length; i++) {
+                if(oValue == oJudge[i].innerText) {
+                    $.MsgBox.Alert('提示', '添加内容不能重复');
+                    return;
+                }
+            }
+            $(this).parents(".col-w-12").siblings().find("ul.ulspace").append('<li>' + oValue + '<div class="closeThis"></div></li>');
+            $(this).parents(".keydrop").siblings("input").val("");
+            $(this).parents(".keydrop").siblings("button").hide();
+            if(oJudge.length == addNum - 1) {
+                $(this).parents(".keydrop").siblings("input").val("");
+                $(this).parents(".col-w-12").hide();
+            }
+            $(this).parent("ul").html("")
+        })
+        if(num == 1) {
+            return;
+        } else {
+            /*添加*/
+            $(".addButton").siblings("input").keypress(function(){
+                var e = event || window.event;
+                if(e.keyCode == 13) {
+                    var oValue = $(this).val().trim();
+                    var oJudge = $(this).parent().siblings().find("ul.ulspace li");
+                    var addContent = $(this).attr("data-pro");
+                    var addNum = $(this).attr("data-num");
+                    var addfontSizeNum = $(this).attr("data-fontSizeN");
+                    if(!oValue) {
+                        $.MsgBox.Alert('提示', '请先填写内容');
+                        return;
+                    }
+                    if(oValue.length > addfontSizeNum) {
+                        $.MsgBox.Alert('提示', addContent);
+                        return;
+                    }
+                    for(var i = 0; i < oJudge.length; i++) {
+                        if(oValue == oJudge[i].innerText) {
+                            $.MsgBox.Alert('提示', '添加内容不能重复');
+                            return;
+                        }
+                    }
+                    $(this).parent().siblings().find("ul.ulspace").append('<li>' + oValue + '<div class="closeThis"></div></li>');
+                    $(this).siblings(".addButton").hide();
+                    $(this).val("");
+                    if(oJudge.length == addNum - 1) {
+                        $(this).val("").parents(".col-w-12").hide();
+                    }
+                    $(this).siblings(".keydrop").find("ul").html("");
+                }
+            })
+            $(".addButton").click(function() {
+                var oValue = $(this).siblings("input").val().trim();
+                var oJudge = $(this).parent().siblings().find("ul.ulspace li");
+                var addContent = $(this).siblings("input").attr("data-pro");
+                var addNum = $(this).siblings("input").attr("data-num");
+                var addfontSizeNum = $(this).siblings("input").attr("data-fontSizeN");
+                if(!oValue) {
+                    $.MsgBox.Alert('提示', '请先填写内容');
+                    return;
+                }
+                if(oValue.length > addfontSizeNum) {
+                    $.MsgBox.Alert('提示', addContent);
+                    return;
+                }
+                for(var i = 0; i < oJudge.length; i++) {
+                    if(oValue == oJudge[i].innerText) {
+                        $.MsgBox.Alert('提示', '添加内容不能重复');
+                        return;
+                    }
+                }
+                $(this).parent().siblings().find("ul.ulspace").append('<li>' + oValue + '<div class="closeThis"></div></li>');
+                $(this).hide();
+                $(this).siblings("input").val("");
+                if(oJudge.length == addNum - 1) {
+                    $(this).val("").parents(".col-w-12").hide();
+                }
+                $(this).siblings(".keydrop").find("ul").html("");
+            })
+        }
+
+    }
 
     //校验标题
     $("#newstitle").on({
@@ -65,6 +249,8 @@ $(function() {
         }
     })
 
+    hotKey(".oinput");
+
     //校验关键字
     $("#KeyWord").on({
         focus: function() {
@@ -72,122 +258,15 @@ $(function() {
         },
         blur: function() {
             $("#keyPrompt").text("");
-        },
-        keyup: function() {
-            var ti=$(this).val();
-            hbur=ti;
-            if(ti==""){
-                $(".frmadd").addClass("displayNone");
-                $(".keydrop ul").html("");
-                $(".keydrop").addClass("displayNone");
-                return;
-            }else{
-                $(".frmadd").removeClass("displayNone");
-            }
-            if($(this).val().length > 15) {
-                $(this).val($(this).val().substr(0, 15));
-            }
-            setTimeout(function(){
-                if( ti===hbur && ti!== hburEnd) {
-                    KeyWordList(ti);
-                }
-
-            },500)
-
         }
     })
-    //添加关键字
-    $("#addkeyWord").on("click", function() {
-        var keyWord = $("#KeyWord").val();
-        keyWordlen(keyWord);
-        $(".frmadd").addClass("displayNone");
-        $(".keydrop ul").html("");
-        $(".keydrop").addClass("displayNone");
-    })
-
-    //点击搜出的关键字添加
-    $(".keydrop").on("click", "p", function() {
-        var keyWord = $(this).text();
-        $(".frmadd").addClass("displayNone");
-        keyWordlen(keyWord)
-        $(".keydrop ul").html("");
-        $(".keydrop").addClass("displayNone");
-    })
-
-    //删除关键字
     $("#keyWordlist").on("click", ".closeThis", function() {
         $(this).parent().remove();
-        var plength = $(".keyResult li p").length;
-        if(plength < 5) {
-            $("#KeyWord").removeClass("displayNone");
+        var liNum = $("#keyWordlist").find("li").length;
+        if(liNum < 5) {
+            $("#keyWordlist").parents(".keyResult").siblings("div.col-w-12").show();
         }
-        $(".keydrop ul").html("");
-        $(".keydrop").addClass("displayNone");
     })
-
-    //组合关键字
-    function captiureSubInd(subIndu) {
-        var industrys = $("#" + subIndu + "");
-        var industryAll = "";
-        if(industrys.size() > 0) {
-            for(var i = 0; i < industrys.size(); i++) {
-                industryAll += industrys[i].innerText;
-                industryAll += ',';
-            };
-            industryAll = industryAll.substring(0, industryAll.length - 1);
-        }
-        return industryAll;
-    }
-
-    function keyWordlen(keyWord) {
-        $("#KeyWord").val("");
-        var plength = $(".keyResult li p");
-        for(var i = 0; i < plength.length; i++) {
-            if(plength[i].innerText == keyWord) {
-                $("#keyPrompt").text("关键词已存在");
-                return;
-            }
-        }
-        if(plength.length > 3) {
-            $("#KeyWord").addClass("displayNone");
-            $("#keyWordlist").append("<li class='delkeylist'><p class='h2Font'>" + keyWord + "</p><div class='closeThis'></div></li>");
-        } else {
-            $("#keyWordlist").append("<li class='delkeylist'><p class='h2Font'>" + keyWord + "</p><div class='closeThis'></div></li>");
-        }
-    }
-
-    function KeyWordList(seValue) {
-        hburEnd=seValue;
-        $.ajax({
-            "url": "/ajax/article/qaHotKey",
-            "type": "get",
-            "data": {
-                "key": $("#KeyWord").val()
-            },
-            "success": function(data) {
-                console.log(data);
-                if(data.success) {
-                    if(hburEnd == seValue){
-                        var itemlist = '';
-                        $("#keydropList").html("");
-                        for(var i = 0; i < Math.min(data.data.length,5); i++) {
-                            var itemlist = '<li><p class="h2Font"></p></li>';
-                            $itemlist = $(itemlist);
-                            $("#keydropList").append($itemlist);
-                            $itemlist.find(".h2Font").text(data.data[i].caption);
-                        }
-                        $(".keydrop").removeClass("displayNone");
-                    }
-                } else {
-                    //$(".keydrop").addClass("displayNone");
-                    //$(".keydrop ul").html("");
-                }
-            },
-            "error": function() {
-                $.MsgBox.Alert('提示', '链接服务器超时')
-            }
-        });
-    }
 
     //拆解关键字
     function industryShow(data,industryList){
@@ -205,7 +284,7 @@ $(function() {
                 };
             }
             if(subs.length>4){
-                $("#KeyWord").addClass("displayNone");
+                $("#KeyWord").parent().addClass("displayNone");
             }
         }
     }
@@ -685,6 +764,15 @@ $(function() {
     }
     /*获取数据*/
     function getdata(publishTime) {
+        var industrys = $("#keyWordlist li");
+        var industryAll = "";
+        if(industrys.size() > 0) {
+            for(var i = 0; i < industrys.size(); i++) {
+                industryAll += industrys[i].innerText.trim();
+                industryAll += ',';
+            };
+            industryAll = industryAll.substring(0, industryAll.length - 1);
+        }
         expertli(); //相关专家
         resourcesli(); //相关咨询
         // $data.orgId = orgId;
@@ -693,7 +781,7 @@ $(function() {
             $data.orgs = getAttrId.call($("#companys li"));
         }
         $data.articleTitle = $("#newstitle").val();
-        $data.subject = captiureSubInd("keyWordlist .delkeylist");
+        $data.subject = industryAll;
         $data.articleImg = $("#uploader").attr("data-id");
         $data.articleContent = ue.getContent();
         // $data.professors = experarray;
