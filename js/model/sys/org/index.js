@@ -13,6 +13,12 @@ spa_define(function () {
                     return "";
                 });
                 pdg.code.listen($.dict.doTransfer);
+                pdg.code.listen(function () {
+                    root.find(".table-opt a.name").on("click", function () {
+                        var orgId = $(this).parent().attr("orgId");
+                        window.open('http://www.ekexiu.com/cmpInforShow.html?orgId=' + orgId);
+                    })
+                });
                 root.find(".opt-query").on("click", function () {
                     pdg.load();
                 });

@@ -10,6 +10,9 @@
 .sys_org_index .orderBy .icon-close{
     display: none;
 }
+.sys_org_index .table-opt .name{
+    cursor:pointer;
+}
 
 .sys_org_new,.sys_org_edit,.sys_org_data{
     width: 500px;
