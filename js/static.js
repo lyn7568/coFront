@@ -200,19 +200,26 @@
         }, {
             code: "2", caption: "企业原创", enabled: true
         }, {
-            code: "3", caption: "前沿动态", enabled: true
+            // code: "3", caption: "前沿动态", enabled: true
+            code: "3", caption: "科研", enabled: true
         }, {
-            code: "4", caption: "学术经验", enabled: true
+            // code: "4", caption: "学术经验", enabled: true
+            code: "4", caption: "智库", enabled: true
         }, {
-            code: "5", caption: "分析检测", enabled: true
+            // code: "5", caption: "分析检测", enabled: true
+            code: "5", caption: "检测", enabled: true
         }, {
-            code: "6", caption: "会议培训", enabled: true
+            // code: "6", caption: "会议培训", enabled: true
+            code: "6", caption: "会议", enabled: true
         }, {
-            code: "7", caption: "科袖访谈", enabled: true
+            // code: "7", caption: "科袖访谈", enabled: true
+            code: "7", caption: "企业", enabled: true
         }, {
-            code: "8", caption: "招聘招生", enabled: true
+            // code: "8", caption: "招聘招生", enabled: true
+            code: "8", caption: "招聘", enabled: true
         }, {
-            code: "9", caption: "重大新闻", enabled: true
+            // code: "9", caption: "重大新闻", enabled: true
+            code: "9", caption: "新闻", enabled: true
         }]);
 
         dict.set("cost", [{
