@@ -41,6 +41,15 @@ spa_define(function () {
                         var shareId = $(this).parent().attr("shareId");
                         // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
                         window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
+                    });
+                    root.find("a.author").on("click",function () {
+                        var professorId = $(this).parent().attr("professorId");
+                        var orgId = $(this).parent().attr("orgId");
+                        if(orgId) {
+                            window.open('http://www.ekexiu.com/cmpInforShow.html?orgId='+orgId);
+                        }else if(professorId){
+                            window.open('http://www.ekexiu.com/userInforShow.html?professorId='+professorId);
+                        }
                     })
                 });
 

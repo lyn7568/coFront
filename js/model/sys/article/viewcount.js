@@ -46,7 +46,7 @@ spa_define(function () {
                                 util.get("../ajax/article/base", {id: articleId}, function (data) {
                                     if (data) {
                                         $e.parent().find(".articleTitle .name").text(data.articleTitle).attr('shareId',data.shareId).attr('createTime',data.createTime);
-                                        $e.parent().find(".professorName").text(data.professorName || data.organizationName);
+                                        $e.parent().find(".professorName .author").text(data.professorName || data.organizationName).attr('professorId',data.professorId).attr('orgId',data.orgId);
                                         $e.parent().find(".subject").text(data.subject);
                                         $e.parent().find(".colNum").text(caption("banner", data.colNum));
                                         $e.parent().find(".publishTime").text(showDay(data.publishTime));
@@ -151,6 +151,15 @@ spa_define(function () {
                     // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
                     window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
                 });
+                root.on("click",".professorName a.author",function () {
+                    var professorId = $(this).attr("professorId");
+                    var orgId = $(this).attr("orgId");
+                    if(orgId) {
+                        window.open('http://www.ekexiu.com/cmpInforShow.html?orgId='+orgId);
+                    }else if(professorId){
+                        window.open('http://www.ekexiu.com/userInforShow.html?professorId='+professorId);
+                    }
+                })
                 var myChart = echarts.init(document.getElementById('total'));
                 var tableData = {data: []},
                     allData = [];
