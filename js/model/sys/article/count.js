@@ -89,6 +89,7 @@ spa_define(function () {
                                 day.pc = 0;
                                 day.app = 0;
                                 day.h5 = 0;
+                                day.wx = 0;
                                 data.data.forEach(function (log) {
                                     if (time == log.day) {
                                         if (log.source == 1) {
@@ -100,11 +101,14 @@ spa_define(function () {
                                         if (log.source == 3) {
                                             day.h5 = log.pv;
                                         }
+                                        if (log.source == 4) {
+                                            day.wx = log.pv;
+                                        }
                                     }
-                                    day.num = day.pc + day.app + day.h5;
+                                    day.num = day.pc + day.app + day.h5 + day.wx;
                                 })
                             });
-                            var colors = ["#660099", '#c23531', "#91C7AE",'#003366'];
+                            var colors = ["#660099", '#c23531', "#91C7AE",'#FFDE33','#003366'];
                             var option = {
 
                                 color: colors,
@@ -116,7 +120,7 @@ spa_define(function () {
                                     trigger: 'axis'
                                 },
                                 legend: {
-                                    data: ['PC端', '移动端APP', '移动端H5','合计']
+                                    data: ['PC端', '移动端APP', '移动端H5','小程序','合计']
                                 },
                                 xAxis: {
                                     data: allData.map(function (item) {
@@ -172,6 +176,12 @@ spa_define(function () {
                                         type: 'line',
                                         data: allData.map(function (item) {
                                             return item.h5;
+                                        })
+                                    },{
+                                        name:'小程序',
+                                        type:'line',
+                                        data:allData.map(function (item) {
+                                            return item.wx;
                                         })
                                     }, {
                                         name: '合计',

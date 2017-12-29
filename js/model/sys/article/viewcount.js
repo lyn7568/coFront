@@ -161,8 +161,6 @@ spa_define(function () {
                     }
                 })
                 var myChart = echarts.init(document.getElementById('total'));
-                var tableData = {data: []},
-                    allData = [];
                 var dayList = function () {
                     var dayList = [];
                     var now = new Date();
@@ -193,6 +191,7 @@ spa_define(function () {
                                 day.pc = 0;
                                 day.app = 0;
                                 day.h5 = 0;
+                                day.wx = 0;
                                 data.data.forEach(function (log) {
                                     if (time == log.day) {
                                         if (log.source == 1) {
@@ -204,11 +203,14 @@ spa_define(function () {
                                         if (log.source == 3) {
                                             day.h5 = log.pv;
                                         }
+                                        if (log.source == 4) {
+                                            day.wx = log.pv;
+                                        }
                                     }
-                                    day.num = day.pc + day.app + day.h5;
+                                    day.num = day.pc + day.app + day.wx + day.h5;
                                 })
                             });
-                            var colors = ['#003366', "#660099", '#c23531', "#c23531"];
+                            // var colors = ['#003366', "#660099", '#c23531', "#c23531"];
                             var option = {
 
                                 // color: colors,
@@ -236,7 +238,7 @@ spa_define(function () {
                                 },
                                 legend: {
                                     // selectedMode:false,
-                                    data: ['PC端', '移动端APP', '移动端H5','合计']
+                                    data: ['PC端', '移动端APP', '移动端H5','小程序','合计']
                                 },
                                 xAxis: {
                                     "type": "category",
@@ -377,6 +379,30 @@ spa_define(function () {
                                         },
                                         data: allData.map(function (item) {
                                             return item.app;
+                                        })
+                                    },{
+                                        name: '小程序',
+                                        type: 'bar',
+                                        stack: '总量',
+                                        "barMaxWidth": 35,
+                                        "barGap": "10%",
+                                        "itemStyle": {
+                                            "normal": {
+                                                "color": "#660099",
+                                                "label": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                        "color": "#fff"
+                                                    },
+                                                    "position": "insideTop",
+                                                    formatter: function(p) {
+                                                        return p.value > 0 ? (p.value) : '';
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        data: allData.map(function (item) {
+                                            return item.wx;
                                         })
                                     },
                                     {
