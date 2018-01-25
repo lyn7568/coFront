@@ -29,6 +29,10 @@ spa_define(function () {
                         }, {});
                         $e.removeClass("hand-fans");
                     });
+                    root.find(".table-opt a.name").on("click", function () {
+                        var professorId = $(this).parent().attr("professorId");
+                        window.open('http://www.ekexiu.com/userInforShow.html?professorId=' + professorId);
+                    })
                 });
                 root.find(".opt-query").on("click", function () {
                     pdg.load();
