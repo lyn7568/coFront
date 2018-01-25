@@ -16,6 +16,10 @@
     cursor:pointer;
 }
 
+.sys_professornew_index .orderBy .icon-close{
+    display: none;
+}
+
 .sys_professornew_data{
     width: 500px;
     height: 330px;
