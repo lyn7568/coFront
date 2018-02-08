@@ -37,9 +37,9 @@ spa_define(function () {
                     });
                     root.find(".table-opt a.name").on("click",function () {
                         var aId = $(this).parent().attr("aId");
-                        var pId = $(this).parent().attr("pId");
+                        var qId = $(this).parent().attr("qId");
                         // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
-                        window.open('http://www.ekexiu.com/qa-show.html?id='+aId+'&topid=' + pId);
+                        window.open('http://www.ekexiu.com/qa-show.html?id='+aId+'&topid=' + qId);
                     });
                     root.find("a.author").on("click",function () {
                         var professorId = $(this).parent().attr("professorId");
@@ -113,8 +113,8 @@ spa_define(function () {
                             util.alert("只能选择一篇回答");
                         } else {
                             var aId = $answer.attr("aId");
-                            var pId = $answer.attr("pId");
-                            window.open('http://www.ekexiu.com/qa-show.html?id='+aId+'&topid=' + pId);
+                            var qId = $answer.attr("qId");
+                            window.open('http://www.ekexiu.com/qa-show.html?id='+aId+'&topid=' + qId);
                         }
                     } else {
                         util.alert("请选择一篇回答");
