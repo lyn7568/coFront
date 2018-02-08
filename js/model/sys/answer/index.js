@@ -21,7 +21,7 @@ spa_define(function () {
                         var $e = $(this);
                         var aId = $e.attr("aId");
                         if (aId) {
-                            util.get("http://192.168.3.233:81/ajax/leavemsg/count", {sid: aId,stype:4}, function (data) {
+                            util.get("http://www.ekexiu.com:81/ajax/leavemsg/count", {sid: aId,stype:4}, function (data) {
                                 $e.text(data);
                             }, {});
                             $e.removeClass("hand-lm");
