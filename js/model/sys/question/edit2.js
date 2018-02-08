@@ -73,7 +73,7 @@ spa_define(function () {
                         // this.progress.attr("style", "width:" + vv);
                         // this.progress.text(vv);
                     },
-                    uri: "../ajax/qa/upload"
+                    uri: "http://www.ekexiu.com:81/ajax/question/upload"
                 });
                 $list.on("click", ".cancel", function () {
                     $(this).parent().parent().remove();
@@ -96,7 +96,7 @@ spa_define(function () {
                             ),
                             $img = $li.find('img');
                         $list.append($li);
-                        $img.attr('src', "http://192.168.3.233:81/data/question" + image[i]);
+                        $img.attr('src', "http://www.ekexiu.com:81/data/question" + image[i]);
                         // $img.attr('src', "../data/images/researchResult/" + image[i]+".jpg");
                         $img.attr('name', image[i]);
                     }

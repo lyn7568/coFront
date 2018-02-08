@@ -39,7 +39,7 @@ spa_define(function () {
                 var load = function () {
                     $.ajax({
                         type: "GET",
-                        url: "http://192.168.3.233:8080/log/jsonp/qm",
+                        url: "http://www.ekexiu.com:8082/log/jsonp/qm",
                         data:$data,
                         dataType: "jsonp",
                         success: function (data) {
