@@ -39,7 +39,7 @@ spa_define(function () {
                         var aId = $(this).parent().attr("aId");
                         var qId = $(this).parent().attr("qId");
                         // window.open('http://www.ekexiu.com/articalShow.html?articleId=' + articleId);
-                        window.open('http://www.ekexiu.com/qa-show.html?id='+aId+'&topid=' + qId);
+                        window.open('http://www.ekexiu.com/qa-show.html?id='+qId+'&topid=' + aId);
                     });
                     root.find("a.author").on("click",function () {
                         var professorId = $(this).parent().attr("professorId");
@@ -114,7 +114,7 @@ spa_define(function () {
                         } else {
                             var aId = $answer.attr("aId");
                             var qId = $answer.attr("qId");
-                            window.open('http://www.ekexiu.com/qa-show.html?id='+aId+'&topid=' + qId);
+                            window.open('http://www.ekexiu.com/qa-show.html?id='+qId+'&topid=' + aId );
                         }
                     } else {
                         util.alert("请选择一篇回答");
