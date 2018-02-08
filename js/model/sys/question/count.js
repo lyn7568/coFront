@@ -11,7 +11,7 @@ spa_define(function () {
                 var myChart = echarts.init(document.getElementById('type'));
                 var tableData = {data: []},
                     allData = [];
-                var $data = {tn: "question", id:data.id};
+                var $data = {tn: "qes", id:data.id};
 
                 root.find(".modal-ctrl .icon-times").on("click", function () {
                     spa.closeModal();
