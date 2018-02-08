@@ -157,6 +157,22 @@
             code:"2",caption:"按浏览量由高到低排序",enabled:true
         }]);
 
+        dict.set("sort_answer",[{
+            code:"1",caption:"按创建时间由新到旧排序",enabled:true
+        },{
+            code:"2",caption:"按点赞量由高到低排序",enabled:true
+        },{
+            code:"3",caption:"按总投票量由高到低排序",enabled:true
+        }]);
+
+        dict.set("sort_question",[{
+            code:"1",caption:"按创建时间由新到旧排序",enabled:true
+        },{
+            code:"2",caption:"按浏览量由高到低排序",enabled:true
+        },{
+            code:"3",caption:"按回答数由高到低排序",enabled:true
+        }]);
+
         dict.set("feedback_schema",[{
             code:"1",caption:"论文",enabled:true
         },{
@@ -169,6 +185,12 @@
             code:"5",caption:"资源",enabled:true
         },{
             code:"6",caption:"文章",enabled:true
+        },{
+            code:"7",caption:"需求",enabled:true
+        },{
+            code:"8",caption:"问题",enabled:true
+        },{
+            code:"9",caption:"回答",enabled:true
         }]);
 
         dict.set("feedback_state",[{

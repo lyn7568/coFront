@@ -31,6 +31,9 @@ spa_define(function () {
                 });
                 root.find(".dt-tpl").on("click", "td.opt-check>i.icon-st-check", function () {
                     var $this = $(this);
+                    if (!$this.hasClass("checked")&&!root.find("th.opt-check>i.icon-st-check").hasClass("checked")) {
+                        root.find(".dt-tpl td.opt-check>i.icon-st-check").removeClass("checked");
+                    }
                     $this.toggleClass("checked");
                 });
                 root.find(".opt-edit").on("click", function () {

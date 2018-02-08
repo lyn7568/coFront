@@ -428,7 +428,7 @@ spa_define(function () {
                                 '</div>').appendTo($li),
                             $img = $li.find('img');
                         $list.append($li);
-                        $img.attr('src', "http://www.ekexiu.com/data/researchResult/" + data.data.id + ".jpg");
+                        $img.attr('src', "http://www.ekexiu.com/data/researchResult/"  + image[i]);
                         // $img.attr('src', "../data/images/researchResult/" + image[i]);
                         $img.attr('name', image[i]);
                     }

@@ -1,0 +1,313 @@
+@charset "utf-8";
+.sys_question_index .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_question_index th.opt-check {
+    width: 35px;
+}
+
+.sys_question_index .table {
+    table-layout: fixed;
+}
+
+.sys_question_index .orderBy .icon-close {
+    display: none;
+}
+
+.sys_question_index .number{
+    width: 6%;
+}
+
+.sys_question_index .table-opt .name,.sys_question_index .author{
+    cursor:pointer;
+}
+
+.sys_question_edit,.sys_question_edit2 {
+    width: 700px;
+    height: 450px;
+}
+
+.sys_question_edit .content,.sys_question_edit2 .content {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sys_question_edit .textarea > textarea,.sys_question_edit2 .textarea > textarea {
+    width: 350px;
+    height: 100px;
+}
+
+.sys_question_keys {
+    width: 600px;
+    height: 250px;
+}
+
+.sys_question_keys .orgSize.dyn-mselect .icon-drop {
+    display: none !important;
+}
+
+.sys_question_keys .orgSize.dyn-mselect .dd-drop {
+    display: none !important;
+}
+
+.sys_question_keys .orgSize.dyn-mselect .placeholder {
+    display: none !important;
+}
+
+/*region Description*/
+.sys_question_edit .newForm .head-ctn .upload-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    width: 110px;
+    height: 36px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #555555;
+    padding-top: 6px;
+}
+
+.sys_question_edit .newForm .head-ctn .upload-btn i {
+    font-size: 16px;
+    color: rgb(95, 184, 120);
+}
+
+.sys_question_edit .newForm .head-ctn img {
+    width: 100%;
+    height: 100%;
+}
+
+.sys_question_edit .upload-item {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sys_question_edit .upload-item .progress {
+    width: 1px;
+    height: 30px;
+    background-color: #3280FC;
+}
+
+.sys_question_edit .webuploader-pick {
+    position: relative;
+    top: 32px;
+    left: 10px;
+    display: inline-block;
+    cursor: pointer;
+    background: #00b7ee;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.sys_question_edit .webuploader-container {
+    position: relative;
+    float: left;
+    top: 18%;
+}
+
+.sys_question_edit .webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.sys_question_edit .webuploader-pick-hover {
+    background: #00a2d4;
+}
+
+.sys_question_edit .webuploader-pick-disable {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.sys_question_edit #picker {
+    display: inline-block;
+    line-height: 1.428571429;
+    vertical-align: middle;
+    margin: 0 12px 0 0;
+}
+
+.sys_question_edit #picker .webuploader-pick {
+    position: relative;
+    display: block;
+    top: 50%;
+    margin-top: -58px;
+}
+
+.sys_question_edit .head-ctn .thumbnail {
+    width: 110px;
+    height: 110px;
+}
+
+.sys_question_edit #uploader-demo .thumbnail img {
+    width: 100%;
+}
+
+.sys_question_edit .uploader-list {
+    width: auto;
+    overflow: hidden;
+    float: left;
+}
+
+.sys_question_edit .file-item {
+    /*float: left;*/
+    position: relative;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+    display: table-cell;
+}
+
+.sys_question_edit .file-item .error {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    background: red;
+    color: white;
+    text-align: center;
+    height: 20px;
+    font-size: 14px;
+    line-height: 23px;
+}
+
+.sys_question_edit .file-item .info {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    right: 4px;
+    height: 20px;
+    line-height: 20px;
+    text-indent: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.sys_question_edit .file-item .progress {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    left: 4px;
+    height: 4px;
+    /*width: 110px;*/
+    overflow: hidden;
+    z-index: 15;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.sys_question_edit .file-item .progress span {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    /*background: #d14 url(/images/progress.png) repeat-x;*/
+    background: #d14;
+    -webit-transition: width 200ms linear;
+    -moz-transition: width 200ms linear;
+    -o-transition: width 200ms linear;
+    -ms-transition: width 200ms linear;
+    transition: width 200ms linear;
+    -webkit-animation: progressmove 2s linear infinite;
+    -moz-animation: progressmove 2s linear infinite;
+    -o-animation: progressmove 2s linear infinite;
+    -ms-animation: progressmove 2s linear infinite;
+    animation: progressmove 2s linear infinite;
+    -webkit-transform: translateZ(0);
+}
+
+.sys_question_edit .filelist div.file-panel span.cancel {
+    /* background-position: -48px -24px; */
+}
+
+.sys_question_edit .filelist div.file-panel span.cancel:hover {
+    background-position: -48px 0;
+}
+/*endregion*/
+
+
+.sys_question_edit2 .webuploader-pick {
+    position: relative;
+    top: 32px;
+    left: 10px;
+    display: inline-block;
+    cursor: pointer;
+    background: #00b7ee;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.sys_question_edit2 .uploader-list {
+    width:auto;
+    overflow: hidden;
+    float: left;
+}
+
+.sys_question_edit2 .head-ctn .thumbnail{
+    width: 110px;
+    height: 110px;
+}
+.sys_question_edit2 .file-item {
+    /*float: left;*/
+    position: relative;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+    display: table-cell;
+}
+
+
+.sys_question_edit2 .newForm .head-ctn {
+    width: 80%;
+    height: 190px;
+    position: relative;
+    margin:auto ;
+}
+.sys_question_edit2 .upload-form input{
+    font-size: 26px;
+}
+
+.sys_question_edit2 .newForm .head-ctn .upload-btn {
+    position: relative;
+    top: 32px;
+    left: 10px;
+    display: inline-block;
+    cursor: pointer;
+    background: #00b7ee;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+    float: left;
+}
+
+.sys_question_edit2 .newForm .head-ctn .upload-btn i {
+    font-size: 16px;
+    color: rgb(95,184,120);
+}
+.sys_question_edit2 .newForm .head-ctn img {
+    width: 100%;
+    height: 100%;
+}
+.sys_question_edit2 .upload-item{
+    position: absolute;
+    width: 100%;
+    top:50%;
+    transform: translateY(-50%);
+}

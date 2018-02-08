@@ -1,0 +1,39 @@
+@charset "utf-8";
+.sys_answer_index .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_answer_index th.opt-check {
+    width: 35px;
+}
+
+.sys_answer_index .table {
+    table-layout: fixed;
+}
+
+.sys_answer_index .orderBy .icon-close {
+    display: none;
+}
+
+.sys_answer_index .number{
+    width: 6%;
+}
+
+.sys_answer_index .table-opt .name,.sys_answer_index .author{
+    cursor:pointer;
+}
+
+.sys_answer_edit {
+    width: 700px;
+    height: 450px;
+}
+
+.sys_answer_edit .content {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sys_answer_edit .textarea > textarea {
+    width: 350px;
+    height: 180px;
+}

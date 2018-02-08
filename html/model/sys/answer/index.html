@@ -1,0 +1,96 @@
+<div class="sys_answer_index" loadUri="../ajax/qa/pqAnswer" pageSize="20" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">问题题目</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="questionTitle"></div>
+            </div>
+            <div class="col-1 item-caption">回答者</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="respondent"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption">回答内容</div>
+            <div class="col-4">
+                <div class="form-item text" defVal="" name="cnt"></div>
+            </div>
+            <div class="col-1 item-caption ">排序方式</div>
+            <div class="col-2">
+                <div class="form-item select orderBy" dictCode="sort_answer" defVal="1" name="orderBy"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+            <div class="col-2"></div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-view">
+                查看
+            </div>
+            <div class="btn opt-edit">
+                编辑文章内容
+            </div>
+            <div class="btn opt-count">
+                流量统计
+            </div>
+            <div class="btn opt-del">
+                删除
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th class="number">序号</th>
+                <th>来自问题</th>
+                <th>回答内容</th>
+                <th class="number">回答者</th>
+                <th>发布时间</th>
+                <th class="number">点赞量</th>
+                <th class="number">总投票量</th>
+                <th class="number">留言量</th>
+                <th class="number">收藏量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" aId="{{id}}" pId="{{pId}}"></i></td>
+                <td>{{pi}}</td>
+                <td class="table-opt" aId="{{id}}" pId="{{pid}}"><a class="name">{{questionTitle}}</a></td>
+                <td>{{cnt}}</td>
+                <td professorId="{{uid}}"><a class="author">{{respondent}}</a></td>
+                <td>{{createTime-showDay}}</td>
+                <td>{{agree}}</td>
+                <td>{{ballot}}</td>
+                <td class="hand-lm" aId="{{id}}"></td>
+                <td class="hand-col" aId="{{id}}"></td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="10">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>
