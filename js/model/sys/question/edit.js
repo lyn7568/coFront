@@ -38,7 +38,7 @@ spa_define(function () {
                     uploader;
                 uploader = WebUploader.create({
                     auto: true,
-                    server: 'http://www.ekexiu.com:81/ajax/question/upload',
+                    server: 'http://www.ekexiu.com/ajax/question/upload',
                     pick: {
                         id: "#filePicker",
                         multiple: false
@@ -151,7 +151,7 @@ spa_define(function () {
                                 '</div>').appendTo($li),
                             $img = $li.find('img');
                         $list.append($li);
-                        $img.attr('src', "http://www.ekexiu.com:81/data/question" + image[i]);
+                        $img.attr('src', "http://www.ekexiu.com/data/question" + image[i]);
                         // $img.attr('src', "../data/images/researchResult/" + image[i]+".jpg");
                         $img.attr('name', image[i]);
                     }
