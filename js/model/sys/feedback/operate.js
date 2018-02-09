@@ -7,6 +7,14 @@ spa_define(function () {
         return {
             modal: function (data) {
                 var root = spa.findInModal(".sys_feedback_operate");
+                if(data.data.schema == 9) {
+                    $(".sys_feedback_operate .answer").after('<div class="row">'+
+                        '<div class="col-2 item-caption">回答内容</div>'+
+                        '<div class="col-6">'+
+                        '<div class="form-item textarea readOnly" name="answerCnt"></div>'+
+                        '</div>'+
+                        '</div>')
+                }
                 var form = fb.build(root.find(".newForm"));
                 var trim = function (str) {
                     return str.replace(/(^\s*)|(\s*$)/g, "");
