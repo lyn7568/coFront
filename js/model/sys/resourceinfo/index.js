@@ -50,25 +50,25 @@ spa_define(function () {
                 });
                 root.find(".opt-del").on("click", function() {
                     var $resource = root.find("td.opt-check>i.checked");
-                    if($resource.length) {
-                        if($resource.length > 1) {
-                            util.alert("只能选择一个资源");
-                        } else {
-                            util.boxMsg({
-                                title: "确认删除",
-                                content: "您是否要删除选中的资源？",
-                                btns: [{
-                                    caption: "删除",
-                                    hand: function () {
-                                        util.post("../ajax/resource/deleteResource", {resourceId: $resource.attr("resourceId")}, function () {
-                                            pdg.reload()
-                                        }, {});
-                                    }
-                                },
-                                    {caption: "取消"}
-                                ]
-                            });
-                        }
+                    if ($resource.length) {
+                        var ret = [];
+                        $resource.each(function() {
+                            ret.push($(this).attr("resourceId"));
+                        });
+                        util.boxMsg({
+                            title: "确认删除",
+                            content: "您是否要删除选中的资源？",
+                            btns: [{
+                                caption: "删除",
+                                hand: function () {
+                                    util.post("../ajax/resource/deleteResource", {resourceIds:ret}, function () {
+                                        pdg.reload()
+                                    }, {});
+                                }
+                            },
+                                {caption: "取消"}
+                            ]
+                        });
                     } else {
                         util.alert("请选择一个资源");
                     }
