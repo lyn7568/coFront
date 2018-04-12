@@ -43,8 +43,8 @@ spa_define(function () {
                         }
                         if (form.val().orgUrl) {
                             var orgUrl = trim(form.val().orgUrl);
-                            if (orgUrl.length > 20) {
-                                util.alert("官网长度不得超过20个字");
+                            if (orgUrl.length > 50) {
+                                util.alert("官网长度不得超过50个字");
                                 return;
                             }
                         }
@@ -66,6 +66,13 @@ spa_define(function () {
                             var email = trim(form.val().email);
                             if (email.length > 50) {
                                 util.alert("联系邮箱不得超过50个字");
+                                return;
+                            }
+                        }
+                        if (form.val().descp) {
+                            var descp = trim(form.val().descp);
+                            if (descp.length > 1000) {
+                                util.alert("联系邮箱不得超过1000个字");
                                 return;
                             }
                         }
@@ -181,8 +188,8 @@ spa_define(function () {
                         util.alert('提示', '请先填写内容');
                         return;
                     }
-                    if (oValue.length > 50) {
-                        util.alert('提示', '添加内容不能超过50个字');
+                    if (oValue.length > 100) {
+                        util.alert('提示', '添加内容不能超过100个字');
                         return;
                     } else {
                         var oValueList = oValue.split(","),

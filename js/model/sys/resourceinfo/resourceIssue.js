@@ -358,8 +358,8 @@ $(document).ready(function() {
 			$("#applicationPrompt").hide();
 		},
 		keyup: function() {
-			if($(this).val().length > 50) {
-				$(this).val($(this).val().substr(0, 50));
+			if($(this).val().length > 250) {
+				$(this).val($(this).val().substr(0, 250));
 			}
 		}
 
@@ -442,9 +442,9 @@ $(document).ready(function() {
 	});
 
 	/*性能参数*/
-	limitObj("#performancePa",200)
+	limitObj("#performancePa",1000)
 	/*合作备注*/
-	limitObj("#remarkContent",200)
+	limitObj("#remarkContent",1000)
 	/*发布*/
 	$(".goFabu").click(function(){
 		if($(this).hasClass("disableLi")){

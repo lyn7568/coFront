@@ -190,7 +190,9 @@
         },{
             code:"8",caption:"问题",enabled:true
         },{
-            code:"9",caption:"回答",enabled:true
+            code: "9", caption: "回答", enabled: true
+        },{
+            code:"10",caption:"服务",enabled:true
         }]);
 
         dict.set("feedback_state",[{
@@ -282,6 +284,12 @@
             code: "2", caption: "已完成", enabled: true
         }, {
             code: "3", caption: "已关闭", enabled: true
+        }]);
+
+        dict.set("sex", [{
+            code: "1", caption: "男", enabled: true
+        },{
+            code: "2", caption: "女", enabled: true
         }]);
 
     });
