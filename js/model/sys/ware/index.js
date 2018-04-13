@@ -122,18 +122,18 @@ spa_define(function () {
                     }
                 });
 
-                // root.find(".opt-edit").on("click", function() {
-                //     var $ware = root.find("td.opt-check>i.checked");
-                //     if($ware.length) {
-                //         if($ware.length > 1) {
-                //             util.alert("只能选择一个服务");
-                //         } else {
-                //             window.open('http://'+window.location.host+'/html/model/sys/resourceinfo/resourceIssue.html?resourceId=' + $ware.attr("wareId"));
-                //         }
-                //     } else {
-                //         util.alert("请选择一个服务");
-                //     }
-                // });
+                root.find(".opt-edit").on("click", function() {
+                    var $ware = root.find("td.opt-check>i.checked");
+                    if($ware.length) {
+                        if($ware.length > 1) {
+                            util.alert("只能选择一个服务");
+                        } else {
+                            window.open('http://'+window.location.host+'/html/model/sys/ware/serviceIssue.html?serviceId=' + $ware.attr("wareId"));
+                        }
+                    } else {
+                        util.alert("请选择一个服务");
+                    }
+                });
 
 
             }, mainDestory: function () {
