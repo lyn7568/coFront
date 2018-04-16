@@ -78,7 +78,7 @@ spa_define(function () {
                                 btns: [{
                                     caption: "确认",
                                     hand: function() {
-                                        util.del("../ajax/qa/deleteAnswer", { id: $answer.attr("aId"),qid:$answer.attr("qId") }, function() { pdg.reload() }, {});
+                                        util.get("../ajax/qa/deleteAnswer", { id: $answer.attr("aId"),qid:$answer.attr("qId") }, function() { pdg.reload() }, {});
                                     }
                                 },
                                     { caption: "取消" }
