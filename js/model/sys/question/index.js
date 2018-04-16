@@ -67,7 +67,7 @@ spa_define(function () {
                                 btns: [{
                                     caption: "确认",
                                     hand: function() {
-                                        util.del("../ajax/qa/deleteQuestion", { id: $question.attr("qId") }, function() { pdg.reload() }, {});
+                                        util.get("../ajax/qa/deleteQuestion", { id: $question.attr("qId") }, function() { pdg.reload() }, {});
                                     }
                                 },
                                     { caption: "取消" }
