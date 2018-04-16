@@ -1,5 +1,5 @@
 $(function() {
-    var baseUrl = "http://localhost:82";
+    var baseUrl = "http://www.ekexiu.com";
     loginStatus();
 	// var orgId = $.cookie('orgId');
 	var oProfessor = [];
