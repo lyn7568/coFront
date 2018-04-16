@@ -353,7 +353,7 @@ $(function() {
 			for(var i = 0; i < oImg.length; i++) {
 				var oString = '<dd>' +
 					'<div class="imgItem">' +
-					'<img src="' + "/data/ware" + oImg[i] + '"/>' +
+					'<img src="' + "http://www.ekexiu.com/data/ware" + oImg[i] + '"/>' +
 					'</div>' +
 					'<div class="file-panel">' +
 					'<span class="cancel" flag=1></span>' +
