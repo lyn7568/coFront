@@ -21,7 +21,7 @@ spa_define(function() {
                     cr.val(tableData.data);
                 };
                 var load = function() {
-                    util.get("http://192.168.3.233:81/ajax/professor/qaOrgAuth", {orgId:data.data.orgId,orgAuth: "1"}, function(data) {
+                    util.get("http://www.ekexiu.com/ajax/professor/qaOrgAuth", {orgId:data.data.orgId,orgAuth: "1"}, function(data) {
                         allData = data || [];
                         query();
                     }, {});
