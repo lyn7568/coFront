@@ -25,6 +25,20 @@ spa_define(function () {
                         },{});
                         $e.removeClass("hand-collectionid");
                     });
+                    root.find(".hand-contacts").each(function () {
+                        var $e = $(this);
+                        var wareId = $e.attr("wareId");
+                        util.get("../ajax/ware/pro", {id: wareId}, function (data) {
+                            var proName = [];
+                            data.forEach(function (item) {
+                                util.get("../ajax/sys/professor/getName/" + item.professor, null, function (data) {
+                                    proName.push(data)
+                                    $e.text(proName);
+                                })
+                            });
+                        });
+                        $e.removeClass("hand-contacts");
+                    });
                     root.find(".table-opt a.name").on("click",function () {
                         var wareId = $(this).parent().attr("wareId");
                         window.open('http://www.ekexiu.com/sevriceShow.html?sevriceId=' + wareId);
@@ -135,7 +149,41 @@ spa_define(function () {
                     }
                 });
 
+                root.find(".opt-contacts").on("click", function() {
+                    var $ware = root.find("td.opt-check>i.checked");
+                    if ($ware.length) {
+                        var ret = {ids:[],orgIds:[],category:[]};
+                        $ware.each(function() {
+                            ret.ids.push($(this).attr("wareId"));
+                            ret.orgIds.push($(this).attr("owner"));
+                            ret.category.push($(this).attr("category"));
+                        });
+                        var nary=ret.orgIds.sort();
+                        var narc=ret.category;
+                        for(var j=0;j<ret.category.length;j++){
+                            if (narc[j]!="2"){
+                                util.alert("列表中有非企业发布的服务");
+                                return;
+                            }
+                        }
+                        if(ret.orgIds.length>1) {
+                            for (var i = 0; i < ret.orgIds.length-1; i++) {
+                                if (nary[i] != nary[i + 1]) {
+                                    util.alert("列表中的企业不一致");
+                                    return;
+                                }
+                            }
+                        }
+                        spa.showModal("sys_ware_contacts", {
+                            data: {orgId:ret.orgIds[0],ids:ret.ids}, hand: function () {
+                                pdg.reload()
+                            }
+                        });
 
+                    } else {
+                        util.alert("请选择一个服务");
+                    }
+                });
             }, mainDestory: function () {
 
             }

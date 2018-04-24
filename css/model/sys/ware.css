@@ -2,7 +2,7 @@
 .sys_ware_index .tpl-btns .row {
     padding-left: 10px;
 }
-.sys_ware_index th.opt-check {
+.sys_ware_index th.opt-check,.sys_ware_contacts th.opt-check {
     width: 35px;
 }
 
@@ -14,7 +14,7 @@
     display: none;
 }
 
-.sys_ware_index .number {
+.sys_ware_index .number{
     width: 4%;
 }
 
@@ -32,7 +32,7 @@
     height: 300px;
 }
 
-.sys_ware_sort .content,.sys_ware_keywords .content{
+.sys_ware_sort .content,.sys_ware_keywords .content, .sys_ware_contacts .content{
     font-size: 25px;
     font-weight: bold;
 }
@@ -47,4 +47,30 @@
 
 .sys_ware_keywords .orgSize.dyn-mselect .placeholder {
     display: none !important;
+}
+
+.sys_ware_contacts {
+    width:800px;
+    height: 480px;
+}
+
+.sys_ware_contacts .table {
+    table-layout: fixed;
+}
+
+.sys_ware_contacts .container {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sys_ware_contacts .row {
+    margin-right: 10px;
+    margin-left: -10px;
+    overflow: visible;
+}
+
+.sys_ware_contacts .number{
+    width:60px;
 }

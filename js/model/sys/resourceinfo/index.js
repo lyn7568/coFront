@@ -17,6 +17,23 @@ spa_define(function () {
                 });
                 pdg.code.listen($.dict.doTransfer);
                 pdg.code.listen(function(){
+
+                    root.find(".hand-contacts").each(function () {
+                        var $e = $(this);
+                        var resourceId = $e.attr("resourceId");
+                        util.get("../ajax/resource/pro", {id: resourceId}, function (data) {
+                            var proName = [];
+                            data.forEach(function (item) {
+                                util.get("../ajax/sys/professor/getName/" + item.professorId, null, function (data) {
+                                    // proName = proName + data;
+                                    proName.push(data);
+                                    $e.text(proName);
+                                })
+                            });
+                        });
+                        $e.removeClass("hand-contacts");
+                    });
+
                     root.find(".hand-collectionid").each(function() {
                         var $e = $(this);
                         var collectionid = $e.attr("collectionid");
@@ -137,6 +154,42 @@ spa_define(function () {
                             //     }
                             // },{});
                         }
+                    } else {
+                        util.alert("请选择一个资源");
+                    }
+                });
+
+                root.find(".opt-contacts").on("click", function() {
+                    var $resource = root.find("td.opt-check>i.checked");
+                    if ($resource.length) {
+                        var ret = {ids:[],orgIds:[],category:[]};
+                        $resource.each(function() {
+                            ret.ids.push($(this).attr("resourceId"));
+                            ret.orgIds.push($(this).attr("owner"));
+                            ret.category.push($(this).attr("category"));
+                        });
+                        var nary=ret.orgIds.sort();
+                        var narc=ret.category;
+                        for(var j=0;j<ret.category.length;j++){
+                            if (narc[j]!="2"){
+                                util.alert("列表中有非企业发布的资源");
+                                return;
+                            }
+                        }
+                        if(ret.orgIds.length>1) {
+                            for (var i = 0; i < ret.orgIds.length-1; i++) {
+                                if (nary[i] != nary[i + 1]) {
+                                    util.alert("列表中的企业不一致");
+                                    return;
+                                }
+                            }
+                        }
+                        spa.showModal("sys_resourceinfo_contacts", {
+                            data: {orgId:ret.orgIds[0],ids:ret.ids}, hand: function () {
+                                pdg.reload()
+                            }
+                        });
+
                     } else {
                         util.alert("请选择一个资源");
                     }

@@ -48,3 +48,30 @@
 .sys_resourceinfo_subject .orgSize.dyn-mselect .placeholder {
     display: none !important;
 }
+
+
+.sys_resourceinfo_contacts {
+    width:800px;
+    height: 480px;
+}
+
+.sys_resourceinfo_contacts .table {
+    table-layout: fixed;
+}
+
+.sys_resourceinfo_contacts .container {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sys_resourceinfo_contacts .row {
+    margin-right: 10px;
+    margin-left: -10px;
+    overflow: visible;
+}
+
+.sys_resourceinfo_contacts .number{
+    width:60px;
+}
