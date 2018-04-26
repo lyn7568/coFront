@@ -21,7 +21,7 @@ spa_define(function () {
                         var $e = $(this);
                         var paperid = $e.attr("paperid");
                         if (paperid) {
-                            util.get("/ajax/content/lwCount/paper", {paperId: paperid}, function (data) {
+                            util.get("http://www.ekexiu.com/ajax/leavemsg/count", {sid: paperid,stype:2}, function (data) {
                                 $e.text(data);
                             }, {});
                             $e.removeClass("hand-paperid");

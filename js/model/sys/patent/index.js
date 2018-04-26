@@ -21,7 +21,7 @@ spa_define(function () {
                         var $e = $(this);
                         var patentid = $e.attr("patentid");
                         if (patentid) {
-                            util.get("/ajax/content/lwCount/patent", {patentId: patentid}, function (data) {
+                            util.get("http://www.ekexiu.com/ajax/leavemsg/count", {sid: patentid,stype:3}, function (data) {
                                 $e.text(data);
                             }, {});
                             $e.removeClass("hand-patentid");

@@ -21,7 +21,7 @@ spa_define(function () {
                         var $e = $(this);
                         var articleid = $e.attr("articleid");
                         if (articleid) {
-                            util.get("/ajax/content/lwCount", {articleId: articleid}, function (data) {
+                            util.get("http://www.ekexiu.com/ajax/leavemsg/count", {sid: articleid,stype:1}, function (data) {
                                 $e.text(data);
                             }, {});
                             $e.removeClass("hand-articleid");
