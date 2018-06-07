@@ -17,10 +17,10 @@ spa_define(function () {
                 });
                 pdg.code.listen($.dict.doTransfer);
                 pdg.code.listen(function () {
-                    root.find(".table-opt a.name").on("click", function () {
-                        var platformId = $(this).parent().attr("platformId");
-                        //todo:点击名字跳转
-                    });
+                    // root.find(".table-opt a.name").on("click", function () {
+                    //     var platformId = $(this).parent().attr("platformId");
+                    //     //todo:点击名字跳转
+                    // });
                     root.find(".hand-state").each(function () {
                         var $e = $(this);
                         var platformId = $e.attr("platformId");
@@ -103,19 +103,19 @@ spa_define(function () {
                         util.alert("请选择一个平台");
                     }
                 });
-                root.find(".opt-view").on("click", function () {
-                    var $platform = root.find("td.opt-check>i.checked");
-                    if ($platform.length) {
-                        if ($platform.length > 1) {
-                            util.alert("只能选择一个平台");
-                        } else {
-                            //todo:跳转平台
-                            // window.open(baseUrl+'/cmpInforShow.html?platformId=' + $platform.attr("platformId"));
-                        }
-                    } else {
-                        util.alert("请选择一个平台");
-                    }
-                });
+                // root.find(".opt-view").on("click", function () {
+                //     var $platform = root.find("td.opt-check>i.checked");
+                //     if ($platform.length) {
+                //         if ($platform.length > 1) {
+                //             util.alert("只能选择一个平台");
+                //         } else {
+                //             //todo:跳转平台
+                //             // window.open(baseUrl+'/cmpInforShow.html?platformId=' + $platform.attr("platformId"));
+                //         }
+                //     } else {
+                //         util.alert("请选择一个平台");
+                //     }
+                // });
 
             }, mainDestory: function () {
 
