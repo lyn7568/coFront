@@ -15,7 +15,7 @@ spa_define(function () {
                 var saveBtn = root.find(".opt-save"),
                     save = function () {
                         if(trim(form.val().id).length!=32) {
-                            util.alert("请输入32位ID");
+                            util.alert("请检查机构是否存在");
                             return;
                         }
                         util.post(baseUrl + "/ajax/platform/buttedOrg", {pid: data.data, oid: form.val().id},function () {

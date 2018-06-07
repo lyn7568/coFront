@@ -14,7 +14,7 @@ spa_define(function () {
                 var saveBtn = root.find(".opt-save"),
                     save = function () {
                         if(trim(form.val().id).length!=32) {
-                            util.alert("请输入32位ID");
+                            util.alert("请检查专家是否存在");
                             return;
                         }
                         util.post(baseUrl + "/ajax/platform/buttedProfessor", {pid: data.data, uid: form.val().id},function () {
