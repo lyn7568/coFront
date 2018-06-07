@@ -22,7 +22,12 @@ spa_define(function () {
                             if (data) {
                                 data.hand();
                             }
-                        },{});
+                        },function (msg) {
+                            if(msg.msg.search("unique constraint")!=-1&&msg.msg.search("already exists")!=-1){
+                                util.alert("该专家已对接");
+                                return;
+                            }
+                        });
                     };
 
                 root.find(".modal-ctrl .icon-times").on("click", function () {
