@@ -1,0 +1,89 @@
+<div class="sys_platform_index" loadUri="http://www.ekexiu.com/ajax/platformConsole/pq" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1 item-caption">平台</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+            <div class="col-1 item-caption ">创建日期</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="bt"></div>
+            </div>
+            <div class="col-1 item-caption center">至</div>
+            <div class="col-2">
+                <div class="form-item date" defVal="" name="et"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-new">
+                新增平台账户
+            </div>
+            <div class="btn opt-edit">
+                修改账户
+            </div>
+            <div class="btn opt-details">
+                编辑平台资料
+            </div>
+            <div class="btn opt-view">
+                查看企业信息
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th>序号</th>
+                <th>平台名称</th>
+                <th>联系人</th>
+                <th>联系电话</th>
+                <th>联系邮箱</th>
+                <th>所在省份</th>
+                <th>所在城市</th>
+                <th>面向行业</th>
+                <th>帐号状态</th>
+                <th>创建时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" platformId="{{id}}"></i></td>
+                <td>{{pi}}</td>
+                <td class="table-opt" platformId="{{id}}" ><a class="name">{{name}}</a></td>
+                <td>{{linkman}}</td>
+                <td>{{linkphone}}</td>
+                <td>{{linkmail}}</td>
+                <td>{{province}}</td>
+                <td>{{city}}</td>
+                <td>{{industry}}</td>
+                <td class="hand-state" platformId="{{id}}"></td>
+                <td>{{createTime-showDay}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="11">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

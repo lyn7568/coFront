@@ -2,46 +2,84 @@
 	<div class="modal-ctrl">
 		<i class="icon icon-times"></i>
 	</div>
-	<div class="container opt-form">
+	<div class="container newForm">
 		<div class="row">
-			<div class="col-2 item-caption ">主题</div>
-			<div class="col-4">
-				<div class="form-item text showOnly" defVal="" name="demandTitle"></div>
+			<div class="col-2 item-caption">需求主题</div>
+			<div class="col-6">
+				<div class="form-item text readOnly" defVal="" name="title"></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 item-caption ">发布者</div>
+			<div class="col-2 item-caption">所属企业</div>
+			<div class="col-6">
+				<div class="form-item text" name="orgName"></div>
+			</div>
+		</div>
+		<div class="row me">
+			<div class="col-2 item-caption">联系电话</div>
 			<div class="col-4">
-				<div class="form-item text showOnly" defVal="" name="professorName"></div>
+				<div class="form-item text" placeholder="联系电话不得超过50个字" name="contactNum"></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 item-caption ">发布时间</div>
+			<div class="col-2 item-caption">需求有效期</div>
 			<div class="col-4">
-				<div class="form-item text showOnly" dictCode="showDay" defVal="" name="day"></div>
+				<div class="form-item date" defVal="" name="invalidDay"></div>
+			</div>
+			<div class="col-2 item-caption">预计合作周期</div>
+			<div class="col-4">
+				<div class="form-item select" defVal="" dictCode="duration" name="duration"></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 item-caption ">内容</div>
-			<div class="col-4">
-				<div class="form-item text showOnly" defVal="" name="demandContent"></div>
+			<div class="col-2 item-caption">费用预算</div>
+			<div class="col-6">
+				<div class="form-item select" dictCode="cost" name="cost"></div>
 			</div>
-		</div>
-	</div>
-	<div class="container dt-tpl">
-		<table class="table table-bordered">
-			<thead>
-				<tr>				
-					<th>反馈列表</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ch-dir="list">			
-					<td class="table-opt id" consultId="{{consultId}}">{{professorName}}&nbsp;&nbsp;{{createTime-showDay}}&nbsp;&nbsp;【{{consultStruts-struts}}】</td>
-				</tr>
-			</tbody>
-			
-		</table>
-	</div>
 
+		</div>
+		<div class="row">
+			<div class="col-2 item-caption">所在城市</div>
+			<div class="col-8">
+				<form action="" name="form1">
+					<div class=" col-6 citybox">
+														<span class="frmtype frmtypeW" id="Province">
+				                                        	<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="oprovince">请选择省份</i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_Province"
+																   value="请选择省份">
+				                                        </span>
+					</div>
+					<div class="col-6 citybox">
+														<span class="frmtype frmtypeW" id="City">
+				                                       		<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="ocity"></i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_City" value="请选择城市 ">
+				                                        </span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2 item-caption">需求内容</div>
+			<div class="col-6">
+				<div class="form-item textarea" defVal="" name="descp"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-10"></div>
+			<div class="col-2">
+				<div class="btn pull-right opt-save">
+					<i class="icon-check"></i> 保存
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>

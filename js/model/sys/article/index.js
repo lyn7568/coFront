@@ -43,12 +43,12 @@ spa_define(function () {
                         window.open('http://www.ekexiu.com/shtml/a/'+time+'/' + shareId+'.html');
                     });
                     root.find("a.author").on("click",function () {
-                        var professorId = $(this).parent().attr("professorId");
-                        var orgId = $(this).parent().attr("orgId");
-                        if(orgId) {
-                            window.open('http://www.ekexiu.com/cmpInforShow.html?orgId='+orgId);
-                        }else if(professorId){
-                            window.open('http://www.ekexiu.com/userInforShow.html?professorId='+professorId);
+                        var ownerId = $(this).parent().attr("ownerId");
+                        var articleType = $(this).parent().attr("articleType");
+                        if(articleType == 1) {
+                            window.open('http://www.ekexiu.com/userInforShow.html?professorId='+ownerId);
+                        }else if(articleType == 2){
+                            window.open('http://www.ekexiu.com/cmpInforShow.html?orgId='+ownerId);
                         }
                     })
                 });

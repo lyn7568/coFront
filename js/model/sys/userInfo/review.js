@@ -69,6 +69,11 @@ spa_define(function () {
                 saveBtn.on("click", save);
                 form.val(data.data);
                 form.val({state: 3, authentication: 1, authStatus: 3, authStatusExpert: 3});
+                $("body").keydown(function () {
+                    if (event.keyCode == 13) {
+                        saveBtn.click();
+                    }
+                })
             }
         }
     });

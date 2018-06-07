@@ -1,0 +1,73 @@
+<div class="sys_buttedpro_index" loadUri="http://www.ekexiu.com/ajax/platformConsole/pqButtedProfessors" pageSize="10" pageNo="1" pageIndex="pi">
+    <div class="modal-ctrl">
+        <i class="icon icon-times"></i>
+    </div>
+    <div class="container dt-form">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-1 item-caption ">平台</div>
+            <div class="col-2">
+                <div class="form-item dyn-select queried" uri="../ajax/platform/name" name="pid"></div>
+            </div>
+            <div class="col-1 item-caption ">专家姓名</div>
+            <div class="col-2">
+                <div class="form-item text" defVal="" name="name"></div>
+            </div>
+            <div class="col-2">
+                <div class="btn opt-query pull-right">
+                    <i class="icon-search"></i> 查询
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-new">
+                新增对接专家
+            </div>
+            <div class="btn opt-del">
+                删除对接专家
+            </div>
+        </div>
+    </div>
+    <div class="container dt-tpl">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
+                <th class="number">序号</th>
+                <th>专家姓名</th>
+                <th>性别</th>
+                <th>职称</th>
+                <th>职位</th>
+                <th>所在机构</th>
+                <th>联系电话</th>
+                <th>联系邮箱</th>
+                <th>对接时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ch-dir="list" class="ifempty">
+                <td class="opt-check" ><i class="icon icon-st-check" proId="{{id}}"></i></td>
+                <td>{{pi}}</td>
+                <td>{{name}}</td>
+                <td>{{sex}}</td>
+                <td>{{title}}</td>
+                <td>{{office}}</td>
+                <td>{{orgName}}</td>
+                <td>{{phone}}</td>
+                <td>{{email}}</td>
+                <td>{{buttedTime}}</td>
+            </tr>
+            </tbody>
+            <tbody ch-dir="array.empty">
+            <tr>
+                <td class="empty-desc" colspan="10">表格暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="dt-pager"></ul>
+</div>

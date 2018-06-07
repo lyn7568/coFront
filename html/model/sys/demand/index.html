@@ -26,7 +26,11 @@
             <div class="col-2">
                 <div class="form-item select" dictCode="demandState" name="state"></div>
             </div>
-            <div class="col-7">
+            <div class="col-1 item-caption">来源渠道</div>
+            <div class="col-2">
+                <div class="form-item select" dictCode="demandSource" name="source"></div>
+            </div>
+            <div class="col-4">
             </div>
             <div class="col-2">
                 <div class="btn opt-query pull-right">
@@ -38,6 +42,13 @@
     </div>
 
     <div class="container page-split"></div>
+    <div class="container tpl-btns">
+        <div class="row">
+            <div class="btn opt-edit">
+                编辑需求内容
+            </div>
+        </div>
+    </div>
     <style type="text/css">
         .table.table-bordered tr th{text-align: center;}
     </style>
@@ -45,6 +56,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
+                <th class="opt-check" ><i class="icon icon-st-check"></i> </th>
                 <th>序号</th>
                 <th>主题</th>
                 <th>发布者</th>
@@ -56,11 +68,13 @@
                 <th>发布时间</th>
                 <th>需求状态</th>
                 <th>浏览量</th>
+                <th>来源渠道</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
             <tr ch-dir="list">
+                <td class="opt-check" ><i class="icon icon-st-check" demandId="{{id}}"></i></td>
                 <td>{{pi}}</td>
                 <td class="table-opt" demandId="{{id}}"><a class="title">{{title}}</a></td>
                 <td>{{professorName}}</td>
@@ -72,6 +86,7 @@
                 <td>{{createTime-showDay}}</td>
                 <td class="hand-dict" dict="demandState" code="{{state}}"></td>
                 <td>{{pageViews}}</td>
+                <td>{{source}}</td>
                 <td class="table-opt edit" demandId="{{id}}"><div class="btn opt-auth state{{state}}">
                     <i class="icon-times"></i>
                     关闭
@@ -84,7 +99,7 @@
             </tbody>
             <tbody ch-dir="array.empty">
             <tr>
-                <td class="empty-desc" colspan="12">表格暂无数据</td>
+                <td class="empty-desc" colspan="14">表格暂无数据</td>
             </tr>
             </tbody>
         </table>

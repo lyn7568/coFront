@@ -292,6 +292,14 @@
             code: "2", caption: "女", enabled: true
         }]);
 
+        dict.set("demandSource", [{
+            code: "ekexiuWeb", caption: "ekexiuWeb", enabled: true
+        },{
+            code: "ekexiuApp", caption: "ekexiuApp", enabled: true
+        },{
+            code: "xttjpt", caption: "xttjpt", enabled: true
+        }]);
+
     });
 
 })();

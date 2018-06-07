@@ -1,49 +1,53 @@
+/**
+ * Created by TT on 2017/5/23.
+ */
 ;
 spa_define(function () {
-    return $.use(["spa", "code", "util", "form"], function (spa, code, util, form) {
+    return $.use(["spa", "util", "form", "upload"], function (spa, util, fb, upload) {
         return {
             modal: function (data) {
                 var root = spa.findInModal(".sys_demand_edit");
+                var form = fb.build(root.find(".newForm"));
+                var saveBtn = root.find(".opt-save"),
+                    headArea = root.find(".head-ctn"),
+                    save = function () {
+                        console.log(form.val());
+                    form.doPost("../ajax/demand/modify",function () {
+                        spa.closeModal();
+                        if (data.hand) {
+                            data.hand();
+                        }
+                    },{})
+                    };
+
+                form.val(data.data);
+
                 root.find(".modal-ctrl .icon-times").on("click", function () {
                     spa.closeModal();
                 });
-                var ef = form.build(root.find(".opt-form"));
 
-                var day = data.data.createTime;
-                data.data.day = day.substring(0, 4) + "年" + day.substring(4, 6) + "月" + day.substring(6, 8) + "日";
-                ef.val(data.data);
-                var cr = code.parseCode(root.find(".dt-tpl"));
-                cr.shell("showDay", function (env) {
-                    if (env.cd && env.cd[this.k]) {
-                        var day = env.cd[this.k];
-                        return day.substring(0, 4) + "-" + day.substring(4, 6) + "-" + day.substring(6, 8);
+                $.fn.citySelect();
+                $(document).on("click", "#City li a", function () {
+                    var aVal = $(this).text();
+                    $(this).parent().parent().parent().find('.mr_show').text(aVal);
+                    $(this).parent().parent().parent().find('input[name=cho_City]').val(aVal);
+                    if ($("#ocity").text() == "请选择城市") {
+                        $("#ocity").removeClass("mr_select");
+                    } else {
+                        $("#ocity").addClass("mr_select");
                     }
-                    return "";
+                    // console.log($("#ocity").text(),$("#oprovince").text())
+                    form.val({province: $("#oprovince").text(), city: $("#ocity").text()});
                 });
-                cr.shell("struts", function (env) {
-                    var v = env.cd[this.k];
-                    if (v === 1) {
-                        return "已完成";
-                    }
-                    if (v === 2) {
-                        return "待回复";
-                    }
-                    if (v === 3) {
-                        return "已谢绝";
-                    }
-                    return "进行中";
-                });
-                var allData;
-                util.get("../ajax/demand/demandId/" + data.data.demandId, null, function (data) {
-                    allData = data || [];
-                    cr.val(data);
-                }, {});
-                root.on("click", ".table-opt", function () {
-                    var id = $(".id").attr("consultId");
-                    window.open('http://www.ekexiu.com/diloags.html?attrParams=consultId&consultId=' + id);
-                });
+                if (data.data.province) {
+                    $("#oprovince").text(data.data.province);
+                }
+                if (data.data.city) {
+                    $("#ocity").text(data.data.city);
+                }
 
+                saveBtn.on("click", save);
             }
-        };
+        }
     });
 });

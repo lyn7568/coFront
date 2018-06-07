@@ -1,0 +1,323 @@
+@charset "utf-8";
+.sys_platform_index .tpl-btns .row,.sys_buttedpro_index .tpl-btns .row,.sys_buttedorg_index .tpl-btns .row,.sys_residentorg_index .tpl-btns .row {
+    padding-left: 10px;
+}
+
+.sys_platform_index th.opt-check, .sys_buttedpro_index td.opt-check, .sys_buttedorg_index td.opt-check, .sys_residentorg_index td.opt-check {
+    width: 35px;
+}
+
+.sys_platform_index .orderBy .icon-close{
+    display: none;
+}
+.sys_platform_index .table-opt .name,.sys_buttedpro_index .table-opt .name{
+    cursor:pointer;
+}
+
+.sys_platform_new,.sys_buttedpro_new,.sys_buttedorg_new,.sys_residentorg_new{
+    width: 500px;
+    height: 250px;
+    padding: 0 20px 10px;
+}
+
+.sys_platform_new .requiredSpan{
+    color: #ff0000;
+    position:relative;
+    top:6px;
+    left: -4px;
+
+}
+.sys_platform_details .requiredSpan{
+    color: #ff0000;
+}
+
+.sys_platform_details{
+    width: 800px;
+    height: 700px;
+}
+
+.sys_platform_data .icon-close {
+    display: none;
+}
+
+.sys_platform_new .newForm, .sys_platform_details .newForm, .sys_platform_cp .newForm {
+    position: relative;
+}
+
+.sys_platform_new .newForm1, .sys_platform_details .newForm1, .sys_platform_cp .newForm1 {
+    position: relative;
+}
+
+.sys_platform_details .newForm .head-ctn {
+    position: absolute;
+    top: 164px;
+    right: 30px;
+    width: 190px;
+    height: 190px;
+}
+
+.sys_platform_details .platformSize.dyn-mselect .icon-drop {
+    display: none !important;
+}
+
+.sys_platform_details .platformSize.dyn-mselect .dd-drop {
+    display: none !important;
+}
+
+.sys_platform_details .platformSize.dyn-mselect .placeholder {
+    display: none !important;
+}
+
+.sys_platform_details .newForm .head-ctn .upload-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    width: 110px;
+    height: 36px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #555555;
+    padding-top: 6px;
+}
+
+.sys_platform_details .newForm .head-ctn .upload-btn i {
+    font-size: 16px;
+    color: rgb(95, 184, 120);
+}
+
+.sys_platform_details .newForm .head-ctn img {
+    width: 100%;
+    height: 100%;
+}
+
+.sys_platform_details .upload-item {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sys_platform_details .upload-item .progress {
+    width: 1px;
+    height: 30px;
+    background-color: #3280FC;
+}
+
+.sys_platform_menu .nav ul {
+    padding-left: 20px;
+}
+
+.sys_platform_details .webuploader-pick {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: #00b7ee;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.sys_platform_details .webuploader-container {
+    position: relative;
+}
+
+.sys_platform_details .webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.sys_platform_details .webuploader-pick-hover {
+    background: #00a2d4;
+}
+
+.sys_platform_details .webuploader-pick-disable {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.sys_platform_details #picker {
+    display: inline-block;
+    line-height: 1.428571429;
+    vertical-align: middle;
+    margin: 0 12px 0 0;
+}
+
+.sys_platform_details #picker .webuploader-pick {
+    padding: 6px 12px;
+    display: block;
+}
+
+.sys_platform_details #uploader-demo .thumbnail {
+    width: 110px;
+    height: 110px;
+}
+
+.sys_platform_details #uploader-demo .thumbnail img {
+    width: 100%;
+}
+
+.sys_platform_details .uploader-list {
+    width: 100%;
+    overflow: hidden;
+}
+
+.sys_platform_details .file-item {
+    float: left;
+    position: relative;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+}
+
+.sys_platform_details .file-item .error {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    background: red;
+    color: white;
+    text-align: center;
+    height: 20px;
+    font-size: 14px;
+    line-height: 23px;
+}
+
+.sys_platform_details .file-item .info {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    right: 4px;
+    height: 20px;
+    line-height: 20px;
+    text-indent: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.sys_platform_details .file-item .progress {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    height: 3px;
+    left: 4px;
+    height: 4px;
+    overflow: hidden;
+    z-index: 15;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.sys_platform_details .file-item .progress span {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    background: #d14 url(../images/progress.png) repeat-x;
+    -webit-transition: width 200ms linear;
+    -moz-transition: width 200ms linear;
+    -o-transition: width 200ms linear;
+    -ms-transition: width 200ms linear;
+    transition: width 200ms linear;
+    -webkit-animation: progressmove 2s linear infinite;
+    -moz-animation: progressmove 2s linear infinite;
+    -o-animation: progressmove 2s linear infinite;
+    -ms-animation: progressmove 2s linear infinite;
+    animation: progressmove 2s linear infinite;
+    -webkit-transform: translateZ(0);
+}
+
+.sys_platform_details .filelist div.file-panel span.cancel {
+    /* background-position: -48px -24px; */
+}
+
+.sys_platform_details .filelist div.file-panel span.cancel:hover {
+    background-position: -48px 0;
+}
+
+.sys_platform_details .citybox .frmtype {
+    border: 1px solid #B5B5B5;
+}
+
+.sys_platform_details .citybox span {
+    position: relative;
+    width: 96%;
+    display: inline-block;
+    padding: 0 0 0 6px;
+    cursor: pointer;
+    margin: 0;
+    background: #fff;
+}
+
+.sys_platform_details .citybox span .mr_show.mr_select {
+    color: #333;
+}
+
+.sys_platform_details .citybox span .mr_show {
+    font-style: normal;
+    color: #AAAAAA;
+    width: 100%;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    position: relative;
+}
+
+.sys_platform_details .citybox span .mr_show .mr_select {
+    color: #333;
+}
+
+.sys_platform_details .citybox span .mr_sj {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border: 6px solid #fff;
+    border-color: #28b8fa transparent transparent;
+}
+
+.sys_platform_details .citybox span ul {
+    width: 98%;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    border: 1px solid #E8E8E8;
+    background: #fff;
+    left: -1px;
+    top: 38px;
+    margin-bottom: 10px;
+    display: none;
+    z-index: 10;
+    max-height: 280px;
+    overflow: auto;
+}
+
+.sys_platform_details .citybox span ul li {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    border-top: 1px solid #E8E8E8;
+}
+
+.sys_platform_details .citybox span ul li:first-child {
+    border-top: 0;
+}
+
+.sys_platform_details .citybox span ul li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+    color: #494949;
+}
+
