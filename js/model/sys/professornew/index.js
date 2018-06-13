@@ -145,6 +145,19 @@ spa_define(function () {
                     }
                 });
 
+                root.find(".opt-photo").on("click", function () {
+                    var $professor = root.find("td.opt-check>i.checked");
+                    if ($professor.length) {
+                        if ($professor.length > 1) {
+                            util.alert("只能选择一个用户");
+                        } else {
+                            window.open('http://'+window.location.host+'/html/model/sys/professornew/photo/photo-set.html?id=' + $professor.attr("professorid"));
+                        }
+                    } else {
+                        util.alert("请选择一个用户");
+                    }
+                });
+
             }, mainDestory: function () {
 
             }
