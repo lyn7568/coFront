@@ -272,7 +272,13 @@ $(function (){
 		// 文件上传成功，给item添加成功class, 用样式标记上传成功。
 		cacheImageKey=null;
 		uploader.on( 'uploadSuccess', function(file,data) {
-			console.log(data);
+			if(!data.success) {
+                if (data.code = 302) {
+                    alert("图片格式错误");
+                    uploader.reset();
+                    return;
+                }
+            }
 			$("#jcropdiv").show();
 			$(".load").hide();
 			uploader.removeFile(fileId);
