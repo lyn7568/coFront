@@ -52,12 +52,12 @@ spa_define(function () {
                                     spa.showModal("sys_org_edit", {
                                         data: data,
                                         hand: function () {
-                                            pdg.load()
+                                            pdg.reload()
                                         }
                                     })
                                 } else {
                                     util.alert("用户不存在了", function () {
-                                        pdg.load();
+                                        pdg.reload();
                                     });
                                 }
                             }, {});
@@ -76,12 +76,12 @@ spa_define(function () {
                                 if (data) {
                                     spa.showModal("sys_org_details", {
                                         data: data, hand: function () {
-                                            pdg.load()
+                                            pdg.reload()
                                         }
                                     })
                                 } else {
                                     util.alert("用户不存在了", function () {
-                                        pdg.load();
+                                        pdg.reload();
                                     });
                                 }
                             }, {});
@@ -100,12 +100,12 @@ spa_define(function () {
                                 if (data) {
                                     spa.showModal("sys_org_data", {
                                         data: data, hand: function () {
-                                            pdg.load()
+                                            pdg.reload()
                                         }
                                     })
                                 } else {
                                     util.alert("用户不存在了", function () {
-                                        pdg.load();
+                                        pdg.reload();
                                     });
                                 }
                             }, {});
