@@ -316,6 +316,7 @@
 #upload .filelist li {
     width: 113px;
     height: 113px;
+    box-sizing:border-box;
     background: url(./images/bg.png);
     text-align: center;
     margin: 9px 0 0 9px;
@@ -325,6 +326,11 @@
     float: left;
     overflow: hidden;
     font-size: 12px;
+}
+
+#upload .filelist .move {
+   border: 2px dashed green;
+   opacity: 0.7
 }
 
 #upload .filelist li p.log {

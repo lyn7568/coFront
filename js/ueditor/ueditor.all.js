@@ -14953,24 +14953,24 @@ UE.plugins['list'] = function () {
     me.setOpt( {
         'autoTransWordToList':false,
         'insertorderedlist':{
-            'num':'',
-            'num1':'',
-            'num2':'',
-            'cn':'',
-            'cn1':'',
-            'cn2':'',
+//          'num':'',
+//          'num1':'',
+//          'num2':'',
+//          'cn':'',
+//          'cn1':'',
+//          'cn2':'',
             'decimal':'',
-            'lower-alpha':'',
-            'lower-roman':'',
-            'upper-alpha':'',
-            'upper-roman':''
+//          'lower-alpha':'',
+//          'lower-roman':'',
+//          'upper-alpha':'',
+//          'upper-roman':''
         },
         'insertunorderedlist':{
-            'circle':'',
+//          'circle':'',
             'disc':'',
-            'square':'',
-            'dash' : '',
-            'dot':''
+//          'square':'',
+//          'dash' : '',
+//          'dot':''
         },
         listDefaultPaddingLeft : '30',
         listiconpath : 'http://bs.baidu.com/listicon/',
@@ -18966,12 +18966,12 @@ UE.plugins['video'] = function (){
                 for (var r = 0; r < rowsNum; r++) {
                     html.push('<tr' + (r == 0 ? ' class="firstRow"':'') + '>');
                     for (var c = 0; c < colsNum; c++) {
-                        html.push('<td width="' + tdWidth + '"  vAlign="' + opt.tdvalign + '" >' + (browser.ie && browser.version < 11 ? domUtils.fillChar : '<br/>') + '</td>')
+                        html.push('<td style="border:1px solid #ccc;" width="' + tdWidth + '"  vAlign="' + opt.tdvalign + '" >' + (browser.ie && browser.version < 11 ? domUtils.fillChar : '<br/>') + '</td>')
                     }
                     html.push('</tr>')
                 }
                 //禁止指定table-width
-                return '<table><tbody>' + html.join('') + '</tbody></table>'
+                return '<table style="border-collapse:collapse;"><tbody>' + html.join('') + '</tbody></table>'
             }
 
             if (!opt) {
@@ -19827,12 +19827,20 @@ UE.plugins['video'] = function (){
             return 0;
         },
         execCommand: function () {
-            var table = getTableItemsByRange(this).table;
-            utils.each(domUtils.getElementsByTagName(table,'td'),function(td){
-                td.style.borderWidth = '1px';
-                td.style.borderStyle = 'solid';
-            })
-        }
+		    var table = getTableItemsByRange(this).table;
+		    utils.each(domUtils.getElementsByTagName(table,'td'),function(td){
+		        td.style.borderWidth = '1px';
+		        td.style.borderStyle = 'solid';
+		        td.style.borderColor = 'windowtext';
+		    });
+		    //增加下面一段
+		    utils.each(domUtils.getElementsByTagName(table,'th'),function(th){
+		        th.style.borderWidth = domUtils.getComputedStyle(th, "border-width");
+		        th.style.borderStyle = 'solid';
+		        th.style.borderColor = 'windowtext';
+		    });
+		}
+
     };
     function resetTdWidth(table, editor) {
         var tds = domUtils.getElementsByTagName(table,'td th');
@@ -20238,17 +20246,40 @@ UE.plugins['table'] = function () {
                         div.innerHTML = div[browser.ie ? 'innerText' : 'textContent'];
                     }
                 } else {
-                    utils.each(tables, function (table) {
+                	utils.each(tables, function (table) {                        
+                        //粘贴进来的表格table定义属性
+                        domUtils.setAttributes(table, {
+                            style:'border-left:1px solid #666; border-top:1px solid #ccc;',
+                        });                                            
+                        
                         removeStyleSize(table, true);
                         domUtils.removeAttributes(table, ['style', 'border']);
+                        //domUtils.removeAttributes(table, ['style']);//no remove table Style
                         utils.each(domUtils.getElementsByTagName(table, "td"), function (td) {
+                            
+                            //粘贴进来的表格td定义属性
+                            domUtils.setAttributes(td, {
+                                style:'border-bottom:1px solid #666; border-right:1px solid #ccc; padding:5px;',
+                            });                        
+                        
                             if (isEmptyBlock(td)) {
                                 domUtils.fillNode(me.document, td);
                             }
                             removeStyleSize(td, true);
-//                            domUtils.removeAttributes(td, ['style'])
+                            //domUtils.removeAttributes(td, ['style'])
                         });
                     });
+
+//                  utils.each(tables, function (table) {
+//                      removeStyleSize(table, true);
+//                      domUtils.removeAttributes(table, ['style']); // ['style', 'border']
+//                      utils.each(domUtils.getElementsByTagName(table, "td"), function (td) {
+//                          if (isEmptyBlock(td)) {
+//                              domUtils.fillNode(me.document, td);
+//                          }
+//                          removeStyleSize(td, true);
+//                      });
+//                  });
                 }
                 html.html = div.innerHTML;
             }
@@ -21908,6 +21939,7 @@ UE.plugins['tablesort'] = function () {
         execCommand: function (cmd) {
             var table = getTableItemsByRange(this).table;
             table.setAttribute("data-sort", cmd == "enablesort" ? "sortEnabled" : "sortDisabled");
+            table.setAttribute("style", "border-collapse:collapse;");
             cmd == "enablesort" ? domUtils.addClass(table,"sortEnabled"):domUtils.removeClasses(table,"sortEnabled");
         }
     };
@@ -21928,7 +21960,7 @@ UE.plugins['tablesort'] = function () {
 
 UE.plugins['contextmenu'] = function () {
     var me = this;
-    me.setOpt('enableContextMenu',true);
+    me.setOpt('enableContextMenu',false);
     if(me.getOpt('enableContextMenu') === false){
         return;
     }
@@ -24533,7 +24565,12 @@ UE.plugin.register('simpleupload', function (){
                             loader.removeAttribute('id');
                             domUtils.removeClasses(loader, 'loadingclass');
                         } else {
-                            showErrorLoader && showErrorLoader(json.state);
+                        	if(json.state=="文件大小超出限制") {
+                        		showErrorLoader && showErrorLoader("文件大小不能超过2M");
+                        	}else{
+                        		showErrorLoader && showErrorLoader(json.state);
+                        	}
+                            
                         }
                     }catch(er){
                         showErrorLoader && showErrorLoader(me.getLang('simpleupload.loadError'));

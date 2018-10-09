@@ -36,12 +36,13 @@
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[
             'fullscreen', 'source', '|', 'undo', 'redo', '|',
-            'bold', 'italic', 'underline', '|',
+            'bold', 'italic',/* 'underline',*/ '|',
             'insertorderedlist', 'insertunorderedlist', '|',
             'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
             'spechars', '|',
-           	'superscript', 'subscript','|',
-            'simpleupload','link'
+           	'superscript', 'subscript','|','link','simpleupload','insertimage', '|', 
+           	'removeformat','formatmatch', '|',
+           	'inserttable', 'mergecells', 'splittocells'
         ]]
         
         /*, toolbars: [[
@@ -122,7 +123,7 @@
         //粘贴只保留标签，去除标签所有属性
         //,retainOnlyLabelPasted: false
 
-        ,pasteplain:true  //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
+        ,pasteplain:false  //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
         //纯文本粘贴模式下的过滤规则
         //'filterTxtRules' : function(){
         //    function transP(node){
@@ -333,7 +334,7 @@
 
         //tableDragable
         //表格是否可以拖拽
-        //,tableDragable: true
+          ,tableDragable: true
 
 
 
@@ -356,7 +357,7 @@
         //}
 
         //allowLinkProtocol 允许的链接地址，有这些前缀的链接地址不会自动添加http
-        , allowLinkProtocols: ['http:', 'https:', '#', '/', 'ftp:', 'mailto:', 'tel:', 'git:', 'svn:']
+        //, allowLinkProtocols: ['http:', 'https:', '#', '/', 'ftp:', 'mailto:', 'tel:', 'git:', 'svn:']
 
         //webAppKey 百度应用的APIkey，每个站长必须首先去百度官网注册一个key后方能正常使用app功能，注册介绍，http://app.baidu.com/static/cms/getapikey.html
         //, webAppKey: ""
@@ -374,7 +375,7 @@
 		,outputXssFilter: true
 		// xss过滤白名单 名单来源: https://raw.githubusercontent.com/leizongmin/js-xss/master/lib/default.js
 		,whitList: {
-			/*a:      [],
+			a:      ['target', 'href', 'title', 'class', 'style'],
 			abbr:   ['title', 'class', 'style'],
 			address: ['class', 'style'],
 			area:   ['shape', 'coords', 'href', 'alt'],
@@ -436,70 +437,7 @@
 			tt:     [],
 			u:      [],
 			ul:     ['class', 'style'],
-			video:  ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class', 'style']*/
-			a:      ['target', 'href', 'title', 'class', 'style'],
-			abbr:   [],
-			address: [],
-			area:   [],
-			article: [],
-			aside:  [],
-			audio:  [],
-			b:      [],
-			bdi:    [],
-			bdo:    [],
-			big:    [],
-			blockquote: [],
-			br:     [],
-			caption: [],
-			center: [],
-			cite:   [],
-			code:   [],
-			col:    [],
-			colgroup: [],
-			dd:     [],
-			del:    [],
-			details: [],
-			div:    [],
-			dl:     [],
-			dt:     [],
-			em:     [],
-			font:   [],
-			footer: [],
-			h1:     [],
-			h2:     [],
-			h3:     [],
-			h4:     [],
-			h5:     [],
-			h6:     [],
-			header: [],
-			hr:     [],
-			i:      [],
-			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'data-latex'],
-			ins:    [],
-			li:     [],
-			mark:   [],
-			nav:    [],
-			ol:     [],
-			p:      ['style'],
-			pre:    [],
-			s:      [],
-			section:[],
-			small:  [],
-			span:   [],
-			sub:    [],
-			sup:    [],
-			strong: [],
-			table:  [],
-			tbody:  [],
-			td:     [],
-			tfoot:  [],
-			th:     [],
-			thead:  [],
-			tr:     [],
-			tt:     [],
-			u:      [],
-			ul:     [],
-			video:  []
+			video:  ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class', 'style']
 		}
     };
 

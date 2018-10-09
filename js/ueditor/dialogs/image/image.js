@@ -399,10 +399,41 @@
             });
 
             setState('pedding');
-
+            $('.filelist').on('dragstart','li', function(ev){
+            	$(this).addClass('move')
+				ev.originalEvent.dataTransfer.setData("Text",ev.currentTarget.id);
+            })
+             $('.filelist').on('dragend','li', function(ev){
+            	$('.filelist').find('li').removeClass('move')
+            })
+             $('.filelist').on('drop','li', function(ev){ 
+             	var currendId = ev.currentTarget.id;
+             	var moveId = ev.originalEvent.dataTransfer.getData("Text");
+             	if(currendId == 'filePickerBlock' || moveId == 'filePickerBlock') {
+             		return;
+             	}
+             	var arr = [];
+             	var $s = $('.filelist').children();
+             	for(var i = 0; i < $s.length-1; i++) {
+             		arr.push($s[i].id)
+             	}
+             	var currendIndex = arr.indexOf(currendId);
+             	var moveIndex = arr.indexOf(moveId)
+             	var chang1 = $('#'+ currendId);
+             	var chang2 = $('#'+ moveId);
+             	if (moveIndex < currendIndex) {
+             		chang2.insertAfter(chang1);
+             	} 
+             	if (moveIndex > currendIndex) {
+             		chang2.insertBefore(chang1);
+             	}
+            })
+             $('.filelist').on('dragover','li', function(ev){
+             	ev.preventDefault()
+            })
             // 当有文件添加进来时执行，负责view的创建
             function addFile(file) {
-                var $li = $('<li id="' + file.id + '">' +
+                var $li = $('<li id="' + file.id + '" draggable="true" style="cursor:move">' +
                         '<p class="title">' + file.name + '</p>' +
                         '<p class="imgWrap"></p>' +
                         '<p class="progress"><span></span></p>' +
@@ -721,6 +752,7 @@
                     var responseText = (ret._raw || ret),
                         json = utils.str2json(responseText);
                     if (json.state == 'SUCCESS') {
+                    	json.index = file.id;
                         _this.imageList.push(json);
                         $file.append('<span class="success"></span>');
                     } else {
@@ -770,9 +802,21 @@
             this.$wrap.remove();
         },
         getInsertList: function () {
+            var $s = $('.filelist').children();
+            var arr = []
+            for(var i = 0; i < $s.length-1; i++) {
+             	arr.push($s[i].id)
+             }
+            this.imageList.forEach(function(item) {
+            	item.index = arr.indexOf(item.index);
+            })
             var i, data, list = [],
                 align = getAlign(),
                 prefix = editor.getOpt('imageUrlPrefix');
+                this.imageList.sort(function(x, y) {
+	                if(x.index <= y.index) return -1;
+	                return 1;
+            	});
             for (i = 0; i < this.imageList.length; i++) {
                 data = this.imageList[i];
                 list.push({
