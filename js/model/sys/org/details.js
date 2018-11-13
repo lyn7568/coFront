@@ -25,7 +25,6 @@ spa_define(function () {
                 var saveBtn = root.find(".opt-save"),
                     headArea = root.find(".head-ctn"),
                     save = function () {
-                        console.log(form.val().fn);
                         form.val({inviterId: id});
                         form.val({
                             industry: oString(form.val().industryList),

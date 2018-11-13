@@ -45,9 +45,6 @@ spa_define(function () {
                         }else {
                             form.val({subject: null});
                         }
-                        form.val({
-                            subjectList: "", industryList: "", researchAreaList: ""
-                        });
                         if (form.val().title) {
                             var title = trim(form.val().title);
                             if (title.length > 20) {
@@ -93,8 +90,7 @@ spa_define(function () {
                         }
                         if (form.val().email) {
                             var email = trim(form.val().email);
-                            var gunf = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-                            if (!gunf.test(email)) {
+                            if (email.trim().indexOf("@") === -1) {
                                 util.alert("联系邮箱格式有误，请检查后重新填写");
                                 return;
                             }
@@ -109,6 +105,9 @@ spa_define(function () {
                         if (form.val().name == null) {
                             util.alert("请输入专家姓名");
                         } else if (form.val().loginPhone || form.val().loginEmail) {
+                            form.val({
+                                subjectList: "", industryList: "", researchAreaList: ""
+                            });
                             form.doPut("../ajax/sys/professor", function () {
                                 spa.closeModal();
                                 if (data.hand) {

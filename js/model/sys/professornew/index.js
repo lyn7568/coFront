@@ -3,7 +3,7 @@
  */
 ;
 spa_define(function () {
-    return $.use(["spa", "pagedatagrid", "util"], function (spa, pdgf, util) {
+    return $.use(["spa", "pagedatagrid", "util","win"], function (spa, pdgf, util,win) {
         return {
             main: function () {
                 var root = spa.findInMain(".sys_professornew_index");
@@ -31,7 +31,7 @@ spa_define(function () {
                     });
                     root.find(".table-opt a.name").on("click", function () {
                         var professorId = $(this).parent().attr("professorId");
-                        window.open('http://www.ekexiu.com/userInforShow.html?professorId=' + professorId);
+                        win.open('http://www.ekexiu.com/userInforShow.html?professorId=' + professorId);
                     })
                 });
                 root.find(".opt-query").on("click", function () {
@@ -138,7 +138,7 @@ spa_define(function () {
                         if ($professor.length > 1) {
                             util.alert("只能选择一个用户");
                         } else {
-                            window.open('http://www.ekexiu.com/userInforShow.html?professorId=' + $professor.attr("professorid"));
+                            win.open('http://www.ekexiu.com/userInforShow.html?professorId=' + $professor.attr("professorid"));
                         }
                     } else {
                         util.alert("请选择一个用户");
@@ -151,7 +151,7 @@ spa_define(function () {
                         if ($professor.length > 1) {
                             util.alert("只能选择一个用户");
                         } else {
-                            window.open('http://'+window.location.host+'/html/model/sys/professornew/photo/photo-set.html?id=' + $professor.attr("professorid"));
+                            win.open('/html/model/sys/professornew/photo/photo-set.html?id=' + $professor.attr("professorid"));
                         }
                     } else {
                         util.alert("请选择一个用户");

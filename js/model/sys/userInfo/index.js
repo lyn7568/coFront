@@ -3,7 +3,7 @@
  */
 ;
 spa_define(function () {
-    return $.use(["spa", "pagedatagrid", "util"], function (spa, pdgf, util) {
+    return $.use(["spa", "pagedatagrid", "util","win"], function (spa, pdgf, util,win) {
         return {
             main: function () {
                 var root = spa.findInMain(".sys_userinfo_index");
@@ -175,8 +175,8 @@ spa_define(function () {
                         } else {
                             util.get("../ajax/userinfo/id/" + $org.attr("userId"), null, function (data) {
                                 if (data) {
-                                    if (data.state == "1" || data.state == "4") {
-                                        window.open('http://'+window.location.host+'/html/model/sys/professornew/photo/photo-set.html?id=' + $professor.attr("professorid"));
+                                    if (data.state === "1" || data.state === "4") {
+                                        win.open('/html/model/sys/professornew/photo/photo-set.html?id=' + $org.attr("userId"));
                                     } else {
                                         util.alert("待审核和审核通过的不可修改。");
                                     }

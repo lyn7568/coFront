@@ -23,8 +23,7 @@ spa_define(function () {
                         }
                         if (form.val().email) {
                             var email = trim(form.val().email);
-                            var gunf = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-                            if (!gunf.test(email)) {
+                            if (email.trim().indexOf("@") === -1) {
                                 util.alert("联系邮箱格式有误，请检查后重新填写");
                                 return;
                             }

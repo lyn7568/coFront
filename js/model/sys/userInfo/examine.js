@@ -44,8 +44,7 @@ spa_define(function () {
                         form.val({
                             industry: oString(form.val().industryList),
                             subject: oString(form.val().subjectList),
-                            researchArea: form.val().researchAreaList,
-                            subjectList: "", industryList: "", researchAreaList: ""
+                            researchArea: form.val().researchAreaList
                         });
                         if (form.val().orgType == null) {
                             form.val({orgType: 1});
@@ -94,8 +93,7 @@ spa_define(function () {
                         }
                         if (form.val().email) {
                             var email = trim(form.val().email);
-                            var gunf = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-                            if (!gunf.test(email)) {
+                            if (email.trim().indexOf("@") === -1) {
                                 util.alert("联系邮箱格式有误，请检查后重新填写");
                                 return;
                             }
@@ -110,6 +108,9 @@ spa_define(function () {
                         if (form.val().name == null) {
                             util.alert("请输入专家姓名");
                         } else if (form.val().mobile || form.val().email) {
+                            form.val({
+                                subjectList: "", industryList: "", researchAreaList: ""
+                            });
                             form.doPut("../ajax/userinfo/update", function () {
                                 spa.closeModal();
                                 if (data.hand) {
